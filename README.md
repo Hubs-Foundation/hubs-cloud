@@ -12,7 +12,13 @@ This repo contains the docs for the (currently alpha) Hubs Cloud tooling, which 
 - (Optional) If you are using your own domain name, go to the stack outputs and follow the instructions under the "AppALBDomain" output. 
 - Hit your site, it should be up. Proceed with the login + setup process.
 
-Note that if you have an existing domain you'd like to use, that's fine. You'll still need to register a domain on Route 53 for internal routing. (See the Cloudformation stack creation form.)
+## Using an existing domain
+
+Note that if you have an existing domain you'd like to use for the main site, that's fine. You'll still need to register a domain on Route 53 for internal routing. (See the Cloudformation stack creation form in the 'Domain Configuration' section.)
+
+## Using an existing email SMTP server
+
+You can use your own SMTP server. Just create the stack and choose your internal domain for the EmailZone, and then once the stack is set up you can set SMTP information in the Hubs Cloud admin console in the Server Settings page.
 
 ## Deploying Forks
 
