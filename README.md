@@ -7,13 +7,13 @@ This repo contains the docs for the (currently alpha) Hubs Cloud tooling, which 
 - Create an account on AWS and log into the console.
 - Register a new domain name on Route 53 for your site, and register another domain name on Route 53 for room short permalinks. 
 - In the EC2 console, create an new SSH keypair and save the private key. You'll need this to access your servers.
-- Go to https://gethubscloud.com which will take you to Cloudformation. Fill out the form to create a new Cloudformation stack.
+- Go to https://gethubscloud.com which will take you to CloudFormation. Fill out the form to create a new CloudFormation stack.
 - The stack takes about 15-20 minutes to initialize.
 - Hit your site a minute or so after the stack is created, it should be up. Proceed with the login + setup process.
 
 ## Using an existing domain
 
-If you have an existing domain you'd like to use for the site, that's fine. You'll still need to register a domain on Route 53 for internal routing. (See the Cloudformation stack creation form in the 'Domain Configuration' section.) Once the stack is created, if you are using your own domain name, go to the stack outputs and follow the instructions under the "AppALBDomain" output. 
+If you have an existing domain you'd like to use for the site, that's fine. You'll still need to register a domain on Route 53 for internal routing. (See the CloudFormation stack creation form in the 'Domain Configuration' section.) Once the stack is created, if you are using your own domain name, go to the stack outputs and follow the instructions under the "AppALBDomain" output. 
 
 ## Using an existing email SMTP server
 
