@@ -37,4 +37,4 @@ As you use the service, you will see AWS costs:
 
 Note that you can significantly save data transfer charges by switching your CDN to Cloudflare. In the Hubs Cloud admin console, go to the "Data Transfer" page to see how.
 
-Currently, all of these services except for Aurora fall under the [AWS free tier](https://aws.amazon.com/free/).
+Currently, all of these services except for Aurora Serverless fall under the [AWS free tier](https://aws.amazon.com/free/).
