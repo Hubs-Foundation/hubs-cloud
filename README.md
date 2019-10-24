@@ -22,3 +22,19 @@ By default Hubs Cloud uses Amazon SES for email. You can also use your own SMTP 
 ## Deploying Forks
 
 Once you have a working stack on AWS, you can easily deploy forks of Hubs by cloning the repo and running `npm run deploy`. If you want to revert back to the upstream version, run `npm run undeploy`.
+
+## AWS Costs
+
+The stack is designed to minimize AWS costs, and all services except for the database have AWS free tier offerings. If you are just using this with a few people, your primary charges will be the EC2 instances you use, EFS storage, and, if you do not switch to Cloudflare (see below), data transfer costs.
+
+As you use the service, you will see AWS costs:
+
+- EC2 instances: you control these, a single t2.micro is needed by default. At time of this writing approx $9/mo.
+- An [Aurora serverless](https://aws.amazon.com/rds/aurora/pricing/) database: you will be charged for database usage. At the time of this writing approx $0.06 per ACU Hour. (Note this is *ACU* hours, not 'instance hours', so you will be spending very little if your database is not consuming any resources.)
+- [EFS](https://aws.amazon.com/efs/pricing/) storage: you will be charged for storage of uploaded scenes and avatars. At the time of this writing approx $0.30/gb month.
+- [Cloudfront](https://aws.amazon.com/cloudfront/pricing/) data transfer costs.
+- There are a variety of lambdas used for doing image resizing, video transcoding, etc subject to (AWS Lambda Pricing)[https://aws.amazon.com/lambda/pricing] but unlikely to exceed free tier levels.
+
+Note that you can significantly save data transfer charges by switching your CDN to Cloudflare. In the Hubs Cloud admin console, go to the "Data Transfer" page to see how.
+
+Currently, all of these services except for Aurora fall under the [AWS free tier](https://aws.amazon.com/free/).
