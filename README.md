@@ -29,7 +29,7 @@ The stack is designed to minimize AWS costs, and all services except for the dat
 
 As you use the service, you will see AWS costs:
 
-- EC2 instances: you control these, a single t2.micro is needed by default. At time of this writing approx $9/mo.
+- EC2 instances: the stack configuration lets you choose how many instances to use, a single t2.micro is needed by default. At time of this writing that costs approx $9/mo.
 - An [Aurora serverless](https://aws.amazon.com/rds/aurora/pricing/) database: you will be charged for database usage. At the time of this writing approx $0.06 per ACU Hour. (Note this is *ACU* hours, not 'instance hours', so you will be spending very little if your database is not consuming any resources.)
 - [EFS](https://aws.amazon.com/efs/pricing/) storage: you will be charged for storage of uploaded scenes and avatars. At the time of this writing approx $0.30/gb month.
 - [Cloudfront](https://aws.amazon.com/cloudfront/pricing/) data transfer costs.
