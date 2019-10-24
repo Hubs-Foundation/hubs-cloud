@@ -17,7 +17,7 @@ If you have an existing domain you'd like to use for the site, that's fine. You'
 
 ## Using an existing email SMTP server
 
-By default Hubs Cloud uses Amazon SES for email. You can also use your own SMTP server for sending email. Just create the stack and choose your internal domain for the EmailZone, and then once the stack is set up you can set SMTP information in the Hubs Cloud admin console in the Server Settings page.
+By default Hubs Cloud uses Amazon SES for email. You can also use your own SMTP server for sending email. Choose your internal domain for the EmailZone and create the stack, and then once the stack is set up you can set SMTP information in the Hubs Cloud admin console in the Server Settings page.
 
 ## Deploying Forks
 
