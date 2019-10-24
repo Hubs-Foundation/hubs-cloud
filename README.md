@@ -1,6 +1,6 @@
 # Hubs Cloud
 
-This repo contains the docs for the (currently alpha) Hubs Cloud tooling, which aims to simplify setting up Hubs and Spoke on cloud providers. The currently supported cloud provider is AWS.
+This repo contains the docs for the (currently alpha) Hubs Cloud tooling, which aims to simplify setting up [Hubs](https://hubs.mozilla.com) and [Spoke](https://hubs.mozilla.com/spoke) on cloud providers. The currently supported cloud provider is AWS.
 
 ## Quick Start
 
@@ -21,7 +21,7 @@ By default Hubs Cloud uses Amazon SES for email. You can also use your own SMTP 
 
 ## Deploying Forks
 
-Once you have a working stack on AWS, you can easily deploy forks of Hubs by cloning the repo and running `npm run deploy`. If you want to revert back to the upstream version, run `npm run undeploy`.
+Once you have a working stack on AWS, you can easily deploy forks of [Hubs](https://hubs.mozilla.com) by cloning the [repo](https://github.com/mozilla/hubs) and running `npm run deploy`. If you want to revert back to the upstream version, run `npm run undeploy`.
 
 ## AWS Costs
 
