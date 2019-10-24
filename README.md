@@ -6,7 +6,7 @@ This repo contains the docs for the (currently alpha) Hubs Cloud tooling, which 
 
 - Create an account on AWS and log into the console.
 - Register a new domain name on Route 53 for your site, and register another domain name on Route 53 for room short permalinks. 
-- In the EC2 console, create an new SSH keypair and save it.
+- In the EC2 console, create an new SSH keypair and save the private key. You'll need this to access your servers.
 - Go to https://gethubscloud.com which will take you to Cloudformation. Fill out the form to create a new Cloudformation stack.
 - The stack takes about 15-20 minutes to initialize.
 - Hit your site, it should be up. Proceed with the login + setup process.
