@@ -23,6 +23,19 @@ By default Hubs Cloud uses Amazon SES for email. You can also use your own SMTP 
 
 Once you have a working stack on AWS, you can easily deploy forks of [Hubs](https://hubs.mozilla.com) by cloning the [repo](https://github.com/mozilla/hubs) and running `npm run deploy`. If you want to revert back to the upstream version, run `npm run undeploy`.
 
+## Updating the stack
+
+To keep your software up-to-date, you need to update the stack. You will not experience any downtime when updating the stack. To do so:
+
+- Select the stack in the CloudFormation console
+- Go to Stack Actions -> Update Stack
+- Choose "Update the existing template"
+- For the URL, enter:
+```
+https://hubs-cloud.s3-us-west-1.amazonaws.com/stack.yaml
+```
+- Review choose 'Update'
+
 ## AWS Costs
 
 The stack is designed to minimize AWS costs, and all services except for the database have AWS free tier offerings. If you are just using this with a few people, your primary charges will be the EC2 instances you use, EFS storage, and, if you do not switch to Cloudflare (see below), data transfer costs.
