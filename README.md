@@ -9,7 +9,10 @@ This repo contains the docs for the (currently alpha) Hubs Cloud tooling, which 
 - In the EC2 console, create an new SSH keypair and save the private key. You'll need this to access your servers.
 - Go to https://gethubscloud.com which will take you to CloudFormation. Fill out the form to create a new CloudFormation stack.
 - The stack takes about 15-20 minutes to initialize.
-- Hit your site a minute or so after the stack is created, it should be up. Proceed with the login + setup process.
+- After the stack is created:
+  - Click on the link in the AWS verification email you received.
+  - Hit your site. After a minute or so, it should be up.
+  - Proceed with the login + setup process.
 
 ## Using an existing domain
 
