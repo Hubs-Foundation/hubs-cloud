@@ -25,7 +25,7 @@ Once you have a working stack on AWS, you can easily deploy forks of [Hubs](http
 
 ## Updating the stack
 
-To keep your software up-to-date, you need to update the stack. You will not experience any downtime when updating the stack. To do so:
+To keep your software up-to-date, you need to update the stack template and apply it. You will not experience any downtime when updating the stack. To do so:
 
 - Select the stack in the CloudFormation console
 - Go to Stack Actions -> Update Stack
@@ -34,7 +34,9 @@ To keep your software up-to-date, you need to update the stack. You will not exp
 ```
 https://hubs-cloud.s3-us-west-1.amazonaws.com/stack.yaml
 ```
-- Review choose 'Update'
+- Review the parameter selections and choose 'Update'
+
+Additionally, you can go through the same process but choose 'Use the existing template' in order to adjust settings of the stack like the number of instances.
 
 ## AWS Costs
 
