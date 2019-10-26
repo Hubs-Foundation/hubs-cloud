@@ -1,6 +1,6 @@
 # Hubs Cloud
 
-This repo contains the docs for the (currently alpha) Hubs Cloud tooling, which aims to simplify setting up [Hubs](https://hubs.mozilla.com) and [Spoke](https://hubs.mozilla.com/spoke) on cloud providers. The currently supported cloud provider is AWS.
+This repo contains the docs for the (currently alpha, **do not rely upon in production**) Hubs Cloud tooling, which aims to simplify setting up [Hubs](https://hubs.mozilla.com) and [Spoke](https://hubs.mozilla.com/spoke) on cloud providers. The currently supported cloud provider is AWS.
 
 ## Quick Start
 
