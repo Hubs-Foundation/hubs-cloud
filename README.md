@@ -22,6 +22,12 @@ If you have an existing domain you'd like to use for the site, that's fine. You'
 
 By default Hubs Cloud uses Amazon SES for email. You can also use your own SMTP server for sending email. Choose your internal domain for the EmailZone and create the stack, and then once the stack is set up you can set SMTP information in the Hubs Cloud admin console in the Server Settings page.
 
+## Known Issues
+
+#### I get the error "Value (xxx) for parameter availabilityZone is invalid. Subnets can currently only be created in the following availability zones: X, Y
+
+This is a known issue with AWS. See: https://github.com/widdix/aws-cf-templates/issues/36. To fix it, you will need to adjust the "Subnet Availability Zones" values in the 'Advanced' section to select an alternative Subnet configuration and try again.
+
 ## Deploying Forks
 
 Once you have a working stack on AWS, you can easily deploy forks of [Hubs](https://hubs.mozilla.com) by cloning the [repo](https://github.com/mozilla/hubs) and running `npm run deploy`. If you want to revert back to the upstream version, run `npm run undeploy`.
