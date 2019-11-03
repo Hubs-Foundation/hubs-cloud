@@ -7,6 +7,12 @@ This repo contains the docs for the (currently alpha, **do not rely upon in prod
 - Create an account on AWS and log into the console.
 - Register a new domain name on Route 53 for your site, and register another domain name on Route 53 for room short permalinks. 
 - In the EC2 console, create an new SSH keypair and save the private key. You'll need this to access your servers.
+- Set your console in the top right to one of the supported regions:
+  - US East (N. Virginia)
+  - US East (Ohio)
+  - US West (Oregon)
+  - Asia Pacific (Tokyo)
+  - EU (Ireland)
 - Go to https://gethubscloud.com which will take you to CloudFormation. Fill out the form to create a new CloudFormation stack.
 - The stack takes about 15-20 minutes to initialize.
 - After the stack is created:
