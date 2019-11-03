@@ -14,7 +14,7 @@ This repo contains the docs for the (currently alpha, **do not rely upon in prod
   - Asia Pacific (Tokyo)
   - EU (Ireland)
 - Go to https://gethubscloud.com which will take you to CloudFormation. Fill out the form to create a new CloudFormation stack.
-- The stack takes about 15-20 minutes to initialize.
+- The stack takes about 20-30 minutes to initialize.
 - After the stack is created:
   - Click on the link in the AWS verification email you received.
   - Hit your site. After a minute or so, it should be up.
