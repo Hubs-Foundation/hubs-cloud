@@ -38,6 +38,8 @@ This is a known issue with AWS. See: https://github.com/widdix/aws-cf-templates/
 
 Once you have a working stack on AWS, you can easily deploy forks of [Hubs](https://hubs.mozilla.com) by cloning the [repo](https://github.com/mozilla/hubs) and running `npm run deploy`. If you want to revert back to the upstream version, run `npm run undeploy`.
 
+Note: When running a deploy, ensure webpack-dev-server (`npm start`) is **not** running. This may cause conflics in the build process.
+
 ## Updating the stack
 
 To keep your software up-to-date, you need to update the stack template and apply it. You will not experience any downtime when updating the stack. To do so:
