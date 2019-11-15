@@ -79,7 +79,7 @@ Your stack's data is made up of two things: an AWS Aurora Serverless database, a
 
 ### Creating a manual backup
 
-In addition to automatic backups, if you want to make a up-to-the-minute backup of a stack you can manually create a RDS snapshot and new AWS Backup recovery point via the console. It's highly suggested you put your stack into "Offline" mode by performing a stack update before doing so to limit the risk of data being missed.
+In addition to automatic backups, if you want to make an up-to-the-minute backup of a stack you can manually create a RDS snapshot and new AWS Backup recovery point via the console. It's highly suggested you put your stack into "Offline" mode by performing a stack update before doing so to limit the risk of data being missed.
 
 To create a database snapshot, select your database cluster in RDS and under "Actions" click "Take Snapshot". If you're unsure which cluster is your stack's database, it can be found in the stack "Outputs" section under `AppDb`.
 
