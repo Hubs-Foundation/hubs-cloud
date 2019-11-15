@@ -44,6 +44,14 @@ Some of the things you can do to your stack via a stack update:
 - Add or change a monthly database budget or adjust storage limits
 - Add an Application Load Balancer
 - Disable or enable database auto-pausing
+- Change the database capacity 
+- Change the SSH keypair
+
+Some things you should *not* update or change after the stack is created:
+
+- Your domains or mail settings
+- Everything under "Restore from Backup" section (to restore from a backup, see documentation below)
+- Everything under "Advanced"
 
 ## Deploying Forks
 
@@ -88,6 +96,8 @@ Additionally, there are some secrets like encryption keys that are needed to res
 The first secret is the database secret for the stack whose backups you are restoring. To find this, go to AWS Secrets Manager and look for the secret "<Stack Name> Database Secret." You'll need to provide the ARN to this secret in the stack create form for the new stack.
   
 Additionally, there are some secrets stored in AWS Parameter Store. You will *not* need to dig these up. As long as you haven't gone in and deleted them manually, these secrets can be looked up automatically by providing the stack name and the stack region for the stack you are restoring from in the creation from.
+
+Once you've filled these values out and create the stack it should be restored from the backup. It should behave identically to the original stack, except you will need to configure the "Server Settings" in the Admin console, which are not backed up. *Note*: if you perform a stack update on a stack that was restored from backup, it is critical you do *not* change the parameters under the "Restore from Backup" section -- leave them filled in and don't touch them!
 
 ## AWS Costs
 
