@@ -57,7 +57,7 @@ Some things you should *not* update or change after the stack is created:
 
 Once you have a working stack on AWS, you can easily create and deploy custom versions of [Hubs](https://hubs.mozilla.com) by cloning the [repo](https://github.com/mozilla/hubs).
 
-To work on your custom client, you can run the usual `npm start` command, but this will use Mozilla's development servers. To run your local client against your self hosted Hubs Cloud instance (for example, to use all of your scenes and avatars in your self hosted instance) run the `scripts/run-hubs-cloud-stack.sh` script. (Run this script without arguments to see how to use it.)
+To run your local client against your self hosted Hubs Cloud instance (for example, to use all of your scenes and avatars in your self hosted instance) run the `scripts/use-hubs-cloud-stack.sh` script. (Run this script without arguments to see how to use it.) After running this script, `.env.defaults` will be modified so subsequent runs of `npm start` will be accessing your Hubs Cloud instance.
 
 To deploy, run `npm run deploy` and follow the prompts. If you want to revert back to the upstream version, run `npm run undeploy`.
 
