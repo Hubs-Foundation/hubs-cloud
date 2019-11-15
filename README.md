@@ -58,7 +58,7 @@ Some of the things you can do via a stack update:
 - Change the database max ACU capacity 
 - Change the SSH keypair used by your servers
 
-Some things you should *not* update or change after the stack is created:
+Some things you should *not* update or change after the stack is created, and should leave as-is:
 
 - Your domains or mail settings
 - Everything under "Restore from Backup" section (to restore from a backup, see documentation below)
