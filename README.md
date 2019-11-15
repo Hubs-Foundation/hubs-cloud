@@ -59,7 +59,7 @@ Once you have a working stack on AWS, you can easily create and deploy custom ve
 
 To run your local client against your self hosted Hubs Cloud instance (for example, to use all of your scenes and avatars in your self hosted instance) run the `scripts/use-hubs-cloud-stack.sh` script. (Run this script without arguments to see how to use it.) After running this script, `.env.defaults` will be modified so subsequent runs of `npm start` will be accessing your Hubs Cloud instance.
 
-To deploy, run `npm run deploy` and follow the prompts. If you want to revert your Hubs Clous instance back to using the Mozilla upstream version of the client, run `npm run undeploy`.
+To deploy, run `npm run deploy` and follow the prompts. If you want to revert your Hubs Cloud instance back to using the Mozilla upstream version of the client, run `npm run undeploy`.
 
 Note: When running a deploy, ensure webpack-dev-server (`npm start`) is **not** running. This may cause conflics in the build process.
 
