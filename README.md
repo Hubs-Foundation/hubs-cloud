@@ -31,7 +31,7 @@ If you choose not to transfer, you'll need to create two SSL certificates for yo
 
 Finally after the stack is created, if you are using an external DNS provider like GoDaddy or Namecheap, look in the stack "Outputs" for the "AddressForRootDomain" field -- you will need to create a new CNAME in your domain's DNS to point there to get your domain pointing to your hub.
 
-Also, if you do not transfer your domain to Route 53, you will need to manually renew your SSL certificates each year, and perform a stack update providing the new certificate ARNs. (See below for how to perform stack updates.)
+Also, if you do not transfer your domain to Route 53, you will need to manually renew SSL certificates you've created in Amazon Certificate Manager each year, and perform a stack update providing the new certificate ARNs. (See below for how to perform stack updates.)
 
 ## Using an existing email provider
 
