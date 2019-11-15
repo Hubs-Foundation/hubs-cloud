@@ -33,9 +33,9 @@ Finally after the stack is created, if you are using an external DNS provider li
 
 Also, if you do not transfer your domain to Route 53, you will need to manually renew your SSL certificates each year, and perform a stack update providing the new certificate ARNs. (See below for how to perform stack updates.)
 
-## Using an existing email SMTP server
+## Using an existing email provider
 
-By default your hub will be set up with Amazon SES for email. You can also use your own SMTP server for sending email. If you have your own SMTP settings you'd like to use, choose your internal domain for the EmailZone when creating the stack (and ignore the AWS SES veritifcation email) and then once the stack is set up you can set your SMTP information in your hub's admin console in the Server Settings section.
+By default your hub will be set up with Amazon SES for email on a Route 53 domain you specify. You can also use your own SMTP settings for sending email. If you have your own SMTP settings you'd like to use, choose your internal domain for the EmailZone when creating the stack (and ignore the AWS SES veritifcation email) and then once the stack is set up you can set your SMTP information in your hub's admin console in the Server Settings section.
 
 ## Updating the stack
 
