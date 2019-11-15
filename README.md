@@ -22,7 +22,7 @@ This repo contains the docs for the (currently alpha, **do not rely upon in prod
 
 ## Using an existing domain
 
-If you have an existing domain you'd like to use for the site, that's fine. You'll still need to register a domain on Route 53 for internal routing. (See the CloudFormation stack creation form in the 'Domain Configuration' section.) Once the stack is created, if you are using your own domain name, go to the stack outputs and follow the instructions under the "AppALBDomain" output. 
+If you have an existing domain you'd like to use for the site, that's fine. You'll still need to register a domain on Route 53 for internal routing. (See the CloudFormation stack creation form in the 'Domain Configuration' section.) Once the stack is created, if you are using your own domain name, go to the stack outputs and follow the instructions under the "AddressForRootDomain" description. 
 
 ## Using an existing email SMTP server
 
