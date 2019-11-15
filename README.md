@@ -5,7 +5,7 @@ This repo contains the docs for the (currently alpha, **do not rely upon in prod
 ## Quick Start
 
 - Create an account on AWS and log into the console.
-- Register a new domain name on Route 53 for your site, and register another domain name on Route 53 for room short permalinks. We like using the .link TLD for the permalink domain. So if your site is myhub.com your permalink domain would be myhub.link, or something similar.
+- Register a new domain name on Route 53 for your site, and register another domain name on Route 53 for room short permalinks. We like using the `.link` TLD for the permalink domain. So if your site is `myhub.com` your permalink domain would be `myhub.link`, or something similar.
 - In the EC2 console, create an new SSH keypair and save the private key. You'll need this to access your servers.
 - Set your console in the top right to one of the supported regions:
   - US East (N. Virginia)
