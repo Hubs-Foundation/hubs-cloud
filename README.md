@@ -73,7 +73,7 @@ This is a known issue with AWS. See: https://github.com/widdix/aws-cf-templates/
 
 ## Backup & Restore
 
-If something goes wrong and you need to restore from a backup, or you'd like to just make another stack using the same data from another stack, the stack creation form makes it fairly simple to do so.
+If something goes wrong and you need to restore from a backup, or you'd like to just make a second stack using the same data from an existing stack, the stack creation form makes it fairly simple to do so.
 
 Your stack's data is made up of two things: an AWS Aurora Serverless database, and an AWS Elastic File Store volume (used for scenes, avatars, etc.) Both of these are backed up for you automatically on a nightly basis. The database is backed up via database snapshots (which can be seen in the RDS console) and the EFS volume is backed up into a Vault in AWS Backup (which can be found in the AWS Backup console.)
 
