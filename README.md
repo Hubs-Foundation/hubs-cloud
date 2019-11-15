@@ -113,7 +113,7 @@ Once you've filled these values out and create the stack it should be restored f
 
 ## AWS Costs
 
-Your hub is designed to minimize AWS costs, and all services except for the serverless database have AWS free tier offerings. If you are just using this with a few people, your primary charges will be the EC2 instances you use, the serverless hourly database costs, EFS storage, and, if you do not switch to Cloudflare (see below), data transfer costs.
+Your hub is designed to minimize AWS costs, and all services except for the serverless database have AWS free tier offerings. Your primary charges will be the EC2 instances you use, the serverless hourly database costs, EFS storage, and, if you do not switch to Cloudflare (see below), data transfer costs.
 
 As you use the service, you will see AWS costs:
 
