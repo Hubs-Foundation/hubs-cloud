@@ -1,4 +1,4 @@
-# Running a custom hub with Hubs Cloud
+# Running your own hub with Hubs Cloud
 
 This repo contains the docs for the (currently alpha, **do not rely upon in production**) Hubs Cloud tooling, which allows you to run your own hub on AWS (and soon other cloud providers.)
 
