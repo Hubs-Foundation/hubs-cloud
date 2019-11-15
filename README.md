@@ -42,10 +42,10 @@ Some of the things you can do to your stack via a stack update:
 - Change the number and type of servers
 - Temporarily take your stack Offline to save costs (and redirect to a URL)
 - Add or change a monthly database budget or adjust storage limits
-- Add an Application Load Balancer
+- Add or remove an Application Load Balancer
 - Disable or enable database auto-pausing
-- Change the database capacity 
-- Change the SSH keypair
+- Change the database max ACU capacity 
+- Change the SSH keypair used by your servers
 
 Some things you should *not* update or change after the stack is created:
 
