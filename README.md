@@ -59,9 +59,9 @@ Once you have a working stack on AWS, you can easily create and deploy custom ve
 
 Normally, when you run `npm start` after a fresh checkout, you will be using Mozilla's dev servers, storage, and database. Once you have a Hubs Cloud instance set up, you can point your local client to it so that rooms, scenes, etc from your Hubs Cloud instance will be available when running your local client.
 
-To run your locally modified client against your self hosted Hubs Cloud instance run the `scripts/use-hubs-cloud-stack.sh` script. (Run this script without arguments to see how to use it.) After running this script, `.env.defaults` will be modified so subsequent runs of `npm start` will be accessing your Hubs Cloud instance.
+To run your locally modified client against your self hosted Hubs Cloud instance run the `scripts/use-hubs-cloud-stack.sh` script. (Run this script without arguments to see how to use it.) After running this script, `.env.defaults` will be modified so subsequent runs of `npm start` will be accessing your Hubs Cloud instance. You can commit the changes to `.env.defaults` to make this change permanent. If you'd like to go back to using Mozilla servers, you can run `scripts/use-mozilla-dev.sh`.
 
-To deploy, run `npm run deploy` and follow the prompts. If you want to revert your Hubs Cloud instance back to using the Mozilla upstream version of the client, run `npm run undeploy`.
+To deploy your custom client, run `npm run deploy` and follow the prompts. If you want to revert your Hubs Cloud instance back to using the Mozilla upstream version of the client, run `npm run undeploy`.
 
 Note: When running a deploy, ensure webpack-dev-server (`npm start`) is **not** running. This may cause conflics in the build process.
 
@@ -107,16 +107,17 @@ Once you've filled these values out and create the stack it should be restored f
 
 ## AWS Costs
 
-The stack is designed to minimize AWS costs, and all services except for the database have AWS free tier offerings. If you are just using this with a few people, your primary charges will be the EC2 instances you use, EFS storage, and, if you do not switch to Cloudflare (see below), data transfer costs.
+The stack is designed to minimize AWS costs, and all services except for the serverless database have AWS free tier offerings. If you are just using this with a few people, your primary charges will be the EC2 instances you use, the serverless hourly database costs, EFS storage, and, if you do not switch to Cloudflare (see below), data transfer costs.
 
 As you use the service, you will see AWS costs:
 
 - EC2 instances: the stack configuration lets you choose how many instances to use, a single t2.micro is needed by default. At time of this writing that costs approx $9/mo.
-- An [Aurora serverless](https://aws.amazon.com/rds/aurora/pricing/) database: you will be charged for database usage. At the time of this writing approx $0.06 per ACU Hour. (Note this is *ACU* hours, not 'instance hours', so you will likely be spending very little since Hubs and Spoke do not rely upon heavy database resource usage.)
-- [EFS](https://aws.amazon.com/efs/pricing/) storage: you will be charged for storage of uploaded scenes and avatars. At the time of this writing approx $0.30/gb month.
+- An [Aurora serverless](https://aws.amazon.com/rds/aurora/pricing/) database: you will be charged for database usage. At the time of this writing $0.12 per ACU Hour used, rounded to the nearest 10 minutes. If you've enabled database auto-pausing in your stack configuration (the default) then you will only pay for the database when visitors are accessing your site. If you are concerned about excessive database costs, you can set a budget in the stack settings that will cause your stack to be put into Offline mode automatically if your budget is exceeded. (which will shut down all the servers, including the database) 
+- [EFS](https://aws.amazon.com/efs/pricing/) storage: you will be charged for storage of uploaded scenes and avatars. At the time of this writing approx $0.30/gb month and $0.10/gb month for data that hasn't been accessed in 30 days.
 - [Cloudfront](https://aws.amazon.com/cloudfront/pricing/) data transfer costs.
 - There are a variety of lambdas used for doing image resizing, video transcoding, etc subject to [AWS Lambda Pricing](https://aws.amazon.com/lambda/pricing) but unlikely to exceed free tier levels.
+- You will also be paying $1/mo for each of your Route 53 domains and also $0.40/mo for the database secret.
 
 Note that you can significantly save data transfer charges by switching your CDN to Cloudflare. In the Hubs Cloud admin console, go to the "Data Transfer" page to see how.
 
-Currently, all of these services except for Aurora Serverless fall under the [AWS free tier](https://aws.amazon.com/free/).
+Currently, all of these services (except for Aurora Serverless, Route 53, and Secrets Manager) fall under the [AWS free tier](https://aws.amazon.com/free/). So for an instance that is used a dozen or two hours a week, if you are in the AWS free tier, you can expect to be paying approximately $10/mo.
