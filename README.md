@@ -48,10 +48,10 @@ You can change various settings of your hub's stack by performing a stack Update
 - Choose "Use the existing template"
 - Review the parameter selections and choose 'Update'
 
-Some of the things you can do to your stack via a stack update:
+Some of the things you can do via a stack update:
 
 - Change the number and type of servers
-- Temporarily take your stack Offline to save costs (and redirect to a URL)
+- Switch your hub into Offline Mode to save costs (and redirect to a URL)
 - Add or change a monthly database budget or adjust storage limits
 - Add or remove an Application Load Balancer
 - Disable or enable database auto-pausing
