@@ -93,7 +93,7 @@ If you are planning on restoring from this backup, before proceeding make sure b
 
 ### Restoring from a backup
 
-To restore from these backups, you will create a new stack, but you need to provide the following information in the stack creation form in the "Restore from Backup" section. Do *not* perform a stack update to restore from a backup -- this will not work and will likely break things. You *must* create a new stack to restore from a backup.
+To restore from a backup, you will create a new stack, and you need to provide the necessary information in the stack creation form in the "Restore from Backup" section. Do *not* perform a stack update to an existing stack to try to restore from a backup -- this will not work and will likely break things. You *must* create a new stack to restore from a backup.
 
 This info you need can be found in the RDS and AWS Backup consoles:
 
