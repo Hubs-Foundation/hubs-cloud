@@ -102,7 +102,7 @@ If you are planning on restoring from this backup, before proceeding make sure b
 
 To restore from a backup, you will create a new stack, and you need to provide the necessary information in the stack creation form in the "Restore from Backup" section. Do *not* perform a stack update to an existing stack to try to restore from a backup -- this will not work and will likely break things. You *must* create a new stack to restore from a backup.
 
-If you want to revert an existing stack to data in a backup, you will first need to delete the stack and then create a new one restored from the backup. Deleting the stack is safe once you have confirmed you have a completed database snapshot and a restore point taken at the time you would like to restore to.
+If you want to revert an existing stack to data in a backup, you will first need to delete the stack and then create a new one restored from the backup. Deleting the stack is safe once you have confirmed you have a completed database snapshot and a restore point taken at the time you would like to restore to. However, it is suggested you first create a new, separate stack from the backup before deleting the old stack, to confirm the backup contains the data you expect it to.
 
 This info you need to provide can be found in the RDS and AWS Backup consoles:
 
