@@ -22,7 +22,7 @@ This repo contains the docs for the (currently alpha, **do not rely upon in prod
 
 ## Using an existing domain
 
-If you have an existing domain or subdomain from a DNS provider like GoDaddy or Namecheap you'd like to use for your hub, that's fine. You'll still need to register two domains on Route 53 - one for internal routing and for your short permalinks. You'll also need to create two SSL certificates for your existing domain using the AWS Certificate Manager. (See the CloudFormation stack creation form in the 'Domain Configuration' section for more details.) Once the stack is created, if you are using an external DNS provider like GoDaddy or Namecheap, go to the stack outputs and follow the instructions under the "AddressForRootDomain" description. 
+If you have an existing domain or subdomain from a DNS provider like GoDaddy or Namecheap you'd like to use for your hub, that's fine. You'll still need to register two new domains on AWS Route 53 - one for internal routing and for your short room permalinks. You'll also need to create two SSL certificates for your existing domain using the AWS Certificate Manager. (See the CloudFormation stack creation form in the 'Domain Configuration' section for more details.) Once the stack is created, if you are using an external DNS provider like GoDaddy or Namecheap, go to the stack outputs and follow the instructions under the "AddressForRootDomain" description. 
 
 ## Using an existing email SMTP server
 
