@@ -53,9 +53,13 @@ Some things you should *not* update or change after the stack is created:
 - Everything under "Restore from Backup" section (to restore from a backup, see documentation below)
 - Everything under "Advanced"
 
-## Deploying Forks
+## Creating and Deploying custom clients
 
-Once you have a working stack on AWS, you can easily deploy forks of [Hubs](https://hubs.mozilla.com) by cloning the [repo](https://github.com/mozilla/hubs) and running `npm run deploy`. If you want to revert back to the upstream version, run `npm run undeploy`.
+Once you have a working stack on AWS, you can easily create and deploy custom versions of [Hubs](https://hubs.mozilla.com) by cloning the [repo](https://github.com/mozilla/hubs).
+
+To work on your custom client, you can run the usual `npm start` command, but this will use Mozilla's backend servers. To run your local client using your self hosted fork (for example, to use all of your scenes and avatars in your self hosted instance) run the `scripts/run-hubs-local-stack.sh` script. (Run this script without arguments to see how to use it.)
+
+To deploy, run `npm run deploy` and follow the prompts. If you want to revert back to the upstream version, run `npm run undeploy`.
 
 Note: When running a deploy, ensure webpack-dev-server (`npm start`) is **not** running. This may cause conflics in the build process.
 
