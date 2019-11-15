@@ -85,7 +85,7 @@ To create a database snapshot, select your database cluster in RDS and under "Ac
 
 To create a new recovery point, you'll need to use the "Create On-Demand Backup" tool in the AWS Backup console. First, get the filesystem id from `StorageEFS`, the vault name from `DailyBackupVault`, and the IAM role under `DailyBackupRole` from the "Outputs" section of your stack. Then in the AWS Backup console, go to "Protected Resources" and select the filesystem id you saw for `StorageEFS`. Then click "Create On-Demand backup." Under the "Vault" section select the vault from `DailyBackupVault`, and under the IAM section select "Choose an IAM Role" and select the IAM role from `DailyBackupRole`.
 
-Before proceeding, make sure the snapshot and backup have completed. You can check the status of the snapshot via the "Snapshots" section in RDS, and the status of the backup in the "Jobs" section of AWS Backup.
+If you are planning on restoring from this backup, before proceeding make sure both the database snapshot and storage backup job have completed. You can check the status of the snapshot via the "Snapshots" section in RDS, and the status of the backup in the "Jobs" section of AWS Backup.
 
 ### Restoring from a backup
 
