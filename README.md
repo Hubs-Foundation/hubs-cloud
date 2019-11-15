@@ -105,7 +105,7 @@ This info you need to provide can be found in the RDS and AWS Backup consoles:
 
 Additionally, there are some secrets like encryption keys that are needed to restore from a backup. The secrets you need are *not* automatically deleted when you delete a stack, so even if you deleted the stack whose backups you are restoring, the necessary secrets should still be in your AWS account unless you manually removed them.
 
-The first secret is the database secret for the stack whose backups you are restoring. To find this, go to AWS Secrets Manager and look for the secret "<Stack Name> Database Secret." You'll need to provide the ARN to this secret in the stack create form for the new stack.
+The first secret is the database secret for the stack whose backups you are restoring. To find this, go to AWS Secrets Manager and look for the secret "*Stack Name* Database Secret." You'll need to provide the ARN to this secret in the stack create form for the new stack.
   
 Additionally, there are some secrets stored in AWS Parameter Store. You will *not* need to dig these up. As long as you haven't gone in and deleted them manually, these secrets can be looked up automatically by providing the stack name and the stack region for the stack you are restoring from in the creation from.
 
