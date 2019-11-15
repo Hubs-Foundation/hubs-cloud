@@ -28,18 +28,6 @@ If you have an existing domain you'd like to use for the site, that's fine. You'
 
 By default Hubs Cloud sets up and will use Amazon SES for email. You can also use your own SMTP server for sending email. Choose your internal domain for the EmailZone and create the stack, and then once the stack is set up you can set SMTP information in the Hubs Cloud admin console in the Server Settings page.
 
-## Known Issues
-
-#### I get the error "Value for parameter availabilityZone is invalid. Subnets can currently only be created in the following availability zones: X, Y
-
-This is a known issue with AWS. See: https://github.com/widdix/aws-cf-templates/issues/36. To fix it, you will need to adjust the "Subnet Availability Zones" values in the 'Advanced' section to select an alternative Subnet configuration that matches X, Y and try again.
-
-## Deploying Forks
-
-Once you have a working stack on AWS, you can easily deploy forks of [Hubs](https://hubs.mozilla.com) by cloning the [repo](https://github.com/mozilla/hubs) and running `npm run deploy`. If you want to revert back to the upstream version, run `npm run undeploy`.
-
-Note: When running a deploy, ensure webpack-dev-server (`npm start`) is **not** running. This may cause conflics in the build process.
-
 ## Updating the stack
 
 You can change various settings of your stack by performing a stack Update. You will not experience any downtime when making these changes. To Update your stack:
@@ -53,8 +41,21 @@ Some of the things you can do to your stack via a stack update:
 
 - Change the number and type of servers
 - Temporarily take your stack Offline to save costs (and redirect to a URL)
-- Add or change your monthly database budget
+- Add or change a monthly database budget or adjust storage limits
 - Add an Application Load Balancer
+- Disable or enable database auto-pausing
+
+## Deploying Forks
+
+Once you have a working stack on AWS, you can easily deploy forks of [Hubs](https://hubs.mozilla.com) by cloning the [repo](https://github.com/mozilla/hubs) and running `npm run deploy`. If you want to revert back to the upstream version, run `npm run undeploy`.
+
+Note: When running a deploy, ensure webpack-dev-server (`npm start`) is **not** running. This may cause conflics in the build process.
+
+## Known Issues
+
+#### I get the error "Value for parameter availabilityZone is invalid. Subnets can currently only be created in the following availability zones: X, Y
+
+This is a known issue with AWS. See: https://github.com/widdix/aws-cf-templates/issues/36. To fix it, you will need to adjust the "Subnet Availability Zones" values in the 'Advanced' section to select an alternative Subnet configuration that matches X, Y and try again.
 
 ## Backup & Restore
 
@@ -74,7 +75,9 @@ Before proceeding, make sure the snapshot and backup have completed. You can che
 
 ### Restoring from a backup
 
-To restore from these backups, you will create a new stack, but you need to provide the following information in the stack creation form in the "Restore from Backup" section. This info can be found in the RDS and AWS Backup consoles:
+To restore from these backups, you will create a new stack, but you need to provide the following information in the stack creation form in the "Restore from Backup" section. Do *not* perform a stack update to restore from a backup -- this will not work and will likely break things. You *must* create a new stack to restore from a backup.
+
+This info you need can be found in the RDS and AWS Backup consoles:
 
 - The RDS snapshot ID to restore from
 - The AWS Backup vault name to restore from
