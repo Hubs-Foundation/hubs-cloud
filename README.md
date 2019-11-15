@@ -17,7 +17,7 @@ This repo contains the docs for the (currently alpha, **do not rely upon in prod
 - The stack takes about 20-30 minutes to initialize.
 - After the stack is created:
   - Click on the link in the AWS verification email you received.
-  - Hit your site. After a minute or so, it should be up.
+  - Hit your site. After 20 or 30 seconds, it should be up.
   - Proceed with the login + setup process.
 
 ## Using an existing domain
