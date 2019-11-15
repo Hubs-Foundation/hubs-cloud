@@ -1,11 +1,11 @@
-# Hubs Cloud
+# Running a custom hub with Hubs Cloud
 
 This repo contains the docs for the (currently alpha, **do not rely upon in production**) Hubs Cloud tooling, which allows you to run your own hub on AWS (and soon other cloud providers.)
 
 ## Quick Start
 
 - Create an account on AWS and log into the console.
-- Register a new domain name on Route 53 for your site, and register another domain name on Route 53 for room short permalinks. We like using the `.link` TLD for the permalink domain. So if your site is `myhub.com` your permalink domain would be `myhub.link`, or something similar.
+- Register a new domain name on Route 53 for your hub, and register another domain name on Route 53 for room short permalinks. We like using the `.link` TLD for the permalink domain. So if your hub is `myhub.com` your permalink domain would be `myhub.link`, or something similar.
 - In the EC2 console, create an new SSH keypair and save the private key. You'll need this to access your servers.
 - Set your console in the top right to one of the supported regions:
   - US East (N. Virginia)
@@ -22,15 +22,15 @@ This repo contains the docs for the (currently alpha, **do not rely upon in prod
 
 ## Using an existing domain
 
-If you have an existing domain you'd like to use for the site, that's fine. You'll still need to register a domain on Route 53 for internal routing. You'll also need to create two SSL certificates using the AWS Certificate Manager. (See the CloudFormation stack creation form in the 'Domain Configuration' section for more details.) Once the stack is created, if you are using your own domain name, go to the stack outputs and follow the instructions under the "AddressForRootDomain" description. 
+If you have an existing domain you'd like to use for the hub, that's fine. You'll still need to register a domain on Route 53 for internal routing. You'll also need to create two SSL certificates using the AWS Certificate Manager. (See the CloudFormation stack creation form in the 'Domain Configuration' section for more details.) Once the stack is created, if you are using your own domain name, go to the stack outputs and follow the instructions under the "AddressForRootDomain" description. 
 
 ## Using an existing email SMTP server
 
-By default Hubs Cloud sets up and will use Amazon SES for email. You can also use your own SMTP server for sending email. Choose your internal domain for the EmailZone and create the stack, and then once the stack is set up you can set SMTP information in the Hubs Cloud admin console in the Server Settings page.
+By default your hub will be set up with Amazon SES for email. You can also use your own SMTP server for sending email. Choose your internal domain for the EmailZone and create the stack, and then once the stack is set up you can set SMTP information in your hub's admin console in the Server Settings page.
 
 ## Updating the stack
 
-You can change various settings of your stack by performing a stack Update. You will not experience any downtime when making these changes. To Update your stack:
+You can change various settings of your hub's stack by performing a stack Update. You will not experience any downtime when making these changes. To Update your stack:
 
 - Select the stack in the CloudFormation console
 - Go to Stack Actions -> Update Stack
@@ -55,13 +55,13 @@ Some things you should *not* update or change after the stack is created:
 
 ## Creating and Deploying custom clients
 
-Once you have a working stack on AWS, you can easily create and deploy custom versions of [Hubs](https://hubs.mozilla.com) by cloning the [repo](https://github.com/mozilla/hubs).
+Once you have a working hub on AWS, you can easily create and deploy custom versions of the [Hubs Client](https://hubs.mozilla.com) by cloning the [repo](https://github.com/mozilla/hubs).
 
-Normally, when you run `npm start` after a fresh checkout, you will be using Mozilla's dev servers, storage, and database. Once you have a Hubs Cloud instance set up, you can point your local client to it so that rooms, scenes, etc from your Hubs Cloud instance will be available when running your local client.
+Normally, when you run `npm start` after a fresh checkout, you will be using Mozilla's dev hub. Once you have your own hub set up, you can point your local client to it so that rooms, scenes, etc from your hub will be available when running your local client.
 
-To run your locally modified client against your self hosted Hubs Cloud instance run the `scripts/use-hubs-cloud-stack.sh` script. (Run this script without arguments to see how to use it.) After running this script, `.env.defaults` will be modified so subsequent runs of `npm start` will be accessing your Hubs Cloud instance. You can commit the changes to `.env.defaults` to make this change permanent. If you'd like to go back to using Mozilla servers, you can run `scripts/use-mozilla-dev.sh`.
+To run your locally modified client against your self hosted hub run the `scripts/use-hubs-cloud-stack.sh` script. (Run this script without arguments to see how to use it.) After running this script, `.env.defaults` will be modified so subsequent runs of `npm start` will be accessing your hub. You can commit the changes to `.env.defaults` to make this change permanent. If you'd like to go back to using Mozilla's dev hub, you can run `scripts/use-mozilla-dev.sh`.
 
-To deploy your custom client, run `npm run deploy` and follow the prompts. If you want to revert your Hubs Cloud instance back to using the Mozilla upstream version of the client, run `npm run undeploy`.
+To deploy your custom client, run `npm run deploy` and follow the prompts. If you want to revert your hub back to using the Mozilla upstream version of the client, run `npm run undeploy`.
 
 Note: When running a deploy, ensure webpack-dev-server (`npm start`) is **not** running. This may cause conflics in the build process.
 
@@ -73,15 +73,15 @@ This is a known issue with AWS. See: https://github.com/widdix/aws-cf-templates/
 
 ## Backup & Restore
 
-If something goes wrong and you need to restore from a backup, or you'd like to just make a second stack using the same data from an existing stack, the stack creation form makes it fairly simple to do so.
+If something goes wrong and you need to restore from a backup, or you'd like to just make a second hub using the same data from an existing hub, the stack creation form makes it fairly simple to do so.
 
-Your stack's data is made up of two things: an AWS Aurora Serverless database, and an AWS Elastic File Store volume (used for scenes, avatars, etc.) Both of these are backed up for you automatically on a nightly basis. The database is backed up via database snapshots (which can be seen in the RDS console) and the EFS volume is backed up into a Vault in AWS Backup (which can be found in the AWS Backup console.)
+Your hub's data is made up of two things: an AWS Aurora Serverless database, and an AWS Elastic File Store volume (used for scenes, avatars, etc.) Both of these are backed up for you automatically on a nightly basis. The database is backed up via database snapshots (which can be seen in the RDS console) and the EFS volume is backed up into a Vault in AWS Backup (which can be found in the AWS Backup console.)
 
 ### Creating a manual backup
 
-In addition to automatic backups, if you want to make an up-to-the-minute backup of a stack you can manually create a RDS snapshot and new AWS Backup recovery point via the console. It's highly suggested you put your stack into "Offline" mode by performing a stack update before doing so to limit the risk of data being missed.
+In addition to automatic backups, if you want to make an up-to-the-minute backup of a hub you can manually create a RDS snapshot and new AWS Backup recovery point via the console. It's highly suggested you put your stack into "Offline" mode by performing a stack update before doing so to limit the risk of data being missed.
 
-To create a database snapshot, select your database cluster in RDS and under "Actions" click "Take Snapshot". If you're unsure which cluster is your stack's database, it can be found in the stack "Outputs" section under `AppDb`.
+To create a database snapshot, select your database cluster in RDS and under "Actions" click "Take Snapshot". If you're unsure which cluster is your hub's database, it can be found in the stack "Outputs" section under `AppDb`.
 
 To create a new recovery point, you'll need to use the "Create On-Demand Backup" tool in the AWS Backup console. First, get the filesystem id from `StorageEFS`, the vault name from `DailyBackupVault`, and the IAM role under `DailyBackupRole` from the "Outputs" section of your stack. Then in the AWS Backup console, go to "Protected Resources" and select the filesystem id you saw for `StorageEFS`. Then click "Create On-Demand backup." Under the "Vault" section select the vault from `DailyBackupVault`, and under the IAM section select "Choose an IAM Role" and select the IAM role from `DailyBackupRole`.
 
@@ -107,7 +107,7 @@ Once you've filled these values out and create the stack it should be restored f
 
 ## AWS Costs
 
-The stack is designed to minimize AWS costs, and all services except for the serverless database have AWS free tier offerings. If you are just using this with a few people, your primary charges will be the EC2 instances you use, the serverless hourly database costs, EFS storage, and, if you do not switch to Cloudflare (see below), data transfer costs.
+Your hub is designed to minimize AWS costs, and all services except for the serverless database have AWS free tier offerings. If you are just using this with a few people, your primary charges will be the EC2 instances you use, the serverless hourly database costs, EFS storage, and, if you do not switch to Cloudflare (see below), data transfer costs.
 
 As you use the service, you will see AWS costs:
 
@@ -118,7 +118,7 @@ As you use the service, you will see AWS costs:
 - There are a variety of lambdas used for doing image resizing, video transcoding, etc subject to [AWS Lambda Pricing](https://aws.amazon.com/lambda/pricing) but unlikely to exceed free tier levels.
 - You will also be paying $1/mo for each of your Route 53 domains and also $0.40/mo for the database secret.
 
-Note that you can significantly save data transfer charges by switching your CDN to Cloudflare. In the Hubs Cloud admin console, go to the "Data Transfer" page to see how.
+Note that you can significantly save data transfer charges by switching your CDN to Cloudflare. In your hub's admin console, go to the "Data Transfer" page to see how.
 
 If you'd like to maximize your cost savings, you can perform a stack update to switch the stack into "Offline" mode when you are not using it, though this likely unnecessary except for cases where you are running at a higher capacity settings than the defaults.
 
