@@ -14,20 +14,22 @@ This repo contains docs for the Hubs Cloud tooling, which allows you to run your
   - EU (Ireland)
 - In the EC2 console, create a new SSH keypair, and save the private key. You'll need this to access your servers.
 - Go to https://gethubscloud.com which will take you to CloudFormation. Fill out the form to create a new CloudFormation stack.
-  - If you are using an existing domain, you'll need to perform a few extra steps -- see the section below.
+  - If you are using an existing domain not on AWS Route 53, you'll need to perform a few extra steps -- see the section below.
 - The stack takes about 20-30 minutes to initialize.
 - After the stack is created:
   - Click on the link in the AWS verification email you received.
   - Hit your site. After 20 or 30 seconds, it should be up.
   - Proceed with the login + setup process.
 
-## Using an existing domain
+## Using an existing domain not on route 53
 
 If you have an existing domain or subdomain from a DNS provider like GoDaddy or Namecheap you'd like to use for your hub, that's fine. You'll still need to register two new domains on AWS Route 53 - one for internal routing and one for your short room permalinks. You'll also need a domain for email if you don't have an email provider. (Hubs Cloud will set up AWS Simple Email Service for you on your email domain.)
 
-You'll also need to create two SSL certificates for your existing domain using the AWS Certificate Manager, one in the same region for your stack, and another in US-East-1 (if that's not the region your stack is in.) See the CloudFormation stack creation form in the 'Domain Configuration' section for full instructions.
+You can either transfer your existing domain to Route 53 to simplify setup, or you'll need to perform a few extra steps before and after you create your stack.
 
-Once the stack is created, if you are using an external DNS provider like GoDaddy or Namecheap, look in the stack "Outputs" for the "AddressForRootDomain" field -- you will need to create a new CNAME in your domain's DNS to point there to get your domain pointing to your hub. 
+If you choose not to transfer, you'll need to create two SSL certificates for your existing domain using the AWS Certificate Manager, one in the same region for your stack, and another in US-East-1 (if that's not the region your stack is in.) See the CloudFormation stack creation form in the 'Domain Configuration' section for full instructions.
+
+Finally after the stack is created, if you are using an external DNS provider like GoDaddy or Namecheap, look in the stack "Outputs" for the "AddressForRootDomain" field -- you will need to create a new CNAME in your domain's DNS to point there to get your domain pointing to your hub. 
 
 ## Using an existing email SMTP server
 
