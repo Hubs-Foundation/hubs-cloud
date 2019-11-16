@@ -104,7 +104,7 @@ To restore from a backup, you will create a new stack, and you need to provide t
 
 If you want to revert an existing stack to data in a backup, you will first need to delete the stack and then create a new one restored from the backup. Deleting the stack is safe once you have confirmed you have a completed database snapshot and a restore point taken at the time you would like to restore to. However, it is suggested you first create a new, separate stack from the backup before deleting the old stack, to confirm the backup contains the data you expect it to.
 
-This info you need to provide can be found in the RDS and AWS Backup consoles:
+The info you need to provide can be found in the RDS and AWS Backup consoles:
 
 - The RDS snapshot ID to restore from
 - The AWS Backup vault name to restore from
