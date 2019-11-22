@@ -102,7 +102,7 @@ If you are planning on restoring from this backup, before proceeding make sure b
 
 To restore from a backup, you will create a new stack, and you need to provide the necessary information in the stack creation form in the "Restore from Backup" section. Do *not* perform a stack update to an existing stack to try to restore from a backup -- this will not work and will likely break things. You *must* create a new stack to restore from a backup.
 
-If you want to revert an existing stack to data in a backup, you will first need to delete the stack and then create a new one restored from the backup. Deleting the stack is safe once you have confirmed you have a completed database snapshot and a restore point taken at the time you would like to restore to. However, it is suggested you first create a new, separate stack from the backup before deleting the old stack, to confirm the backup contains the data you expect it to.
+If you want to revert an existing stack to data in a backup, you will first need to delete the stack and then create a new one restored from the backup. Deleting the stack is safe once you have confirmed you have a completed database snapshot and a restore point taken at the time you would like to restore to. However, it is suggested you first create a new, separate stack on a different domain from the backup before deleting the old stack, to confirm the backup contains the data you expect it to.
 
 The info you need to provide can be found in the RDS and AWS Backup consoles:
 
@@ -120,11 +120,11 @@ Once you've filled these values out and create the stack it should be restored f
 
 ## AWS Costs
 
-Your hub is designed to minimize AWS costs, and all services except for the serverless database have AWS free tier offerings. Your primary charges will be the EC2 instances you use, the serverless hourly database costs, EFS storage, and, if you do not switch to Cloudflare (see below), data transfer costs.
+Your hub is designed to minimize AWS costs. Your primary charges will be the EC2 instances you use, the serverless hourly database costs, EFS storage, and, if you do not switch to Cloudflare (see below), data transfer costs.
 
 As you use your hub, you will see AWS costs:
 
-- EC2 instances: the stack configuration lets you choose how many instances to use, a single t2.micro is needed by default. At time of this writing that costs approx $9/mo.
+- EC2 instances: the stack configuration lets you choose how many instances to use, a single t3.micro is needed by default. At time of this writing that costs approx $8/mo.
 - An [Aurora serverless](https://aws.amazon.com/rds/aurora/pricing/) database: you will be charged for database usage. At the time of this writing $0.12 per hour used, rounded to the nearest 10 minutes. If you've enabled database auto-pausing in your stack configuration (the default) then you will only pay for the database when visitors are accessing your site. If you are concerned about excessive database costs, you can set a budget in the stack settings that will cause your stack to be put into Offline mode automatically if your budget is exceeded. (which will shut down all the servers, including the database) 
 - [EFS](https://aws.amazon.com/efs/pricing/) storage: you will be charged for storage of uploaded scenes and avatars. At the time of this writing approx $0.30/gb month and $0.10/gb month for data that hasn't been accessed in 30 days.
 - [Cloudfront](https://aws.amazon.com/cloudfront/pricing/) data transfer costs.
