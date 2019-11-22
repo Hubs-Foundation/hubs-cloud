@@ -135,4 +135,4 @@ Note that you can significantly save data transfer charges by switching your CDN
 
 If you'd like to maximize your cost savings, you can perform a stack update to switch the stack into "Offline" mode when you are not using it, though this likely unnecessary except for cases where you are running at a higher capacity settings than the defaults.
 
-Currently, all of these services (except for Aurora Serverless, Route 53, and Secrets Manager) fall under the [AWS free tier](https://aws.amazon.com/free/). So for an instance that is used a dozen or two hours a week, if you are in the AWS free tier, you can expect to be paying approximately $10/mo.
+Currently, all of these services (except for Aurora Serverless, Route 53, and Secrets Manager) fall under the [AWS free tier](https://aws.amazon.com/free/). So for an instance that is used a dozen or two hours a week, if you are in the AWS free tier, you can expect to be paying approximately $15-20/mo.
