@@ -28,7 +28,7 @@ Hubs:
 - Add basis texture support
 - Add MOZ_lightmap support
 - Add video stream refresh
-- Add positional audio preferences, speed modifier pference
+- Add positional audio, speed modifier preferences
 - Fix bug causing rooms to load slowly if no VR headset plugged in
 - Upgrade three.js to r111/aframe 1.0.3
 - Accessibility improvements
