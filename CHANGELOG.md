@@ -35,5 +35,5 @@ Hubs:
 
 Spoke:
 - Enable controls on images
-- Adds performance information helper
+- Added performance information helper
 - Lots of bugfixes and performance improvements
