@@ -1,3 +1,10 @@
+04-22-2020
+----------
+
+Reticulum:
+- Pre-TURN maintenence release
+- Fix error when changing scenes due to ecto issue: https://github.com/elixir-ecto/ecto/issues/3246#issuecomment-616080541
+
 04-16-2020
 ----------
 
