@@ -1,3 +1,24 @@
+05-18-2020
+----------
+
+Hubs: 
+- WebXR Support (!)
+- Fix admin console styling and add sandbox warning
+- Add UI to add accounts in admin console
+- New npm workflows for development
+- Optimized webrtc connection handling for increase lobby viewing
+- Improved mobile object list styling
+- Preferences for auto-exit, noice cancellation, disable sfx
+- Fix crash in audio feedback component
+- Fix noise cancellation in Chrome
+- (Critical) Fix duck floatation behavior
+- Add support for dash videos and x-mpegurl
+- Fix menu z-fighting
+- Fix networked scaling
+- Fix skybox flicker when shrinking avatar
+- Add "force_tcp" TURN override
+- Fix avatar preview for minecraft avatars
+
 04-22-2020
 ----------
 
