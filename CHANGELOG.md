@@ -1,3 +1,12 @@
+05-26-2020
+----------
+
+Hubs:
+  - New NAF Janus adapter changes to support retries
+  - New mobile UI for object list
+  - Fix shrink command
+  - Enabled desktop audio mixing through avatar
+
 05-18-2020
 ----------
 
