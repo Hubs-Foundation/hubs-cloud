@@ -1,3 +1,16 @@
+06-12-2020
+----------
+Reticulum:
+  - Fix issues with default room feature
+  - Add dropbox support
+  
+Hubs:
+  - Performance improvements in physics
+  - Support for new Mediasoup-based SFU, dialog
+  - Preferences dialog reorganized
+  - Added gltF UV-scrolling
+  - Lots of bug fixes
+
 05-26-2020
 ----------
 
