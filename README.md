@@ -25,6 +25,9 @@ See our [Hubs Cloud Releases and Updates Changelog](CHANGELOG.md) for latest cha
 ## Dependency Repos
 
 Client + Admin: https://github.com/mozilla/hubs
+
 App Server: https://github.com/mozilla/reticulum
+
 WebRTC Streaming Server: https://github.com/mozilla/dialog
+
 Spoke: https://github.com/mozilla/Spoke
