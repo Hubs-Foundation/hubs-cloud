@@ -4,7 +4,7 @@
 
 This repo collects asset packs, release notes, and scripts for your HC instances.
 
-See [Releases for the Changelog](CHANGELOG.md)
+See [Hubs Cloud Releases and Updates Changelog](CHANGELOG.md)
 
 ## What is Hubs Cloud?
 
@@ -20,7 +20,7 @@ Hubs Cloud is now deployable on [DigitalOcean (alpha)](https://hubs.mozilla.com/
 
 ## Releases
 
-See our [Hubs Cloud Release Notes](CHANGELOG.md) for latest changes on Hubs Cloud.
+See our [Hubs Cloud Releases and Updates Changelog](CHANGELOG.md) for latest changes on Hubs Cloud.
 
 ## Dependency Repos
 
