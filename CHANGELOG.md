@@ -1,3 +1,20 @@
+07-21-2020
+----------
+Reticulum 1.0.1/20200715190503
+- Do not show favorite rooms that have been closed
+- Bug fixes
+
+Spoke 1.0.0/20200707224342
+- Fixes for models exported by the Blender exporter
+- Add "alpha mode" setting for images
+- Bug fixes
+
+Hubs 1.0.0/20200722000012
+- Fix avatar previews on iOS
+- Remove delete buttons from admin panel
+- Add preference for preferred camera
+- Bug fixes
+
 06-12-2020
 ----------
 Reticulum:
