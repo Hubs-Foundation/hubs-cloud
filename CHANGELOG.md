@@ -1,3 +1,54 @@
+2020-09-08
+----------
+
+## Hubs
+
+Hubs mozillareality/hubs/1.0.0/20200908210500
+https://github.com/mozilla/hubs/pull/2990
+
+### Hub Invite Links
+
+A room can now be set to &ldquo;Invite only&rdquo;, which then generates an invite link that allows room access. The invite link can be revoked, or the room can be put back into &ldquo;Private&rdquo; mode. If a user attempts to enter a room without an invite id, they are denied access and shown our typical black room entry denial screen.
+
+
+### Waypoint Improvements
+
+You can now use links to teleport between waypoints in the scene.
+
+### Medium quality mode
+
+The medium quality mode is targeted at improving performance and graphics quality on budget desktops/laptops and mobile devices.
+
+### Improved Accessibility for main UI
+
+ARIA roles and labels have been added to several buttons and elements in the room UI. Tested with NVDA screen reader.
+
+### Basic non-English language support
+
+There is now a user preference for setting language and instructions for how to submit translation files to be reviewed and added to the app.
+
+## Spoke
+
+Spoke mozillareality/spoke/1.0.0/20200803233608
+https://github.com/mozilla/Spoke/pull/1022
+
+### Scene Preview Camera Node
+
+The Scene Preview Camera Node can be placed in your scene and will be used to position the camera when generating thumbnails or previewing the scene in Hubs.
+
+## Reticulum
+
+Reticulum mozillareality/reticulum/1.0.1/20200817225751
+https://github.com/mozilla/reticulum/pull/411
+
+### Hub Invites
+
+Added Hub Invites, which allows us to restrict access to rooms when they are in the :invite entry<sub>mode</sub>
+
+### Clearer error messages for streaming failures.
+
+Sharing media from popular streaming sites often fails for reasons beyond our control. We&rsquo;ve added clearer messaging for when this happens.
+
 07-21-2020
 ----------
 Reticulum 1.0.1/20200715190503
