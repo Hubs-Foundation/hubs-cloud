@@ -1,3 +1,9 @@
+# 2020-09-11
+
+## Fixed backwards compatibility with older clients
+
+This was an update to reticulum to fix compatibility for older custom clients. See https://github.com/mozilla/reticulum/pull/414
+
 # 2020-09-08
 
 ## Hubs
