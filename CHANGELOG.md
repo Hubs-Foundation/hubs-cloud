@@ -1,7 +1,7 @@
 2020-10-13
 ----------
 Reticulum:
-  - Minor quality of life improvements
+  - Admin panel now redirects you to the homepage if you are not logged in as an admin
   - Fix for CSP issue with Google Analytics
   - 1.0.20201012230301 https://github.com/mozilla/reticulum/pull/422
 
