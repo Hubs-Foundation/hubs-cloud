@@ -1,3 +1,22 @@
+2020-10-13
+----------
+Reticulum:
+  - Minor quality of life improvements
+  - Fix for CSP issue with Google Analytics
+  - 1.0.20201012230301 https://github.com/mozilla/reticulum/pull/422
+
+Hubs:
+  - Add media frames
+  - Redirect non-admin users away from the admin panel
+  - Add Japanese language support
+  - Inspect avatars
+  - 1.0.0.20201002202739 https://github.com/mozilla/hubs/pull/3165
+
+Spoke:
+  - Add media frames
+  - 1.0.0.20200930005646 https://github.com/mozilla/Spoke/pull/1042
+
+
 2020-09-11
 ----------
 Reticulum:
