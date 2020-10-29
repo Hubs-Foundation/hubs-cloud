@@ -31,3 +31,5 @@ App Server: https://github.com/mozilla/reticulum
 WebRTC Streaming Server: https://github.com/mozilla/dialog
 
 Spoke: https://github.com/mozilla/Spoke
+
+Cloudformation + Habitat plans + other HC ops scripts: https://github.com/mozilla/hubs-ops
