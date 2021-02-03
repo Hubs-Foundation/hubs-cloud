@@ -1,3 +1,34 @@
+2021-02-02
+----------
+Reticulum:
+  - Added the ability to customize magic link email text in Admin Panel "Auth" tab
+  - 1.0.1/20210115134515 https://github.com/mozilla/reticulum/pull/463
+
+Hubs:
+  - Type room name to confirm close room
+  - WebRTC Debugging panel
+  - Added the ability to customize magic link email text in Admin Panel "Auth" tab
+  - Brazilian Portuguese language support
+  - Spanish language support
+  - Japanese language improvements
+  - Russian language support
+  - Experimental dynamic audio normalization
+  - Increased NOISY_OCCUPANT_COUNT to 30
+  - Add preference to toggle gyroscope control
+  - Set quality setting with query string parameters
+  - Use audio listener for distance based attenuation
+  - Fallback to default local model when there is an avatar load error
+  - Fix missing avatar head on inspect bug
+  - Various fixes
+  - 1.0.0/20210115142723 https://github.com/mozilla/hubs/pull/3851
+
+Spoke:
+  - Support multiple animations on a single model
+  - Allow toggling floating on objects from spawners
+  - Various fixes
+  - 1.0.0/20210115140717 https://github.com/mozilla/Spoke/pull/1095
+
+
 2020-10-13
 ----------
 Reticulum:
