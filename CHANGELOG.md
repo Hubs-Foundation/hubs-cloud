@@ -16,7 +16,6 @@ Hubs:
   - Increased NOISY_OCCUPANT_COUNT to 30
   - Add preference to toggle gyroscope control
   - Set quality setting with query string parameters
-  - Use audio listener for distance based attenuation
   - Fallback to default local model when there is an avatar load error
   - Fix missing avatar head on inspect bug
   - Various fixes
