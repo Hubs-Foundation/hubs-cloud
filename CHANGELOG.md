@@ -13,7 +13,7 @@ Hubs:
   - Japanese language improvements
   - Russian language support
   - Experimental dynamic audio normalization
-  - Increased NOISY_OCCUPANT_COUNT to 30
+  - Increased the room occupant threshold where we stop reporting user entries and leaves from 12 to 30.
   - Add preference to toggle gyroscope control
   - Set quality setting with query string parameters
   - Fallback to default local model when there is an avatar load error
