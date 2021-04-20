@@ -1,3 +1,29 @@
+2021-04-19
+----------
+Reticulum:
+  - [experimental] The beginnings of a graphql API for managing rooms has been added behind a feature flag. There is no UI for generating credentials.
+  - mozillareality/reticulum/1.0.1/20210408151304
+  - https://github.com/mozilla/reticulum/pull/492
+    
+Hubs:
+  - New UI
+  - Multiple custom themes can be configured in the admin panel
+  - Webcam avatars and video target components
+  - Enable WebXR support for Windows Mixed Reality headsets in Google Chrome and Microsoft Edge
+  - mozillareality/hubs/1.0.0/20210408153100
+  - https://github.com/mozilla/hubs/pull/4158
+
+Spoke:
+  - Add support for manually setting attributions on media.
+  - Disable elements to prevent them from being exported or being involved in nav-mesh calculation.
+  - Elements now collapse in the hierarchy to declutter your scene.
+  - Add billboard support to media
+  - Add support for custom nav meshes
+  - Add link behaviour to images/videos
+  - Add support for creating scenes directly from GLB
+  - mozillareality/spoke/1.0.0/20210315144242
+  - https://github.com/mozilla/Spoke/pull/1132
+
 2021-02-02
 ----------
 Reticulum:
