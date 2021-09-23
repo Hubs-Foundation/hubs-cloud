@@ -1,6 +1,6 @@
-## 08-24-2021
+2021-08-24
 ----------
-### New Features!
+New Features
 - Live Screens (beta) enabled in room via Blender add-on!- Add an in-room camera feed to a texture on an object so you can enable mirrors or large screens - https://github.com/mozilla/hubs/pull/4126
     - Full video https://www.youtube.com/watch?v=oEc8ML2Q-z8
     - How to use https://www.youtube.com/watch?v=qMWjdxy2wrY
@@ -11,7 +11,7 @@
 - French translations - Community submitted! https://github.com/mozilla/hubs/pull/3897
 - Removes support for Google Poly, Google Poly is shutting down June 30th, exposes Google Poly assets as a webpage so folks can download and upload them directly - https://github.com/mozilla/hubs/pull/4306
 
-### Performance Improvements
+Performance Improvements
 - Improved video performance in Firefox - https://github.com/mozilla/hubs/pull/4210
 - Added audio workaround to increase audio quality and re-enable specialized audio in Chrome - will remove when chromium feature lands and the workaround is no longer needed - https://github.com/mozilla/hubs/pull/4227
 - Better loading of fonts - Community submitted! Courtesy of Rawnsley https://github.com/rawnsley https://github.com/mozilla/hubs/pull/4184/files
@@ -22,7 +22,7 @@
 - Community submitted! Waypoint links no longer refresh the page when the current room is the same and fixes back button sending to last waypoint - https://github.com/mozilla/hubs/pull/4272
 - Optimized SQL queries in the session_stats table - https://github.com/mozilla/reticulum/pull/493
 
-### Bug Fixes
+Bug Fixes
 - Fixes fake joining a room without joining not failing to join room with invalid credentials and smooths out webrtc and networked aframe rejoining - https://github.com/mozilla/hubs/pull/3935
 - Shows mic selection on every join - Fixes joining a room with a saved mic that is no longer connected. - https://github.com/mozilla/hubs/pull/4151
 - Fixes exiting VR mode in Oculus browser to exit correctly and manages disconnects from controllers correctly https://github.com/mozilla/hubs/pull/4206
