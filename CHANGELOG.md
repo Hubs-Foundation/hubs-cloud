@@ -1,3 +1,43 @@
+## 08-24-2021
+----------
+### New Features!
+- Live Screens (beta) enabled in room via Blender add-on!- Add an in-room camera feed to a texture on an object so you can enable mirrors or large screens - https://github.com/mozilla/hubs/pull/4126
+    - Full video https://www.youtube.com/watch?v=oEc8ML2Q-z8
+    - How to use https://www.youtube.com/watch?v=qMWjdxy2wrY
+- Community submitted! Better labels, text, and signs via GLTF rendered text elements - https://github.com/mozilla/hubs/pull/4227 
+   - Complementary with the Blender exporter add on - https://github.com/MozillaReality/hubs-blender-exporter/pull/31
+- In world speakers and in world microphones! (only moderators and owners can use the mics) - https://github.com/mozilla/hubs/pull/4237
+    - Blender add-on rlease notes: https://github.com/MozillaReality/hubs-blender-exporter/releases/tag/v0_0_10
+- French translations - Community submitted! https://github.com/mozilla/hubs/pull/3897
+- Removes support for Google Poly, Google Poly is shutting down June 30th, exposes Google Poly assets as a webpage so folks can download and upload them directly - https://github.com/mozilla/hubs/pull/4306
+
+### Performance Improvements
+- Improved video performance in Firefox - https://github.com/mozilla/hubs/pull/4210
+- Added audio workaround to increase audio quality and re-enable specialized audio in Chrome - will remove when chromium feature lands and the workaround is no longer needed - https://github.com/mozilla/hubs/pull/4227
+- Better loading of fonts - Community submitted! Courtesy of Rawnsley https://github.com/rawnsley https://github.com/mozilla/hubs/pull/4184/files
+- Updated Three.js glTF loader to the latest - https://github.com/mozilla/hubs/pull/4198
+- Improved rendering for multisampled FBs in Chromium browser - https://github.com/mozilla/hubs/pull/4255
+- Audio zone improvements, mods can now modify audio zone sources- https://github.com/mozilla/hubs/pull/4278
+- Improved Chrome audio quality issues and got stereo working again! - https://github.com/mozilla/hubs/pull/4275
+- Community submitted! Waypoint links no longer refresh the page when the current room is the same and fixes back button sending to last waypoint - https://github.com/mozilla/hubs/pull/4272
+- Optimized SQL queries in the session_stats table - https://github.com/mozilla/reticulum/pull/493
+
+### Bug Fixes
+- Fixes fake joining a room without joining not failing to join room with invalid credentials and smooths out webrtc and networked aframe rejoining - https://github.com/mozilla/hubs/pull/3935
+- Shows mic selection on every join - Fixes joining a room with a saved mic that is no longer connected. - https://github.com/mozilla/hubs/pull/4151
+- Fixes exiting VR mode in Oculus browser to exit correctly and manages disconnects from controllers correctly https://github.com/mozilla/hubs/pull/4206
+- Remove error in mobile devices looking for KeyQ - Community submitted! rawnsley - https://github.com/rawnsley - https://github.com/mozilla/hubs/pull/4177
+- Adds count to People menu button - Community submitted! MegaMotion = https://github.com/MegaMotion - https://github.com/mozilla/hubs/pull/4199
+- Cloned lights point in the correct direction - https://github.com/mozilla/hubs/pull/4253
+- Nested media frames place media in correct places - https://github.com/mozilla/hubs/pull/4279
+- Community submitted! Remove create room "more menu" when it should be disabled - https://github.com/mozilla/hubs/pull/4285
+- Community submitted! Allow spectate when the room is full - https://github.com/mozilla/hubs/pull/4248
+- Community submitted! "Change scene" button shows after setting the scene from a GLB, previously button was hidden - https://github.com/mozilla/hubs/pull/4235
+- Community submitted! Removed console error when setLocal is called - https://github.com/mozilla/hubs/pull/4178
+- Community submitted! Renamed "copy avatar" to "save avatar" - https://github.com/mozilla/hubs/pull/3942
+- Discord bot would attempt to connect to null or an invalid room url, catch and handle this error gracefully - https://github.com/mozilla/reticulum/pull/494
+- Don't return null for deleted projectless scenes - https://github.com/mozilla/reticulum/pull/498
+
 2021-04-19
 ----------
 Reticulum:
