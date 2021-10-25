@@ -1,3 +1,11 @@
+2021-10-15
+---------
+Template changes
+- Removes reliance on port 80 - allowing networks with 80 blocked, to access HC
+- Fixes an ALB template issue
+- Adds a cron job to clean up DNS hanging records
+- Adds an additional stack output used in the next release
+
 2021-08-24
 ----------
 New Features
