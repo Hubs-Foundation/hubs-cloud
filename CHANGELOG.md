@@ -1,10 +1,12 @@
 2021-10-15
 ---------
-Template changes
+AMI and Template changes
 - Removes reliance on port 80 - allowing networks with 80 blocked, to access HC
 - Fixes an ALB template issue
 - Adds a cron job to clean up DNS hanging records
 - Adds an additional stack output used in the next release
+
+NOTE: Hubs Cloud template changes need to be [manually updated via this guide for existing stacks](https://hubs.mozilla.com/docs/hubs-cloud-aws-updating-the-stack.html#-upgrade-your-hubs-cloud-template-to-the-latest)
 
 2021-08-24
 ----------
