@@ -1,3 +1,85 @@
+2022-02-07
+---------
+Hubs Cloud Release Highlights
+- [Hubs] Audio zones - https://github.com/mozilla/hubs/pull/4399 
+- [Hubs] Audio debugging view - https://github.com/mozilla/hubs/pull/4249 
+- [Hubs] Enable server API - https://github.com/mozilla/hubs/pull/4753 
+- Documentation: https://github.com/mozilla/reticulum/blob/master/guides/api.md 
+- Enable /tokens endpoint to enable API tokens for your HC instance API requests - https://github.com/mozilla/hubs/pull/4425
+- [Hubs] Fast room switching - https://github.com/mozilla/hubs/pull/4347 
+- [Hubs] Upload both logos for light and dark themes - https://github.com/mozilla/hubs/pull/4786 
+- [Hubs] Fix bugs on touchscreens that made buttons unclickable and flung objects - https://github.com/mozilla/hubs/pull/4740 / https://github.com/mozilla/hubs/pull/4737 
+- [Hubs] Better audio room defaults - https://github.com/mozilla/hubs/pull/4817\
+- [Hubs] Search for scenes and avatars in admin panel - https://github.com/mozilla/hubs/pull/4463
+  - HDR lightmaps & environment settings system - https://github.co/mozilla/hubs/pull/4538 
+    - [Community submitted!] [rawnsley] Scene with sample assets to check out this feature - https://github.com/LearnHub/HubHenge
+
+Hubs
+- Upgrade Three.js to r128 - https://github.com/mozilla/hubs/pull/4321  
+- Device detection: iPad now detected as iOS - https://github.com/mozilla/hubs/pull/4700 and Android tablet detected as tablet or mobile device - https://github.com/mozilla/hubs/pull/4724 
+- Twitter changes: Twitter popup window closes itself - https://github.com/mozilla/hubs/pull/4824 / Twitter no longer links the room invite - https://github.com/mozilla/hubs/pull/4812 
+- Fixed transparency with personal space bubble (when you walk into an avatar) https://github.com/mozilla/hubs/pull/4808
+- Fix billboard Y rotation https://github.com/mozilla/hubs/pull/4781 
+- Fix dark/light mode sprites https://github.com/mozilla/hubs/pull/4778 
+- [Community submitted!] [gfodor] Stop adding session id with every call to getMicrophonePresences https://github.com/mozilla/hubs/pull/4798
+- Fix sign in prompt flow issues - https://github.com/mozilla/hubs/pull/4745
+- Lazy media load on scene entry - https://github.com/mozilla/hubs/pull/4135
+- Fixes audio issues for Safari
+  - Fix audio files and choppy video audio - https://github.com/mozilla/hubs/pull/4576 
+  - Disable positional audio on safari to resolve distorted audio - https://github.com/mozilla/hubs/pull/4594 
+  - Temporary fix for audio distortion in Safari - https://github.com/mozilla/hubs/pull/4441 
+- Fix wrong transparency of hover menus - https://github.com/mozilla/hubs/pull/4470 
+- Expose client version to HC users - https://github.com/mozilla/hubs/pull/4606
+- Fix audio-only elements not playing - https://github.com/mozilla/hubs/pull/4683 
+- Misc UI fixes
+  - https://github.com/mozilla/hubs/pull/4413
+  - https://github.com/mozilla/hubs/pull/4650
+  - https://github.com/mozilla/hubs/pull/4544
+- Landing page updates
+  - https://github.com/mozilla/hubs/pull/4479
+  - https://github.com/mozilla/hubs/pull/4585
+  - https://github.com/mozilla/hubs/pull/4602
+  - https://github.com/mozilla/hubs/pull/4624
+- Dark mode/theme fixes
+  - https://github.com/mozilla/hubs/pull/4629
+  - https://github.com/mozilla/hubs/pull/4649
+  - https://github.com/mozilla/hubs/pull/4666
+  - https://github.com/mozilla/hubs/pull/4692
+  - https://github.com/mozilla/hubs/pull/4727
+  - https://github.com/mozilla/hubs/pull/4747
+- [Community submitted!] [wmurphyrd] Fix cannot activate mic if last used mic no longer available - https://github.com/mozilla/hubs/pull/4699 
+- Fix pinning state changes - https://github.com/mozilla/hubs/pull/4721 
+- [Community submitted!] [rawnsley] Scene must be reset when fast switching - https://github.com/mozilla/hubs/pull/4596 
+- [Community submitted!] [rawnsley] Fix for URL waypoint fragments when using fast switching - https://github.com/mozilla/hubs/pull/4597
+- Fixes for environment-settings system https://github.com/mozilla/hubs/pull/4660
+- Fix material components using __mhc_link_type (video texture target in latest Blender exporter) - https://github.com/mozilla/hubs/pull/4733
+- [Community submitted!] [rawnsley] Added missing space to match PeopleSidebar - https://github.com/mozilla/hubs/pull/4333
+- [Community submitted!] [rawnsley] Fix forward and backward motion when using on-screen touch joysticks. - https://github.com/mozilla/hubs/pull/4334 
+- [Community submitted!] [StevenGastroSophy] isSignedIn should be a boolean, not credentials token(string) - https://github.com/mozilla/hubs/pull/4349
+- [Community submitted!] [yakyouk] fix mobile touch coordinates - https://github.com/mozilla/hubs/pull/4397 
+- [Community submitted!] [yakyouk] fix permission token update, use dialog adapter token for kick - https://github.com/mozilla/hubs/pull/4418 
+- [Community submitted!] [rawnsley] Added more console logging to track progress during loading - https://github.com/mozilla/hubs/pull/4569
+- [Community submitted!] [rawnsley] Keyboard.getLayoutMap() throws an exception in iFrame on Chrome - https://github.com/mozilla/hubs/pull/4570 by 
+- [Community submitted!] [yakyouk] fix name tags not updating - https://github.com/mozilla/hubs/pull/4654 
+- [Community submitted!] [rawnsley] HubHenge scene to use to test lightmaps - https://github.com/LearnHub/HubHenge
+- [Community submitted!] [wmurphyrd] Fix cannot activate mic if last used mic no longer available - https://github.com/mozilla/hubs/pull/4699
+- Reticulum
+- Restrict uploads - https://github.com/mozilla/reticulum/pull/506
+- Upload domain restriction - https://github.com/mozilla/reticulum/pull/508 
+- Entry code redirect fixes - https://github.com/mozilla/reticulum/pull/511 / https://github.com/mozilla/reticulum/pull/515 / https://github.com/mozilla/reticulum/pull/527 
+
+Spoke
+- Add support for __mhc_link_type node references in components - https://github.com/mozilla/Spoke/pull/1177 
+- Support overriding individual audio parameters - https://github.com/mozilla/Spoke/pull/1175
+- Support for optional properties allow for properties to be fully optional and not be exported if they are not enabled - https://github.com/mozilla/Spoke/pull/1185
+
+Thank you for the community contributions from: 
+- rawnsley
+- yakyouk
+- wmurphyrd
+- StevenGastroSophy
+- Gfodor
+
 2021-10-15
 ---------
 AMI and Template changes
