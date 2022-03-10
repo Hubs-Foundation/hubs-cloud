@@ -1,3 +1,46 @@
+2022-04-01
+---------
+Hubs:
+- Improve cursor accessibility with adjustable size
+- Optimized emoji menu images for faster loading
+- [Matt Rossman] Restore the ability to focus chat with a keyboard shortcut
+- [James Kane] Replace three-bmfont-text with troika-three-text
+- Update french translations
+- Update darkmode theme.json
+- Add Draco support to GLTF loader
+- Add new microphone setup modal
+- Add avatar volume controls to the sidebar
+- Add option for objects to opt out of frustrum culling
+- Add debugLocalScene flag for fast local scene testing
+- Add support for reflection probes
+- Remove 6-digit entry codes due to security/privacy concerns.
+- [gfodor] Fix audio bug due to event handler removals
+- Fix display issues with scene pages
+- Fix an issue with custom themes
+- Fix an issue where environment maps renderered black on flat objects
+- [LearnHub] Fix an issue related to trying to release gltf resources that had not been cached
+- [juunini] Fix an issue in the custom client deploy script
+- Fix an issue with video-texture-target rendering in Chrome
+- Fix an issue with Cloudflare affecting custom clients
+- [rawnsley] Fix an issue with an uncaught DOM security exception when accessing properties of window.opener
+
+Reticulum:
+- Fix Discord integration
+- Apply sandbox CSP for IE
+- Validate media resolution
+- Upload CSP changes
+- Fix issue with Cloudflare
+- Never ban link redirects to Hub SIDs
+- Add fonts.gstattic.com to connect-src for Troika
+- Fix CSP for troika-text
+- Add hubs-proxy.local to hosts file in README.md
+- Entry code changes
+- Add new whats-new API to query GitHub for merged pull requests
+
+Spoke:
+- Fix the What's New page
+- [juunini] Fix `creating-custom-elements` example
+
 2022-02-07
 ---------
 Hubs Cloud Release Highlights
