@@ -24,22 +24,17 @@ Hubs:
 - Fix an issue with Cloudflare affecting custom clients
 - [rawnsley] Fix an issue with an uncaught DOM security exception when accessing properties of window.opener
 
-Reticulum:
-- Fix Discord integration
-- Apply sandbox CSP for IE
-- Validate media resolution
-- Upload CSP changes
-- Fix issue with Cloudflare
-- Never ban link redirects to Hub SIDs
-- Add fonts.gstattic.com to connect-src for Troika
-- Fix CSP for troika-text
-- Add hubs-proxy.local to hosts file in README.md
-- Entry code changes
-- Add new whats-new API to query GitHub for merged pull requests
-
 Spoke:
 - Fix the What's New page
 - [juunini] Fix `creating-custom-elements` example
+
+Reticulum:
+
+- Fix an issue with Discord integration
+- Added support for troika-text
+- Security - Use a stricter CSP when serving uploaded files
+- Security - Forbid media requests to internal ip addresses
+- Security - Prevent XSS in uploads on IE11 with a modified CSP header.
 
 2022-02-07
 ---------
