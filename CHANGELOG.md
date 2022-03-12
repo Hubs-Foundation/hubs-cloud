@@ -36,6 +36,20 @@ Reticulum:
 - Security - Forbid media requests to internal ip addresses
 - Security - Prevent XSS in uploads on IE11 with a modified CSP header.
 
+|   | Packages                                                   |
+|---|------------------------------------------------------------|
+|   | mozillareality/ita/0.0.1/20211117212826                    |
+| * | mozillareality/reticulum/1.0.1/20220311205847              |
+| * | mozillareality/hubs/1.0.0/20220311203524                   |
+|   | mozillareality/pgbouncer/1.12.0/20191106234457             |
+| * | mozillareality/spoke/1.0.0/20220311214102                  |
+|   | mozillareality/certbot/1.0.0/20191224043510                |
+|   | mozillareality/youtube-dl-api-server/0.4/20220217230007    |
+|   | mozillareality/janus-gateway/2.0.1/20211220195030          |
+|   | mozillareality/postgrest/5.2.0/20190130035107              |
+|   | mozillareality/polycosm-static-assets/1.0.0/20200320162152 |
+|   | mozillareality/coturn/4.5.3.0/20200422002445               |
+
 2022-02-07
 ---------
 Hubs Cloud Release Highlights
