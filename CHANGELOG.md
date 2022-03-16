@@ -40,7 +40,7 @@ Reticulum:
 |---|------------------------------------------------------------|
 |   | mozillareality/ita/0.0.1/20211117212826                    |
 | * | mozillareality/reticulum/1.0.1/20220311205847              |
-| * | mozillareality/hubs/1.0.0/20220311203524                   |
+| * | mozillareality/hubs/1.0.0/20220316130648                   |
 |   | mozillareality/pgbouncer/1.12.0/20191106234457             |
 | * | mozillareality/spoke/1.0.0/20220311214102                  |
 |   | mozillareality/certbot/1.0.0/20191224043510                |
