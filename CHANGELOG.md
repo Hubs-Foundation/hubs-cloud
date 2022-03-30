@@ -50,7 +50,7 @@ Reticulum:
 |   | mozillareality/polycosm-static-assets/1.0.0/20200320162152 |
 |   | mozillareality/coturn/4.5.3.0/20200422002445               |
 
-Packages updated in this release are marked with an asterisk in the chart above.
+Packages that will be updated in this release are marked with an asterisk in the chart above.
 
 2022-02-07
 ---------
