@@ -4,7 +4,7 @@
 Contributions from the community are marked with [square brackets].
 
 Hubs:
-
+```
 - c48052028 [juunini] Add mirror components.
 - 72b6d80fe Update nametags to a brand new look!
 - 6d39ba09b Add a lint step to PR submissions and update contributor guide.
@@ -26,19 +26,20 @@ Hubs:
 - 7f85b2545 [yakyouk] Centralize defaults for preferences.
 - b2f4c5f9c Fix an issue where matrix flags were not updated from networked updates.
 - 1938d7a5d [juunini] Fix typos in locale definitions.
+```
 
 Spoke:
-
+```
 - fe3203f4 [jameskane] Update Troika Text components, which replace three-bmfont-text.
 - f9b4e1c5 [juunini] Add mirror component
-
+```
 Reticulum:
-
+```
 - 3287e5b6 Update a dependency to fix an issue where connections would drop when downloading large blob files over HTTP2
 - 4392f939 Add authorized endpoint to query CCU
 - 406da963 Add typing and hand-raising indicators to networked state
 - 849cff27 Optimize public rooms query
-
+```
 Packages that will be updated in this release are marked with an asterisk in the chart below.
 
 |   | Packages                                                   |
