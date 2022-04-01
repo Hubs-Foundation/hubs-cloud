@@ -1,3 +1,63 @@
+2022-05-02
+----------
+
+Contributions from the community are marked with [square brackets].
+
+Hubs:
+
+- c48052028 [juunini] Add mirror components.
+- 72b6d80fe Update nametags to a brand new look!
+- 6d39ba09b Add a lint step to PR submissions and update contributor guide.
+
+- d65a77639 Fix an issue which caused the freeze-menu to display incorrectly.
+- 7be5fe4d8 Fix an issue which caused permissions not to apply correctly in some cases.
+- 9a84c9a01 Fix an issue that prevented users from seeing their own avatar in VR.
+- e2c341ef5 Fix issues related to hiding the avatar's head in first-person mode.
+- 5c63c76bf Fix an issue where default audio devices were not selected in Firefox.
+- 230553ad2 Fix a (surprising) issue that caused emoji images to be re-requested several times.
+- cb45657d4 [mattrossman] Fix an issue where the microphone icon did not display volume.
+- 9c2eb3f6d Fix an issue where the Share button generated React errors in the console.
+- d6e92e441 Fix an issue where previewing an avatar generated React errors in the console.
+- 7f1c76159 Fix an issue which broke in-room video recording in Chrome.
+- 2f1f9026f Fix an issue which broke shadows for directional lights.
+
+- 7ede70ad6 [Cupcaked and tzuhuanlin] Add traditional Chinese locale.
+- fe250175a [markusTraber] Add German locale.
+- 0b8158d82 [anonymous] Add missing translations for Korean locale.
+
+- 955014be0 Simplify mic setup logic.
+- 7f85b2545 [yakyouk] Centralize defaults for preferences.
+- b2f4c5f9c Fix an issue where matrix flags were not updated from networked updates.
+- 1938d7a5d [juunini] Fix typos in locale definitions.
+
+Spoke:
+
+- fe3203f4 [jameskane] Update Troika Text components, which replace three-bmfont-text.
+- f9b4e1c5 [juunini] Add mirror component
+
+Reticulum:
+
+- 3287e5b6 Update a dependency to fix an issue where connections would drop when downloading large blob files over HTTP2
+- 4392f939 Add authorized endpoint to query CCU
+- 406da963 Add typing and hand-raising indicators to networked state
+- 849cff27 Optimize public rooms query
+
+Packages that will be updated in this release are marked with an asterisk in the chart below.
+
+|   | Packages                                                   |
+|---|------------------------------------------------------------|
+|   | mozillareality/ita/0.0.1/20211117212826                    |
+| * | mozillareality/reticulum/TBD                               |
+| * | mozillareality/hubs/TBD                                    |
+| * | mozillareality/pgbouncer/TBD                               |
+| * | mozillareality/spoke/TBD                                   |
+|   | mozillareality/certbot/1.0.0/20191224043510                |
+|   | mozillareality/youtube-dl-api-server/0.4/20220217230007    |
+|   | mozillareality/janus-gateway/2.0.1/20211220195030          |
+|   | mozillareality/postgrest/5.2.0/20190130035107              |
+|   | mozillareality/polycosm-static-assets/1.0.0/20200320162152 |
+|   | mozillareality/coturn/4.5.3.0/20200422002445               |
+
 2022-04-04
 ---------
 Hubs:
