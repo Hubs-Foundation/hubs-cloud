@@ -8,7 +8,6 @@ Hubs:
 - c48052028 [juunini] Add mirror components.
 - 72b6d80fe Update nametags to a brand new look!
 - 6d39ba09b Add a lint step to PR submissions and update contributor guide.
-
 - d65a77639 Fix an issue which caused the freeze-menu to display incorrectly.
 - 7be5fe4d8 Fix an issue which caused permissions not to apply correctly in some cases.
 - 9a84c9a01 Fix an issue that prevented users from seeing their own avatar in VR.
@@ -20,11 +19,9 @@ Hubs:
 - d6e92e441 Fix an issue where previewing an avatar generated React errors in the console.
 - 7f1c76159 Fix an issue which broke in-room video recording in Chrome.
 - 2f1f9026f Fix an issue which broke shadows for directional lights.
-
 - 7ede70ad6 [Cupcaked and tzuhuanlin] Add traditional Chinese locale.
 - fe250175a [markusTraber] Add German locale.
 - 0b8158d82 [anonymous] Add missing translations for Korean locale.
-
 - 955014be0 Simplify mic setup logic.
 - 7f85b2545 [yakyouk] Centralize defaults for preferences.
 - b2f4c5f9c Fix an issue where matrix flags were not updated from networked updates.
