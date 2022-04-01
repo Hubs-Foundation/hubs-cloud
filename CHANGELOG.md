@@ -1,3 +1,57 @@
+2022-04-04
+---------
+Hubs:
+- Improve cursor accessibility with adjustable size
+- Optimized emoji menu images for faster loading
+- [Matt Rossman] Restore the ability to focus chat with a keyboard shortcut
+- [James Kane] Replace three-bmfont-text with troika-three-text
+- Update french translations
+- Update darkmode theme.json
+- Add Draco support to GLTF loader
+- Add new microphone setup modal
+- Add avatar volume controls to the sidebar
+- Add option for objects to opt out of frustrum culling
+- Add debugLocalScene flag for fast local scene testing
+- Add support for reflection probes
+- Remove 6-digit entry codes due to security/privacy concerns.
+- [gfodor] Fix audio bug due to event handler removals
+- Fix display issues with scene pages
+- Fix an issue with custom themes
+- Fix an issue where environment maps renderered black on flat objects
+- [LearnHub] Fix an issue related to trying to release gltf resources that had not been cached
+- [juunini] Fix an issue in the custom client deploy script
+- Fix an issue with video-texture-target rendering in Chrome
+- Fix an issue with Cloudflare affecting custom clients
+- [rawnsley] Fix an issue with an uncaught DOM security exception when accessing properties of window.opener
+
+Spoke:
+- Fix the What's New page
+- [juunini] Fix `creating-custom-elements` example
+
+Reticulum:
+
+- Fix an issue with Discord integration
+- Added support for troika-text
+- Security - Use a stricter CSP when serving uploaded files
+- Security - Forbid media requests to internal ip addresses
+- Security - Prevent XSS in uploads on IE11 with a modified CSP header.
+
+|   | Packages                                                   |
+|---|------------------------------------------------------------|
+|   | mozillareality/ita/0.0.1/20211117212826                    |
+| * | mozillareality/reticulum/1.0.1/20220311205847              |
+| * | mozillareality/hubs/1.0.0/20220316130648                   |
+|   | mozillareality/pgbouncer/1.12.0/20191106234457             |
+| * | mozillareality/spoke/1.0.0/20220311214102                  |
+|   | mozillareality/certbot/1.0.0/20191224043510                |
+|   | mozillareality/youtube-dl-api-server/0.4/20220217230007    |
+|   | mozillareality/janus-gateway/2.0.1/20211220195030          |
+|   | mozillareality/postgrest/5.2.0/20190130035107              |
+|   | mozillareality/polycosm-static-assets/1.0.0/20200320162152 |
+|   | mozillareality/coturn/4.5.3.0/20200422002445               |
+
+Packages that will be updated in this release are marked with an asterisk in the chart above.
+
 2022-02-07
 ---------
 Hubs Cloud Release Highlights
