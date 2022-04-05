@@ -45,10 +45,10 @@ Packages that will be updated in this release are marked with an asterisk in the
 |   | Packages                                                   |
 |---|------------------------------------------------------------|
 |   | mozillareality/ita/0.0.1/20211117212826                    |
-| * | mozillareality/reticulum/TBD                               |
-| * | mozillareality/hubs/TBD                                    |
-| * | mozillareality/pgbouncer/TBD                               |
-| * | mozillareality/spoke/TBD                                   |
+| * | mozillareality/reticulum/1.0.1/20220405231612              |
+| * | mozillareality/hubs/1.0.0/20220405230710                   |
+|   | mozillareality/pgbouncer/1.12.0/20191106234457             |
+| * | mozillareality/spoke/1.0.0/20220405230707                  |
 |   | mozillareality/certbot/1.0.0/20191224043510                |
 |   | mozillareality/youtube-dl-api-server/0.4/20220217230007    |
 |   | mozillareality/janus-gateway/2.0.1/20211220195030          |
