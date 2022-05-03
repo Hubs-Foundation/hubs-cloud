@@ -4,6 +4,8 @@ Contributions from the community are marked with [square brackets].
 
 Hubs:
 
+https://github.com/mozilla/hubs/compare/hc.test.2022-04-04...hc.test.2022-05-02
+
 ```
 2225cc645 Fix a bug causing VR tracking to fail.
 4c129b75c Fix a bug affecting the nametag preference
@@ -21,6 +23,7 @@ bc8dc5735 Improve the emoji picker in the chat panel.
 ```
 
 Reticulum:
+https://github.com/mozilla/reticulum/compare/hc.test.2022-04-04...hc.test.2022-05-02
 
 ```
 No function change to Hubs Cloud. The only updates are preparation for future Mozilla-managed Hubs instances.
