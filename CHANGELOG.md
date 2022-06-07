@@ -1,3 +1,51 @@
+## 2022-06-06
+
+Contributions from the community are marked with [square brackets].
+
+Hubs:
+
+https://github.com/mozilla/hubs/compare/hc.test.2022-04-04...hc.test.2022-05-02
+
+```
+2225cc645 Fix a bug causing VR tracking to fail.
+4c129b75c Fix a bug affecting the nametag preference
+0cffd5f0c Fix some bugs affecting new nametags
+aba81a395 Optimize performance of sprite systems.
+17bb1174c Remove the matrix-auto-update component to improve performance.
+ad10df59f Update GLTFLoader of three.js to version r128
+0e8e622df Add a SECURITY.md file to tell people how to report security vulnerabilities.
+b090136e2 Simplify the behavior of real-time shadows
+a99baac8a Refactor AFRAME startup and request animation frame loop
+176c6c40f Simplify message displayed when Hubs is loaded in an unsupported browser
+1e06b8a41 Fix an issue where spawned chat messages appeared at the incorrect location on iOS Safari
+a3c5b1690 Resolve a warning that React sends to the dev console during scene entry.
+bc8dc5735 Improve the emoji picker in the chat panel.
+```
+
+Reticulum:
+https://github.com/mozilla/reticulum/compare/hc.test.2022-04-04...hc.test.2022-05-02
+
+```
+No function change to Hubs Cloud. The only updates are preparation for future Mozilla-managed Hubs instances.
+```
+
+Packages that will be updated in this release are marked with an asterisk in the chart below.
+
+|   | Packages                                                   |
+|---|------------------------------------------------------------|
+|   | mozillareality/ita/0.0.1/20211117212826                    |
+| * | mozillareality/reticulum/1.0.1/20220503172004              |
+| * | mozillareality/hubs/1.0.0/20220503171532                   |
+|   | mozillareality/pgbouncer/1.12.0/20191106234457             |
+|   | mozillareality/spoke/1.0.0/20220405230707                  |
+|   | mozillareality/certbot/1.0.0/20191224043510                |
+|   | mozillareality/youtube-dl-api-server/0.4/20220217230007    |
+|   | mozillareality/janus-gateway/2.0.1/20211220195030          |
+|   | mozillareality/postgrest/5.2.0/20190130035107              |
+|   | mozillareality/polycosm-static-assets/1.0.0/20200320162152 |
+|   | mozillareality/coturn/4.5.3.0/20200422002445               |
+
+
 2022-05-02
 ----------
 
