@@ -1,3 +1,40 @@
+
+## 2022-07-11
+
+Contributions from the community are marked with [square brackets].
+
+Hubs:
+
+https://github.com/mozilla/hubs/compare/hc.test.2022-05-02...hc.test.2022-06-07
+
+```
+######### words
+```
+
+Reticulum:
+https://github.com/mozilla/reticulum/compare/hc.test.2022-05-02...hc.test.2022-06-07
+
+```
+No function change to Hubs Cloud. The only updates are preparation for future Mozilla-managed Hubs instances.
+```
+
+Packages that will be updated in this release are marked with an asterisk in the chart below.
+
+|   | Packages                                                   |
+|---|------------------------------------------------------------|
+|   | mozillareality/ita/0.0.1/20211117212826                    |
+| * | mozillareality/reticulum/1.0.1/???              |
+| * | mozillareality/hubs/1.0.0/???                   |
+|   | mozillareality/pgbouncer/1.12.0/20191106234457             |
+|   | mozillareality/spoke/1.0.0/20220405230707                  |
+|   | mozillareality/certbot/1.0.0/20191224043510                |
+|   | mozillareality/youtube-dl-api-server/0.4/20220217230007    |
+|   | mozillareality/janus-gateway/2.0.1/20211220195030          |
+|   | mozillareality/postgrest/5.2.0/20190130035107              |
+|   | mozillareality/polycosm-static-assets/1.0.0/20200320162152 |
+|   | mozillareality/coturn/4.5.3.0/20200422002445               |
+
+
 ## 2022-06-06
 
 Contributions from the community are marked with [square brackets].
