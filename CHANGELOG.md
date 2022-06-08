@@ -23,8 +23,8 @@ Packages that will be updated in this release are marked with an asterisk in the
 |   | Packages                                                   |
 |---|------------------------------------------------------------|
 |   | mozillareality/ita/0.0.1/20211117212826                    |
-| * | mozillareality/reticulum/1.0.1/???              |
-| * | mozillareality/hubs/1.0.0/???                   |
+| * | mozillareality/reticulum/1.0.1/20220608145411              |
+| * | mozillareality/hubs/1.0.0/20220607220319                   |
 |   | mozillareality/pgbouncer/1.12.0/20191106234457             |
 |   | mozillareality/spoke/1.0.0/20220405230707                  |
 |   | mozillareality/certbot/1.0.0/20191224043510                |
@@ -34,6 +34,29 @@ Packages that will be updated in this release are marked with an asterisk in the
 |   | mozillareality/polycosm-static-assets/1.0.0/20200320162152 |
 |   | mozillareality/coturn/4.5.3.0/20200422002445               |
 
+
+## (hotfix) 2022-06-08 
+Reticulum:
+
+https://github.com/mozilla/reticulum/pull/601/files
+```
+56ef119 Fix a bug affecting room invite links
+```
+Packages that will be updated in this release are marked with an asterisk in the chart below.
+
+|   | Packages                                                   |
+|---|------------------------------------------------------------|
+|   | mozillareality/ita/0.0.1/20211117212826                    |
+| * | mozillareality/reticulum/1.0.1/20220608133028              |
+|   | mozillareality/hubs/1.0.0/20220503171532                   |
+|   | mozillareality/pgbouncer/1.12.0/20191106234457             |
+|   | mozillareality/spoke/1.0.0/20220405230707                  |
+|   | mozillareality/certbot/1.0.0/20191224043510                |
+|   | mozillareality/youtube-dl-api-server/0.4/20220217230007    |
+|   | mozillareality/janus-gateway/2.0.1/20211220195030          |
+|   | mozillareality/postgrest/5.2.0/20190130035107              |
+|   | mozillareality/polycosm-static-assets/1.0.0/20200320162152 |
+|   | mozillareality/coturn/4.5.3.0/20200422002445               |
 
 ## 2022-06-06
 
