@@ -1,3 +1,11 @@
+## (hotfix) 2022-06-08 
+Reticulum:
+
+https://github.com/mozilla/reticulum/pull/601/files
+```
+56ef119 Fix hub invites. Add hub invite tests
+```
+
 ## 2022-06-06
 
 Contributions from the community are marked with [square brackets].
