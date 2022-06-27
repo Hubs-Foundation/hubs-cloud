@@ -8,7 +8,27 @@ Hubs:
 https://github.com/mozilla/hubs/compare/hc.test.2022-05-02...hc.test.2022-06-07
 
 ```
-######### words
+d68d0fd9 Fix a media-image transparent bug
+561858b1 Remove unused three-batch-manager
+373ce401 Add screen orientation awareness to hubs client
+c4a1716e Re-enable Positional audio on Safari
+9e7db4eb Remove easyrtc dependancy from NAF
+9fb409eb Update best practices doc
+f1213d3e Move fog handling to environment system
+a47d7520 Test home page with browser stack
+7f31b705 Fix dark-mode logo. Adds an AppLogo component to unify logo usage
+eb0b0bb9 Performance optimization in setMatrixWorld()
+50f58bb0 Turn off unnecessary scene.autoUpdate in camera-tool.tock()
+5c21765a Remove more aframe builtin systems/components/concepts
+d71c545a Fix invalid material.side parameter set in troika-text
+b2010737 Fix a Three.js bug that causing skipped matrix updates
+47ac8878 Minor readme tweaks
+b70272e6 [uhunkler] README.md - update the Quick Start instructions for the local install
+239ff6ae Fix Hubs Cloud admin panel deploy by replacing ncp with fs-extra copy
+a2ed75ad Refactor common webpack page pattern
+e905c809 Minor refactor for local dev host. dotenv cleanup.
+1d51cf91 Updated video-texture-source.tock() to skip unnecessary scene.autoUpdate()
+b9479459 Improve client performance by cache the result of isSafari()
 ```
 
 Reticulum:
