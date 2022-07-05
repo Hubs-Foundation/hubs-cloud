@@ -1,3 +1,60 @@
+
+## 2022-07-11
+
+Contributions from the community are marked with [square brackets].
+
+Hubs:
+
+https://github.com/mozilla/hubs/compare/hc.test.2022-05-02...hc.test.2022-06-07
+
+```
+d68d0fd9 Fix a media-image transparent bug
+561858b1 Remove unused three-batch-manager
+373ce401 Add screen orientation awareness to hubs client
+c4a1716e Re-enable Positional audio on Safari
+9e7db4eb Remove easyrtc dependancy from NAF
+9fb409eb Update best practices doc
+f1213d3e Move fog handling to environment system
+a47d7520 Test home page with browser stack
+7f31b705 Fix dark-mode logo. Adds an AppLogo component to unify logo usage
+eb0b0bb9 Performance optimization in setMatrixWorld()
+50f58bb0 Turn off unnecessary scene.autoUpdate in camera-tool.tock()
+5c21765a Remove more aframe builtin systems/components/concepts
+d71c545a Fix invalid material.side parameter set in troika-text
+b2010737 Fix a Three.js bug that causing skipped matrix updates
+47ac8878 Minor readme tweaks
+b70272e6 [uhunkler] README.md - update the Quick Start instructions for the local install
+239ff6ae Fix Hubs Cloud admin panel deploy by replacing ncp with fs-extra copy
+a2ed75ad Refactor common webpack page pattern
+e905c809 Minor refactor for local dev host. dotenv cleanup.
+1d51cf91 Updated video-texture-source.tock() to skip unnecessary scene.autoUpdate()
+b9479459 Improve client performance by cache the result of isSafari()
+```
+
+Reticulum:
+https://github.com/mozilla/reticulum/compare/hc.test.2022-05-02...hc.test.2022-06-07
+
+```
+No function change to Hubs Cloud. The only updates are preparation for future Mozilla-managed Hubs instances.
+```
+
+Packages that will be updated in this release are marked with an asterisk in the chart below.
+
+|   | Packages                                                   |
+|---|------------------------------------------------------------|
+|   | mozillareality/ita/0.0.1/20211117212826                    |
+| * | mozillareality/reticulum/1.0.1/20220608145411              |
+| * | mozillareality/hubs/1.0.0/20220607220319                   |
+|   | mozillareality/pgbouncer/1.12.0/20191106234457             |
+|   | mozillareality/spoke/1.0.0/20220405230707                  |
+|   | mozillareality/certbot/1.0.0/20191224043510                |
+|   | mozillareality/youtube-dl-api-server/0.4/20220217230007    |
+|   | mozillareality/janus-gateway/2.0.1/20211220195030          |
+|   | mozillareality/postgrest/5.2.0/20190130035107              |
+|   | mozillareality/polycosm-static-assets/1.0.0/20200320162152 |
+|   | mozillareality/coturn/4.5.3.0/20200422002445               |
+
+
 ## (hotfix) 2022-06-08 
 Reticulum:
 
