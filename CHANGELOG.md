@@ -8,7 +8,31 @@ Hubs:
 https://github.com/mozilla/hubs/compare/hc.test.2022-06-07...hc.test.2022-07-06
 
 ```
-11111111 ??????????????????????
+944fe084f Merge pull request #5569 from mozilla/FixPen
+ef4b0da11 Merge pull request #5567 from mozilla/DelintWebpackConfig
+2ecf2243b Merge pull request #5566 from mozilla/FixBasicMaterialLightMap
+9cda2d8b6 Merge pull request #5488 from mozilla/ThreeR141
+771f6a277 Merge pull request #5561 from mozilla/usevolume-improvements-fix
+08a8f93bb Merge pull request #5537 from mozilla/usevolume-improvements
+aa957ca2d Merge pull request #5547 from mozilla/media-pager-fix-event-handlers
+0d395a8f7 Merge pull request #5539 from takahirox/DelintVirtualGamepadControls
+2b4c257d4 Merge pull request #5527 from takahirox/EnableJoysticsByDefaultOnMobiles
+6aa3ba836 Merge pull request #5513 from mozilla/StaticNipplejs
+cafc270b6 Merge pull request #5522 from mozilla/FixSuperSpawner
+4d16b3729 Merge pull request #5512 from mozilla/PreventFullscreenRequestInFullscreenMode
+56fd019da Merge pull request #5535 from mozilla/ReleaseTextureImage
+78b465023 Merge pull request #5524 from mozilla/audio-debug-uniform-vectors-update
+6dcb99a67 Merge pull request #5521 from mozilla/audio-debug-safari-compat-blur-update
+563c04919 Merge pull request #5492 from mozilla/audio-debug-safari-compat
+fa9c92cbd Merge pull request #5507 from mozilla/AdjustJoystickRotationSpeed
+3e6f2148f Merge pull request #5441 from 172Labs/fix-screen-share-toggle
+59e86e42d Merge pull request #5504 from mozilla/MaxResolutionSlider
+7fa61c4c2 Merge pull request #5499 from mozilla/FixJoystickPreference
+74bd374c0 Merge pull request #5496 from mozilla/CleanUpCalculateRendererSize
+1f587dde2 Merge pull request #5506 from mozilla/FixAvatarPreview
+06aaf996c Merge pull request #5497 from mozilla/Delint
+b550e720b Merge pull request #5483 from mozilla/UpdateNetworkedAframe
+d458aa3b9 Merge pull request #5454 from mozilla/EqualPower
 ```
 
 Reticulum:
