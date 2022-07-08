@@ -8,31 +8,31 @@ Hubs:
 https://github.com/mozilla/hubs/compare/hc.test.2022-06-07...hc.test.2022-07-06
 
 ```
-944fe084f Merge pull request #5569 from mozilla/FixPen
-ef4b0da11 Merge pull request #5567 from mozilla/DelintWebpackConfig
-2ecf2243b Merge pull request #5566 from mozilla/FixBasicMaterialLightMap
-9cda2d8b6 Merge pull request #5488 from mozilla/ThreeR141
-771f6a277 Merge pull request #5561 from mozilla/usevolume-improvements-fix
-08a8f93bb Merge pull request #5537 from mozilla/usevolume-improvements
-aa957ca2d Merge pull request #5547 from mozilla/media-pager-fix-event-handlers
-0d395a8f7 Merge pull request #5539 from takahirox/DelintVirtualGamepadControls
-2b4c257d4 Merge pull request #5527 from takahirox/EnableJoysticsByDefaultOnMobiles
-6aa3ba836 Merge pull request #5513 from mozilla/StaticNipplejs
-cafc270b6 Merge pull request #5522 from mozilla/FixSuperSpawner
-4d16b3729 Merge pull request #5512 from mozilla/PreventFullscreenRequestInFullscreenMode
-56fd019da Merge pull request #5535 from mozilla/ReleaseTextureImage
-78b465023 Merge pull request #5524 from mozilla/audio-debug-uniform-vectors-update
-6dcb99a67 Merge pull request #5521 from mozilla/audio-debug-safari-compat-blur-update
-563c04919 Merge pull request #5492 from mozilla/audio-debug-safari-compat
-fa9c92cbd Merge pull request #5507 from mozilla/AdjustJoystickRotationSpeed
-3e6f2148f Merge pull request #5441 from 172Labs/fix-screen-share-toggle
-59e86e42d Merge pull request #5504 from mozilla/MaxResolutionSlider
-7fa61c4c2 Merge pull request #5499 from mozilla/FixJoystickPreference
-74bd374c0 Merge pull request #5496 from mozilla/CleanUpCalculateRendererSize
-1f587dde2 Merge pull request #5506 from mozilla/FixAvatarPreview
-06aaf996c Merge pull request #5497 from mozilla/Delint
-b550e720b Merge pull request #5483 from mozilla/UpdateNetworkedAframe
-d458aa3b9 Merge pull request #5454 from mozilla/EqualPower
+944fe084f "Fix pen drawing color"
+ef4b0da11 "Delint"
+2ecf2243b "Fix darkened MeshBasicMaterial lightMap"
+9cda2d8b6 "Upgrade Three.js to r141"
+771f6a277 "Force ToolbarMicButton reference update in every render"
+08a8f93bb "Improve useVolume refresh to avoid react re-renders"
+aa957ca2d "Remove all event handler when component is removed"
+0d395a8f7 "Delint"
+2b4c257d4 "Enable the virtual joysticks by default on mobiles"
+6aa3ba836 "Always visible and fixed position virtual joysticks"
+cafc270b6 "Skip Physics in super-spawner in the scene preview"
+4d16b3729 "Prevent fullscreen request in fullscreen mode"
+56fd019da "Release texture image more properly"
+78b465023 "Restore derivatives support and limit the uniform vectors number"
+6dcb99a67 "Update audio-debug fragment shader waves blur level"
+563c04919 "Add Safari compat for the audio debugger"
+fa9c92cbd "Adjust Right joystick rotation speed."
+3e6f2148f "Fix share screen toggle."
+59e86e42d "Introduce slider for max resolution preference"
+7fa61c4c2 "Fix Enable VirtualJoystick preference."
+74bd374c0 "Clean up getRenderResolution()"
+1f587dde2 "Fix AvatarPreview"
+06aaf996c "Delint"
+b550e720b "Update networked-aframe dependency"
+d458aa3b9 "Introduce Audio PanningQuality preference"
 ```
 
 Reticulum:
