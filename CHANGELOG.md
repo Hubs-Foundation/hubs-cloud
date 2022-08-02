@@ -9,32 +9,31 @@ Hubs:
 https://github.com/mozilla/hubs/compare/hc.test.2022-07-06...hc.test.2022-08-02
 
 ```
-84a19016b null
-cce5562ad null
+84a19016b "Media audio can be very loud on room entry and scene changes"
+cce5562ad "Revert FixDarkenedVideoTextureTarget"
 5689032ef Revert "Merge pull request #5604 from mozilla/FixDarkenedVideoTextureTarget" null
-c189ac9a5 null
-1fd11a800 null
-769f5ec4e null
-7c7adb1f2 null
-e0fa6022f null
-ed12a5ad0 null
-778e02c51 null
-49a29f42f null
-8aced413f null
-3afe8a44c null
-0adaf1d2f null
-6bf3af8f5 null
-d1d1464e4 null
-1113bc11c null
-cfa9fbf0c null
-b87189a6f null
+c189ac9a5 "Fix darkened video-texture-target"
+1fd11a800 "Fix French translation of enable-on-screen-joystick-right"
+769f5ec4e "Brazilian Portuguese locale update"
+7c7adb1f2 "Fix issue switching between scenes with many entities"
+e0fa6022f "Fix pen on touchscreen devices"
+ed12a5ad0 "New Entity Framework"
+778e02c51 "Resize textures for iOS in low material quality mode."
+49a29f42f "Hubstrky 446"
+8aced413f "Fix darkened camera view"
+3afe8a44c "Set a default theme to fix the rest button"
+0adaf1d2f "Force AppLogo refresh when system theme changes"
+6bf3af8f5 "Revert \"Remove tool bar UI background\""
+d1d1464e4 "Signing modal issues"
+1113bc11c "Remove tool bar UI background"
+cfa9fbf0c "Use low quality audio panning mode for Android"
+b87189a6f "Update privacy policy and terms URLs"
 ```
 
 Reticulum:
 https://github.com/mozilla/reticulum/compare/hc.test.2022-07-06...hc.test.2022-08-02
 
 ```
-No function change to Hubs Cloud. The only updates are preparation for future Mozilla-managed Hubs instances.
 589799ab touch readme
 7edad9f7 Add media-src CSP
 2e8b9e47 Create protected endpoint for getting max ccu in a timerange
