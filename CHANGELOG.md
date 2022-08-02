@@ -31,7 +31,7 @@ b87189a6f null
 ```
 
 Reticulum:
-https://github.com/mozilla/reticulum/compare/hc.test.2022-06-07...hc.test.2022-07-06
+https://github.com/mozilla/reticulum/compare/hc.test.2022-07-06...hc.test.2022-08-02
 
 ```
 No function change to Hubs Cloud. The only updates are preparation for future Mozilla-managed Hubs instances.
