@@ -1,4 +1,63 @@
 
+
+## 2022-09-05
+
+Contributions from the community are marked with [square brackets].
+
+Hubs:
+
+https://github.com/mozilla/hubs/compare/hc.test.2022-07-06...hc.test.2022-08-02
+
+```
+84a19016b null
+cce5562ad null
+5689032ef Revert "Merge pull request #5604 from mozilla/FixDarkenedVideoTextureTarget" null
+c189ac9a5 null
+1fd11a800 null
+769f5ec4e null
+7c7adb1f2 null
+e0fa6022f null
+ed12a5ad0 null
+778e02c51 null
+49a29f42f null
+8aced413f null
+3afe8a44c null
+0adaf1d2f null
+6bf3af8f5 null
+d1d1464e4 null
+1113bc11c null
+cfa9fbf0c null
+b87189a6f null
+```
+
+Reticulum:
+https://github.com/mozilla/reticulum/compare/hc.test.2022-06-07...hc.test.2022-07-06
+
+```
+No function change to Hubs Cloud. The only updates are preparation for future Mozilla-managed Hubs instances.
+589799ab touch readme
+7edad9f7 Add media-src CSP
+2e8b9e47 Create protected endpoint for getting max ccu in a timerange
+8fd1413f Rewrite domains in assets
+bc1c8796 Fix typo
+```
+
+Packages that will be updated in this release are marked with an asterisk in the chart below.
+
+|   | Packages                                                   |
+|---|------------------------------------------------------------|
+|   | mozillareality/ita/0.0.1/20211117212826                    |
+| * | mozillareality/reticulum/1.0.1/20220802042649              |
+| * | mozillareality/hubs/1.0.0/20220802041044                   |
+|   | mozillareality/pgbouncer/1.12.0/20191106234457             |
+|   | mozillareality/spoke/1.0.0/20220405230707                  |
+|   | mozillareality/certbot/1.0.0/20191224043510                |
+|   | mozillareality/youtube-dl-api-server/0.4/20220217230007    |
+|   | mozillareality/janus-gateway/2.0.1/20211220195030          |
+|   | mozillareality/postgrest/5.2.0/20190130035107              |
+|   | mozillareality/polycosm-static-assets/1.0.0/20200320162152 |
+|   | mozillareality/coturn/4.5.3.0/20200422002445               |
+
 ## 2022-08-01
 
 Contributions from the community are marked with [square brackets].
