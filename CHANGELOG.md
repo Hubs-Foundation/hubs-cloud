@@ -1,4 +1,60 @@
 
+## 2022-08-01
+
+Contributions from the community are marked with [square brackets].
+
+Hubs:
+
+https://github.com/mozilla/hubs/compare/hc.test.2022-06-07...hc.test.2022-07-06
+
+```
+944fe084f Fix pen drawing color
+2ecf2243b Fix darkened MeshBasicMaterial lightMap
+9cda2d8b6 Upgrade Three.js to r141
+771f6a277 Force ToolbarMicButton reference update in every render
+08a8f93bb Improve useVolume refresh to avoid react re-renders
+aa957ca2d Remove all event handler when component is removed
+2b4c257d4 Enable the virtual joysticks by default on mobiles
+6aa3ba836 Always visible and fixed position virtual joysticks
+cafc270b6 Skip Physics in super-spawner in the scene preview
+4d16b3729 Prevent fullscreen request in fullscreen mode
+56fd019da Release texture image more properly
+78b465023 Restore derivatives support and limit the uniform vectors number
+6dcb99a67 Update audio-debug fragment shader waves blur level
+563c04919 Add Safari compat for the audio debugger
+fa9c92cbd Adjust Right joystick rotation speed.
+3e6f2148f [wsxiaoys] Fix share screen toggle.
+59e86e42d Introduce slider for max resolution preference
+7fa61c4c2 Fix Enable VirtualJoystick preference.
+74bd374c0 Clean up getRenderResolution()
+1f587dde2 Fix AvatarPreview
+b550e720b Update networked-aframe dependency" [aframe migration](https://github.com/mozilla/hubs/pull/5536)
+d458aa3b9 Introduce Audio PanningQuality preference
+```
+
+Reticulum:
+https://github.com/mozilla/reticulum/compare/hc.test.2022-06-07...hc.test.2022-07-06
+
+```
+No function change to Hubs Cloud. The only updates are preparation for future Mozilla-managed Hubs instances.
+```
+
+Packages that will be updated in this release are marked with an asterisk in the chart below.
+
+|   | Packages                                                   |
+|---|------------------------------------------------------------|
+|   | mozillareality/ita/0.0.1/20211117212826                    |
+| * | mozillareality/reticulum/1.0.1/20220707033621              |
+| * | mozillareality/hubs/1.0.0/20220707032752                   |
+|   | mozillareality/pgbouncer/1.12.0/20191106234457             |
+|   | mozillareality/spoke/1.0.0/20220405230707                  |
+|   | mozillareality/certbot/1.0.0/20191224043510                |
+|   | mozillareality/youtube-dl-api-server/0.4/20220217230007    |
+|   | mozillareality/janus-gateway/2.0.1/20211220195030          |
+|   | mozillareality/postgrest/5.2.0/20190130035107              |
+|   | mozillareality/polycosm-static-assets/1.0.0/20200320162152 |
+|   | mozillareality/coturn/4.5.3.0/20200422002445               |
+
 ## 2022-07-05
 
 Contributions from the community are marked with [square brackets].
