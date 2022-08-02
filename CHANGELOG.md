@@ -31,6 +31,7 @@ b87189a6f "Update privacy policy and terms URLs"
 ```
 
 Reticulum:
+
 https://github.com/mozilla/reticulum/compare/hc.test.2022-07-06...hc.test.2022-08-02
 
 ```
