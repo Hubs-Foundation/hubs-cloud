@@ -8,28 +8,28 @@ Hubs:
 https://github.com/mozilla/hubs/compare/hc.test.2022-06-07...hc.test.2022-07-06
 
 ```
-944fe084f "Fix pen drawing color"
-2ecf2243b "Fix darkened MeshBasicMaterial lightMap"
-9cda2d8b6 "Upgrade Three.js to r141"
-771f6a277 "Force ToolbarMicButton reference update in every render"
-08a8f93bb "Improve useVolume refresh to avoid react re-renders"
-aa957ca2d "Remove all event handler when component is removed
-2b4c257d4 "Enable the virtual joysticks by default on mobiles"
-6aa3ba836 "Always visible and fixed position virtual joysticks"
-cafc270b6 "Skip Physics in super-spawner in the scene preview"
-4d16b3729 "Prevent fullscreen request in fullscreen mode"
-56fd019da "Release texture image more properly"
-78b465023 "Restore derivatives support and limit the uniform vectors number"
-6dcb99a67 "Update audio-debug fragment shader waves blur level"
-563c04919 "Add Safari compat for the audio debugger"
-fa9c92cbd "Adjust Right joystick rotation speed."
-3e6f2148f "Fix share screen toggle."
-59e86e42d "Introduce slider for max resolution preference"
-7fa61c4c2 "Fix Enable VirtualJoystick preference."
-74bd374c0 "Clean up getRenderResolution()"
-1f587dde2 "Fix AvatarPreview"
-b550e720b "Update networked-aframe dependency" [aframe migration](https://github.com/mozilla/hubs/pull/5536)
-d458aa3b9 "Introduce Audio PanningQuality preference"
+944fe084f Fix pen drawing color
+2ecf2243b Fix darkened MeshBasicMaterial lightMap
+9cda2d8b6 Upgrade Three.js to r141
+771f6a277 Force ToolbarMicButton reference update in every render
+08a8f93bb Improve useVolume refresh to avoid react re-renders
+aa957ca2d Remove all event handler when component is removed
+2b4c257d4 Enable the virtual joysticks by default on mobiles
+6aa3ba836 Always visible and fixed position virtual joysticks
+cafc270b6 Skip Physics in super-spawner in the scene preview
+4d16b3729 Prevent fullscreen request in fullscreen mode
+56fd019da Release texture image more properly
+78b465023 Restore derivatives support and limit the uniform vectors number
+6dcb99a67 Update audio-debug fragment shader waves blur level
+563c04919 Add Safari compat for the audio debugger
+fa9c92cbd Adjust Right joystick rotation speed.
+3e6f2148f [wsxiaoys] Fix share screen toggle.
+59e86e42d Introduce slider for max resolution preference
+7fa61c4c2 Fix Enable VirtualJoystick preference.
+74bd374c0 Clean up getRenderResolution()
+1f587dde2 Fix AvatarPreview
+b550e720b Update networked-aframe dependency" [aframe migration](https://github.com/mozilla/hubs/pull/5536)
+d458aa3b9 Introduce Audio PanningQuality preference
 ```
 
 Reticulum:
