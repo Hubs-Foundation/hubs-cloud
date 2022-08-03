@@ -28,6 +28,9 @@ d1d1464e4 "Signing modal issues"
 1113bc11c "Remove tool bar UI background"
 cfa9fbf0c "Use low quality audio panning mode for Android"
 b87189a6f "Update privacy policy and terms URLs"
+1deaf3aa9 "Band-aid for physics-system crash"
+cd8e2a12d "Extract only required references at Sketchfab Zip worker"
+f16518fdc "Upgrade to Node LTS (16) and Webpack 5"
 ```
 
 Reticulum:
