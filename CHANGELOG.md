@@ -6,9 +6,10 @@ Contributions from the community are marked with [square brackets].
 
 Hubs:
 
-https://github.com/mozilla/hubs/compare/hc.test.2022-07-06...hc.test.2022-08-02
+https://github.com/mozilla/hubs/compare/hc.test.2022-07-06...hc.test.2022-08-08
 
 ```
+105fb16ac Fix regressions from webpack upgrade
 84a19016b "Media audio can be very loud on room entry and scene changes"
 cce5562ad "Revert FixDarkenedVideoTextureTarget"
 5689032ef Revert "Merge pull request #5604 from mozilla/FixDarkenedVideoTextureTarget" null
