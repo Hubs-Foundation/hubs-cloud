@@ -4,6 +4,12 @@
 
 Contributions from the community are marked with [square brackets].
 
+Community Contriubtions: 
+
+leonardoazzi -  769f5ec4e  
+
+Vinecntfretin - 1fd11a800
+
 Hubs:
 
 https://github.com/mozilla/hubs/compare/hc.test.2022-07-06...hc.test.2022-08-08
@@ -14,8 +20,8 @@ https://github.com/mozilla/hubs/compare/hc.test.2022-07-06...hc.test.2022-08-08
 cce5562ad "Revert FixDarkenedVideoTextureTarget"
 5689032ef Revert "Merge pull request #5604 from mozilla/FixDarkenedVideoTextureTarget" null
 c189ac9a5 "Fix darkened video-texture-target"
-1fd11a800 "Fix French translation of enable-on-screen-joystick-right"
-769f5ec4e "Brazilian Portuguese locale update"
+1fd11a800 [Fix French translation of enable-on-screen-joystick-right]
+769f5ec4e [Brazilian Portuguese locale update]
 7c7adb1f2 "Fix issue switching between scenes with many entities"
 e0fa6022f "Fix pen on touchscreen devices"
 ed12a5ad0 "New Entity Framework"
