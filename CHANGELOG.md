@@ -58,7 +58,7 @@ Packages that will be updated in this release are marked with an asterisk in the
 |---|------------------------------------------------------------|
 |   | mozillareality/ita/0.0.1/20211117212826                    |
 | * | mozillareality/reticulum/1.0.1/20220802042649              |
-| * | mozillareality/hubs/1.0.0/20220803144554                   |
+| * | mozillareality/hubs/1.0.0/20220826022110                   |
 |   | mozillareality/pgbouncer/1.12.0/20191106234457             |
 |   | mozillareality/spoke/1.0.0/20220405230707                  |
 |   | mozillareality/certbot/1.0.0/20191224043510                |
