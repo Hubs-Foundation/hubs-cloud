@@ -1,4 +1,73 @@
 
+
+## 2022-09-05
+
+Contributions from the community are marked with [square brackets].
+
+Community Contriubtions: 
+
+leonardoazzi -  769f5ec4e  
+
+Vinecntfretin - 1fd11a800
+
+Hubs:
+
+https://github.com/mozilla/hubs/compare/hc.test.2022-07-06...hc.test.2022-08-08
+
+```
+105fb16ac Fix regressions from webpack upgrade
+84a19016b "Media audio can be very loud on room entry and scene changes"
+cce5562ad "Revert FixDarkenedVideoTextureTarget"
+5689032ef Revert "Merge pull request #5604 from mozilla/FixDarkenedVideoTextureTarget" null
+c189ac9a5 "Fix darkened video-texture-target"
+1fd11a800 [Fix French translation of enable-on-screen-joystick-right]
+769f5ec4e [Brazilian Portuguese locale update]
+7c7adb1f2 "Fix issue switching between scenes with many entities"
+e0fa6022f "Fix pen on touchscreen devices"
+ed12a5ad0 "New Entity Framework"
+778e02c51 "Resize textures for iOS in low material quality mode."
+49a29f42f "Hubstrky 446"
+8aced413f "Fix darkened camera view"
+3afe8a44c "Set a default theme to fix the rest button"
+0adaf1d2f "Force AppLogo refresh when system theme changes"
+6bf3af8f5 "Revert \"Remove tool bar UI background\""
+d1d1464e4 "Signing modal issues"
+1113bc11c "Remove tool bar UI background"
+cfa9fbf0c "Use low quality audio panning mode for Android"
+b87189a6f "Update privacy policy and terms URLs"
+1deaf3aa9 "Band-aid for physics-system crash"
+cd8e2a12d "Extract only required references at Sketchfab Zip worker"
+f16518fdc "Upgrade to Node LTS (16) and Webpack 5"
+```
+
+Reticulum:
+
+https://github.com/mozilla/reticulum/compare/hc.test.2022-07-06...hc.test.2022-08-02
+
+```
+589799ab touch readme
+7edad9f7 Add media-src CSP
+2e8b9e47 Create protected endpoint for getting max ccu in a timerange
+8fd1413f Rewrite domains in assets
+bc1c8796 Fix typo
+```
+
+Packages that will be updated in this release are marked with an asterisk in the chart below.
+
+|   | Packages                                                   |
+|---|------------------------------------------------------------|
+|   | mozillareality/ita/0.0.1/20211117212826                    |
+| * | mozillareality/reticulum/1.0.1/20220802042649              |
+| * | mozillareality/hubs/1.0.0/20220826022110                   |
+|   | mozillareality/pgbouncer/1.12.0/20191106234457             |
+|   | mozillareality/spoke/1.0.0/20220405230707                  |
+|   | mozillareality/certbot/1.0.0/20191224043510                |
+|   | mozillareality/youtube-dl-api-server/0.4/20220217230007    |
+|   | mozillareality/janus-gateway/2.0.1/20211220195030          |
+|   | mozillareality/postgrest/5.2.0/20190130035107              |
+|   | mozillareality/polycosm-static-assets/1.0.0/20200320162152 |
+|   | mozillareality/coturn/4.5.3.0/20200422002445               |
+
 ## 2022-08-01
 
 Contributions from the community are marked with [square brackets].
