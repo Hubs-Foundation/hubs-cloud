@@ -126,6 +126,9 @@ Packages that will be updated in this release are marked with an asterisk in the
 
 ## 2022-07-05
 
+**Breaking Changes**: Large portions of A-Frame library internals were removed (MozillaReality/aframe#34), and it is no longer compatible
+with custom client code using the A-Frame library APIs nor community A-Frame components. 
+
 Contributions from the community are marked with [square brackets].
 
 Hubs:
