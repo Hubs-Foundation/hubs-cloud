@@ -1,5 +1,5 @@
 
-## 2022-10-TBA
+## 2022-10-5
 
 
 https://github.com/mozilla/hubs/compare/hc.test.2022-08-08...hc.test.2022-09-07
