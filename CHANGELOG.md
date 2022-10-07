@@ -21,6 +21,7 @@ a02cadf53 "dialog-token-refresh"
 ```
 
 Reticulum:
+https://github.com/mozilla/reticulum/compare/hc.test.2022-08-02...hc.test.2022-09-08
 ```
 fb204507 "get_dialog-pod fixes for turkeymode"
 1d42d591 "Update janus_load_status.ex'
