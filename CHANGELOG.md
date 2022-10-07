@@ -1,4 +1,46 @@
 
+## 2022-10-5
+
+
+https://github.com/mozilla/hubs/compare/hc.test.2022-08-08...hc.test.2022-09-07
+
+Hub:
+```
+1508e10d5 "bug/banner-fonts"
+550a27d0e "fix-pref-drowpdown-arrow"
+60a04b9b2 "hc-sep22-hotfixes"
+65594ff6b "button-names"
+6989217b6 "remove-quilt"
+af1c6d8c3 "loop-animation-start-offset"
+6543d8ed5 "fix-locale-extraction"
+340f14fb1 "fix-scene-js"
+a02cadf53 "dialog-token-refresh"
+13a80cfa9 "fix-bot-track"
+82ccf973e "load-media"
+6fee45203 "add-typescript"
+```
+
+Reticulum:
+https://github.com/mozilla/reticulum/compare/hc.test.2022-08-02...hc.test.2022-09-08
+```
+fb204507 "get_dialog-pod fixes for turkeymode"
+1d42d591 "Update janus_load_status.ex'
+```
+Packages that will be updated in this release are marked with an asterisk in the chart below.
+
+|   | Packages                                                   |
+|---|------------------------------------------------------------|
+|   | mozillareality/ita/0.0.1/20211117212826                    |
+| * | mozillareality/reticulum/1.0.1/20220911232411              |
+| * | mozillareality/hubs/1.0.0/20220915030526                   |
+|   | mozillareality/pgbouncer/1.12.0/20191106234457             |
+|   | mozillareality/spoke/1.0.0/20220405230707                  |
+|   | mozillareality/certbot/1.0.0/20191224043510                |
+|   | mozillareality/youtube-dl-api-server/0.4/20220217230007    |
+|   | mozillareality/janus-gateway/2.0.1/20211220195030          |
+|   | mozillareality/postgrest/5.2.0/20190130035107              |
+|   | mozillareality/polycosm-static-assets/1.0.0/20200320162152 |
+|   | mozillareality/coturn/4.5.3.0/20200422002445               |
 
 ## 2022-09-05
 
