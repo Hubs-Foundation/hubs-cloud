@@ -3,29 +3,17 @@
 Hubs:
 
 ```
-408c09e24 "fix-avatar-page" 
-bab932e12 "cleanup-main-tick "
-94dc8798c "update-three" 
-7df08a0cd "compose "
-1508e10d5 "bug/banner-fonts" 
-550a27d0e "fix-pref-drowpdown-arrow" 
-60a04b9b2 "hc-sep22-hotfixes" 
-65594ff6b "button-names" 
-6989217b6 "remove-quilt" 
-af1c6d8c3 "loop-animation-start-offset" 
-6543d8ed5 "bug/fix-locale-extraction" 
-340f14fb1 "fix-scene-js"
-a02cadf53 "dialog-token-refresh" 
-13a80cfa9 "fix-bot-track" 
-82ccf973e "feature/load-media" 
-6fee45203 "add-typescript"
+0a02497ee "Merge pull request #5747 from mozilla/feature/turkey-swaps_admin-menu.js+HC_mode"
+a5a05783d "turkey-swaps/admin-menu.js+HC mode"
+56b370446 "Merge pull request #5743 from mozilla/feature/biojobfixes"
+8553b54d9 "Update hab-wrap-and-push.sh"
 ```
 
 |   | Packages                                                   |
 |---|------------------------------------------------------------|
 |   | mozillareality/ita/0.0.1/20211117212826                    |
-| * | mozillareality/reticulum/1.0.1/20220911232411              |
-| * | mozillareality/hubs/1.0.0/20221012211255                   |
+|   | mozillareality/reticulum/1.0.1/20220911232411              |
+| * | mozillareality/hubs/1.0.0/20221021041854                  |
 |   | mozillareality/pgbouncer/1.12.0/20191106234457             |
 |   | mozillareality/spoke/1.0.0/20220405230707                  |
 |   | mozillareality/certbot/1.0.0/20191224043510                |
