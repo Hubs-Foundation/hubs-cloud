@@ -1,10 +1,33 @@
+## 2022-11-03
+Hubs:
+
+```
+0a02497ee "Merge pull request #5747 from mozilla/feature/turkey-swaps_admin-menu.js+HC_mode"
+a5a05783d "turkey-swaps/admin-menu.js+HC mode"
+56b370446 "Merge pull request #5743 from mozilla/feature/biojobfixes"
+8553b54d9 "Update hab-wrap-and-push.sh"
+```
+
+|   | Packages                                                   |
+|---|------------------------------------------------------------|
+|   | mozillareality/ita/0.0.1/20211117212826                    |
+|   | mozillareality/reticulum/1.0.1/20220911232411              |
+| * | mozillareality/hubs/1.0.0/20221021041854                  |
+|   | mozillareality/pgbouncer/1.12.0/20191106234457             |
+|   | mozillareality/spoke/1.0.0/20220405230707                  |
+|   | mozillareality/certbot/1.0.0/20191224043510                |
+|   | mozillareality/youtube-dl-api-server/0.4/20220217230007    |
+|   | mozillareality/janus-gateway/2.0.1/20211220195030          |
+|   | mozillareality/postgrest/5.2.0/20190130035107              |
+|   | mozillareality/polycosm-static-assets/1.0.0/20200320162152 |
+|   | mozillareality/coturn/4.5.3.0/20200422002445               |
 
 ## 2022-10-5
 
-
+Hub:
 https://github.com/mozilla/hubs/compare/hc.test.2022-08-08...hc.test.2022-09-07
 
-Hub:
+
 ```
 1508e10d5 "bug/banner-fonts"
 550a27d0e "fix-pref-drowpdown-arrow"
