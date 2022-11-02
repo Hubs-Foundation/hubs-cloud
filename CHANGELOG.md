@@ -1,6 +1,6 @@
 
 ## 2022-11-03
-hubs:
+Hubs:
 
 ```
 408c09e24 "fix-avatar-page" 
@@ -40,7 +40,7 @@ a02cadf53 "dialog-token-refresh"
 
 Hubs: 
 https://github.com/mozilla/hubs/compare/hc.test.2022-08-08...hc.test.2022-09-07
-,,,
+```
 1508e10d5 "bug/banner-fonts"
 550a27d0e "fix-pref-drowpdown-arrow"
 60a04b9b2 "hc-sep22-hotfixes"
@@ -53,13 +53,13 @@ a02cadf53 "dialog-token-refresh"
 13a80cfa9 "fix-bot-track"
 82ccf973e "load-media"
 6fee45203 "add-typescript"
-,,,
+```
 
 Reticulum
-'''
+```
 fb204507 "get_dialog-pod fixes for turkeymode"
 1d42d591 "Update janus_load_status.ex"
-,,,
+```
 Packages that will be updated in this release are marked with an asterisk in the chart below.
 
 |   | Packages                                                   |
