@@ -1,3 +1,48 @@
+## 2023-3-01 
+Hubs: 
+ 
+```
+6e8f23974 "Fixes Seturity issue with bio tool"
+ce4807c46 "Adds support for new Tooltips. Implemenets new syle and new storybook stroies for tips"
+f81f203b3 "Fixes issues with that breaks storybook"
+4c57ce2b2 "Fixes word spaceing in spawned messages"
+9da62c798 "fixes issues with using slash command"
+43730ec3f "Makes it so we dont import app.ts into the avatar preview page"
+ad175eee4 "Updates Japanese file" - *
+779a2cb16 "Remove scene deletion becuase feature doesnt exist in backend"
+608f52d85 "Revert Hardcode HMC as a hub orgin" 
+1fc6826c3 "Enable both range request and LOD prgressvie loading"
+8d333721c "Re-enable eslint rules, reformat files with prettier"
+5ec5f987c "Improvement to some networking edge cases"
+f805a1bfd "Subscrible to messages on the Hubs Phoenix channel before joining to prevent missed messages"
+b9970caf5 "Convert networking system to typescript"
+cba6296f6 "Improvement to screen capature" - *
+8117da934 "Removing 3D game fuctionality from scene page to prevent regression"
+eda23d28f "Fixed bug with loading Null or Undefined"
+868600e5c "Fixed regression found in #5793"
+c30675025 "Workround to ingnore LOD SkinnedMesh" #5782 
+0f14b0669 "Improve the progresseive loading + Lod Feature" #5774 
+4f531a674 "Prevents losing the url hash while moving to a new hub" #5758 *
+31b005f8d "Improve latency of nearspark processing" #5457 * 
+87ace2417 "Fixes from #4268" #5464 * 
+5339fbfd2 "Remove avatar-rig for audio zone tracking if not entering secne yet" #5553 * 
+ca43d8d57 "Add glTF MSFT_Lod extension" #5713
+1af56c451 "Gives room owner support to disable/enable voice and chat" #5731 
+ecadbbc62 "Adds support for post processging effects" #5742
+8da1bdaa5 "Add toast notfication for record mode" #2 * 
+```
+
+Reticlum: 
+
+
+
+
+
+
+
+
+
+
 ## 2022-11-03
 Hubs:
 
