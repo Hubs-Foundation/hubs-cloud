@@ -7,23 +7,23 @@ Hubs:
 https://github.com/mozilla/hubs/compare/hc.test.2022-11-02...hc.test.2022-12-09
  
 ```
-6e8f23974 "Fixes Security bug with bio tool"
-ce4807c46 "Adds support for new Tooltips. Implemenets of new syle and new storybook stories for tips"
-f81f203b3 "Fixes issues with that breaks storybook"
-4c57ce2b2 "Fixes word spaceing in spawned messages"
-9da62c798 "fixes issues with using slash command"
-43730ec3f "Makes it so we dont import app.ts into the avatar preview page"
-ad175eee4 "Updates Japanese file" - *
-779a2cb16 "Remove scene deletion becuase feature doesnt exist in backend"
-608f52d85 "Revert Hardcode HMC as a hub orgin" 
-1fc6826c3 "Enable both range request and LOD prgressvie loading"
-8d333721c "Re-enable eslint rules, reformat files with prettier"
-5ec5f987c "Improvement to some networking edge cases"
-f805a1bfd "Subscrible to messages on the Hubs Phoenix channel before joining to prevent missed messages"
-b9970caf5 "Convert networking system to typescript"
-cba6296f6 "Improvement to screen capature" - *
-8117da934 "Removing 3D game fuctionality from scene page to prevent regression"
-eda23d28f "Fixed bug with loading Null or Undefined"
+6e8f23974 "Fixes Security bug with bio tool" #5851
+ce4807c46 "Adds support for new Tooltips. Implemenets of new syle and new storybook stories for tips" #5805
+f81f203b3 "Fixes issues with that breaks storybook" #5844
+4c57ce2b2 "Fixes word spaceing in spawned messages" #5836
+9da62c798 "fixes issues with using slash command" #5831
+43730ec3f "Makes it so we dont import app.ts into the avatar preview page" #5827
+ad175eee4 "Updates Japanese file" - * #5658
+779a2cb16 "Remove scene deletion becuase feature doesnt exist in backend" #5828
+608f52d85 "Revert Hardcode HMC as a hub orgin"  #5824
+1fc6826c3 "Enable both range request and LOD prgressvie loading" #5795
+8d333721c "Re-enable eslint rules, reformat files with prettier" #5817
+5ec5f987c "Improvement to some networking edge cases" #5813
+f805a1bfd "Subscrible to messages on the Hubs Phoenix channel before joining to prevent missed messages" #5811
+b9970caf5 "Convert networking system to typescript" #5802
+cba6296f6 "Improvement to screen capature" - *  #5718
+8117da934 "Removing 3D game fuctionality from scene page to prevent regression" #5797
+eda23d28f "Fixed bug with loading Null or Undefined" #5798
 868600e5c "Fixed regression found in #5793"
 c30675025 "Workround to ingnore LOD SkinnedMesh" #5782 
 0f14b0669 "Improve the progresseive loading + Lod Feature" #5774 
