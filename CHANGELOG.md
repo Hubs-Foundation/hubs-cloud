@@ -13,7 +13,7 @@ f81f203b3 "Fixes issues with that breaks storybook" #5844
 4c57ce2b2 "Fixes word spaceing in spawned messages" #5836
 9da62c798 "fixes issues with using slash command" #5831
 43730ec3f "Makes it so we dont import app.ts into the avatar preview page" #5827
-ad175eee4 "Updates Japanese file" - * #5658
+ad175eee4 "Updates Japanese file" * #5658
 779a2cb16 "Remove scene deletion becuase feature doesnt exist in backend" #5828
 608f52d85 "Revert Hardcode HMC as a hub orgin"  #5824
 1fc6826c3 "Enable both range request and LOD prgressvie loading" #5795
