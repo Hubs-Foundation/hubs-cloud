@@ -1,9 +1,14 @@
-## 2023-3-01 
+## 2023-2-01 
+* = User submittted PR. 
+
+
 Hubs: 
+
+https://github.com/mozilla/hubs/compare/hc.test.2022-11-02...hc.test.2022-12-09
  
 ```
-6e8f23974 "Fixes Seturity issue with bio tool"
-ce4807c46 "Adds support for new Tooltips. Implemenets new syle and new storybook stroies for tips"
+6e8f23974 "Fixes Security bug with bio tool"
+ce4807c46 "Adds support for new Tooltips. Implemenets of new syle and new storybook stories for tips"
 f81f203b3 "Fixes issues with that breaks storybook"
 4c57ce2b2 "Fixes word spaceing in spawned messages"
 9da62c798 "fixes issues with using slash command"
@@ -34,8 +39,25 @@ ecadbbc62 "Adds support for post processging effects" #5742
 
 Reticlum: 
 
+https://github.com/mozilla/reticulum/compare/hc.test.2022-10-07...hc.test.2022-12-09
 
-
+```
+8e6549ba "fixed discord mute feature" #638 
+54b96346 "Adds admin mute feature to backend" #629 
+```
+|   | Packages                                                   |
+|---|------------------------------------------------------------|
+|   | mozillareality/ita/0.0.1/20211117212826                    |
+| * | mozillareality/reticulum/1.0.1/20221207161159              |
+| * | mozillareality/hubs/1.0.0/20221207160351                   |
+|   | mozillareality/pgbouncer/1.12.0/20191106234457             |
+|   | mozillareality/spoke/1.0.0/20220405230707                  |
+|   | mozillareality/certbot/1.0.0/20191224043510                |
+|   | mozillareality/youtube-dl-api-server/0.4/20220217230007    |
+|   | mozillareality/janus-gateway/2.0.1/20211220195030          |
+|   | mozillareality/postgrest/5.2.0/20190130035107              |
+|   | mozillareality/polycosm-static-assets/1.0.0/20200320162152 |
+|   | mozillareality/coturn/4.5.3.0/20200422002445               |
 
 
 
