@@ -8,33 +8,33 @@ https://github.com/mozilla/hubs/compare/hc.test.2022-11-02...hc.test.2022-12-09
  
 ```
 6e8f23974 "Fixes Security bug with bio tool" #5851
-ce4807c46 "Adds support for new Tooltips. Implemenets of new syle and new storybook stories for tips" #5805
-f81f203b3 "Fixes issues with that breaks storybook" #5844
-4c57ce2b2 "Fixes word spaceing in spawned messages" #5836
+ce4807c46 "Adds support for new Tooltips. Implements of new style and new storybook stories for tips" #5805
+f81f203b3 "Fixes issues with storybook" #5844
+4c57ce2b2 "Fixes word spacing in spawned messages" #5836
 9da62c798 "fixes issues with using slash command" #5831
-43730ec3f "Makes it so we dont import app.ts into the avatar preview page" #5827
+43730ec3f "Makes it so we don't import app.ts into the avatar preview page" #5827
 ad175eee4 "Updates Japanese file" * #5658
-779a2cb16 "Remove scene deletion becuase feature doesnt exist in backend" #5828
-608f52d85 "Revert Hardcode HMC as a hub orgin"  #5824
-1fc6826c3 "Enable both range request and LOD prgressvie loading" #5795
+779a2cb16 "Remove scene deletion because the feature doesn't exist on the backend" #5828
+608f52d85 "Revert Hardcode HMC as a hub origin"  #5824
+1fc6826c3 "Enable both range request and LOD progressive loading" #5795
 8d333721c "Re-enable eslint rules, reformat files with prettier" #5817
 5ec5f987c "Improvement to some networking edge cases" #5813
-f805a1bfd "Subscrible to messages on the Hubs Phoenix channel before joining to prevent missed messages" #5811
+f805a1bfd "Subscribe to messages on the Hubs Phoenix channel before joining to prevent missed messages" #5811
 b9970caf5 "Convert networking system to typescript" #5802
-cba6296f6 "Improvement to screen capature" - *  #5718
-8117da934 "Removing 3D game fuctionality from scene page to prevent regression" #5797
+cba6296f6 "Improvement to screen capture" - *  #5718
+8117da934 "Removing 3D game functionality from scene page to prevent regression" #5797
 eda23d28f "Fixed bug with loading Null or Undefined" #5798
 868600e5c "Fixed regression found in #5793"
-c30675025 "Workround to ingnore LOD SkinnedMesh" #5782 
-0f14b0669 "Improve the progresseive loading + Lod Feature" #5774 
-4f531a674 "Prevents losing the url hash while moving to a new hub" #5758 *
-31b005f8d "Improve latency of nearspark processing" #5457 * 
+c30675025 "Workaround to ignore LOD SkinnedMesh" #5782 
+0f14b0669 "Improve the progressive loading + LOD Feature" #5774 
+4f531a674 "Prevents losing the URL hash while moving to a new hub" #5758 *
+31b005f8d "Improve latency of near spark processing" #5457 * 
 87ace2417 "Fixes from #4268" #5464 * 
-5339fbfd2 "Remove avatar-rig for audio zone tracking if not entering secne yet" #5553 * 
+5339fbfd2 "Remove avatar-rig for audio zone tracking if not entering scene yet" #5553 * 
 ca43d8d57 "Add glTF MSFT_Lod extension" #5713
 1af56c451 "Gives room owner support to disable/enable voice and chat" #5731 
-ecadbbc62 "Adds support for post processging effects" #5742
-8da1bdaa5 "Add toast notfication for record mode" #2 * 
+ecadbbc62 "Adds support for post-processing effects" #5742
+8da1bdaa5 "Add toast notification for record mode" #2 *
 ```
 
 Reticlum: 
