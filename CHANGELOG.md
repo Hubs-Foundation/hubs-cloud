@@ -49,7 +49,7 @@ https://github.com/mozilla/reticulum/compare/hc.test.2022-10-07...hc.test.2022-1
 |---|------------------------------------------------------------|
 |   | mozillareality/ita/0.0.1/20211117212826                    |
 | * | mozillareality/reticulum/1.0.1/20221207161159              |
-| * | mozillareality/hubs/1.0.0/20221207160351                   |
+| * | mozillareality/hubs/1.0.0/20230104164505                   |
 |   | mozillareality/pgbouncer/1.12.0/20191106234457             |
 |   | mozillareality/spoke/1.0.0/20220405230707                  |
 |   | mozillareality/certbot/1.0.0/20191224043510                |
