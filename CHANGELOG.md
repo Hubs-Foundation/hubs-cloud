@@ -7,6 +7,7 @@ Hubs:
 https://github.com/mozilla/hubs/compare/hc.test.2022-11-02...hc.test.2022-12-09
  
 ```
+afaf79f4e "reset padding on side chat logs"  #5836
 6e8f23974 "Fixes Security bug with bio tool" #5851
 ce4807c46 "Adds support for new Tooltips. Implements of new style and new storybook stories for tips" #5805
 f81f203b3 "Fixes issues with storybook" #5844
