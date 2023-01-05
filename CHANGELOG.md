@@ -1,7 +1,13 @@
-## 2023-3-01 
+## 2023-2-01 
+\* = User submittted PR. 
+
+
 Hubs: 
+
+https://github.com/mozilla/hubs/compare/hc.test.2022-11-02...hc.test.2022-12-09
  
 ```
+afaf79f4e "reset padding on side chat logs"  #5836
 6e8f23974 "Fixes Security bug with bio tool" #5851
 ce4807c46 "Adds support for new Tooltips. Implements of new style and new storybook stories for tips" #5805
 f81f203b3 "Fixes issues with storybook" #5844
@@ -34,8 +40,25 @@ ecadbbc62 "Adds support for post-processing effects" #5742
 
 Reticlum: 
 
+https://github.com/mozilla/reticulum/compare/hc.test.2022-10-07...hc.test.2022-12-09
 
-
+```
+8e6549ba "fixed discord mute feature" #638 
+54b96346 "Adds admin mute feature to backend" #629 
+```
+|   | Packages                                                   |
+|---|------------------------------------------------------------|
+|   | mozillareality/ita/0.0.1/20211117212826                    |
+| * | mozillareality/reticulum/1.0.1/20221207161159              |
+| * | mozillareality/hubs/1.0.0/20230104164505                   |
+|   | mozillareality/pgbouncer/1.12.0/20191106234457             |
+|   | mozillareality/spoke/1.0.0/20220405230707                  |
+|   | mozillareality/certbot/1.0.0/20191224043510                |
+|   | mozillareality/youtube-dl-api-server/0.4/20220217230007    |
+|   | mozillareality/janus-gateway/2.0.1/20211220195030          |
+|   | mozillareality/postgrest/5.2.0/20190130035107              |
+|   | mozillareality/polycosm-static-assets/1.0.0/20200320162152 |
+|   | mozillareality/coturn/4.5.3.0/20200422002445               |
 
 
 
