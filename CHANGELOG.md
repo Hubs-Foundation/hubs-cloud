@@ -4,17 +4,16 @@
 Hubs:
 
 ```
-59143b241 Merge pull request #5880 from mozilla/feature/bpt
-76acceeb9 Merge pull request #5869 from mozilla/fix-constants
-e00a9097e Merge pull request #5868 from mozilla/tooltip-canvas-block-fix
-fe6dc1803 Merge pull request #5858 from lavender-snow/locale/ja_202212
-7de5e7f05 Merge pull request #5853 from mozilla/bug/hotfix-app-scene
-5334ca75c Merge pull request #5848 from mozilla/fix/chat-logs-padding
-ff47da501 Merge pull request #5842 from mozilla/feature/network-debug-system
-8a8d7762e Merge pull request #5840 from mozilla/feature/object-menu-stubs
-8ef035896 Merge pull request #5839 from mozilla/feature/ecs-debug-utils-in-console
-d1d378d13 Merge pull request #5838 from mozilla/remove-unused-code-and-docs
-5950b4183 Merge pull request #5837 from mozilla/bug/teleporting-on-nav-mesh
+
+76acceeb9 "Fixes wrong constants paths in compile warning"  #5869 
+e00a9097e "Fixes issues found in #5859"  #5868 
+fe6dc1803 "Japenese file update" #5858 
+7de5e7f05 "Bug fix for APP.scene undefined"  #5853
+ff47da501 "Adds tools for networked object debugging" #5842 
+8a8d7762e "Create object mentu stub for bitec" #5840
+8ef035896 "Exposes bitecs utility fuctionality for debugging" #5839 
+d1d378d13 "Removes outdated docs and code related to spawn contoroller" #5838 
+5950b4183 "fixes teleporting on invisible navmshes" #5837 
 
 ```
 Ret: 
