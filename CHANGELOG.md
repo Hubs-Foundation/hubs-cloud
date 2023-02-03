@@ -5,24 +5,21 @@ Hubs:
 
 ```
 
-76acceeb9 "Fixes wrong constants paths in compile warning"  #5869 
-e00a9097e "Fixes issues found in #5859"  #5868 
-fe6dc1803 "Japenese file update" #5858 
-7de5e7f05 "Bug fix for APP.scene undefined"  #5853
+76acceeb9 "Fix to wrong constants paths in compile warning"  #5869 
+e00a9097e "Fix to Cameera contol on mobile with virtual joystick enabled"  #5868 #5859
+fe6dc1803 "Update to Japenese language translation for hubs" #5858 
 ff47da501 "Adds tools for networked object debugging" #5842 
-8a8d7762e "Create object mentu stub for bitec" #5840
-8ef035896 "Exposes bitecs utility fuctionality for debugging" #5839 
-d1d378d13 "Removes outdated docs and code related to spawn contoroller" #5838 
-5950b4183 "fixes teleporting on invisible navmshes" #5837 
+8a8d7762e "Create object menu stub for bitec" #5840
+8ef035896 "Exposes bitec's utility fuctionality for debugging" #5839 
+d1d378d13 "Remove Spawn controller from documentation and code" #5838 
+5950b4183 "Fix bug with teleporting on invisible navmshes" #5837 
 
 ```
 Ret: 
 
 ```
-24409423 Merge pull request #657 from mozilla/fix/stats-partition-ranges
-1f2c2c4b Merge pull request #659 from mozilla/hc-pkgcaller_edit
-a92d4cc4 Merge pull request #658 from mozilla/workflow_create
-13a4c2fb Merge pull request #643 from mozilla/bug/df-format
+24409423 "Fix for missing stats partitions" #657 
+13a4c2fb "Fix bug for estimating disk use" #643 
 ```
 
 |   | Packages                                                   |
