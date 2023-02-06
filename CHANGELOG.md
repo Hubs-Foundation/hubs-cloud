@@ -6,13 +6,13 @@ Hubs:
 ```
 
 76acceeb9 "Fix to wrong constants paths in compile warning"  #5869 
-e00a9097e "Fix to Cameera contol on mobile with virtual joystick enabled"  #5868 #5859
+e00a9097e "Fix to Camera contol on mobile with virtual joystick enabled"  #5868 #5859
 fe6dc1803 "Update to Japenese language translation for hubs" #5858 
 ff47da501 "Adds tools for networked object debugging" #5842 
 8a8d7762e "Create object menu stub for bitec" #5840
 8ef035896 "Exposes bitec's utility fuctionality for debugging" #5839 
 d1d378d13 "Remove Spawn controller from documentation and code" #5838 
-5950b4183 "Fix bug with teleporting on invisible navmshes" #5837 
+5950b4183 "Fix bug with teleporting on invisible nav mash" #5837 
 
 ```
 Ret: 
