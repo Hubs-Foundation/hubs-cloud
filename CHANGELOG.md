@@ -1,5 +1,5 @@
 
-## 2023-02-TBA
+## 2023-02-06
 
 Hubs:
 
@@ -25,7 +25,7 @@ Ret:
 |   | Packages                                                   |
 |---|------------------------------------------------------------|
 |   | mozillareality/ita/0.0.1/20211117212826                    |
-| * | mozillareality/reticulum/1.0.1/20230109224638             |
+| * | mozillareality/reticulum/1.0.1/20230109224638              |
 | * | mozillareality/hubs/1.0.0/20230109221430                   |
 |   | mozillareality/pgbouncer/1.12.0/20191106234457             |
 |   | mozillareality/spoke/1.0.0/20220405230707                  |
