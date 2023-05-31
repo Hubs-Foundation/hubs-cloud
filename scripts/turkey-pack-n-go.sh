@@ -57,11 +57,11 @@ for f in $(cat filelist); do
     printf "\n uploading: $f..."
     curl -s -o /dev/null -w "%{http_code}" -X POST -F "file=@$f" -H "turkeyauthtoken:$turkeyauthtoken" -H "addpath:/$backupName/$(dirname $f)" https://$hubdomain/api/ita/upload
 done
-echo -e "done uploading \n"
 
 # call to restore with phx_secret
 secret_key=$(cat /hab/svc/reticulum/config/config.toml | grep -e 'secret_key = ' | sed 's/secret_key = //'|tr -d '"')
 secret_key_base=$(cat /hab/svc/reticulum/config/config.toml | grep -e 'secret_key_base = ' | sed 's/secret_key_base = //'|tr -d '"')
 
+echo -e "\n---\n start restoring... \n"
 curl -H "turkeyauthtoken:$turkeyauthtoken" -H "secret_key:$secret_key" -H "secret_key_base:$secret_key_base" https://$hubdomain/api/ita/restore?backupName=$backupName
 
