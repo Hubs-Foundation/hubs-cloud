@@ -26,7 +26,7 @@ function make_pg_dump(){
                 ;;
         esac
     done
-    cmd='pg_dump postgres://'$user':'$password'@'$host'/'$dbname' -f /storage/pg_dump.sql'
+    cmd='pg_dump postgres://'$user':'$password'@'$host':5432/'$dbname' -f /storage/pg_dump.sql'
     $cmd
     return 
 }
