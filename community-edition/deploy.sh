@@ -32,20 +32,18 @@
    read -p "Enter Smtp user:"  mail_user 
    read -p "Enter Smtp password": mail_pass
    read -p "Enter Smtp email:" mail_email 
- # cat org file to create new modefided file. 
-   original_yaml=$(cat chart.yam)
+
+
  # create new yaml file. 
-   modified_yaml=$(echo "$original_yaml" |
-    sed  "s/{{Namespace}}/$name/" |
-    sed  "s/{{NODE_COOKIE}}/$node_cookiee/" |
-    sed  "s/{{HubDomain}}/$hub_domain/" |
-    sed  "s/{{DBpass}}/$db_pass/" |
-    sed  "s/{{PermsKey}}/$PermsKey/" |
-    sed  "s/{{SmtpServer}}/$mail_server/" |
-    sed  "s/{{SmtpPort}}/$mail_port/" |
-    sed  "s/{{SmtpUser}}/$mail_user/" |
-    sed  "s/{{SmtpPass}}/$mail_pass/" |
-    sed  "s/{{UserEmail}}/$mail_email/"|
-    sed  "s%{{JWK}}%$jwk%g"
-  )
-    echo $modified_yaml > render.yam
+    sed  "s/{{Namespace}}/$name/g" "$original_file" > "$updated_file"
+    sed  "s/{{NODE_COOKIE}}/$node_cookiee/" "$original_file" > "$updated_file"
+    sed  "s/{{HubDomain}}/$hub_domain/" "$original_file" > "$updated_file"
+    sed  "s/{{DBpass}}/$db_pass/" "$original_file" > "$updated_file"
+    sed  "s/{{PermsKey}}/$PermsKey/" "$original_file" > "$updated_file"
+    sed  "s/{{SmtpServer}}/$mail_server/" "$original_file" > "$updated_file"
+    sed  "s/{{SmtpPort}}/$mail_port/" "$original_file" > "$updated_file"
+    sed  "s/{{SmtpUser}}/$mail_user/" "$original_file" > "$updated_file"
+    sed  "s/{{SmtpPass}}/$mail_pass/" "$original_file" > "$updated_file"
+    sed  "s/{{UserEmail}}/$mail_email/" "$original_file" > "$updated_file"
+    sed  "s%{{JWK}}%$jwk%g"  "$original_file" > "$updated_file"
+  
