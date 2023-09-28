@@ -1,7 +1,7 @@
 #!/bin/bash
 
-export ADM_EMAIL="gtan@mozilla.com"
-export HUB_DOMAIN="tanfarming.com"
+export ADM_EMAIL="admin@example.com"
+export HUB_DOMAIN="example.com"
 
 export Namespace="hubs-ce"
 
