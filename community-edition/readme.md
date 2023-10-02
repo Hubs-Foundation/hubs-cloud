@@ -59,7 +59,7 @@ gcloud auth login
 - find the vm's external ip
 - dns
 - firewall
-```
+
 # example2 -- with managed kubernetes on gcp
 ### make a kubernetes environment
 ```
