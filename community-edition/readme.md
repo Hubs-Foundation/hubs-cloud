@@ -19,13 +19,20 @@ a "turn key" solution for a production ready hubs system.
 - smtp service `for login emails (optional)`
 
 # deploy to kubernetes
-`bash render_hcce.sh && kubectl apply -f `
+`bash render_hcce.sh && kubectl apply -f hcce.yaml`
+
+# expose the services
+- use `kubectl -n <hcce_namespace> get svc lb` to find it's external ip
+- on your dns service, route below domains to the external ip of lb service in hcce namespace
+    - <root_domain>
+    - assets.<root_domain>
+    - stream.<root_domain>
+    - cors.<root_domain>
 
 # https certs
 2 options
 - bring your own
 - use certbotbot
-
 
 # example -- with vm on gcp
 ## make a kubernetes environment
@@ -36,7 +43,7 @@ gcloud auth login
 ### install k3s with traefik disabled
 - because we need port 80 and 443
 ## deploy to kubernetes (link to steps above)
-## hook up the ingress for the vm
+## connect the ingress for the vm
 - dns
 - firewall
 
@@ -44,12 +51,15 @@ gcloud auth login
 ## make a kubernetes environment
 ### login gcp
 gcloud auth login
-### create gke cluster
-gcloud container clusters create hcce-test-1 --zone=us-central1-a
-### get creds for kubectl
-gcloud container clusters get-credentials --region us-central1-a hcce-test-1
-## deploy to kubernetes (link to steps above)
-## hook up the ingress
+```
+# create gke cluster
+gcloud container clusters create <my_default_gke_cluster> --zone=us-central1-a
+# get creds for kubectl
+gcloud container clusters get-credentials --region us-central1-a <my_default_gke_cluster>
+# deploy to kubernetes
+bash render_hcce.sh && kubectl apply -f hcce.yaml
+```
+## connect the ingress
 - find the external ip with `kubectl -n hcce get svc lb`
 - dns and firewall steps are the same <link to above>
 
