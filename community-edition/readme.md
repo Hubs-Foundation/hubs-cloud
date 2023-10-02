@@ -33,7 +33,7 @@ a "turn key" solution for a production ready hubs system.
     - use certbotbot
         - `bash render_cbb.sh && kubectl apply -f cbb.yaml`
 
-# example1 -- with vm on gcp
+# example -- with vm on gcp
 ### make a kubernetes environment
 replace `hcce-vm-1` and `us-central1-a` with your desired name and zone, check [official doc](https://cloud.google.com/sdk/gcloud/reference/compute/instances/create) for more options
 ```
@@ -60,7 +60,7 @@ gcloud auth login
 - dns
 - firewall
 
-# example2 -- with managed kubernetes on gcp
+# example -- with managed kubernetes on gcp
 ### make a kubernetes environment
 replace `hcce-gke-1` and `us-central1-a` with your desired name and zone, check [official doc](https://cloud.google.com/sdk/gcloud/reference/container/clusters/create) for more options
 ```
@@ -77,11 +77,13 @@ bash render_hcce.sh && kubectl apply -f hcce.yaml
 - find the external ip with `kubectl -n hcce get svc lb`
 - dns and firewall steps are the same <link to above>
 
-### example5 -- kubernetes on digitalocean
+### example -- kubernetes on digitalocean
 
-### example3 -- with ec2 on aws
+### example -- kubernetes on vultr
 
-### example4 -- with eks on aws
+### example -- with ec2 on aws
+
+### example -- with eks on aws
 
 
 # suggestions to make it production ready
