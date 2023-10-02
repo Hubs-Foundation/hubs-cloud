@@ -85,6 +85,9 @@ bash render_hcce.sh && kubectl apply -f hcce.yaml
 
 
 # suggestions to make it production ready
+- security
+    - password and keys overview
+    - add a waf
 - scalability
     - stateful services
         - pgsql 
@@ -96,7 +99,10 @@ bash render_hcce.sh && kubectl apply -f hcce.yaml
     - stateless services (all except reticulum and pgsql)
         - just run multiple replicas
         - use hpa
-- security
-    - password and keys
-    - add a waf
+- devops
+    - the yaml file is the entire infra on kubernetes, use a git to track changes and an ops pipeline to auto deploy
+        - ie put the yaml file on a github repo and use github action to deploy to your hosting env
+    - use dev env for staging/testing
+        - develop and integrate automated testing scripts into the ops pipeline
+
 
