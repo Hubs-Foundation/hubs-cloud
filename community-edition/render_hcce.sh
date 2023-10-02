@@ -1,6 +1,6 @@
 
-needs=("bash" "openssl" "npm")
-for cmd in "${needs[@]}"; do
+bins=("bash" "openssl" "npm")
+for cmd in "${bins[@]}"; do
     if ! command -v $cmd &> /dev/null; then
         echo "missing required binary: $cmd"
         return 1
@@ -48,7 +48,7 @@ export PGRST_JWT_SECRET='{"kty":"RSA","n":"uFXP_Vd35BAEs11XTlkxBIY84FFPCpY8rz-zc
 ###
 # openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048
 # export PERMS_KEY="$(echo -n "$(awk '{printf "%s\\\\n", $0}' private_key.pem)")"
-# sudo apt-get install npm && sudo npm install -g pem-jwk
+# # sudo apt-get install npm && sudo npm install -g pem-jwk
 # export PGRST_JWT_SECRET=$(pem-jwk public_key.pem)
 
 ### initial cert
