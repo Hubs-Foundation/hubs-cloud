@@ -48,8 +48,8 @@ gcloud auth login
 ### install k3s
 ```
 ### install k3s without traefik
-curl https://get.k3s.io/ | INSTALL_K3S_EXEC="--disable=traefik" sh -
-```
+- `curl https://get.k3s.io/ | INSTALL_K3S_EXEC="--disable=traefik" sh -`
+
 - read https://docs.k3s.io/ for more info
 
 ## deploy to kubernetes
