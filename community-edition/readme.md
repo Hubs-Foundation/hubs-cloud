@@ -30,6 +30,7 @@ a "turn key" solution for a production ready hubs system.
 # https certs
 2 options
 - bring your own
+    - package into kubernetes secrets and place under `kubectl -n hcce get secret | grep cert-`
 - use certbotbot
     - `bash render_cbb.sh && kubectl apply -f cbb.yaml`
 
