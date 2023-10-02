@@ -1,0 +1,91 @@
+
+########################################################################
+#########################   certbotbot   ###############################
+########################################################################
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: certbotbot-http
+  namespace: $Namespace
+spec:
+  schedule: "1 1 */15 * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1     
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      template:
+        metadata:
+          labels:
+            app: certbotbot-http
+        spec:
+          restartPolicy: Never
+          serviceAccountName: cbb-sa
+          containers:
+          - name: myapp
+            image: mozillareality/certbotbot_http:stable-latest
+            env:
+            - name: "DOMAIN"
+              value: "$HUB_DOMAIN"
+            - name: "NAMESPACE"
+              value: "$Namespace"
+            - name: "CERT_NAME"
+              value: "cert-$HUB_DOMAIN" 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: haproxy-stats
+  namespace: $Namespace
+spec:
+  selector:
+    app: haproxy
+  ports:
+  - name: haproxy
+    port: 1024
+    targetPort: 1024
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: haproxy-stats
+  namespace: $Namespace
+  annotations:
+    kubernetes.io/ingress.class: haproxy
+spec:
+  rules:
+  - host: $HUB_DOMAIN
+    http:
+      paths:            
+      - path: /haproxy-stats
+        pathType: Prefix
+        backend:
+          service:
+            name: haproxy-stats
+            port: 
+              number: 1024
+---
+---
+########################################################################
+######################   cbb rbac  #####################################
+########################################################################
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cbb-sa
+  namespace: $Namespace
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: cbb-rb--$Namespace
+  namespace: $Namespace
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: edit
+subjects:
+- kind: ServiceAccount
+  name: cbb-sa
+  namespace: $Namespace

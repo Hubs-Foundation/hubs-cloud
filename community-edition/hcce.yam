@@ -3,7 +3,8 @@ kind: Namespace
 metadata:
   name: "$Namespace"
   annotations:
-    adm: "$UserEmail"
+    domain: "$HUB_DOMAIN"
+    adm: "$ADM_EMAIL"    
 ---
 ########################################################################
 ###################### configs #########################################
@@ -38,37 +39,6 @@ stringData:
 ######################################################################################
 ###################################### ingress #######################################
 ######################################################################################
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: assets
-  namespace: "$Namespace"
-  annotations:
-    kubernetes.io/ingress.class: haproxy
-    haproxy.org/server-ssl: "true"
-    haproxy.org/response-set-header: |
-      access-control-allow-origin "https://$HUB_DOMAIN"
-    haproxy.org/path-rewrite: /api-internal(.*) /_drop_
-spec:
-  rules:
-  - host: assets.$HUB_DOMAIN
-    http:
-      paths:            
-      - path: /hubs
-        pathType: Prefix
-        backend:
-          service:
-            name: hubs
-            port: 
-              number: 8080
-      - path: /spoke
-        pathType: Prefix
-        backend:
-          service:
-            name: spoke
-            port: 
-              number: 8080
----
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -143,10 +113,63 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: turkey-nearspark
+  name: assets
   namespace: $Namespace
   annotations:
-    kubernetes.io/ingress.class: haproxy    
+    kubernetes.io/ingress.class: haproxy
+    haproxy.org/server-ssl: "true"
+    haproxy.org/response-set-header: |
+      access-control-allow-origin "https://$HUB_DOMAIN"
+    haproxy.org/path-rewrite: /api-internal(.*) /_drop_
+spec:
+  rules:
+  - host: assets.$HUB_DOMAIN
+    http:
+      paths:            
+      - path: /hubs
+        pathType: Prefix
+        backend:
+          service:
+            name: hubs
+            port: 
+              number: 8080
+      - path: /spoke
+        pathType: Prefix
+        backend:
+          service:
+            name: spoke
+            port: 
+              number: 8080
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dialog
+  namespace: $Namespace
+  annotations:
+    kubernetes.io/ingress.class: haproxy
+    haproxy.org/server-ssl: "true"
+    haproxy.org/load-balance: "url_param roomId"
+spec:
+  rules:
+  - host: stream.$HUB_DOMAIN
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: dialog
+            port: 
+              number: 4443
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nearspark
+  namespace: $Namespace
+  annotations:
+    kubernetes.io/ingress.class: haproxy
     haproxy.org/path-rewrite: /nearspark/(.*) /\1              # strip /nearspark  
 spec:
   rules:        
@@ -253,7 +276,7 @@ data:
 
     [ret."Elixir.Ret.JanusLoadStatus"]
     default_janus_host = "stream.<DOMAIN>"
-    janus_service_name = "stream.<DOMAIN>"
+    janus_service_name = ""
     janus_admin_secret = ""
     janus_admin_port = 7000
     janus_port = 4443
@@ -398,7 +421,7 @@ spec:
       volumes:
       - name: storage
         hostPath:
-          path: /tmp/ret_storage
+          path: /tmp/ret_storage_data
           type: DirectoryOrCreate
       - name: config
         configMap:
@@ -638,14 +661,17 @@ spec:
                   name: configs
                   key: DB_PASS
             - name: POSTGRES_DB
-              value: retdb
+              valueFrom:
+                secretKeyRef:
+                  name: configs
+                  key: DB_NAME
           volumeMounts:
             - name: postgresql-data
               mountPath: /var/lib/postgresql/data
       volumes:
         - name: postgresql-data
           hostPath:
-            path: /tmp/ret_pgsql
+            path: /tmp/pgsql_data
 ---
 ####################################################################################
 ################################### pgbouncer ######################################
@@ -677,7 +703,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: configs
-              key: DB_USER          
+              key: DB_USER
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
@@ -733,7 +759,7 @@ spec:
               name: configs
               key: DB_PASS
         - name: DB_HOST
-          value: pgsql 
+          value: pgsql
         - name: POOL_MODE
           value: transaction
 ---
@@ -809,6 +835,8 @@ kind: Service
 metadata:
   name: hubs
   namespace: $Namespace
+  annotations:
+    haproxy.org/server-ssl: "true"
 spec:
   clusterIP: None
   ports:
@@ -877,6 +905,8 @@ kind: Service
 metadata:
   name: spoke
   namespace: $Namespace
+  annotations:
+    haproxy.org/server-ssl: "true"
 spec:
   clusterIP: None
   ports:
@@ -1025,28 +1055,6 @@ spec:
   selector:
     app: photomnemonic
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: turkey-dialog
-  namespace: $Namespace
-  annotations:
-    kubernetes.io/ingress.class: haproxy
-    haproxy.org/server-ssl: "true"
-    haproxy.org/load-balance: "url_param roomId"
-spec:
-  rules:
-  - host: stream.$HUB_DOMAIN
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: dialog
-            port: 
-              number: 4443
----
 apiVersion: v1
 kind: Secret
 metadata:
@@ -1171,7 +1179,7 @@ metadata:
   namespace: $Namespace
 data:
   5349:
-    turkey-stream/coturn:5349
+    $Namespace/coturn:5349
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -1191,7 +1199,17 @@ data:
   timeout-server-fin: 1h
   timeout-connect: 3s
   #access logging -- can be enabled at runtime
-  #syslog-server: 'address:stdout, format: raw, facility:daemon'
+  syslog-server: 'address:stdout, format: raw, facility:daemon'
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cert-$HUB_DOMAIN
+  namespace: $Namespace
+type: kubernetes.io/tls
+data:
+  tls.crt: $initCert
+  tls.key: $initKey
 ---
 ######################################################################################
 ###################################### haproxy #######################################
@@ -1221,13 +1239,13 @@ spec:
       - name: haproxy
         image: haproxytech/kubernetes-ingress:1.8.5@sha256:09b59bc272e3aec5ca5b706774ed788c4bb4f184bb1d7ab99660a2b7773b0668
         args:
-        - --configmap=ingress/haproxy-config
+        - --configmap=$Namespace/haproxy-config
         - --https-bind-port=4443
         - --http-bind-port=8080
-        - --configmap-tcp-services=ingress/haproxy-tcp-config
+        - --configmap-tcp-services=$Namespace/haproxy-tcp-config
         - --ingress.class=haproxy
         - --log=warning #error warning info debug trace
-        - --default-ssl-certificate=ingress/letsencrypt-route53
+        - --default-ssl-certificate=$Namespace/cert-$HUB_DOMAIN
         securityContext:
           runAsUser:  1000
           runAsGroup: 1000
@@ -1368,4 +1386,3 @@ subjects:
 - kind: ServiceAccount
   name: haproxy-sa
   namespace: $Namespace 
-

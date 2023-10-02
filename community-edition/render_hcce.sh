@@ -1,22 +1,36 @@
-#!/bin/bash
 
-export ADM_EMAIL="admin@example.com"
-export HUB_DOMAIN="example.com"
+needs=("bash" "kubectl" "openssl" "npm")
+for cmd in "${needs[@]}"; do
+    if ! command -v $cmd &> /dev/null; then
+        echo "missing required binary: $cmd"
+        return 1
+    fi
+done
 
-export Namespace="hubs-ce"
+if ! npm list -g pem-jwk | grep -q pem-jwk; then
+    echo "missing required npm pkg: pem-jwk"
+    return 1
+fi
+
+
+### required
+export HUB_DOMAIN="hctest3.net"
+export ADM_EMAIL="gtan@mozilla.com"
+
+export Namespace="hcce"
 
 export DB_USER="postgres"
-export DB_PASS="postgres"
+export DB_PASS="123456"
 export DB_NAME="retdb"
 export DB_HOST="pgbouncer"
 export DB_HOST_T="pgbouncer-t"
-export PGRST_DB_URI="postgres://postgres:$DB_PASS@pgbouncer/retdb"
-export PSQL="postgres://postgres:$DB_PASS@pgbouncer/ret_dev"
+export PGRST_DB_URI="postgres://$DB_USER:$DB_PASS@pgbouncer/$DB_NAME"
+export PSQL="postgres://$DB_USER:$DB_PASS@pgbouncer/$DB_NAME"
 
-export SMTP_SERVER="?"
-export SMTP_PORT="?"
-export SMTP_USER="?"
-export SMTP_PASS="?"
+export SMTP_SERVER="changeMe"
+export SMTP_PORT="changeMe"
+export SMTP_USER="changeMe"
+export SMTP_PASS="changeMe"
 
 export NODE_COOKIE="changeMe"
 export GUARDIAN_KEY="changeMe"
@@ -37,4 +51,9 @@ export PGRST_JWT_SECRET='{"kty":"RSA","n":"uFXP_Vd35BAEs11XTlkxBIY84FFPCpY8rz-zc
 # sudo apt-get install npm && sudo npm install -g pem-jwk
 # export PGRST_JWT_SECRET=$(pem-jwk public_key.pem)
 
-envsubst < "hce.yam" > "hce.yaml"
+### initial cert
+openssl req -x509 -newkey rsa:2048 -sha256 -days 15 -nodes -keyout key.pem -out cert.pem -subj '/CN='$HUB_DOMAIN
+export initCert=$(base64 cert.pem -w 0)
+export initKey=$(base64 key.pem -w 0)
+
+envsubst < "hcce.yam" > "hcce.yaml"
