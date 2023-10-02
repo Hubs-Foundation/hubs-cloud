@@ -39,11 +39,20 @@ a "turn key" solution for a production ready hubs system.
 ### login gcp
 gcloud auth login
 ### create a vm
+`gcloud compute instances create hcce-vm-1 --zone=us-central1-a`
 ### ssh to the vm
-### install k3s with traefik disabled
-- because we need port 80 and 443
-## deploy to kubernetes (link to steps above)
-## connect the ingress for the vm
+### install k3s
+```
+# install k3s without traefik
+curl https://get.k3s.io/ | INSTALL_K3S_EXEC="--disable=traefik" sh -
+```
+- read https://docs.k3s.io/ for more info
+
+## deploy to kubernetes
+`bash render_hcce.sh && kubectl apply -f hcce.yaml`
+
+## connect the ingress
+- find the vm's external ip
 - dns
 - firewall
 
@@ -53,9 +62,9 @@ gcloud auth login
 gcloud auth login
 ```
 # create gke cluster
-gcloud container clusters create <my_default_gke_cluster> --zone=us-central1-a
+gcloud container clusters create hcce-gke-1 --zone=us-central1-a
 # get creds for kubectl
-gcloud container clusters get-credentials --region us-central1-a <my_default_gke_cluster>
+gcloud container clusters get-credentials --region us-central1-a hcce-gke-1
 # deploy to kubernetes
 bash render_hcce.sh && kubectl apply -f hcce.yaml
 ```
