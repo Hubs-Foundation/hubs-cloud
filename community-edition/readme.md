@@ -37,6 +37,7 @@ a "turn key" solution for a production ready hubs system.
 
 # example1 -- with vm on gcp
 ## make a kubernetes environment
+```
 ### login gcp
 gcloud auth login
 ### create a vm
