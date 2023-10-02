@@ -9,25 +9,23 @@ a "turn key" solution for a production ready hubs system.
 - flexibility/compatibility and production ready don't mix, it's not possible for one architectural design to simultaneously support average joe/jane's laptop and their company's production environment. 
 - Designing, building, hosting, and maintaining production software systems goes beyond the scope of a single codebase. It encompasses both business aspects, such as budgeting and scoping, and engineering factors like security, reliability, scalability, and efficiency. Many books have been written on this subject.
 
-
-# pre requisites
-- kubernetes `hosting infrastrature`
-- DNS service `to reach hubs services on a domain`
-- ports: `exposed to the client`
-    - tcp: 80,443,4443,5349
-    - udp: 35000 - 60000
-- smtp service `for login emails (optional)`
-
-# deploy to kubernetes
+# how to deploy
+- pre requisites
+    - kubernetes `hosting infrastrature`
+    - DNS service `to reach hubs services on a domain`
+    - ports: `exposed to the client`
+        - tcp: 80,443,4443,5349
+        - udp: 35000 - 60000
+    - smtp service `for login emails (optional)`
+- deploy to kubernetes
 `bash render_hcce.sh && kubectl apply -f hcce.yaml`
-
-# expose the services
-- use `kubectl -n <hcce_namespace> get svc lb` to find it's external ip
-- on your dns service, route below domains to the external ip of lb service in hcce namespace
-    - <root_domain>
-    - assets.<root_domain>
-    - stream.<root_domain>
-    - cors.<root_domain>
+- expose the services
+    - use `kubectl -n <hcce_namespace> get svc lb` to find it's external ip
+    - on your dns service, route below domains to the external ip of lb service in hcce namespace
+        - <root_domain>
+        - assets.<root_domain>
+        - stream.<root_domain>
+        - cors.<root_domain>
 
 # https certs
 2 options
