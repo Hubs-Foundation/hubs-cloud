@@ -34,13 +34,16 @@ a "turn key" solution for a production ready hubs system.
 - bring your own
 - use certbotbot
 
-# example -- with vm on gcp
+# example1 -- with vm on gcp
 ## make a kubernetes environment
 ### login gcp
 gcloud auth login
 ### create a vm
 `gcloud compute instances create hcce-vm-1 --zone=us-central1-a`
 ### ssh to the vm
+`gcloud compute ssh --project=hubs-dev-333333 --zone=us-central1-a geng-test-2`
+### prepare the vm
+`sudo apt update && sudo apt install npm && sudo npm install pem-jwk -g`
 ### install k3s
 ```
 # install k3s without traefik
@@ -49,14 +52,14 @@ curl https://get.k3s.io/ | INSTALL_K3S_EXEC="--disable=traefik" sh -
 - read https://docs.k3s.io/ for more info
 
 ## deploy to kubernetes
-`bash render_hcce.sh && kubectl apply -f hcce.yaml`
+`bash render_hcce.sh && sudo k3s kubectl apply -f hcce.yaml`
 
 ## connect the ingress
 - find the vm's external ip
 - dns
 - firewall
 
-# example -- with managed kubernetes on gcp
+# example2 -- with managed kubernetes on gcp
 ## make a kubernetes environment
 ### login gcp
 gcloud auth login
@@ -71,6 +74,12 @@ bash render_hcce.sh && kubectl apply -f hcce.yaml
 ## connect the ingress
 - find the external ip with `kubectl -n hcce get svc lb`
 - dns and firewall steps are the same <link to above>
+
+### example5 -- kubernetes on digitalocean
+
+### example3 -- with ec2 on aws
+
+### example4 -- with eks on aws
 
 
 # suggestions to make it production ready

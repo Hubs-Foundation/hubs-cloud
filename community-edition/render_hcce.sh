@@ -1,5 +1,5 @@
 
-needs=("bash" "kubectl" "openssl" "npm")
+needs=("bash" "openssl" "npm")
 for cmd in "${needs[@]}"; do
     if ! command -v $cmd &> /dev/null; then
         echo "missing required binary: $cmd"
