@@ -8,7 +8,7 @@ for cmd in "${bins[@]}"; do
 done
 
 if ! npm list -g pem-jwk | grep -q pem-jwk; then
-    echo "missing required npm pkg: pem-jwk"
+    echo "missing required npm pkg: pem-jwk, try (sudo) npm install pem-jwk -g to install it"
     return 1
 fi
 
