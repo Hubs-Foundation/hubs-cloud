@@ -105,6 +105,7 @@ bash render_hcce.sh && kubectl apply -f hcce.yaml
     - the yaml file is the entire infra on kubernetes, use a git to track changes and an ops pipeline to auto deploy
         - ie put the yaml file on a github repo and use github action to deploy to your hosting env
     - use dev env for staging/testing
+        - use spot instances for nodes to save $
         - develop and integrate automated testing scripts into the ops pipeline
 
 
