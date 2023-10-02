@@ -36,7 +36,7 @@ a "turn key" solution for a production ready hubs system.
     - `bash render_cbb.sh && kubectl apply -f cbb.yaml`
 
 # example1 -- with vm on gcp
-## make a kubernetes environment
+### make a kubernetes environment
 ```
 ### login gcp
 gcloud auth login
@@ -48,7 +48,7 @@ gcloud auth login
 `sudo apt update && sudo apt install npm && sudo npm install pem-jwk -g`
 ### install k3s
 ```
-# install k3s without traefik
+### install k3s without traefik
 curl https://get.k3s.io/ | INSTALL_K3S_EXEC="--disable=traefik" sh -
 ```
 - read https://docs.k3s.io/ for more info
@@ -60,12 +60,12 @@ curl https://get.k3s.io/ | INSTALL_K3S_EXEC="--disable=traefik" sh -
 - find the vm's external ip
 - dns
 - firewall
-
-# example2 -- with managed kubernetes on gcp
-## make a kubernetes environment
-### login gcp
-gcloud auth login
 ```
+# example2 -- with managed kubernetes on gcp
+### make a kubernetes environment
+```
+# login gcp
+gcloud auth login
 # create gke cluster
 gcloud container clusters create hcce-gke-1 --zone=us-central1-a
 # get creds for kubectl
@@ -73,7 +73,7 @@ gcloud container clusters get-credentials --region us-central1-a hcce-gke-1
 # deploy to kubernetes
 bash render_hcce.sh && kubectl apply -f hcce.yaml
 ```
-## connect the ingress
+### connect the ingress
 - find the external ip with `kubectl -n hcce get svc lb`
 - dns and firewall steps are the same <link to above>
 
