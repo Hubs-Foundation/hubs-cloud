@@ -35,6 +35,7 @@ a "turn key" solution for a production ready hubs system.
 
 # example1 -- with vm on gcp
 ### make a kubernetes environment
+replace `hcce-vm-1` and `us-central1-a` with your desired name and zone, check [official doc](https://cloud.google.com/sdk/gcloud/reference/compute/instances/create) for more options
 ```
 ### login gcp
 gcloud auth login
@@ -61,6 +62,7 @@ gcloud auth login
 
 # example2 -- with managed kubernetes on gcp
 ### make a kubernetes environment
+replace `hcce-gke-1` and `us-central1-a` with your desired name and zone, check [official doc](https://cloud.google.com/sdk/gcloud/reference/container/clusters/create) for more options
 ```
 # login gcp
 gcloud auth login
