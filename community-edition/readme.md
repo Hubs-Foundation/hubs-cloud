@@ -33,6 +33,7 @@ a "turn key" solution for a production ready hubs system.
 2 options
 - bring your own
 - use certbotbot
+    - `bash render_cbb.sh && kubectl apply -f cbb.yaml`
 
 # example1 -- with vm on gcp
 ## make a kubernetes environment
