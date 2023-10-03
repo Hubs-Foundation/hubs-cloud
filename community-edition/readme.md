@@ -11,12 +11,12 @@ a "turn key" solution for a production ready hubs system.
 
 # how to deploy
 - pre requisites
-    - kubernetes `hosting infrastrature`
-    - DNS service `to reach hubs services on a domain`
-    - ports: `exposed to the client`
+    - kubernetes (hosting)
+    - DNS service (to reach hubs services on a domain)
+    - ports: (expose services to client)
         - tcp: 80,443,4443,5349
         - udp: 35000 - 60000
-    - smtp service `for login emails (optional)`
+    - smtp service (for login emails, ie. [use gmail as smtp](https://support.google.com/a/answer/176600?hl=en))
 - deploy to kubernetes
 `bash render_hcce.sh && kubectl apply -f hcce.yaml`
 - expose the services
