@@ -9,9 +9,14 @@ a "turn key" solution for a production ready hubs system.
 - flexibility/compatibility and production ready don't mix, it's not possible for one architectural design to simultaneously support average joe/jane's laptop and their company's production environment. 
 - Designing, building, hosting, and maintaining production software systems goes beyond the scope of a single codebase. It encompasses both business aspects, such as budgeting and scoping, and engineering factors like security, reliability, scalability, and efficiency. Many books have been written on this subject.
 
+# why kubernetes
+- [portable, extensible, open source](https://kubernetes.io/docs/concepts/overview/)
+- [available in many clouds](https://kubernetes.io/docs/setup/production-environment/turnkey-solutions/)
+- many single server options as well (ie. minikube, k3s, microk8s, kind)
+
 # how to deploy
 - pre requisites
-    - kubernetes (hosting)
+    - kubernetes
     - DNS service (to reach hubs services on a domain)
     - ports: (expose services to client)
         - tcp: 80,443,4443,5349
@@ -34,7 +39,7 @@ a "turn key" solution for a production ready hubs system.
     - use certbotbot
         - update namespace and domain in `render_cbb.sh` and then `bash render_cbb.sh && kubectl apply -f cbb.yaml`
 
-# example -- with vm on gcp
+# example -- a "hello-world" instanc with vm on gcp
 ### make a kubernetes environment
 replace `hcce-vm-1` and `us-central1-a` with your desired name and zone, check [official doc](https://cloud.google.com/sdk/gcloud/reference/compute/instances/create) for more options
 ```
@@ -61,7 +66,7 @@ gcloud auth login
 - dns
 - firewall
 
-# example -- with managed kubernetes on gcp
+# example -- a "hello-world" instance with managed kubernetes on gcp
 ### make a kubernetes environment
 replace `hcce-gke-1` and `us-central1-a` with your desired name and zone, check [official doc](https://cloud.google.com/sdk/gcloud/reference/container/clusters/create) for more options
 ```
@@ -78,16 +83,13 @@ bash render_hcce.sh && kubectl apply -f hcce.yaml
 - find the external ip with `kubectl -n hcce get svc lb`
 - dns and firewall steps are the same <link to above>
 
-### example -- kubernetes on digitalocean
-
-### example -- kubernetes on vultr
-
-### example -- with ec2 on aws
-
-### example -- with eks on aws
-
+### example -- a "potentially-somewhat-production-ready" instance on aws
+- comming soon
 
 # suggestions to make it production ready
+- infra
+    - easy -- use a managed kubernetes
+    - hard -- https://kubernetes.io/docs/setup/production-environment/
 - security
     - password and keys overview
     - add a waf
