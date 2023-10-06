@@ -83,7 +83,7 @@ bash render_hcce.sh && kubectl apply -f hcce.yaml
 - find the external ip with `kubectl -n hcce get svc lb`
 - dns and firewall steps are the same <link to above>
 
-### example -- a "potentially-somewhat-production-ready" instance on aws
+# example -- a "potentially-somewhat-production-ready" instance on aws
 - comming soon
 
 # suggestions to make it production ready
