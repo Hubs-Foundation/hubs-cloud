@@ -39,7 +39,7 @@ a "turn key" solution for a production ready hubs system.
     - use certbotbot
         - update namespace and domain in `render_cbb.sh` and then `bash render_cbb.sh && kubectl apply -f cbb.yaml`
 
-# example -- a "hello-world" instanc with vm on gcp
+# example -- a "hello-world" instance with vm on gcp
 ### make a kubernetes environment
 replace `hcce-vm-1` and `us-central1-a` with your desired name and zone, check [official doc](https://cloud.google.com/sdk/gcloud/reference/compute/instances/create) for more options
 ```
@@ -86,7 +86,7 @@ bash render_hcce.sh && kubectl apply -f hcce.yaml
 # example -- a "potentially-somewhat-production-ready" instance on aws
 - comming soon
 
-# suggestions to make it production ready
+# considerations for production environment
 - infra
     - easy -- use a managed kubernetes
     - hard -- https://kubernetes.io/docs/setup/production-environment/
