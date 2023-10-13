@@ -71,7 +71,7 @@ spec:
       template:
         metadata:
           labels:
-            app: certbotbot-http
+            app: certbotbot-http-assets
         spec:
           restartPolicy: Never
           serviceAccountName: cbb-sa
@@ -102,7 +102,7 @@ spec:
       template:
         metadata:
           labels:
-            app: certbotbot-http
+            app: certbotbot-http-stream
         spec:
           restartPolicy: Never
           serviceAccountName: cbb-sa
