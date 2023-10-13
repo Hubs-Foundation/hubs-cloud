@@ -53,7 +53,7 @@ export PGRST_JWT_SECRET='{"kty":"RSA","n":"uFXP_Vd35BAEs11XTlkxBIY84FFPCpY8rz-zc
 
 ### initial cert
 openssl req -x509 -newkey rsa:2048 -sha256 -days 15 -nodes -keyout key.pem -out cert.pem -subj '/CN='$HUB_DOMAIN
-export initCert=$(base64 cert.pem -w 0)
-export initKey=$(base64 key.pem -w 0)
+export initCert=$(base64 -i cert.pem)
+export initKey=$(base64 -i key.pem)
 
 envsubst < "hcce.yam" > "hcce.yaml"

@@ -24,126 +24,23 @@ subjects:
 ########################################################################
 #########################   certbotbot   ###############################
 ########################################################################
-apiVersion: batch/v1
-kind: CronJob
+apiVersion: v1
+kind: Pod
 metadata:
   name: certbotbot-http
   namespace: $Namespace
+  labels:
+    app: certbotbot-http
 spec:
-  schedule: "1 1 */15 * *"
-  concurrencyPolicy: Forbid
-  successfulJobsHistoryLimit: 1
-  failedJobsHistoryLimit: 1     
-  jobTemplate:
-    spec:
-      backoffLimit: 0
-      template:
-        metadata:
-          labels:
-            app: certbotbot-http
-        spec:
-          restartPolicy: Never
-          serviceAccountName: cbb-sa
-          containers:
-          - name: myapp
-            image: mozillareality/certbotbot_http:stable-latest
-            env:
-            - name: "DOMAIN"
-              value: "$HUB_DOMAIN"
-            - name: "NAMESPACE"
-              value: "$Namespace"
-            - name: "CERT_NAME"
-              value: "cert-$HUB_DOMAIN" 
----
-apiVersion: batch/v1
-kind: CronJob
-metadata:
-  name: certbotbot-http-assets
-  namespace: $Namespace
-spec:
-  schedule: "1 1 */15 * *"
-  concurrencyPolicy: Forbid
-  successfulJobsHistoryLimit: 1
-  failedJobsHistoryLimit: 1     
-  jobTemplate:
-    spec:
-      backoffLimit: 0
-      template:
-        metadata:
-          labels:
-            app: certbotbot-http-assets
-        spec:
-          restartPolicy: Never
-          serviceAccountName: cbb-sa
-          containers:
-          - name: myapp
-            image: mozillareality/certbotbot_http:stable-latest
-            env:
-            - name: "DOMAIN"
-              value: "assets.$HUB_DOMAIN"
-            - name: "NAMESPACE"
-              value: "$Namespace"
-            - name: "CERT_NAME"
-              value: "cert-assets.$HUB_DOMAIN"             
----
-apiVersion: batch/v1
-kind: CronJob
-metadata:
-  name: certbotbot-http-stream
-  namespace: $Namespace
-spec:
-  schedule: "1 1 */15 * *"
-  concurrencyPolicy: Forbid
-  successfulJobsHistoryLimit: 1
-  failedJobsHistoryLimit: 1     
-  jobTemplate:
-    spec:
-      backoffLimit: 0
-      template:
-        metadata:
-          labels:
-            app: certbotbot-http-stream
-        spec:
-          restartPolicy: Never
-          serviceAccountName: cbb-sa
-          containers:
-          - name: myapp
-            image: mozillareality/certbotbot_http:stable-latest
-            env:
-            - name: "DOMAIN"
-              value: "stream.$HUB_DOMAIN"
-            - name: "NAMESPACE"
-              value: "$Namespace"
-            - name: "CERT_NAME"
-              value: "cert-stream.$HUB_DOMAIN"       
----
-apiVersion: batch/v1
-kind: CronJob
-metadata:
-  name: certbotbot-http-cors
-  namespace: $Namespace
-spec:
-  schedule: "1 1 */15 * *"
-  concurrencyPolicy: Forbid
-  successfulJobsHistoryLimit: 1
-  failedJobsHistoryLimit: 1     
-  jobTemplate:
-    spec:
-      backoffLimit: 0
-      template:
-        metadata:
-          labels:
-            app: certbotbot-http-cors
-        spec:
-          restartPolicy: Never
-          serviceAccountName: cbb-sa
-          containers:
-          - name: myapp
-            image: mozillareality/certbotbot_http:stable-latest
-            env:
-            - name: "DOMAIN"
-              value: "cors.$HUB_DOMAIN"
-            - name: "NAMESPACE"
-              value: "$Namespace"
-            - name: "CERT_NAME"
-              value: "cert-cors.$HUB_DOMAIN"           
+  restartPolicy: Never
+  serviceAccountName: cbb-sa
+  containers:
+  - name: myapp
+    image: mozillareality/certbotbot_http:stable-latest
+    env:
+    - name: "DOMAIN"
+      value: "$HUB_DOMAIN"
+    - name: "NAMESPACE"
+      value: "$Namespace"
+    - name: "CERT_NAME"
+      value: "cert-$HUB_DOMAIN"
