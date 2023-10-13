@@ -36,8 +36,7 @@ a "turn key" solution for a production ready hubs system.
     - bring your own
         - package into kubernetes secrets and use them to replace these
           - `kubectl -n hcce get secret | grep cert-`
-    - use certbotbot
-        - update namespace and domain in `render_cbb.sh` and then `bash render_cbb.sh && kubectl apply -f cbb.yaml`
+    - use certbotbot (comming soon)
 
 # example -- a "hello-world" instance with vm on gcp
 ### make a kubernetes environment
