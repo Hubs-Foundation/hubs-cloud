@@ -58,7 +58,7 @@ spec:
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: certbotbot-http
+  name: certbotbot-http-assets
   namespace: $Namespace
 spec:
   schedule: "1 1 */15 * *"
@@ -133,7 +133,7 @@ spec:
       template:
         metadata:
           labels:
-            app: certbotbot-http
+            app: certbotbot-http-cors
         spec:
           restartPolicy: Never
           serviceAccountName: cbb-sa
