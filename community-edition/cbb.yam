@@ -89,7 +89,7 @@ spec:
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: certbotbot-http
+  name: certbotbot-http-stream
   namespace: $Namespace
 spec:
   schedule: "1 1 */15 * *"
