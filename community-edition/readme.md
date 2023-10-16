@@ -6,7 +6,7 @@ Community Edition is designed for developers capable of working with the full Hu
 
 # Why Kubernetes
 
-Kubernetes is an industry standard for allowing developers to build, deploy, and scale application efficiently and reliably. Benefits to Kubernetes include:
+Kubernetes is an industry standard for allowing developers to build, deploy, and scale s efficiently and reliably. Benefits to Kubernetes include:
 
 - [Portability, Extensibility, and Open Source](https://kubernetes.io/docs/concepts/overview/)
 - [Availability in many cloud environments](https://kubernetes.io/docs/setup/production-environment/turnkey-solutions/)
