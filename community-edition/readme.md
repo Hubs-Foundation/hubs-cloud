@@ -61,35 +61,63 @@ gcloud auth login
 `gcloud compute ssh --project=hubs-dev-333333 --zone=us-central1-a geng-test-2`
 ### prepare the vm
 `sudo apt update && sudo apt install npm && sudo npm install pem-jwk -g`
-### install k3s
-```
 
-### Step 2: Install k3s without traefik
-
+### install k3s without traefik -- read https://docs.k3s.io/ for more info
 - `curl https://get.k3s.io/ | INSTALL_K3S_EXEC="--disable=traefik" sh -`
-
-- read https://docs.k3s.io/ for more info
+```
 
 ### Step 3: Deploy to kubernetes
 
 - Add your services to `render_hcce.sh`
 - Run `bash render_hcce.sh && sudo k3s kubectl apply -f hcce.yaml`
 
-### Step 4: Connect the ingress
+# example -- a "hello-world" instance with managed kubernetes on gcp
+### make a kubernetes environment
+replace `hcce-gke-1` and `us-central1-a` with your desired name and zone, check [official doc](https://cloud.google.com/sdk/gcloud/reference/container/clusters/create) for more options
+```
+# login gcp
+gcloud auth login
+# create gke cluster
+gcloud container clusters create hcce-gke-1 --zone=us-central1-a
+# get creds for kubectl
+gcloud container clusters get-credentials --region us-central1-a hcce-gke-1
+```
 
-- Find the vm's external IP
-- Expose IP to DNS
-- Configure firewall
+## deploy to kubernetes
+`bash render_hcce.sh && sudo k3s kubectl apply -f hcce.yaml`
 
-# Example -- A "hello-world" instance with managed kubernetes on gcp
+### connect the ingress
+- find the external ip with `kubectl -n hcce get svc lb`
+- dns and firewall steps are the same <link to above>
 
-See [our case study](https://hubs.mozilla.com/labs/community-edition-case-study-quick-start-on-gcp-w-aws-services/)!
 
-# Example -- A "potentially-somewhat-production-ready" instance on AWS
+# considerations for production environment
+- infra
+    - easy -- use a managed kubernetes
+    - hard -- https://kubernetes.io/docs/setup/production-environment/
+- security
+    - password and keys overview
+    - add a waf
+- scalability
+    - stateful services
+        - pgsql 
+            - use a managed pgsql ie. rds on aws or cloudsql on gcp
+            - roll your own
+                - <links to some guides to run pgsql in k8s>
+        - reticulum
+            - use a network/shared storage for reticulum's /storage mount
+    - stateless services (all except reticulum and pgsql)
+        - just run multiple replicas
+        - use hpa
+- devops
+    - the yaml file is the entire infra on kubernetes, use a git to track changes and an ops pipeline to auto deploy
+        - ie put the yaml file on a github repo and use github action to deploy to your hosting env
+    - use dev env for staging/testing
+        - use spot instances for nodes to save $
+        - develop and integrate automated testing scripts into the ops pipeline
 
-- Coming soon!
-
-# Considerations for Production Environment
+# example -- a "potentially-somewhat-production-ready" instance on aws
+- comming soon
 
 - Infrastructure
   - Easy -- use managed kubernetes
