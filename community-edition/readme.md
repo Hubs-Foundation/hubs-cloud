@@ -91,6 +91,9 @@ gcloud container clusters get-credentials --region us-central1-a hcce-gke-1
 - dns and firewall steps are the same <link to above>
 
 
+# example -- a "potentially-somewhat-production-ready" instance on aws
+- comming soon
+  
 # considerations for production environment
 - infra
     - easy -- use a managed kubernetes
@@ -115,10 +118,6 @@ gcloud container clusters get-credentials --region us-central1-a hcce-gke-1
     - use dev env for staging/testing
         - use spot instances for nodes to save $
         - develop and integrate automated testing scripts into the ops pipeline
-
-# example -- a "potentially-somewhat-production-ready" instance on aws
-- comming soon
-
 - Infrastructure
   - Easy -- use managed kubernetes
   - Hard -- make it [production-ready](https://kubernetes.io/docs/setup/production-environment/)
