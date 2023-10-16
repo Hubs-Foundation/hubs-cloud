@@ -48,7 +48,7 @@ To deploy to your K8s cluster on your chosen hosting solution, follow these step
 
 # Example -- A "hello-world" instance with vm on gcp
 
-### Step 1: Make a kubernetes environment
+#### Step 1: Make a kubernetes environment
 
 Replace `hcce-vm-1` and `us-central1-a` with your desired name and zone. Check [the official doc](https://cloud.google.com/sdk/gcloud/reference/compute/instances/create) for more options.
 
@@ -61,18 +61,21 @@ gcloud auth login
 `gcloud compute ssh --project=hubs-dev-333333 --zone=us-central1-a geng-test-2`
 ### prepare the vm
 `sudo apt update && sudo apt install npm && sudo npm install pem-jwk -g`
-
 ### install k3s without traefik -- read https://docs.k3s.io/ for more info
 - `curl https://get.k3s.io/ | INSTALL_K3S_EXEC="--disable=traefik" sh -`
 ```
 
-### Step 3: Deploy to kubernetes
-
+#### Step 2: Deploy to kubernetes
 - Add your services to `render_hcce.sh`
 - Run `bash render_hcce.sh && sudo k3s kubectl apply -f hcce.yaml`
+  
+#### Step 3: connect the ingress
+- find the vm's external ip
+- create a-records to the dns
+- makesure the required ports are exposed to the client
 
 # example -- a "hello-world" instance with managed kubernetes on gcp
-### make a kubernetes environment
+#### Step 1: make a kubernetes environment
 replace `hcce-gke-1` and `us-central1-a` with your desired name and zone, check [official doc](https://cloud.google.com/sdk/gcloud/reference/container/clusters/create) for more options
 ```
 # login gcp
@@ -83,10 +86,10 @@ gcloud container clusters create hcce-gke-1 --zone=us-central1-a
 gcloud container clusters get-credentials --region us-central1-a hcce-gke-1
 ```
 
-## deploy to kubernetes
+#### Step 2: deploy to kubernetes
 `bash render_hcce.sh && sudo k3s kubectl apply -f hcce.yaml`
 
-### connect the ingress
+#### Step 3: connect the ingress
 - find the external ip with `kubectl -n hcce get svc lb`
 - dns and firewall steps are the same <link to above>
 
