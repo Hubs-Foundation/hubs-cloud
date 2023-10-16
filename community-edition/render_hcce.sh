@@ -14,8 +14,8 @@ fi
 
 
 ### required
-export HUB_DOMAIN="hctest3.net"
-export ADM_EMAIL="gtan@mozilla.com"
+export HUB_DOMAIN="example.net"
+export ADM_EMAIL="admin@example.net"
 
 export Namespace="hcce"
 
@@ -53,8 +53,8 @@ sudo apt-get install npm && sudo npm install -g pem-jwk
 export PGRST_JWT_SECRET=$(pem-jwk public_key.pem)
 
 ### initial cert
-openssl req -x509 -newkey rsa:2048 -sha256 -days 15 -nodes -keyout key.pem -out cert.pem -subj '/CN='$HUB_DOMAIN
-export initCert=$(base64 -i cert.pem -w 0)
-export initKey=$(base64 -i key.pem -w 0)
+openssl req -x509 -newkey rsa:2048 -sha256 -days 36500 -nodes -keyout key.pem -out cert.pem -subj '/CN='$HUB_DOMAIN
+export initCert=$(base64 -i cert.pem | tr -d '\n')
+export initKey=$(base64 -i key.pem | tr -d '\n')
 
 envsubst < "hcce.yam" > "hcce.yaml"

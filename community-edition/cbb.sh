@@ -1,26 +1,34 @@
 #!/bin/bash
 
-export ADM_EMAIL="gtan@mozilla.com"
-
 export Namespace="hcce"
-export HUB_DOMAIN="hctest3.net"
+export ADM_EMAIL="admin@example.net"
+export HUB_DOMAIN="example.net"
 
-### initial cert
-openssl req -x509 -newkey rsa:2048 -sha256 -days 15 -nodes -keyout key.pem -out cert.pem -subj '/CN='$HUB_DOMAIN
-export initCert=$(base64 -i cert.pem)
-export initKey=$(base64 -i key.pem)
+function cbb(){
+    read -p "Press enter to continue for <$1>"
+    export HUB_DOMAIN=$1
+    kubectl -n $Namespace delete pod certbotbot-http
+    envsubst < "cbb.yam" > "cbb.yaml" && kubectl apply -f cbb.yaml
+    while true; do
+        sleep 10
+        STATUS=$(kubectl get pod 'certbotbot-http' -n $Namespace --no-headers -o custom-columns=STATUS:.status.phase 2>/dev/null)
+        if [[ $? -ne 0 ]]; then
+            echo "ERROR -- certbotbot-http pod is missing"
+            exit 1;
+        elif [[ $STATUS == "Running" ]]; then
+            echo -n "."
+        elif [[ $STATUS == "Succeeded" ]]; then
+            echo ":"
+            kubectl -n $Namespace get secret cert-$HUB_DOMAIN
+            return;
+        else
+            echo "bad pod status: $STATUS"
+            return
+        fi
+    done
+}
 
-
-envsubst < "cbb.yam" > "cbb.yaml"connect&& kubectl apply -f cbb.yaml
-read -p "Press enter to continue"
-
-export HUB_DOMAIN="assets.$HUB_DOMAIN"
-envsubst < "cbb.yam" > "cbb.yaml"connect&& kubectl apply -f cbb.yaml
-read -p "Press enter to continue"
-
-export HUB_DOMAIN="stream.$HUB_DOMAIN"
-envsubst < "cbb.yam" > "cbb.yaml"connect&& kubectl apply -f cbb.yaml
-read -p "Press enter to continue"
-
-export HUB_DOMAIN="cors.$HUB_DOMAIN"
-envsubst < "cbb.yam" > "cbb.yaml"connect&& kubectl apply -f cbb.yaml
+cbb $HUB_DOMAIN
+cbb "assets.$HUB_DOMAIN"
+cbb "stream.$HUB_DOMAIN"
+cbb "cors.$HUB_DOMAIN"
