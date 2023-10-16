@@ -52,12 +52,9 @@ gcloud auth login
 `gcloud compute ssh --project=hubs-dev-333333 --zone=us-central1-a geng-test-2`
 ### prepare the vm
 `sudo apt update && sudo apt install npm && sudo npm install pem-jwk -g`
-### install k3s
-```
-### install k3s without traefik
+### install k3s without traefik -- read https://docs.k3s.io/ for more info
 - `curl https://get.k3s.io/ | INSTALL_K3S_EXEC="--disable=traefik" sh -`
-
-- read https://docs.k3s.io/ for more info
+```
 
 ## deploy to kubernetes
 `bash render_hcce.sh && sudo k3s kubectl apply -f hcce.yaml`
@@ -77,15 +74,15 @@ gcloud auth login
 gcloud container clusters create hcce-gke-1 --zone=us-central1-a
 # get creds for kubectl
 gcloud container clusters get-credentials --region us-central1-a hcce-gke-1
-# deploy to kubernetes
-bash render_hcce.sh && kubectl apply -f hcce.yaml
 ```
+
+## deploy to kubernetes
+`bash render_hcce.sh && sudo k3s kubectl apply -f hcce.yaml`
+
 ### connect the ingress
 - find the external ip with `kubectl -n hcce get svc lb`
 - dns and firewall steps are the same <link to above>
 
-# example -- a "potentially-somewhat-production-ready" instance on aws
-- comming soon
 
 # considerations for production environment
 - infra
@@ -112,4 +109,6 @@ bash render_hcce.sh && kubectl apply -f hcce.yaml
         - use spot instances for nodes to save $
         - develop and integrate automated testing scripts into the ops pipeline
 
+# example -- a "potentially-somewhat-production-ready" instance on aws
+- comming soon
 
