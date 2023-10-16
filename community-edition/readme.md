@@ -23,20 +23,22 @@ a "turn key" solution for a production ready hubs system.
         - udp: 35000 - 60000
     - smtp service (for login emails, ie. [use gmail as smtp](https://support.google.com/a/answer/176600?hl=en))
 - deploy to kubernetes
-`bash render_hcce.sh && kubectl apply -f hcce.yaml`
+    - edit configs into `render_hcce.sh` with a text editor
+    - `bash render_hcce.sh && kubectl apply -f hcce.yaml`
 - expose the services
     - use `kubectl -n <hcce_namespace> get svc lb` to find it's external ip
-    - on your dns service, route below domains to the external ip of lb service in hcce namespace
+    - on your dns service, create A-records to route below domains to the external ip of lb service in hcce namespace
         - <root_domain>
         - assets.<root_domain>
         - stream.<root_domain>
         - cors.<root_domain>
 
-- https certs -- 2 options
-    - bring your own
-        - package into kubernetes secrets and use them to replace these
-          - `kubectl -n hcce get secret | grep cert-`
-    - use certbotbot (comming soon)
+- https certs
+    - option#1: bring your own
+        - package the certs into kubernetes secrets named `cert-<domain>` under the deploy namespace
+    - option#2: use certbotbot
+        - edit configs into `cbb.sh` with a text editor
+        - `bash cbb.sh`
 
 # example -- a "hello-world" instance with vm on gcp
 ### make a kubernetes environment
