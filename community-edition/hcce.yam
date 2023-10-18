@@ -209,8 +209,7 @@ data:
     [ret."Elixir.RetWeb.Endpoint".secondary_url]
 
     [ret."Elixir.RetWeb.Endpoint".cors_proxy_url]
-    # host = "cors.<DOMAIN>"
-    host = "hubs-proxy.com"    
+    host = "cors.<HUB_DOMAIN>"
     port = 443
 
     [ret."Elixir.RetWeb.Endpoint".imgproxy_url]
