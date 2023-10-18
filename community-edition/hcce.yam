@@ -1240,13 +1240,6 @@ spec:
               - ALL
             add:
               - NET_BIND_SERVICE
-        resources:
-          requests:
-            memory: 1Gi
-            cpu: 0.5
-          limits:
-            memory: 2Gi
-            cpu: 1
         livenessProbe:
           httpGet:
             path: /healthz
