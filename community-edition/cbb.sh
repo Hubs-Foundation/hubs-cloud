@@ -6,7 +6,7 @@ export HUB_DOMAIN="example.net"
 
 function cbb(){
     read -p "Press enter to continue for <$1>"
-    export HUB_DOMAIN=$1
+    DOMAIN=$1
     kubectl -n $Namespace delete pod certbotbot-http
     envsubst < "cbb.yam" > "cbb.yaml" && kubectl apply -f cbb.yaml
     while true; do
@@ -19,7 +19,7 @@ function cbb(){
             echo -n "."
         elif [[ $STATUS == "Succeeded" ]]; then
             echo ":"
-            kubectl -n $Namespace get secret cert-$HUB_DOMAIN
+            kubectl -n $Namespace get secret cert-$DOMAIN
             return;
         else
             echo "bad pod status: $STATUS"
