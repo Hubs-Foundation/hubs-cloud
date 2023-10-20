@@ -36,7 +36,7 @@ a "turn key" solution for a production ready hubs system.
     - bring your own
         - package into kubernetes secrets and use them to replace these
           - `kubectl -n hcce get secret | grep cert-`
-    - use certbotbot (comming soon)
+    - use certbotbot (coming soon)
 
 # example -- a "hello-world" instance with vm on gcp
 ### make a kubernetes environment
