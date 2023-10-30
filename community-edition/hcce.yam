@@ -21,18 +21,17 @@ stringData:
   DB_PASS: "$DB_PASS"
   DB_NAME: "$DB_NAME"
   DB_HOST: "$DB_HOST"
-  DB_HOST_T: "$DB_HOST_T"
+  DB_HOST_T: "$DB_HOST-t"
   SMTP_SERVER: "$SMTP_SERVER"
   SMTP_PORT: "$SMTP_PORT"
   SMTP_USER: "$SMTP_USER"
   SMTP_PASS: "$SMTP_PASS"
   ADM_EMAIL: "$ADM_EMAIL"
-  PGRST_DB_URI: "$PGRST_DB_URI"
+  PSQL_DB_URI: "$postgres://$DB_USER:$DB_PASS@pgbouncer/$DB_NAME"
   GUARDIAN_KEY: "$GUARDIAN_KEY"
   PHX_KEY: "$PHX_KEY"
   SKETCHFAB_API_KEY: "$SKETCHFAB_API_KEY"
   TENOR_API_KEY: "$TENOR_API_KEY"
-  PSQL: "$PSQL"
   PERMS_KEY: '$PERMS_KEY'
   PGRST_JWT_SECRET: '$PGRST_JWT_SECRET'
 ---
@@ -568,11 +567,11 @@ spec:
           value: ret0_admin
         - name: PGRST_DB_ANON_ROLE
           value: postgres          
-        - name: PGRST_DB_URI
+        - name: PSQL_DB_URI
           valueFrom:
             secretKeyRef:
               name: configs
-              key: PGRST_DB_URI
+              key: PSQL_DB_URI
         - name: PGRST_JWT_SECRET
           valueFrom:
             secretKeyRef:
@@ -1040,14 +1039,6 @@ spec:
   selector:
     app: photomnemonic
 ---
-apiVersion: v1
-kind: Secret
-metadata:
-  name: configs
-  namespace: $Namespace
-stringData:
-  PSQL: $PSQL
----
 ########################################################################
 ######################   dialog   ######################################
 ########################################################################  
@@ -1142,7 +1133,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: configs
-              key: PSQL
+              key: PSQL_DB_URI
 ---
 apiVersion: v1
 kind: Service
