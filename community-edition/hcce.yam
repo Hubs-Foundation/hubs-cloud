@@ -114,14 +114,14 @@ spec:
           service:
             name: ret
             port: 
-              number: 4000
+              number: 4001
       - path: /http
         pathType: ImplementationSpecific
         backend:
           service:
             name: ret
             port: 
-              number: 4000                  
+              number: 4001
       - path: /hubs
         pathType: Prefix
         backend:
