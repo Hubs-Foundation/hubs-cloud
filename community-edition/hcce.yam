@@ -1230,7 +1230,7 @@ spec:
         - --configmap-tcp-services=$Namespace/haproxy-tcp-config
         - --ingress.class=haproxy
         - --log=warning #error warning info debug trace
-        - --default-ssl-certificate=$Namespace/cert-hcce
+        - --default-ssl-certificate=$Namespace/cert-$HUB_DOMAIN
         securityContext:
           runAsUser:  1000
           runAsGroup: 1000
