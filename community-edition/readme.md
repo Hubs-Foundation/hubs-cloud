@@ -6,7 +6,7 @@ Community Edition is designed for developers capable of working with the full Hu
 
 # Why Kubernetes
 
-Kubernetes is an industry standard for allowing developers to build, deploy, and scale application efficiently and reliably. Benefits to Kubernetes include:
+Kubernetes is an industry standard for allowing developers to build, deploy, and scale s efficiently and reliably. Benefits to Kubernetes include:
 
 - [Portability, Extensibility, and Open Source](https://kubernetes.io/docs/concepts/overview/)
 - [Availability in many cloud environments](https://kubernetes.io/docs/setup/production-environment/turnkey-solutions/)
@@ -48,7 +48,7 @@ To deploy to your K8s cluster on your chosen hosting solution, follow these step
 
 # Example -- A "hello-world" instance with vm on gcp
 
-### Step 1: Make a kubernetes environment
+#### Step 1: Make a kubernetes environment
 
 Replace `hcce-vm-1` and `us-central1-a` with your desired name and zone. Check [the official doc](https://cloud.google.com/sdk/gcloud/reference/compute/instances/create) for more options.
 
@@ -61,12 +61,9 @@ gcloud auth login
 `gcloud compute ssh --project=hubs-dev-333333 --zone=us-central1-a geng-test-2`
 ### prepare the vm
 `sudo apt update && sudo apt install npm && sudo npm install pem-jwk -g`
-### install k3s
-```
-
-### Step 2: Install k3s without traefik
-
+### install k3s without traefik -- read https://docs.k3s.io/ for more info
 - `curl https://get.k3s.io/ | INSTALL_K3S_EXEC="--disable=traefik" sh -`
+```
 
 - read https://docs.k3s.io/ for more info
 
