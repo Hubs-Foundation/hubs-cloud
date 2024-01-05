@@ -55,12 +55,12 @@ To deploy to your K8s cluster on your chosen hosting solution, follow these step
 [The Hubs Team's case study](https://hubs.mozilla.com/labs/community-edition-case-study-quick-start-on-gcp-w-aws-services/) outlines the process of deploying your first, experimental instance on GCP's GKS. This tutorial walks you through the process of setting up DNS on AWS Route 53 and SMTP on AWS SES, deploying and trouble-shooting your instance on GCP, and configuring custom code & server settings.\
 [Companion Video](https://youtu.be/8XNEWmf9tk4)
 
-### 2. Community Edition Tips and Tricks by @kfarr
+### 2. Community Edition Tips and Tricks by [@kfarr](https://github.com/kfarr)
 
 [Documentation Awardee Kieran Farr's guide](https://hubs.mozilla.com/labs/tips-and-tricks-for-deploying-hubs-community-edition-to-google-cloud-platform/) shares the helpful tips and tricks he learned while following the Hubs Team's case study on GCP. This is an excellent repository of helpful commands and debugging techniques for new Kubernetes users.
 [Companion Video](https://youtu.be/w4NlAhKaBrg)
 
-### 3. Community Edition Helm Chart by @Doginal
+### 3. Community Edition Helm Chart by [@Doginal](https://github.com/Doginal)
 
 Documentation Awardee Alex Griggs maintains [an open-source Helm Chart for HCCE](https://github.com/hubs-community/mozilla-hubs-ce-chart). Helm is an abstraction above Kubernetes that improves maintainability, scalability, and ease-of-use of applications using K8s. Alex has also released three tutorials showing how to use his Helm chart to create production-ready CE deployments, including for large scale events:
 
@@ -71,11 +71,11 @@ Documentation Awardee Alex Griggs maintains [an open-source Helm Chart for HCCE]
 [AWS Companion Video](https://youtu.be/0VtKQYXTrn4)\
 GCP Companion Video (Coming Soon!)
 
-### 4. Azure Hubs Community Edition Installation by @vvdt
+### 4. Azure Hubs Community Edition Installation by [@vvdt](https://github.com/vvdt)
 
 Community Mamber Vincent van den Tol has released [instructions for installing Community Edition on Microsoft Azure](https://github.com/imedu-vr/hubs-docs/blob/main/azure_hubs_ce_installation.md), including persistent volumes, custom client deployment, and many helpful tips and tricks.
 
-### 5. Import Assets from Hubs Cloud to CE by @chris-metabi
+### 5. Import Assets from Hubs Cloud to CE by [chris-metabi](https://github.com/chris-metabi)
 
 Chris from MeTabi [has created a guide](https://github.com/hubs-community/import_assets) for copying data from an existing Hubs Cloud instance and porting it to a Community Edition instance.
 
