@@ -2,6 +2,8 @@
 
 ## Hubs Cloud
 
+### NOTICE: As of January 1, 2024, Hubs Cloud on AWS has been replaced by [Hubs Cloud Community Edition](https://github.com/mozilla/hubs-cloud/tree/master/community-edition). You can read more about these changes [here](https://hubs.mozilla.com/labs/welcoming-community-edition/).
+
 This repo collects asset packs, release notes, and scripts for your HC instances.
 
 See [Hubs Cloud Releases and Updates Changelog](CHANGELOG.md)
