@@ -36,6 +36,9 @@ MAX_CALLS=900
 TIME_LIMIT=550
 touch $TIMESTAMP_FILE
 ratelimiter() {
+    printf "\n>>"
+    sleep 1
+    return
     local current_time=$(date +%s)
     # Read the timestamp file and remove records that are older than 10 minutes
     awk -v limit=$((current_time - TIME_LIMIT)) '$1 > limit' $TIMESTAMP_FILE > ${TIMESTAMP_FILE}_tmp && mv ${TIMESTAMP_FILE}_tmp $TIMESTAMP_FILE
