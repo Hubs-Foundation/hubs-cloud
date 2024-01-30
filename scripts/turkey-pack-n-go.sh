@@ -56,6 +56,7 @@ done
 for f in $(cat filelist); do
     printf "\n uploading: $f..."
     curl -s -o /dev/null -w "%{http_code}" -X POST -F "file=@$f" -H "turkeyauthtoken:$turkeyauthtoken" -H "addpath:/$backupName/$(dirname $f)" https://$hubdomain/api/ita/upload
+    sleep 1
 done
 
 # call to restore with phx_secret
