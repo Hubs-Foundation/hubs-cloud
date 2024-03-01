@@ -71,15 +71,32 @@ Documentation Awardee Alex Griggs maintains [an open-source Helm Chart for HCCE]
 [AWS Companion Video](https://youtu.be/0VtKQYXTrn4)\
 GCP Companion Video (Coming Soon!)
 
-### 4. Azure Hubs Community Edition Installation by [@vvdt](https://github.com/vvdt)
+### 4. Azure Hubs Community Edition Installation by [@TophoStan](https://github.com/TophoStan)
+
+Documentation Awardee Stan Tophoven has published steps for uploading a Community Edition instance to Microsoft Azure's managed Kubernetes Platform.
+
+1. [Installing Community Edition on Microsoft Azure AKS](https://hubs.mozilla.com/labs/installing-mozilla-hubs-community-edition-on-your-own-microsoft-azure-kubernetes-service/)
+2. [Stan Tophoven's Guide to Deploying Community Edition on Azure AKS](https://www.youtube.com/watch?v=j8dQEEEX4OA)
+
+### 5. Community Edition Setup on OVH by [@utopiah](https://fabien.benetou.fr/Tools/HubsSelfHosting)
+
+Documentation Awardee Fabien Benetou has produced a guide for hosting Community Edition on OVH, including some excellent information on setup time, cost considerations, custom client deployment, and how Hubs can live on beyond Mozilla! Fabien has also produced long form and short form tutorial videos, including one in French.
+
+1. [Written Document](https://fabien.benetou.fr/Tools/HubsSelfHosting)
+2. [Long Form Tutorial in English](https://video.benetou.fr/w/c5YUiW7xaKAx91GPbCvWxd)
+3. [Long Form Tutorial in French](https://video.benetou.fr/w/o8MDuxro6vaiT7Bu3PdyVw)
+4. [Short Form Tutorial in English](https://video.benetou.fr/w/1vJC37pEhkEqJv6wU1h1c8)
+5. [Custom Client Deployment](https://video.benetou.fr/w/qUkZiRTXGnu2xXXudJyPxM)
+
+### 6. Azure Hubs Community Edition Installation by [@vvdt](https://github.com/vvdt)
 
 Community Mamber Vincent van den Tol has released [instructions for installing Community Edition on Microsoft Azure](https://github.com/imedu-vr/hubs-docs/blob/main/azure_hubs_ce_installation.md), including persistent volumes, custom client deployment, and many helpful tips and tricks.
 
-### 5. Import Assets from Hubs Cloud to CE by [chris-metabi](https://github.com/chris-metabi)
+### 7. Import Assets from Hubs Cloud to CE by [chris-metabi](https://github.com/chris-metabi)
 
 Chris from MeTabi [has created a guide](https://github.com/hubs-community/import_assets) for copying data from an existing Hubs Cloud instance and porting it to a Community Edition instance.
 
-### 6. A "Hello-World" Instance With VM On GCP
+### 8. A "Hello-World" Instance With VM On GCP
 
 ##### Step 1: Make a kubernetes environment
 
@@ -114,7 +131,7 @@ gcloud auth login
 - Expose IP to DNS
 - Configure firewall
 
-### 7. A "potentially-somewhat-production-ready" instance on AWS
+### 9. A "potentially-somewhat-production-ready" instance on AWS
 
 - Coming soon!
 
