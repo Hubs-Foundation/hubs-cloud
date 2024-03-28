@@ -36,6 +36,72 @@ stringData:
   PERMS_KEY: '$PERMS_KEY'
   PGRST_JWT_SECRET: '$PGRST_JWT_SECRET'
 ---
+
+######################################################################################
+################################# persistent volume ##################################
+######################################################################################
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pgsql-pv
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage:  10Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: "/tmp/pgsql_data"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ret-pv
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage:  10Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: "/tmp/ret_storage_data"
+    type: DirectoryOrCreate
+---
+######################################################################################
+############################## persistent volume claim ###############################
+######################################################################################
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ret-pvc
+  namespace: $Namespace
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pgsql-pvc
+  namespace: $Namespace
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+---
 ######################################################################################
 ###################################### ingress #######################################
 ######################################################################################
@@ -405,9 +471,8 @@ spec:
     spec:
       volumes:
       - name: storage
-        hostPath:
-          path: /tmp/ret_storage_data
-          type: DirectoryOrCreate
+        persistentVolumeClaim:
+          claimName: ret-pvc
       - name: config
         configMap:
           name: ret-config
@@ -655,8 +720,8 @@ spec:
               mountPath: /var/lib/postgresql/data
       volumes:
         - name: postgresql-data
-          hostPath:
-            path: /tmp/pgsql_data
+          persistentVolumeClaim:
+            claimName: pgsql-pvc
 ---
 ####################################################################################
 ################################### pgbouncer ######################################
