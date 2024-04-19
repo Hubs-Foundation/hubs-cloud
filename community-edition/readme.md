@@ -117,29 +117,25 @@ Chris from MeTabi [has created a guide](https://github.com/hubs-community/import
 
 Replace `hcce-vm-1` and `us-central1-a` with your desired name and zone. Check [the official doc](https://cloud.google.com/sdk/gcloud/reference/compute/instances/create) for more options.
 
-````
-
-### login gcp
+##### login gcp
 
 gcloud auth login
 
-### create a vm
+##### create a vm
 
 `gcloud compute instances create hcce-vm-1 --zone=us-central1-a`
 
-### ssh to the vm
+##### ssh to the vm
 
 `gcloud compute ssh --project=hubs-dev-333333 --zone=us-central1-a geng-test-2`
 
-### prepare the vm
+##### prepare the vm
 
 `sudo apt update && sudo apt install npm && sudo npm install pem-jwk -g`
 
-### install k3s without traefik -- read https://docs.k3s.io/ for more info
+##### install k3s without traefik -- read https://docs.k3s.io/ for more info
 
 - `curl https://get.k3s.io/ | INSTALL_K3S_EXEC="--disable=traefik" sh -`
-
-```
 
 ##### Step 2: Install k3s without traefik
 
@@ -157,24 +153,21 @@ gcloud auth login
 - create a-records to the dns
 - makesure the required ports are exposed to the client
 
-# example -- a "hello-world" instance with managed kubernetes on gcp
-#### Step 1: make a kubernetes environment
+### example -- a "hello-world" instance with managed kubernetes on gcp
+##### Step 1: make a kubernetes environment
 replace `hcce-gke-1` and `us-central1-a` with your desired name and zone, check [official doc](https://cloud.google.com/sdk/gcloud/reference/container/clusters/create) for more options
-```
 
-# login gcp
+##### login gcp
 
 gcloud auth login
 
-# create gke cluster
+##### create gke cluster
 
 gcloud container clusters create hcce-gke-1 --zone=us-central1-a
 
-# get creds for kubectl
+###### get creds for kubectl
 
 gcloud container clusters get-credentials --region us-central1-a hcce-gke-1
-
-```
 
 - Find the vm's external IP
 - Expose IP to DNS
@@ -185,34 +178,6 @@ gcloud container clusters get-credentials --region us-central1-a hcce-gke-1
 - Coming soon!
 
 ## Considerations for Production Environment
-
-# example -- a "potentially-somewhat-production-ready" instance on aws
-- comming soon
-
-# considerations for production environment
-- infra
-    - easy -- use a managed kubernetes
-    - hard -- https://kubernetes.io/docs/setup/production-environment/
-- security
-    - password and keys overview
-    - add a waf
-- scalability
-    - stateful services
-        - pgsql
-            - use a managed pgsql ie. rds on aws or cloudsql on gcp
-            - roll your own
-                - <links to some guides to run pgsql in k8s>
-        - reticulum
-            - use a network/shared storage for reticulum's /storage mount
-    - stateless services (all except reticulum and pgsql)
-        - just run multiple replicas
-        - use hpa
-- devops
-    - the yaml file is the entire infra on kubernetes, use a git to track changes and an ops pipeline to auto deploy
-        - ie put the yaml file on a github repo and use github action to deploy to your hosting env
-    - use dev env for staging/testing
-        - use spot instances for nodes to save $
-        - develop and integrate automated testing scripts into the ops pipeline
 - Infrastructure
   - Easy -- use managed kubernetes
   - Hard -- make it [production-ready](https://kubernetes.io/docs/setup/production-environment/)
