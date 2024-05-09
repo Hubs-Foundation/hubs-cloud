@@ -86,7 +86,7 @@ echo "secret_key_base: $secret_key_base"
 cd /storage && ls -lha
 ```
 
-3. Once you have saved the `pack-n-go.sh` script, run it with `sudo nano pack-n-go.sh`. `sudo` is required in order for the script to show your `secret_key` and `secret_key_base`. Wait for the script to finish executing.
+3. Once you have saved the `pack-n-go.sh` script, run it with `sudo bash pack-n-go.sh`. `sudo` is required in order for the script to show your `secret_key` and `secret_key_base`. Wait for the script to finish executing.
 4. Copy down the `secret_key` and `secret_key_base` printed by the script. These will later replace the `GUARDIAN_KEY` and `PHX_KEY`, respectively, in our CE deployment spec.
 5. Verify that the dump was successful by looking for `pg_dump.sql` inside of `/storage` on your EC2 instance. Exit out of the connection.
 
