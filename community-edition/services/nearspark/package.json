@@ -1,0 +1,13 @@
+{
+  "name": "nearsbark",
+  "version": "0.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "express": ">4.17.1",
+    "request": ">2.88.0",
+    "sharp": ">0.29.1"
+  }
+}
+
+

@@ -1,0 +1,70 @@
+@use "../../react-components/styles/theme.scss";
+
+%unselectable  {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+%default-font {
+  font-family: theme.$font-family-default;
+}
+
+%rounded-border {
+  border: 1px solid theme.$input-border-color;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+%input-field {
+  @extend %rounded-border;
+  @extend %default-font;
+  color: theme.$text1-color;
+  font-size: 1.2em;
+  background-color: transparent;
+  line-height: 2.0em;
+  padding-left: 1.25em;
+  padding-right: 1.25em;
+  margin: 0.5em 0;
+  width: 100%;
+}
+
+%action-button {
+  @extend %default-font;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  text-decoration: none;
+  outline-style: none;
+  font-weight: bold;
+  cursor: pointer;
+  border: 0;
+  border-radius: 28px;
+  padding: 0px 18px;
+
+  background: theme.$primary-color;
+  font-size: 1em;
+  color: theme.$text5-color;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 150px;
+  height: 48px;
+}
+
+%no-default-button-style {
+  padding: 0px;
+  border-style: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:focus {
+    outline: 0; // @a11y TODO: Provide user preference for showing outlines
+  }
+}
+
+:local(.no-default-button-style){
+  @extend %no-default-button-style;
+}

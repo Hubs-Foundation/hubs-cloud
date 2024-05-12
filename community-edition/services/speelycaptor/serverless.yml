@@ -1,0 +1,45 @@
+service: speelycaptor
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  stackName: speelycaptor-public
+  stage: public
+  region: ${file(config.json):speelycaptor-region}
+  memorySize: 3000
+  timeout: 120
+  role: ${file(config.json):speelycaptor-public-iam-role}
+  deploymentBucket:
+    name: ${file(config.json):speelycaptor-public-bucket-id}
+  usagePlan:
+    quota:
+      limit: 1000
+      period: MONTH
+    throttle:
+      rateLimit: 5
+      burstLimit: 10
+
+functions:
+  initialize:
+    handler: index.init
+    environment:
+      scratchBucketRegion: ${file(config.json):speelycaptor-region}
+      scratchBucketId: ${file(config.json):speelycaptor-public-scratch-bucket-id}
+    events:
+      - http:
+          method: get
+          path: init
+  convert:
+    handler: index.convert
+    layers:
+      - ${file(config.json):ffmpeg-lambda-layer-arn}
+    environment:
+      scratchBucketRegion: ${file(config.json):speelycaptor-region}
+      scratchBucketId: ${file(config.json):speelycaptor-public-scratch-bucket-id}
+    events:
+      - http:
+          method: get
+          path: convert
+
+plugins:
+  - serverless-offline

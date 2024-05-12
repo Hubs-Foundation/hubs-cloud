@@ -1,0 +1,1 @@
+from haproxytech/kubernetes-ingress:1.8.5@sha256:09b59bc272e3aec5ca5b706774ed788c4bb4f184bb1d7ab99660a2b7773b0668

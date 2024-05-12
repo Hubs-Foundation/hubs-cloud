@@ -1,0 +1,118 @@
+@use "../../react-components/styles/theme.scss";
+
+:local(.hero) {
+  background-color: theme.$background2-color;
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  iframe {
+    margin-bottom: 20px;
+  }
+
+  & > section {
+    display: flex; 
+    padding: 32px;
+  }
+}
+
+:local(.hero-media) {
+  flex: 8;
+
+  & > * {
+    height: 240px;
+    width: 100%;
+
+    @media(min-width: theme.$breakpoint-sm) {
+      height: 300px;
+    }
+
+    @media(min-width: theme.$breakpoint-md) {
+      height: 360px;
+    }
+
+    @media(min-width: theme.$breakpoint-lg) {
+      height: 100%;
+    }
+  }
+
+  @media(min-width: theme.$breakpoint-lg) {
+    margin-right: 40px;
+  }
+}
+
+:local(.hero-content) {
+  flex: 10;
+
+  & > * {
+    margin-bottom: theme.$spacing-md;
+  }
+
+  & > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+:local(.features) {
+  display: flex;
+  padding: 5px;
+  
+  & > * {
+    margin: theme.$spacing-md;
+  }
+
+  :local(.center) {
+    & > * {
+      margin-bottom: theme.$spacing-md;
+    }
+  
+    & > :last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Utility Classes
+:local(.hide-lg-down) {
+  @media(max-width: theme.$breakpoint-lg) {
+    display: none;
+  }
+}
+
+:local(.hide-lg-up) {
+  @media(min-width: theme.$breakpoint-lg) {
+    display: none;
+  }
+}
+
+:local(.row) {
+  display: flex;
+  justify-content: space-evenly !important;
+
+  & > * {
+    margin: theme.$spacing-sm;
+  }
+}
+
+:local(.col-lg) {
+  flex-direction: column;
+
+  @media(min-width: theme.$breakpoint-lg) {
+    flex-direction: row;
+  }
+}
+
+:local(.center) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+:local(.center-lg) {
+  @media(max-width: theme.$breakpoint-lg) {
+    text-align: center;
+    align-items: center;
+  }
+}

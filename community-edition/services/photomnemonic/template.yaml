@@ -1,0 +1,36 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Photomnemonic
+
+Metadata:
+  AWS::ServerlessRepo::Application:
+    Name: photomnemonic
+    Description: Site screenshotter for Hubs Cloud
+    Author: Mozilla
+    SpdxLicenseId: MPL-2.0
+    LicenseUrl: LICENSE
+    ReadmeUrl: README.md
+    SemanticVersion: 0.2.0
+    SourceCodeUrl: https://github.com/mozilla/photomnemonic
+
+Parameters:
+  PhotomnemonicRoleArn:
+    Type: String
+
+Resources:
+  ScreenshotFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: photomnemonic.zip
+      Handler: index.handler
+      Runtime: nodejs14.x
+      Timeout: 30
+      MemorySize: 3000
+      Role:
+        Ref: PhotomnemonicRoleArn
+
+Outputs:
+  PhotomnemonicScreenshotFunctionArn:
+    Description: "Screenshot Lambda Function ARN"
+    Value: !GetAtt ScreenshotFunction.Arn

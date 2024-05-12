@@ -421,7 +421,7 @@ spec:
           mountPath: /home/ret
         securityContext:
           privileged: true       
-        image: mozillareality/ret:stable-latest
+        image: $Container_Dockerhub_Username/reticulum:$Container_Tag
         ports:
         - containerPort: 9100
         imagePullPolicy: IfNotPresent
@@ -557,7 +557,7 @@ spec:
             successThreshold: 5
             failureThreshold: 100
       - name: postgrest
-        image: mozillareality/postgrest:stable-latest
+        image: $Container_Dockerhub_Username/postgrest:$Container_Tag
         ports:
         - containerPort: 3000
         imagePullPolicy: IfNotPresent
@@ -630,7 +630,7 @@ spec:
     spec:
       containers:
         - name: postgresql
-          image: postgres:12
+          image: $Container_Dockerhub_Username/postgres:$Container_Tag
           ports:
             - name: postgresql
               containerPort: 5432
@@ -678,7 +678,7 @@ spec:
         app: pgbouncer
     spec:
       containers:
-      - image: mozillareality/pgbouncer:stable-latest
+      - image: $Container_Dockerhub_Username/pgbouncer:$Container_Tag
         imagePullPolicy: IfNotPresent
         name: pgbouncer
         env:
@@ -727,7 +727,7 @@ spec:
         app: pgbouncer-t
     spec:
       containers:
-      - image: mozillareality/pgbouncer:stable-latest
+      - image: $Container_Dockerhub_Username/pgbouncer:$Container_Tag
         imagePullPolicy: IfNotPresent
         name: pgbouncer-t
         env:
@@ -789,7 +789,7 @@ spec:
     spec:
       containers:
       - name: hubs
-        image: mozillareality/hubs:stable-latest
+        image: $Container_Dockerhub_Username/hubs:$Container_Tag
         imagePullPolicy: IfNotPresent
         env:
         - name: turkeyCfg_thumbnail_server
@@ -859,7 +859,7 @@ spec:
     spec:
       containers:
       - name: spoke
-        image: mozillareality/spoke:stable-latest
+        image: $Container_Dockerhub_Username/spoke:$Container_Tag
         imagePullPolicy: IfNotPresent
         env:
         - name: turkeyCfg_thumbnail_server
@@ -929,7 +929,7 @@ spec:
     spec:
       containers:
       - name: nearspark
-        image: mozillareality/nearspark:stable-latest
+        image: $Container_Dockerhub_Username/nearspark:$Container_Tag
         ports:
         - containerPort: 5000
         imagePullPolicy: IfNotPresent
@@ -969,7 +969,7 @@ spec:
 #         app: speelycaptor
 #     spec:
 #       containers:
-#       - image: mozillareality/speelycaptor:stable-latest
+#       - image: $Container_Dockerhub_Username/speelycaptor:$Container_Tag
 #         imagePullPolicy: IfNotPresent
 #         name: speelycaptor
 #         env:
@@ -1024,7 +1024,7 @@ spec:
     spec:
       containers:
       - name: photomnemonic
-        image: mozillareality/photomnemonic:stable-latest
+        image: $Container_Dockerhub_Username/photomnemonic:$Container_Tag
         imagePullPolicy: IfNotPresent
 ---
 apiVersion: v1
@@ -1077,7 +1077,7 @@ spec:
       hostNetwork: true
       containers:
       - name: dialog
-        image: mozillareality/dialog:stable-latest
+        image: $Container_Dockerhub_Username/dialog:$Container_Tag
         imagePullPolicy: Always
         ports:        
         - hostPort: 4443
@@ -1130,7 +1130,7 @@ spec:
       hostNetwork: true
       containers:
       - name: coturn
-        image: mozillareality/coturn:stable-latest
+        image: $Container_Dockerhub_Username/coturn:$Container_Tag
         imagePullPolicy: Always
         ports:
         - hostPort: 5349
@@ -1222,7 +1222,7 @@ spec:
       terminationGracePeriodSeconds: 60
       containers:
       - name: haproxy
-        image: haproxytech/kubernetes-ingress:1.8.5@sha256:09b59bc272e3aec5ca5b706774ed788c4bb4f184bb1d7ab99660a2b7773b0668
+        image: $Container_Dockerhub_Username/haproxy:$Container_Tag
         args:
         - --configmap=$Namespace/haproxy-config
         - --https-bind-port=4443

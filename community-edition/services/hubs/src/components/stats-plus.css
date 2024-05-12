@@ -1,0 +1,41 @@
+:global(.rs-header) {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px rgba(255,255,255,0.1) solid;
+  margin-bottom: 8px;
+}
+
+:global(.rs-collapse-btn) {
+  cursor: pointer;
+  font-size: 12px;
+}
+
+:global(.rs-fps-counter) {
+  font-family: monospace;
+  cursor: pointer;
+  position: absolute;
+  bottom: 96px;
+  right: 2px;
+  padding: 4px 8px;
+  color: #ffffff;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  font-size: 10px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+:global(.rs-counter-id) {
+  width: 80px;
+}
+
+:global(.rs-base) {
+  right: 10px;
+  left: auto;
+  top: 10px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 350px;
+}

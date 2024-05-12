@@ -1,0 +1,32 @@
+{
+  "name": "dialog",
+  "version": "0.0.1",
+  "description": "WebRTC SFU based on mediasoup",
+  "author": "Mozilla Mixed Reality <mixreality@mozilla.com>",
+  "license": "MPL-2.0",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint -c .eslintrc.js index.js",
+    "start": "DEBUG=${DEBUG:='*mediasoup* *INFO* *WARN* *ERROR*'} INTERACTIVE=${INTERACTIVE:='true'} node index.js"
+  },
+  "dependencies": {
+    "@sitespeed.io/throttle": "^3.0.0",
+    "awaitqueue": "^2.4.0",
+    "body-parser": "^1.19.0",
+    "colors": "^1.4.0",
+    "debug": "^4.1.1",
+    "express": "^4.18.2",
+    "heapdump": "^0.3.15",
+    "jsonwebtoken": "^9.0.0",
+    "mediasoup": "^3.11.4",
+    "pidusage": "^3.0.2",
+    "protoo-server": "^4.0.6",
+    "sctp": "^1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "prettier": "^1.16.4"
+  }
+}

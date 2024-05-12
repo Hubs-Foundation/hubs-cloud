@@ -1,0 +1,121 @@
+@use "../../react-components/styles/theme.scss";
+@import 'shared';
+
+body {
+  margin: 0;
+  background-color: theme.$background1-color;
+}
+
+:local(.avatar-landing) {
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+ 
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  pointer-events: auto;
+  flex-direction: column;
+
+  @extend %default-font;
+  @extend %unselectable;
+
+  :local(.logo) {
+    max-width: 150px;
+    max-height: 64px;
+    margin-bottom: 22px;
+    filter: drop-shadow(0 0 4px #888);
+
+    @media (min-width: 500px) {
+      position: absolute;
+      right: 15px;
+      bottom: 15px;
+      margin-bottom: 0;
+    }
+  }
+
+  :local(.box) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 60vw;
+    min-width: 300px;
+    max-width: 700px;
+    min-height: 200px;
+    max-height: 1000px;
+    height: 100%;
+    padding: 40px;
+  }
+
+  :local(.title) {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: theme.$text1-color;
+    width: 100%;
+    color: theme.$text1-color;
+    text-align: center;
+  }
+
+  :local(.selected-message) {
+    color: theme.$text2-color;
+    margin-top: 16px;
+    height: 48px;
+  }
+
+  :local(.attributions) {
+    font-size: 1.0em;
+    padding-top: 4px;
+    margin-bottom: 1em;
+  }
+
+  :local(.form-submit) {
+    @extend %action-button;
+    background: theme.$primary-color;
+    margin: 0;
+    min-height: max-content;
+    margin-top: 16px;
+    &:disabled {
+      background-color: theme.$disabled-bg-color;
+      cursor: default;
+    }
+  }
+
+  :local(.preview) {
+    flex: 1;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+    max-width: 300px;
+  }
+
+  :local(.copy-tip) {
+    position: absolute;
+    padding: 5px 20px;
+    background: theme.$tile-button-bg-color;
+    top: 5px;
+    right: 10px;
+    border-radius: 20px;
+    height: 20px;
+    line-height: 20px;
+    color: theme.$tile-button-text-color;
+  }
+
+  :local(.edit-avatar) {
+    position: absolute;
+    top: 6px;
+    right: 7px;
+    color: theme.$tile-button-text-color;
+    background: theme.$tile-button-bg-color;
+    border-radius: 30px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+
+    &:hover {
+      background: theme.$tile-button-bg-color-hover;
+    }
+  }
+}
