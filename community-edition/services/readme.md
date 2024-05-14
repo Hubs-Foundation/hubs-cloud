@@ -24,6 +24,11 @@ Instead of using a git submodule, we have opted to centralize all codebases in `
 2. Run `docker login {docker_username}` and enter your docker registry password when prompted.
 3. Run `docker push {your_registry_url}:{tag_name}` for each service.
 
+### Troubleshooting
+
+- The `dockerbuildall.sh` was tested using bash4. There is a known issue with line 19 when using bash3. To fix, replace line 19 with `tag_name="${tagPrefix}$(echo "$dir" | tr '[:upper:]' '[:lower:]')"`
+- For non-amd64 environments, you should add `--platform=linux/amd64` to `dockerbuildall.sh` line 26 to specify amd64.
+
 ### Use Services In Community Edition
 
 When running [`render_hcce.sh`](../render_hcce.sh), you can specify your registry name and desired tag when running the script to populate your `hcce.yaml` file to point to your hosted images. To specify individual images or tags, edit specified images in `hcce.yaml`.
