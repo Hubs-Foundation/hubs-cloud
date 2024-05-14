@@ -1,0 +1,418 @@
+@use "../../react-components/styles/theme.scss";
+@import 'shared.scss';
+
+$fontSize: 16px;
+$semi-bold: 600;
+
+%full-screen-panel {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background: theme.$background1-color;
+  color: theme.$text1-color;
+}
+
+:local(.preferences-panel) {
+  @extend %full-screen-panel;
+  z-index: 2;
+  pointer-events: auto;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding-bottom: 16px;
+
+  input[type='number'] {
+    -moz-appearance:textfield;
+
+    &:disabled,
+    &[disabled] {
+      color: theme.$disabled-text-color;
+    }
+  }
+
+  input[type=text],input[type=number] {
+    cursor: pointer;
+    @extend %rounded-border;
+    @extend %default-font;
+    color: theme.$text1-color;;
+    padding: 0px;
+    margin: 0px;
+    background: transparent;
+    line-height: 30px;
+    font-size: $fontSize;
+    text-align: center;
+    width: 60px;
+    height: 38px;
+
+    &:disabled,
+    &[disabled] {
+      color: theme.$disabled-text-color;
+    }
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+}
+
+:local(.nav-container) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+:local(.nav) {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid theme.$border1-color;
+  margin: 0px 16px;
+  width: 100%;
+}
+
+%font-nav-item {
+  font-weight: $semi-bold;
+  font-size: $fontSize;
+}
+%font-nav-item-selected {
+  font-weight: bold;
+}
+
+:local(.nav-item){
+  @extend %default-font;
+  @extend %font-nav-item;
+  @extend %no-default-button-style;
+  @extend %unselectable;
+  margin: 0px 24px;
+  border-bottom: 3px solid transparent;
+  &:local(.selected) {
+    @extend %font-nav-item-selected;
+    border-bottom: 3px solid theme.$active-color;
+  }
+  color: theme.$text1-color;
+}
+
+:local(.max-resolution-preference-item) {
+  @extend %default-font;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+}
+
+%preference-list-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 24px;
+  &:last-child {
+    margin-bottom: 0px;
+  }
+}
+:local(.list-item) {
+  margin: 0px 16px 16px 16px;
+  &:last-child {
+    margin: 0px 16px 0px 16px;
+  }
+  &.disabled {
+    opacity: 20%;
+    pointer-events: none;
+  }
+  &.indent {
+    padding-left: 15px;
+  }
+}
+:local(.column){
+  display: flex;
+  flex-flow: column;
+}
+%row {
+  display: flex;
+  align-items: center;
+  &>*{
+    margin-right: 12px;
+  }
+  &>*:last-child {
+    margin-right: 0px;
+  }
+}
+%row-right {
+  justify-self: flex-end;
+  margin-left: auto;
+}
+%row-center {
+  justify-self: center;
+  margin-left: auto;
+}
+:local(.row) {
+  @extend %row;
+}
+:local(.row-right) {
+  @extend %row-right;
+}
+:local(.row-center){
+  @extend %row-center;
+}
+
+%warn-icon-size {
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px;
+  min-height: 36px;
+}
+:local(.warn-icon-placeholder){
+  @extend %warn-icon-size;
+}
+:local(.warn-icon){
+  @extend %warn-icon-size;
+  color: theme.$error-color;
+}
+
+:local(.horizontal) {
+  @extend %preference-list-item;
+  justify-content: space-between;
+  &>*:first-child {
+    margin-left: 16px !important;
+    margin-right: 16px !important;
+  }
+  &>* {
+    margin-right: 16px !important;
+  }
+}
+:local(.vertical) {
+  @extend %preference-list-item;
+  flex-flow: column;
+  justify-content: center;
+  &>*{
+    margin: 0px 16px !important;
+  }
+}
+:local(.control-with-default) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 0px;
+  &>*:first-child {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+  &>* {
+    margin-right: 16px;
+  }
+}
+:local(.preference-label){
+  @extend %default-font;
+  font-size: $fontSize;
+  font-weight: 600;
+  flex-grow: 1;
+
+  &:local(.disabled) {
+    color: theme.$disabled-text-color;
+  }
+}
+
+:local(.close-button) {
+  cursor: pointer;
+  color: theme.$text2-color;
+  outline-style: none;
+  background: none;
+  border: none;
+  @extend %no-default-button-style;
+  margin: 16px auto 16px 16px;
+}
+:local(.refresh-prompt) {
+  @extend %default-font;
+  font-size: $fontSize;
+  text-align: center;
+}
+:local(.toast){
+  width: 100%;
+  max-width: 600px;
+  z-index: 10;
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  border-radius: 16px 16px 0px 0px;
+  background-color: theme.$tile-bg-color;
+  &>* {
+    margin: 16px 16px 0px 16px;
+  }
+  &>*:last-child {
+    margin: 16px;
+  }
+}
+:local(.refresh-now-button){
+  @extend %action-button;
+  min-width: 120px;
+  width: 120px;
+  height: 44px;
+  width: 180px;
+  min-width: 180px;
+}
+%reset-to-default-button-size {
+  width: 30px !important;
+  height: 30px !important;
+}
+:local(.reset-to-default-button) {
+  cursor: pointer;
+  @extend %no-default-button-style;
+  @extend %reset-to-default-button-size;
+  color: theme.$text2-color;
+  @media(hover: hover){
+    &:hover {
+      color: theme.$primary-color;
+    }
+  }
+}
+:local(.reset-to-default-button-placeholder){
+  @extend %reset-to-default-button-size;
+}
+:local(.flex){
+  display: flex;
+}
+:local(.icon){
+  width: 32px !important;
+  height: 32px !important;
+}
+
+:local(.content-container) {
+  margin-top: 16px;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+}
+
+%checkbox-size {
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px;
+  min-height: 36px;
+}
+
+:local(.checkbox-placeholder){
+  @extend %checkbox-size;
+}
+:local(.scrolling-content) {
+  display: flex;
+  flex-flow: column;
+  width: 800px;
+  max-width: 100%;
+
+  input[type=checkbox] {
+    cursor: pointer;
+    cursor: pointer;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border: 1px solid theme.$input-border-color;
+    background-color: theme.$input-bg-color;
+    border-radius: 6px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @extend %checkbox-size;
+  }
+  input[type=checkbox]:checked {
+    &::after {
+      content: ' ';
+      position: absolute;
+      background: theme.$active-color;
+      border-radius: 6px;
+    }
+
+    &::after {
+      width: 24px !important;
+      height: 24px !important;
+    }
+  }
+}
+
+:local(.section) {
+  margin: 0px 0px 16px 0px;
+  &:last-child {
+    margin: 0px;
+  }
+}
+
+:local(.section-title){
+  @extend %default-font;
+  font-weight: normal;
+  text-transform: uppercase;
+  color: theme.$text2-color;
+  margin: 0px 0px 16px 16px;
+  font-size: $fontSize;
+}
+
+:local(.dropdown) {
+  position: relative;
+  display: flex;
+  align-items: center;
+  line-height: 20px;
+
+  select {
+    font-size: $fontSize;
+    @extend %rounded-border;
+    @extend %default-font;
+    font-family: theme.$font-family-default;
+    color: theme.$text1-color;
+    appearance: none;
+    background-color: theme.$input-bg-color;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border: 1px solid theme.$input-border-color;
+    padding: 6px;
+    font-weight: bold;
+    padding-right: 30px;
+    max-width: 170px;
+
+    &:disabled,
+    &[disabled] {
+      color: theme.$disabled-text-color;
+    }
+  }
+}
+:local(.dropdown-arrow){
+  pointer-events: none;
+  position: absolute;
+  right: 7.5%;
+
+  &:local(.disabled) {
+    filter: opacity(25%);
+  }
+}
+
+:local(.number-with-range){
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  :local(.number-in-number-with-range) {
+    display:flex;
+    justify-content: center;
+    cursor: pointer;
+
+    &:local(.disabled) {
+      color: theme.$disabled-icon-color;
+    }
+  }
+}
+
+:local(.pinned-message) {
+  display: flex;
+  gap: 10px;
+  background-color: var(--chat-bubble-bg-color-received);
+  border-radius: 10px;
+  margin: 8px 16px 18px 56px;
+  padding: 10px 16px;
+  font-size: 14px;
+  overflow-wrap: break-word;
+  line-height: 1.25;
+}
+

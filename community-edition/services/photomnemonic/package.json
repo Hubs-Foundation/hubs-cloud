@@ -1,0 +1,26 @@
+{
+  "name": "photomnemonic",
+  "private": true,
+  "version": "0.2.0",
+  "description": "Take visual snapshots of the web at a point in time",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "license": "MPL",
+  "dependencies": {
+    "@sparticuz/chromium": "^112.0.2",
+    "chrome-remote-interface": "^0.32.1",
+    "puppeteer-core": "^19.7.4"
+  },
+  "devDependencies": {
+    "ava": "^4.0.1",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "prettier": "^2.5.1",
+    "serverless-apigw-binary": "^0.4.4",
+    "serverless-apigwy-binary": "^1.0.0",
+    "serverless-offline": "^4.9.4"
+  }
+}

@@ -1,0 +1,283 @@
+@use "../../react-components/styles/theme.scss";
+@import 'shared.scss';
+
+:local(.presence-log) {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  margin-top: 90px;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: content-box;
+  pointer-events: none !important;
+
+  :local(.presence-log-entry) {
+    @extend %default-font;
+    pointer-events: auto;
+
+    user-select: text;
+    -moz-user-select: text;
+    -webkit-user-select: text;
+    -ms-user-select: text;
+
+    background-color: theme.$overlay-bg-color;
+    color: theme.$overlay-text-color;
+    margin-bottom: 8px;
+    font-size: 0.8em;
+    padding: 8px 16px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    pointer-events: all;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+
+    :local(.message-body) {
+      margin-left: 4px;
+      overflow-wrap: break-word;
+      overflow: hidden;
+      max-width: 500px;
+      padding-bottom: 8px;
+    }
+    /* this checks if a sibling has the message source for when have chat closed and resets padding */
+    :local(.message-source + .message-body) {
+      padding-bottom: 0px;
+    }
+
+    :local(.message-body-multi) {
+      margin-left: 0px;
+    }
+
+    :local(.message-body-mono) {
+      font-family: monospace;
+      font-size: 14px;
+    }
+
+    :local(.message-wrap) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    :local(.message-wrap-multi) {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    :local(.message-source) {
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    :local(.message-source-link) {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    a {
+      color: theme.$link-color;
+    }
+
+    :local(.icon-button) {
+      appearance: none;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      outline-style: none;
+      width: 24px;
+      height: 24px;
+      background-size: 20px;
+      background-position: center;
+      background-repeat: no-repeat;
+      border: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      margin-right: 6px;
+      border-radius: 12px;
+      background-color: transparent;
+      flex-shrink: 0;
+
+      &:hover {
+        @media (pointer: fine) {
+          background-color: theme.$primary-color;
+        }
+      }
+    }
+
+    :local(.spawn-message) {
+      background-image: url(../images/spawn_message.png);
+    }
+
+    // TODO replace these icons with share button
+    :local(.share) {
+      background-image: url(../images/share_message.png);
+    }
+
+    &:local(.media) {
+      display: flex;
+      align-items: center;
+      min-height: 35px;
+
+      :local(.mediaBody) {
+        display: flex;
+        flex-direction: column;
+      }
+
+      img {
+        height: 35px;
+        margin-left: 8px;
+        border: 2px solid theme.$overlay-border-color;
+        display: block;
+        border-radius: 5px;
+      }
+    }
+
+    &:local(.permission) {
+      display: flex;
+      align-items: center;
+      min-height: 35px;
+
+      :local(.permissionBody) {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+      }
+    }
+  }
+
+  :local(.expired) {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: visibility 0s 0.5s, opacity 0.5s linear, transform 0.5s;
+  }
+
+  :local(.presence-log-entry-with-button) {
+    padding: 8px 18px 8px 10px;
+  }
+}
+
+:local(.presence-log-in-room) {
+  position: absolute;
+  left: 20px;
+  bottom: 8px;
+
+  :local(.presence-log-entry) {
+    background-color: theme.$overlay-bg-color;
+    color: theme.$overlay-text-color;
+    min-height: 18px;
+
+    // If this is selectable, tap holding on mobile anywhere on the screen will result
+    // in a selection.
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+
+    a {
+      color: theme.$link-color;
+    }
+  }
+}
+
+:local(.presence-log-spawn) {
+  position: absolute;
+  bottom: 0;
+  z-index: -10;
+  width: auto;
+  margin: 0;
+
+  :local(.presence-log-entry) {
+    background-color: black;
+    color: white;
+    min-height: 18px;
+    padding: 8px 16px;
+    border-radius: 16px;
+    line-height: 18px;
+    margin: 0;
+    max-width: 100%;
+
+    :local(.message-body) {
+      margin-left: 0;
+    }
+
+    a {
+      color: white;
+    }
+  }
+
+  :local(.presence-log-entry-one-line) {
+    font-weight: bold;
+    line-height: 19px;
+    text-align: center;
+  }
+
+  :local(.presence-log-emoji) {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+  }
+
+  :local(.message-wrap) {
+    flex-direction: column;
+  }
+
+  :local(.message-source) {
+    font-weight: normal;
+    font-size: 0.7em;
+    white-space: nowrap;
+    color: white;
+  }
+
+  :local(.message-source-link) {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+:local(.presence-log-notifications) {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  align-items: center;
+
+  :local(.presence-log-entry) {
+    background-color: theme.$overlay-bg-color;
+    color: theme.$overlay-text-color;
+    min-height: 18px;
+
+    // If this is selectable, tap holding on mobile anywhere on the screen will result
+    // in a selection.
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+
+    &:first-child {
+      margin-top: 16px;
+    }
+
+    a {
+      color: theme.$link-color;
+    }
+  }
+}
+
+:local(.emoji) {
+  // Undo annoying CSS in emoji plugin
+  margin: 0.2em !important;
+  vertical-align: text-top !important;
+  line-height: 1em;
+}

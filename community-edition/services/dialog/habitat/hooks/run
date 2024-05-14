@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+exec 2>&1
+
+set -e
+
+export MEDIASOUP_MIN_PORT=$(echo "{{ cfg.media.rtp_port_range }}" | cut -d- -f1)
+export MEDIASOUP_MAX_PORT=$(echo "{{ cfg.media.rtp_port_range }}" | cut -d- -f2)
+
+# HACKY - need to inject public IP here. Since not configured in legacy package for janus.
+# AWS
+export MEDIASOUP_ANNOUNCED_IP=$(curl -fs http://169.254.169.254/latest/meta-data/public-ipv4)
+
+# DigitalOcean
+if [[ -z "$MEDIASOUP_ANNOUNCED_IP" ]] ; then
+  export MEDIASOUP_ANNOUNCED_IP=$(curl -fs "http://169.254.169.254/metadata/v1/interfaces/public/0/ipv4/address")
+fi
+
+# Fallback to first eth0 ip
+if [[ -z "$MEDIASOUP_ANNOUNCED_IP" ]] ; then
+  MEDIASOUP_ANNOUNCED_IP=$(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | head -n1)
+fi
+
+# Convert legacy der file
+if [[ ! -f "{{ pkg.svc_files_path }}/perms.pub.pem" ]] ; then
+  openssl rsa -in {{ pkg.svc_files_path }}/perms.pub.der -inform DER -RSAPublicKey_in -out {{ pkg.svc_files_path }}/perms.pub.pem
+fi
+
+export DOMAIN="$(hostname)"
+export HTTPS_CERT_PRIVKEY={{ pkg.svc_files_path }}/wss.key
+export HTTPS_CERT_FULLCHAIN={{ pkg.svc_files_path }}/wss.pem
+export AUTH_KEY={{ pkg.svc_files_path }}/perms.pub.pem
+export MEDIASOUP_LISTEN_IP={{ cfg.transports.http.admin_ip }}
+export PROTOO_LISTEN_PORT={{ cfg.transports.websockets.wss_port }}
+export ADMIN_LISTEN_PORT={{ cfg.transports.http.admin_port }}
+
+(
+  OLD_PRIVKEY=$(cat "$HTTPS_CERT_PRIVKEY")
+  while true
+  do 
+    if ! diff <(cat "$HTTPS_CERT_PRIVKEY") <(echo "$OLD_PRIVKEY") >/dev/null 2>&1; then
+      echo "New SSL Cert detected; restarting Dialog process"
+      kill $$
+      break
+    fi
+    sleep 3600
+  done
+) &
+
+exec node {{ pkg.path }}/index.js

@@ -1,0 +1,201 @@
+@use "../../react-components/styles/theme.scss";
+@import 'shared';
+@import 'loader';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: theme.$background1-color;
+  color: theme.$text1-color;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+button {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: theme.$text1-color;
+}
+
+.link-root {
+  @extend %default-font;
+
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  position: absolute;
+}
+
+:local(.logo) {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 24px 0;
+
+  img {
+    width: 247px;
+  }
+
+  @media(max-height: 600px) {
+    display: none;
+  }
+
+  @media(max-width: 690px) {
+    display: none;
+  }
+}
+
+:local(.link) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:local(.link-contents) {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  color: theme.$text1-color;
+  font-weight: bold;
+  font-size: 1.2em;
+  max-width: 650px;
+
+  @media (max-width: 690px) {
+    flex-direction: column;
+  }
+}
+
+:local(.entered-contents) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+:local(.create-link) {
+  margin-top: 1em;
+  font-size: 0.8em;
+
+  @media(max-width: 690px) {
+    margin-top: 12px;
+  }
+}
+
+:local(.code-loading-panel) {
+  background: theme.$overlay-bg-color;
+}
+
+:local(.header) {
+  text-align: center;
+  white-space: pre-wrap;
+}
+
+:local(.keypad) {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  text-align: center;
+  background-color: theme.$background2-color;
+  border-radius: 24px;
+  padding: 12px;
+}
+
+:local(.keypad-button) {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: none;
+  font-size: 64pt;
+  outline-style: none;
+  @extend %default-font;
+  font-weight: bold;
+  color: theme.$button-text-color;
+  font-size: 1.4em;
+  border-radius: 128px;
+  border: 1px solid theme.$button-border-color;
+  min-width: 80px;
+  min-height: 80px;
+  cursor: pointer;
+  line-height: 68px;
+  margin: 8px;
+  background: theme.$button-bg-color;
+}
+
+:local(.keypad-button):hover {
+  background-color: theme.$button-bg-color-hover;
+}
+
+:local(.keypad-button):active {
+  background-color: theme.$button-bg-color-pressed;
+}
+
+:local(.keypad-button):disabled {
+  color: theme.$disabled-text-color;
+  background-color: theme.$disabled-bg-color;
+}
+
+:local(.keypad-backspace) , :local(.keypad-backspace):disabled , :local(.keypad-backspace):active {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  color: theme.$text1-color;
+}
+
+:local(.keypad-backspace) {
+  grid-column: 3;
+}
+
+:local(.keypad-backspace):active {
+  background-color: transparent;
+  color: theme.$text1-color;
+}
+
+:local(.entered) {
+  @extend %default-font;
+  height: 100px;
+  width: 300px;
+  text-align: center;
+  font-size: 2.0em;
+  color: theme.$text1-color;
+  display: flex;
+  justify-content: center;
+}
+
+:local(.char-input) {
+  @extend %default-font;
+  font-weight: bold;
+  outline-style: none;
+  appearance:textfield;
+  -moz-appearance:textfield;
+  -webkit-appearance:textfield;
+  background: transparent;
+  margin: 0;
+  font-size: 52pt;
+  border: 0;
+  width: 295px;
+  letter-spacing: 0.08em;
+  text-align: center;
+  color: theme.$text1-color;
+}
+
+:local(.char-input::placeholder) {
+  letter-spacing: 0;
+}

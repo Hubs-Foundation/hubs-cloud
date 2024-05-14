@@ -1,0 +1,52 @@
+service: speelycaptor
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stackName: speelycaptor-${opt:stage, 'dev'}
+  stage: ${opt:stage, 'dev'}
+  region: ${file(config.json):speelycaptor-region}
+  timeout: 120
+  memorySize: 3000
+  role: ${file(config.json):speelycaptor-iam-role}
+  deploymentBucket:
+    name: ${file(config.json):speelycaptor-bucket-id}
+  vpc:
+    securityGroupIds:
+      - ${file(config.json):speelycaptor-security-group}
+    subnetIds: ${file(config.json):speelycaptor-subnet-ids}
+  endpointType: private
+  resourcePolicy:
+    - Effect: Allow
+      Principal: "*"
+      Action: execute-api:Invoke
+      Resource:
+        - execute-api:/*/*/*
+      Condition:
+        StringEquals:
+          aws:sourceVpc: ${file(config.json):speelycaptor-vpc-id}
+
+functions:
+  initialize:
+    handler: index.init
+    environment:
+      scratchBucketRegion: ${file(config.json):speelycaptor-region}
+      scratchBucketId: ${file(config.json):speelycaptor-scratch-bucket-id}
+    events:
+      - http:
+          method: get
+          path: init
+  convert:
+    handler: index.convert
+    layers:
+      - ${file(config.json):ffmpeg-lambda-layer-arn}
+    environment:
+      scratchBucketRegion: ${file(config.json):speelycaptor-region}
+      scratchBucketId: ${file(config.json):speelycaptor-scratch-bucket-id}
+    events:
+      - http:
+          method: get
+          path: convert
+
+plugins:
+  - serverless-offline

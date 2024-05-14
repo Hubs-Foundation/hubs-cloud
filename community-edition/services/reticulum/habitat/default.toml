@@ -1,0 +1,57 @@
+[ret]
+pool = "default"
+
+[phx]
+port = 4000
+ip = "127.0.0.1"
+# This config value is for local development only.
+secret_key = "txlMOtlaY5x3crvOCko4uV5PM29ul3zGo1oBGNO3cDXx+7GHLKqt0gR9qzgThxb5"
+url_host_prefix = ""
+static_url_host_prefix = ""
+admin_access_key = ""
+secondary_url_host = ""
+allow_crawlers = true
+
+[guardian]
+# This config value is for local development only.
+secret_key = "txlMOtlaY5x3crvOCko4uV5PM29ul3zGo1oBGNO3cDXx+7GHLKqt0gR9qzgThxb5"
+
+[erlang]
+# This config value is for local development only.
+node_cookie = "txlMOtlaY5x3crvOCko4uV5PM29ul3zGo1oBGNO3cDXx+7GHLKqt0gR9qzgThxb5"
+
+[habitat]
+ip = "127.0.0.1"
+http_port = 9631
+
+[oauth_google]
+client_id = "foo"
+client_secret = "bar"
+
+[db]
+username = "admin"
+password = "admin"
+hostname = "localhost"
+database = "ret_dev"
+template = "template0"
+port = 5432
+pool_size = 16
+
+[session_lock_db]
+port = 5432
+
+[security]
+content_security_policy = "default-src 'self'"
+cors_origins = "*"
+
+[pages]
+insecure_ssl = "false"
+
+[janus]
+janus_port = 443
+
+[uploads]
+quota_gb = 0
+
+[hackney]
+max_connections = 50

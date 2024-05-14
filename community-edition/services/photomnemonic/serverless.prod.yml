@@ -1,0 +1,46 @@
+service: photomnemonic
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stackName: photomnemonic-${opt:stage, 'dev'}
+  stage: ${opt:stage, 'dev'}
+  region: ${file(config.json):photomnemonic-region}
+  timeout: 30
+  role: ${file(config.json):photomnemonic-iam-role}
+  deploymentBucket:
+    name: ${file(config.json):photomnemonic-bucket-id}
+  vpc:
+    securityGroupIds:
+      - ${file(config.json):photomnemonic-security-group}
+    subnetIds: ${file(config.json):photomnemonic-subnet-ids}
+  endpointType: private
+  apiGateway:
+    resourcePolicy:
+      - Effect: Allow
+        Principal: "*"
+        Action: execute-api:Invoke
+        Resource:
+          - execute-api:/*/*/*
+        Condition:
+          StringEquals:
+            aws:sourceVpc: ${file(config.json):photomnemonic-vpc-id}
+
+functions:
+  app:
+    handler: index.handler
+    events:
+      - http:
+          method: get
+          path: screenshot
+          contentHandling: CONVERT_TO_BINARY
+
+plugins:
+  - serverless-offline
+  - serverless-apigw-binary
+  - serverless-apigwy-binary
+
+custom:
+  apigwBinary:
+    types:
+      - '*/*'

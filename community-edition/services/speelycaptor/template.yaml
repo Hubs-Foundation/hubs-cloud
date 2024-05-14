@@ -1,0 +1,72 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Speelycaptor
+
+Metadata:
+  AWS::ServerlessRepo::Application:
+    Name: speelycaptor
+    Description: Video conversion lambda for Hubs Cloud
+    Author: Mozilla
+    SpdxLicenseId: MPL-2.0
+    LicenseUrl: LICENSE
+    ReadmeUrl: README.md
+    HomePageUrl: https://github.com/mozilla/speelycaptor
+    SourceCodeUrl: https://github.com/mozilla/speelycaptor
+    SemanticVersion: 0.1.2
+
+Parameters:
+  SpeelycaptorRoleArn:
+    Type: String
+  SpeelycaptorScratchBucketId:
+    Type: String
+  SpeelycaptorScratchBucketArn:
+    Type: String
+  SpeelycaptorScratchBucketRegion:
+    Type: String
+
+Resources:
+  InitFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: speelycaptor.zip
+      Handler: index.init
+      Runtime: nodejs10.x
+      Timeout: 30
+      MemorySize: 512
+      Role:
+        Ref: SpeelycaptorRoleArn
+      Environment:
+        Variables:
+          scratchBucketArn:
+            Ref: SpeelycaptorScratchBucketArn
+          scratchBucketId:
+            Ref: SpeelycaptorScratchBucketId
+
+  ConvertFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: speelycaptor.zip
+      Handler: index.convert
+      Runtime: nodejs10.x
+      Timeout: 300
+      MemorySize: 3000
+      Role:
+        Ref: SpeelycaptorRoleArn
+      Environment:
+        Variables:
+          scratchBucketArn:
+            Ref: SpeelycaptorScratchBucketArn
+          scratchBucketId:
+            Ref: SpeelycaptorScratchBucketId
+          scratchBucketRegion:
+            Ref: SpeelycaptorScratchBucketRegion
+
+Outputs:
+  SpeelycaptorInitFunctionArn:
+    Description: "Init Lambda Function ARN"
+    Value: !GetAtt InitFunction.Arn
+
+  SpeelycaptorConvertFunctionArn:
+    Description: "Convert Lambda Function ARN"
+    Value: !GetAtt ConvertFunction.Arn

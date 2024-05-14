@@ -1,0 +1,58 @@
+:local(.touchZone) {
+  position: absolute;
+  height: 20vh;
+  bottom: 96px;
+  z-index: 1;
+
+  /* Orientation selector fails here when keyboard pops up on shorter screens */
+  @media(min-aspect-ratio: 15/9) {
+    height: 30vh;
+  }
+}
+
+:local(.touchZone.left) {
+  left: 80px;
+}
+
+:local(.touchZone.right) {
+  right: 80px;
+}
+
+:local(.mockJoystickContainer) {
+  position: absolute;
+  height: 0;
+  left: 0;
+  right: 0;
+  bottom: 146px;
+  padding: 16px;
+  align-items: center;
+  justify-content: space-between;
+  display: none;
+
+  /* Orientation selector fails here when keyboard pops up on shorter screens */
+  @media (min-aspect-ratio: 15/9) {
+    display: flex;
+  }
+}
+
+:local(.mockJoystick) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  background-color: rgba(255,255,255,0.5);
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+}
+
+:local(.hidden) {
+  background-color: transparent;
+}
+
+:local(.mockJoystick.inner) {
+  width: 50px;
+  height: 50px;
+}

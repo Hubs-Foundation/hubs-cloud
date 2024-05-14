@@ -14,6 +14,10 @@ fi
 
 
 ### required
+
+export Container_Dockerhub_Username="mozillareality"
+export Container_Tag="stable-latest"
+
 export HUB_DOMAIN="example.net"
 export ADM_EMAIL="admin@example.net"
 

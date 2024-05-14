@@ -1,0 +1,65 @@
+@use "../styles/theme.scss";
+
+:local(.tip) {
+  pointer-events: all;
+  min-height: 48px;
+  background-color: theme.$accent4-color;
+  border-radius: 16px;
+  display: flex;
+  color: theme.$text4-color;
+  align-items: center;
+
+  @media (min-width: theme.$breakpoint-lg) and (min-height: theme.$breakpoint-vr) {
+    bottom: 24px;
+    max-width: 360px;
+  }
+}
+
+:local(.content) {
+  margin: 16px;
+  font-size: theme.$font-size-md;
+  font-weight: theme.$font-weight-bold;
+  padding: 0 8px;
+  line-height: 1.25;
+}
+
+:local(.dismiss-button) {
+  background: none;
+  height: 32px;
+  border-radius: 16px;
+  padding: 0 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid theme.$accent4-color-pressed;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  min-width: 48px;
+  font-size: theme.$font-size-md;
+  font-weight: theme.$font-weight-bold;
+  align-self: flex-end;
+
+  &:hover {
+    border-color: theme.$accent4-color-hover;
+    background-color: theme.$accent4-color-hover;
+  }
+
+  &:active {
+    border-color: theme.$accent4-color-pressed;
+    background-color: theme.$accent4-color-pressed;
+  }
+}
+
+:local(.toast) {
+  animation: vanish 5s;
+  animation-fill-mode: forwards;
+  @keyframes vanish {
+    70% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+service: photomnemonic
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: us-west-1
+  stage: public
+  stackName: photomnemonic-public
+  timeout: 30
+  apiGateway:
+    usagePlan:
+      quota:
+        limit: 1000
+        period: MONTH
+      throttle:
+        rateLimit: 5
+        burstLimit: 10
+
+functions:
+  app:
+    handler: index.handler
+    events:
+      - http:
+          method: get
+          path: screenshot
+          contentHandling: CONVERT_TO_BINARY
+
+plugins:
+  - serverless-offline
+  - serverless-apigw-binary
+  - serverless-apigwy-binary
+
+custom:
+  apigwBinary:
+    types:
+      - '*/*'

@@ -1,0 +1,317 @@
+[ret."Elixir.Ret"]
+pool = "{{ cfg.ret.pool }}"
+
+[ret."Elixir.RetWeb.Plugs.HeaderAuthorization"]
+header_value = "{{ cfg.phx.admin_access_key }}"
+
+[ret."Elixir.Ret.DiscordClient"]
+client_id = {{ toToml cfg.discord_client.client_id }}
+client_secret = {{ toToml cfg.discord_client.client_secret }}
+bot_token = {{ toToml cfg.discord_client.bot_token }}
+
+{{#if cfg.slack_client.client_id}}
+[ret."Elixir.Ret.SlackClient"]
+client_id = {{ toToml cfg.slack_client.client_id }}
+client_secret = {{ toToml cfg.slack_client.client_secret }}
+bot_token = {{ toToml cfg.slack_client.bot_token }}
+{{/if}}
+
+{{#if cfg.slack_controller.token}}
+[ret."Elixir.RetWeb.Api.V1.SlackController"]
+token = {{ toToml cfg.slack_controller.token }}
+{{/if}}
+
+{{ #if cfg.twitter_client.consumer_secret }}
+[ret."Elixir.Ret.TwitterClient"]
+{{ toToml cfg.twitter_client }}
+{{/if}}
+
+{{#if cfg.whats_new.token}}
+[ret."Elixir.RetWeb.Api.V1.WhatsNewController"]
+token = {{ toToml cfg.whats_new.token }}
+{{/if}}
+
+[ret."Elixir.RetWeb.Endpoint".https]
+port = {{ cfg.phx.port }}
+certfile = "{{ pkg.svc_files_path }}/ssl.pem"
+cacertfile = "{{ pkg.svc_files_path }}/ssl-chain.pem"
+keyfile = "{{ pkg.svc_files_path }}/ssl.key"
+
+[ret."Elixir.RetWeb.Endpoint"]
+allowed_origins = "{{ cfg.security.cors_origins }}"
+secret_key_base = "{{ cfg.phx.secret_key }}"
+allow_crawlers = {{ cfg.phx.allow_crawlers }}
+
+{{#if cfg.phx.secondary_url_host }}
+[ret."Elixir.RetWeb.Endpoint".secondary_url]
+host = "{{ cfg.phx.url_host_prefix }}{{ cfg.phx.secondary_url_host }}"
+{{#if cfg.phx.secondary_url_port }}
+port = "{{ cfg.phx.secondary_url_port }}"
+{{/if}}
+{{/if}}
+
+[ret."Elixir.RetWeb.Endpoint".cors_proxy_url]
+host = "{{ cfg.phx.url_host_prefix }}{{ cfg.phx.cors_proxy_url_host }}"
+{{#if cfg.phx.cors_proxy_url_port }}
+port = "{{ cfg.phx.cors_proxy_url_port }}"
+{{/if}}
+
+{{#if cfg.phx.thumbnail_url_host }}
+[ret."Elixir.RetWeb.Endpoint".thumbnail_url]
+host = "{{ cfg.phx.url_host_prefix }}{{ cfg.phx.thumbnail_url_host }}"
+{{#if cfg.phx.thumbnail_url_port }}
+port = "{{ cfg.phx.thumbnail_url_port }}"
+{{/if}}
+{{/if}}
+
+{{#if cfg.phx.imgproxy_url_host }}
+[ret."Elixir.RetWeb.Endpoint".imgproxy_url]
+host = "{{ cfg.phx.imgproxy_url_host }}"
+{{#if cfg.phx.imgproxy_url_port }}
+port = "{{ cfg.phx.imgproxy_url_port }}"
+{{/if}}
+{{#if cfg.phx.imgproxy_url_scheme }}
+scheme = "{{ cfg.phx.imgproxy_url_scheme }}"
+{{/if}}
+{{/if}}
+
+{{#if cfg.phx.assets_url_host }}
+[ret."Elixir.RetWeb.Endpoint".assets_url]
+host = "{{ cfg.phx.url_host_prefix }}{{ cfg.phx.assets_url_host }}"
+{{#if cfg.phx.assets_url_port }}
+port = "{{ cfg.phx.assets_url_port }}"
+{{/if}}
+{{/if}}
+
+{{#if cfg.phx.link_url_host }}
+[ret."Elixir.RetWeb.Endpoint".link_url]
+host = "{{ cfg.phx.url_host_prefix }}{{ cfg.phx.link_url_host }}"
+{{#if cfg.phx.link_url_port }}
+port = "{{ cfg.phx.link_url_port }}"
+{{/if}}
+{{/if}}
+
+[ret."Elixir.RetWeb.Endpoint".url]
+host = "{{ cfg.phx.url_host_prefix }}{{ cfg.phx.url_host }}"
+{{#if cfg.phx.url_port }}
+port = "{{ cfg.phx.url_port }}"
+{{/if}}
+
+[ret."Elixir.RetWeb.Endpoint".static_url]
+host = "{{ cfg.phx.static_url_host_prefix }}{{ cfg.phx.static_url_host }}"
+{{#if cfg.phx.static_url_port }}
+port = "{{ cfg.phx.static_url_port }}"
+{{/if}}
+
+[ret."Elixir.Ret.Repo"]
+username = "{{ cfg.db.username }}"
+password = "{{ cfg.db.password }}"
+database = "{{ cfg.db.database }}"
+hostname = "{{ cfg.db.hostname }}"
+template = "{{ cfg.db.template }}"
+pool_size = {{ cfg.db.pool_size }}
+{{#if cfg.db.idle_interval }}
+idle_interval = {{ cfg.db.idle_interval }}
+{{/if}}
+{{#if cfg.db.queue_interval }}
+queue_interval = {{ cfg.db.queue_interval }}
+{{/if}}
+{{#if cfg.db.queue_target }}
+queue_target = {{ cfg.db.queue_target }}
+{{/if}}
+{{#if cfg.db.timeout }}
+timeout = {{ cfg.db.timeout }}
+{{/if}}
+{{#if cfg.db.port }}
+port = {{ cfg.db.port }}
+{{/if}}
+{{#if cfg.db.ssl }}
+ssl = {{ cfg.db.ssl }}
+{{/if}}
+
+[ret."Elixir.Ret.SessionLockRepo"]
+username = "{{ cfg.session_lock_db.username }}"
+password = "{{ cfg.session_lock_db.password }}"
+database = "{{ cfg.session_lock_db.database }}"
+hostname = "{{ cfg.session_lock_db.hostname }}"
+template = "{{ cfg.db.template }}"
+{{#if cfg.db.queue_interval }}
+queue_interval = {{ cfg.db.queue_interval }}
+{{/if}}
+{{#if cfg.db.queue_target }}
+queue_target = {{ cfg.db.queue_target }}
+{{/if}}
+{{#if cfg.db.timeout }}
+timeout = {{ cfg.db.timeout }}
+{{/if}}
+{{#if cfg.session_lock_db.port }}
+port = {{ cfg.session_lock_db.port }}
+{{/if}}
+{{#if cfg.session_lock_db.ssl }}
+ssl = {{ cfg.session_lock_db.ssl }}
+{{/if}}
+
+[ret."Elixir.Ret.Locking".session_lock_db]
+username = "{{ cfg.session_lock_db.username }}"
+password = "{{ cfg.session_lock_db.password }}"
+database = "{{ cfg.session_lock_db.database }}"
+hostname = "{{ cfg.session_lock_db.hostname }}"
+port = {{ cfg.session_lock_db.port }}
+{{#if cfg.session_lock_db.ssl }}
+ssl = {{ cfg.session_lock_db.ssl }}
+{{/if}}
+
+[ret."Elixir.Ret.Habitat"]
+ip = "{{ cfg.habitat.ip }}"
+http_port = {{ cfg.habitat.http_port }}
+
+[ret."Elixir.Ret.JanusLoadStatus"]
+default_janus_host = "{{ cfg.janus.default_host }}"
+janus_service_name = "{{ cfg.janus.service_name }}"
+janus_admin_secret = "{{ cfg.janus.admin_secret }}"
+janus_admin_port = {{ cfg.janus.admin_port }}
+janus_port = {{ cfg.janus.janus_port }}
+
+[ret."Elixir.Ret.Guardian"]
+secret_key = "{{ cfg.guardian.secret_key }}"
+
+[ret."Elixir.Ret.PermsToken"]
+perms_key = "{{ cfg.guardian.perms_key }}"
+
+[ret."Elixir.Ret.OAuthToken"]
+oauth_token_key = "{{ cfg.guardian.oauth_token_key }}"
+
+[ret]
+bot_access_key = "{{ cfg.ret.bot_access_key }}"
+
+[ret."Elixir.Ret.MediaResolver"]
+ytdl_host = "{{ cfg.resolver.ytdl_host }}"
+{{ #if cfg.resolver.giphy_api_key }}
+giphy_api_key = {{ toToml cfg.resolver.giphy_api_key }}
+{{/if}}
+{{ #if cfg.resolver.deviantart_client_id }}
+deviantart_client_id = {{ toToml cfg.resolver.deviantart_client_id }}
+deviantart_client_secret = {{ toToml cfg.resolver.deviantart_client_secret }}
+{{/if}}
+{{ #if cfg.resolver.imgur_mashape_api_key }}
+imgur_mashape_api_key = {{ toToml cfg.resolver.imgur_mashape_api_key }}
+imgur_client_id = {{ toToml cfg.resolver.imgur_client_id }}
+{{/if}}
+{{ #if cfg.resolver.youtube_api_key }}
+youtube_api_key = {{ toToml cfg.resolver.youtube_api_key }}
+{{/if}}
+{{ #if cfg.resolver.sketchfab_api_key }}
+sketchfab_api_key = {{ toToml cfg.resolver.sketchfab_api_key }}
+{{/if}}
+{{ #if cfg.resolver.tenor_api_key }}
+tenor_api_key = {{ toToml cfg.resolver.tenor_api_key }}
+{{/if}}
+{{ #if cfg.resolver.bing_search_api_key }}
+bing_search_api_key = {{ toToml cfg.resolver.bing_search_api_key }}
+{{/if}}
+{{ #if cfg.resolver.twitch_client_id }}
+twitch_client_id = {{ toToml cfg.resolver.twitch_client_id }}
+{{/if}}
+{{ #if cfg.resolver.photomnemonic_endpoint }}
+photomnemonic_endpoint = "{{ cfg.resolver.photomnemonic_endpoint }}"
+{{/if}}
+
+{{ #if cfg.speelycaptor.speelycaptor_endpoint }}
+[ret."Elixir.Ret.Speelycaptor"]
+speelycaptor_endpoint = "{{ cfg.speelycaptor.speelycaptor_endpoint }}"
+{{/if}}
+
+[ret."Elixir.Ret.PageOriginWarmer"]
+hubs_page_origin = "{{ cfg.pages.hubs_page_origin }}"
+spoke_page_origin = "{{ cfg.pages.spoke_page_origin }}"
+# Intentionally re-using hubs_page_origin here, since they are currently deployed to the same S3 bucket.
+admin_page_origin = "{{ cfg.pages.hubs_page_origin }}"
+
+[ret."Elixir.Ret.HttpUtils"]
+insecure_ssl = {{ cfg.pages.insecure_ssl }}
+
+[ret."Elixir.Ret.Storage"]
+storage_path = "{{ cfg.uploads.storage_path }}"
+ttl = {{ cfg.uploads.ttl }}
+host = "{{ cfg.uploads.host }}"
+quota_gb = {{ cfg.uploads.quota_gb }}
+
+[ret."Elixir.RetWeb.Email"]
+from = {{ toToml cfg.email.from }}
+
+[ret."Elixir.Ret.Mailer"]
+server = {{ toToml cfg.email.server }}
+port = {{ toToml cfg.email.port }}
+username = {{ toToml cfg.email.username }}
+password = {{ toToml cfg.email.password }}
+
+[ret."Elixir.Ret.Support"]
+slack_webhook_url = "{{ cfg.support.slack_webhook_url }}"
+
+[ret."Elixir.RetWeb.Plugs.AddCSP"]
+{{#if cfg.extra_csp}}
+{{ toToml cfg.extra_csp }}
+{{/if}}
+
+[ret."Ret.Repo.Migrations.AdminSchemaInit"]
+postgrest_password = "{{ cfg.db.postgrest_password }}"
+
+[ret."Elixir.Ret.StatsJob"]
+{{#if cfg.stats.node_stats_enabled }}
+node_stats_enabled = {{ cfg.stats.node_stats_enabled }}
+{{/if}}
+{{#if cfg.stats.node_gauges_enabled }}
+node_gauges_enabled = {{ cfg.stats.node_gauges_enabled }}
+{{/if}}
+
+[ret."Elixir.RetWeb.HealthController"]
+{{#if cfg.health.check_repo }}
+check_repo = {{ cfg.health.check_repo }}
+{{/if}}
+
+[ret."Elixir.RetWeb.PageController"]
+{{#if cfg.assets.assets_path}}
+assets_path = "{{ cfg.assets.assets_path }}"
+{{/if}}
+{{#if cfg.extra_headers}}
+{{ toToml cfg.extra_headers }}
+{{/if}}
+{{#if cfg.extra_html}}
+{{ toToml cfg.extra_html }}
+{{/if}}
+{{#if cfg.extra_scripts}}
+{{ toToml cfg.extra_scripts }}
+{{/if}}
+
+{{#if cfg.assets.docs_path}}
+[ret."Elixir.RetWeb.PageController"]
+docs_path = "{{ cfg.assets.docs_path }}"
+{{/if}}
+
+[ret."Elixir.Ret.Account"]
+{{#if cfg.accounts.admin_email }}
+admin_email = "{{ cfg.accounts.admin_email }}"
+{{/if}}
+
+[ret."Elixir.Ret.Coturn"]
+{{#if cfg.turn.realm }}
+realm = "{{ cfg.turn.realm }}"
+{{/if}}
+{{#if cfg.turn.public_tls_ports }}
+public_tls_ports = "{{ cfg.turn.public_tls_ports }}"
+{{/if}}
+
+[web_push_encryption.vapid_details]
+subject = "{{ cfg.web_push.subject }}"
+public_key = "{{ cfg.web_push.public_key }}"
+private_key = "{{ cfg.web_push.private_key }}"
+
+[sentry]
+dsn = "{{ cfg.sentry.dsn }}"
+
+[run]
+hostname_dns_suffix = "{{ cfg.run.hostname_dns_suffix }}"
+
+[hackney]
+max_connections = {{ cfg.hackney.max_connections }}
+
