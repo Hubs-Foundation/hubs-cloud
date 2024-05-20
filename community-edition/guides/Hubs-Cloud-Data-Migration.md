@@ -153,7 +153,9 @@ Now that we have uploaded our files, restored our SQL database, and redeployed o
 
 At this point in the process, we have successfully rehosted all of our files, however some parts of your instance may still be pointing towards the assets hosted on your old HC instance. This includes all asset urls referenced in your Spoke projects. We will follow these steps to rewrite the domain names of all incorrect references to point to the rehosted assets.
 
-Walkthrough coming soon...
+1. Search for `DashboardHeaderAuthorization` in your hcce.yaml file and replace `dashboard_access_key` with a value of your choosing. Re-deploy your hcce.yaml file once configured and make sure to respawn your reticulum pod so that the changes will take effect.
+2. Execute into your reticulum pod: `kubectl exec -i <reticulum-pod-id> -n <your-namespace>`.
+3. Run the following rewrite command from within your reticulum pod: `curl -H "x-ret-dashboard-access-key:'{your-access-key}'" -H "Content-Type: application/json" -X POST -d {"old_domain":"{your-old-hubs-cloud-domain}", "new_domain": "{your-new-domain}"} 'https://localhost:4000/api-internal/v1/rewrite_assets' -k -v`
 
 ### Conclusion and Alternative Methods
 
