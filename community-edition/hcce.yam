@@ -793,7 +793,7 @@ spec:
         imagePullPolicy: IfNotPresent
         env:
         - name: turkeyCfg_thumbnail_server
-          value: 'nearspark:5000'
+          value: 'https://cors.$HUB_DOMAIN/nearspark'
         - name: turkeyCfg_base_assets_path
           value: https://assets.$HUB_DOMAIN/hubs/
         - name: turkeyCfg_non_cors_proxy_domains
@@ -863,7 +863,7 @@ spec:
         imagePullPolicy: IfNotPresent
         env:
         - name: turkeyCfg_thumbnail_server
-          value: 'nearspark:5000'
+          value: 'https://cors.$HUB_DOMAIN/nearspark'
         - name: turkeyCfg_base_assets_path
           value: https://assets.$HUB_DOMAIN/spoke/
         - name: turkeyCfg_non_cors_proxy_domains
