@@ -156,6 +156,40 @@ metadata:
 spec:
   tls:
   - hosts:
+      - cors.$HUB_DOMAIN
+    secretName: cert-cors.$HUB_DOMAIN
+  rules:
+  - host: cors.$HUB_DOMAIN
+    http:
+      paths:
+      - path: /nearspark(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: nearspark
+            port: 
+              number: 5000
+      - path: /photomnemonic(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: photomnemonic
+            port: 
+              number: 5000
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nearspark
+  namespace: $Namespace
+  annotations:
+    kubernetes.io/ingress.class: haproxy
+    haproxy.org/response-set-header: |
+      access-control-allow-origin "https://$HUB_DOMAIN"
+    haproxy.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  tls:
+  - hosts:
       - stream.$HUB_DOMAIN
     secretName: cert-stream.$HUB_DOMAIN
   rules:
@@ -168,7 +202,7 @@ spec:
           service:
             name: dialog
             port: 
-              number: 4443          
+              number: 4443      
 ---
 ##############################################################################################
 ############################################ reticulum #######################################
@@ -531,9 +565,9 @@ spec:
               name: configs
               key: TENOR_API_KEY
         - name: turkeyCfg_YTDL_HOST
-          value: "https://hubs-ytdl-fsu7tyt32a-uc.a.run.app"
+          value: "https://ytdl:5000"
         - name: turkeyCfg_PHOTOMNEMONIC
-          value: "https://photomnemonic-fsu7tyt32a-uc.a.run.app"  
+          value: "http://photomnemonic:5000"
         - name: turkeyCfg_SPEELYCAPTOR
           value: "http://speelycaptor:5000"
         - name: turkeyCfg_STORAGE_QUOTA_GB
