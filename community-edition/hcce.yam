@@ -531,7 +531,7 @@ spec:
               name: configs
               key: TENOR_API_KEY
         - name: turkeyCfg_YTDL_HOST
-          value: "https://ytdl:5000"
+          value: "http://ytdl:5000"
         - name: turkeyCfg_PHOTOMNEMONIC
           value: "http://photomnemonic:5000"
         - name: turkeyCfg_SPEELYCAPTOR
