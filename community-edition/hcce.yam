@@ -136,13 +136,6 @@ spec:
             name: spoke
             port: 
               number: 8080
-      - path: /nearspark
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: nearspark
-            port: 
-              number: 5000   
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
