@@ -1,0 +1,46 @@
+########################################################################
+######################   cbb rbac  #####################################
+########################################################################
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cbb-sa
+  namespace: $Namespace
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: cbb-rb--$Namespace
+  namespace: $Namespace
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: edit
+subjects:
+- kind: ServiceAccount
+  name: cbb-sa
+  namespace: $Namespace
+---
+########################################################################
+#########################   certbotbot   ###############################
+########################################################################
+apiVersion: v1
+kind: Pod
+metadata:
+  name: certbotbot-http
+  namespace: $Namespace
+  labels:
+    app: certbotbot-http
+spec:
+  restartPolicy: Never
+  serviceAccountName: cbb-sa
+  containers:
+  - name: myapp
+    image: mozillareality/certbotbot_http:dev-47
+    env:
+    - name: "DOMAIN"
+      value: "$HUB_DOMAIN"
+    - name: "NAMESPACE"
+      value: "$Namespace"
+    - name: "CERT_NAME"
+      value: "cert-$HUB_DOMAIN"

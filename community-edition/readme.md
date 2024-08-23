@@ -17,36 +17,34 @@ Community Edition is designed for developers capable of working with the full Hu
 ## Prerequisites
 
 Before deploying the charts in this repo, you will need to choose and configure the following services...
-
+- Node.js installed on your system. You can download it from [here](https://nodejs.org/).
+- Clone the repository:
+   ```sh
+   git clone https://github.com/hubs-foundation/hubs-cloud
+   ```
+- Navigate to the project directory:
+   ```sh
+   cd hubs-cloud/community-edition
+   ```
+- Install module dependencies:
+   ```sh
+   npm ci
+   ```
 - A hosting service with a Kubernetes cluster to receive your Community Edition deployment spec.
-- Kubernetes controls on your device
+- Kubernetes controls on your device. Install kubectl to interact with your Kubernetes cluster from [here](https://kubernetes.io/docs/tasks/tools/#kubectl)
 - A DNS service to reach Hubs on a domain
 - Port to expose services to client
   - TCP: 80, 443, 4443, 5349
   - UDP: 35000 -> 60000
 - An SMTP service for login emails and accounts
 
-# Optional Docker Builder
-
-To build the hcce.yaml file inside a docker container run the following:
-
-> Add your chosen services into `render_hcce.sh` with a text editor first
-
-```
-docker build . -t hubs-ce-builder:latest
-docker run --rm -it -v <COMMUNITY_EDITION_PATH>:/app hubs-ce-builder:latest
-# Then to deploy to k8
-kubectl apply -f ./hcce.yaml
-```
-
-once the container has run, you should see a new file (hcce.yaml) in your COMMUNITY_EDITION_PATH
 
 ## Deploy to Kubernetes
 
 To deploy to your K8s cluster on your chosen hosting solution, follow these steps:
 
-- Add your chosen services into `render_hcce.sh`
-- Run `bash render_hcce.sh && kubectl apply -f hcce.yaml`
+- Add your chosen values into `input-values.yaml`
+- Run `npm run gen-hcce`
 - Expose the services
 
   - Run `kubectl -n <hcce_namespace> get svc lb` to find your load balancer's external ip
@@ -60,8 +58,7 @@ To deploy to your K8s cluster on your chosen hosting solution, follow these step
   - Option #1: bring your own
     - package the certs into kubernetes secrets named `cert-<domain>` under the deploy namespace
   - Option #2: use Hubs' certbotbot
-    - edit configs into `cbb.sh` with a text editor
-    - `bash cbb.sh`
+    - run `npm run gen-ssl` to get an SSL certificate provisioned for your domains
 
 ## Guides from the Hubs Team and Community
 
@@ -178,6 +175,7 @@ gcloud container clusters get-credentials --region us-central1-a hcce-gke-1
 - Coming soon!
 
 ## Considerations for Production Environment
+
 - Infrastructure
   - Easy -- use managed kubernetes
   - Hard -- make it [production-ready](https://kubernetes.io/docs/setup/production-environment/)
