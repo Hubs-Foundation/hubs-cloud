@@ -16,7 +16,7 @@ Community Edition is designed for developers capable of working with the full Hu
 
 ## Prerequisites
 
-Before applying the configuration file to your Kubernetes cluster, you will need to choose and configure the following services...
+
 - Node.js installed on your system. You can download it from [here](https://nodejs.org/).
 - Clone the repository:
    ```sh
@@ -30,6 +30,7 @@ Before applying the configuration file to your Kubernetes cluster, you will need
    ```sh
    npm ci
    ```
+Before applying the configuration file to your Kubernetes cluster, you will need to choose and configure the following services...
 - A hosting service with a Kubernetes cluster to receive your Community Edition deployment spec.
 - Kubernetes controls on your device. Install kubectl to interact with your Kubernetes cluster from [here](https://kubernetes.io/docs/tasks/tools/#kubectl)
 - A DNS service to reach Hubs on a domain
