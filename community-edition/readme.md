@@ -44,7 +44,7 @@ Before applying the configuration file to your Kubernetes cluster, you will need
 To deploy to your K8s cluster on your chosen hosting solution, follow these steps:
 
 - Add your chosen values into `input-values.yaml`
-- Run `npm run gen-hcce`
+- Run `npm run gen-hcce && kubectl apply -f hcce.yaml`
 - Expose the services
 
   - Run `kubectl -n <hcce_namespace> get svc lb` to find your load balancer's external ip
