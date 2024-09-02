@@ -26,7 +26,7 @@ Before applying the configuration file to your Kubernetes cluster, you will need
    ```sh
    cd hubs-cloud/community-edition
    ```
-- Install module dependencies:
+- Install the module dependencies:
    ```sh
    npm ci
    ```
