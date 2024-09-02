@@ -16,7 +16,7 @@ Community Edition is designed for developers capable of working with the full Hu
 
 ## Prerequisites
 
-Before deploying the charts in this repo, you will need to choose and configure the following services...
+Before applying the configuration file to your Kubernetes cluster, you will need to choose and configure the following services...
 - Node.js installed on your system. You can download it from [here](https://nodejs.org/).
 - Clone the repository:
    ```sh
