@@ -964,7 +964,7 @@ spec:
     targetPort: 5000
   selector:
     app: nearspark
-# ---
+---
 # ########################################################################
 # ######################   speelycaptor   ###############################
 # ########################################################################
@@ -1005,7 +1005,7 @@ spec:
 #             secretKeyRef:
 #               name: configs
 #               key: GCP_SA_HMAC_SECRET
----
+# ---
 apiVersion: v1
 kind: Service
 metadata:
