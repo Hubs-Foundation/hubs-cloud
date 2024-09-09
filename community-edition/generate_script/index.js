@@ -86,6 +86,82 @@ function generatePersistentVolumes(processedConfig, replacedContent) {
   return `${yamlDocuments.map(doc => YAML.stringify(doc, {"lineWidth": 0, "directives": false})).join('---\n')}`;
 }
 
+function handleImageOverrides(processedConfig, replacedContent) {
+  const yamlDocuments = YAML.parseAllDocuments(replacedContent);
+
+  // Override the default images with custom ones if specified in the config
+  yamlDocuments.forEach((doc, index) => {
+    const jsDoc = doc.toJS();
+    if (jsDoc.kind === "Deployment") {
+      if (jsDoc.metadata.name === "reticulum") {
+        if (processedConfig.OVERRIDE_RETICULUM_IMAGE) {
+          jsDoc.spec.template.spec.containers[0].image = processedConfig.OVERRIDE_RETICULUM_IMAGE;
+          if (processedConfig.OVERRIDE_POSTGREST_IMAGE) {
+            jsDoc.spec.template.spec.containers[1].image = processedConfig.OVERRIDE_POSTGREST_IMAGE;
+          }
+          yamlDocuments[index] = new YAML.Document(jsDoc);
+        }
+      }
+      else if (jsDoc.metadata.name === "pgsql") {
+        if (processedConfig.OVERRIDE_POSTGRES_IMAGE) {
+          jsDoc.spec.template.spec.containers[0].image = processedConfig.OVERRIDE_POSTGRES_IMAGE;
+          yamlDocuments[index] = new YAML.Document(jsDoc);
+        }
+      }
+      else if (jsDoc.metadata.name === "pgbouncer" || jsDoc.metadata.name === "pgbouncer-t") {
+        if (processedConfig.OVERRIDE_PGBOUNCER_IMAGE) {
+          jsDoc.spec.template.spec.containers[0].image = processedConfig.OVERRIDE_PGBOUNCER_IMAGE;
+          yamlDocuments[index] = new YAML.Document(jsDoc);
+        }
+      }
+      else if (jsDoc.metadata.name === "hubs") {
+        if (processedConfig.OVERRIDE_HUBS_IMAGE) {
+          jsDoc.spec.template.spec.containers[0].image = processedConfig.OVERRIDE_HUBS_IMAGE;
+          yamlDocuments[index] = new YAML.Document(jsDoc);
+        }
+      }
+      else if (jsDoc.metadata.name === "spoke") {
+        if (processedConfig.OVERRIDE_SPOKE_IMAGE) {
+          jsDoc.spec.template.spec.containers[0].image = processedConfig.OVERRIDE_SPOKE_IMAGE;
+          yamlDocuments[index] = new YAML.Document(jsDoc);
+        }
+      }
+      else if (jsDoc.metadata.name === "nearspark") {
+        if (processedConfig.OVERRIDE_NEARSPARK_IMAGE) {
+          jsDoc.spec.template.spec.containers[0].image = processedConfig.OVERRIDE_NEARSPARK_IMAGE;
+          yamlDocuments[index] = new YAML.Document(jsDoc);
+        }
+      }
+      else if (jsDoc.metadata.name === "photomnemonic") {
+        if (processedConfig.OVERRIDE_PHOTOMNEMONIC_IMAGE) {
+          jsDoc.spec.template.spec.containers[0].image = processedConfig.OVERRIDE_PHOTOMNEMONIC_IMAGE;
+          yamlDocuments[index] = new YAML.Document(jsDoc);
+        }
+      }
+      else if (jsDoc.metadata.name === "dialog") {
+        if (processedConfig.OVERRIDE_DIALOG_IMAGE) {
+          jsDoc.spec.template.spec.containers[0].image = processedConfig.OVERRIDE_DIALOG_IMAGE;
+          yamlDocuments[index] = new YAML.Document(jsDoc);
+        }
+      }
+      else if (jsDoc.metadata.name === "coturn") {
+        if (processedConfig.OVERRIDE_COTURN_IMAGE) {
+          jsDoc.spec.template.spec.containers[0].image = processedConfig.OVERRIDE_COTURN_IMAGE;
+          yamlDocuments[index] = new YAML.Document(jsDoc);
+        }
+      }
+      else if (jsDoc.metadata.name === "haproxy") {
+        if (processedConfig.OVERRIDE_HAPROXY_IMAGE) {
+          jsDoc.spec.template.spec.containers[0].image = processedConfig.OVERRIDE_HAPROXY_IMAGE;
+          yamlDocuments[index] = new YAML.Document(jsDoc);
+        }
+      }
+    }
+  });
+
+  return `${yamlDocuments.map(doc => YAML.stringify(doc, {"lineWidth": 0, "directives": false})).join('---\n')}`;
+}
+
 // Main function to handle the script
 function main() {
   try {
@@ -111,6 +187,8 @@ function main() {
     if (processedConfig.GENERATE_PERSISTENT_VOLUMES) {
       replacedContent = generatePersistentVolumes(processedConfig, replacedContent);
     }
+
+    replacedContent = handleImageOverrides(processedConfig, replacedContent)
 
     utils.writeOutputFile(replacedContent, "", "hcce.yaml");
 
