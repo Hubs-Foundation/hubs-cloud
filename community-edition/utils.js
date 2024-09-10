@@ -1,6 +1,6 @@
 const path = require("path");
 const fs = require("fs");
-const yaml = require("js-yaml");
+const YAML = require("yaml");
 
 module.exports = {
   // Function to read and parse YAML config file
@@ -8,7 +8,7 @@ module.exports = {
     try {
       const configPath = path.join(process.cwd(), "input-values.yaml");
       const fileContents = fs.readFileSync(configPath, "utf8");
-      return yaml.load(fileContents);
+      return YAML.parse(fileContents);
     } catch (error) {
       console.error("Error reading config file:", error);
       throw error;
