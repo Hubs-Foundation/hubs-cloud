@@ -4,11 +4,11 @@ metadata:
   name: "$Namespace"
   annotations:
     domain: "$HUB_DOMAIN"
-    adm: "$ADM_EMAIL"    
+    adm: "$ADM_EMAIL"
 ---
 ########################################################################
 ###################### configs #########################################
-########################################################################  
+########################################################################
 apiVersion: v1
 kind: Secret
 metadata:
@@ -72,7 +72,7 @@ spec:
         backend:
           service:
             name: ret
-            port: 
+            port:
               number: 4001
   - host: assets.$HUB_DOMAIN
     http:
@@ -82,28 +82,28 @@ spec:
         backend:
           service:
             name: ret
-            port: 
+            port:
               number: 4001
       - path: /http
         pathType: ImplementationSpecific  # haproxy's "Begin with"
         backend:
           service:
             name: ret
-            port: 
+            port:
               number: 4001
       - path: /hubs
         pathType: Prefix
         backend:
           service:
             name: hubs
-            port: 
+            port:
               number: 8080
       - path: /spoke
         pathType: Prefix
         backend:
           service:
             name: spoke
-            port: 
+            port:
               number: 8080
   - host: cors.$HUB_DOMAIN
     http:
@@ -113,28 +113,28 @@ spec:
         backend:
           service:
             name: ret
-            port: 
+            port:
               number: 4001
       - path: /http
         pathType: ImplementationSpecific
         backend:
           service:
             name: ret
-            port: 
+            port:
               number: 4001
       - path: /hubs
         pathType: Prefix
         backend:
           service:
             name: hubs
-            port: 
+            port:
               number: 8080
       - path: /spoke
         pathType: Prefix
         backend:
           service:
             name: spoke
-            port: 
+            port:
               number: 8080
 ---
 apiVersion: networking.k8s.io/v1
@@ -160,7 +160,7 @@ spec:
         backend:
           service:
             name: dialog
-            port: 
+            port:
               number: 4443
 ---
 apiVersion: networking.k8s.io/v1
@@ -185,7 +185,7 @@ spec:
         backend:
           service:
             name: nearspark
-            port: 
+            port:
               number: 5000
 ---
 ##############################################################################################
@@ -412,7 +412,7 @@ spec:
   minReadySeconds: 15
   strategy:
     type: RollingUpdate
-    rollingUpdate: 
+    rollingUpdate:
       maxUnavailable: 0
       maxSurge: 1
   revisionHistoryLimit: 1
@@ -428,7 +428,7 @@ spec:
           type: DirectoryOrCreate
       - name: config
         configMap:
-          name: ret-config           
+          name: ret-config
       containers:
       - name: reticulum
         volumeMounts:
@@ -438,7 +438,7 @@ spec:
         - name: config
           mountPath: /home/ret
         securityContext:
-          privileged: true       
+          privileged: true
         image: $Container_Dockerhub_Username/reticulum:$Container_Tag
         ports:
         - containerPort: 9100
@@ -581,11 +581,11 @@ spec:
         imagePullPolicy: IfNotPresent
         env:
         - name: PGRST_LOG_LEVEL
-          value: info        
+          value: info
         - name: PGRST_DB_SCHEMA
           value: ret0_admin
         - name: PGRST_DB_ANON_ROLE
-          value: postgres          
+          value: postgres
         - name: PGRST_DB_URI
           valueFrom:
             secretKeyRef:
@@ -755,7 +755,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: configs
-              key: DB_USER          
+              key: DB_USER
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
@@ -797,7 +797,7 @@ spec:
   minReadySeconds: 15
   strategy:
     type: RollingUpdate
-    rollingUpdate: 
+    rollingUpdate:
       maxUnavailable: 0
       maxSurge: 1
   template:
@@ -860,14 +860,14 @@ metadata:
   annotations:
     cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
 spec:
-  replicas: 1 
+  replicas: 1
   selector:
     matchLabels:
       app: spoke
   minReadySeconds: 15
   strategy:
     type: RollingUpdate
-    rollingUpdate: 
+    rollingUpdate:
       maxUnavailable: 0
       maxSurge: 1
   template:
@@ -930,14 +930,14 @@ metadata:
   annotations:
     cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
 spec:
-  replicas: 1 
+  replicas: 1
   selector:
     matchLabels:
       app: nearspark
   minReadySeconds: 15
   strategy:
     type: RollingUpdate
-    rollingUpdate: 
+    rollingUpdate:
       maxUnavailable: 0
       maxSurge: 1
   template:
@@ -963,7 +963,7 @@ spec:
     port: 5000
     targetPort: 5000
   selector:
-    app: nearspark        
+    app: nearspark
 # ---
 # ########################################################################
 # ######################   speelycaptor   ###############################
@@ -1068,7 +1068,7 @@ stringData:
 ---
 ########################################################################
 ######################   dialog   ######################################
-########################################################################  
+########################################################################
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -1097,7 +1097,7 @@ spec:
       - name: dialog
         image: $Container_Dockerhub_Username/dialog:$Container_Tag
         imagePullPolicy: Always
-        ports:        
+        ports:
         - hostPort: 4443
           containerPort: 4443
         env:
@@ -1136,10 +1136,10 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: coturn                                          
+      app: coturn
   minReadySeconds: 15
   strategy:
-    type: RollingUpdate    
+    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -1193,7 +1193,7 @@ data:
   global-config-snippet: |
     tune.bufsize 33792
   backend-config-snippet: |
-    option forwardfor 
+    option forwardfor
     option http-pretend-keepalive
   ssl-redirect: "true"
   timeout-client: 30m
@@ -1318,7 +1318,7 @@ rules:
     - events
     - serviceaccounts
     - services
-    - endpoints    
+    - endpoints
     verbs:
     - get
     - list
@@ -1368,7 +1368,7 @@ rules:
     verbs:
     - get
     - list
-    - watch      
+    - watch
 ---
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
@@ -1381,4 +1381,4 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: haproxy-sa
-  namespace: $Namespace 
+  namespace: $Namespace
