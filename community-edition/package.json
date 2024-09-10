@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "echo \"Use gen-hcce for generating your kubernetes config file and gen-ssl for adding ssl certificates\" && exit 1",
+    "start": "npm run gen-hcce && kubectl apply -f hcce.yaml && echo \"\nNow follow steps in readme.md starting with 'kubectl -n <hcce_namespace> get svc lb'\"",
     "gen-hcce": "node generate_script/index.js",
+    "apply": "kubectl apply -f hcce.yaml",
     "gen-ssl": "node ssl_script/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
