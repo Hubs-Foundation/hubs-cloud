@@ -44,12 +44,10 @@ Before applying the configuration file to your Kubernetes cluster, you will need
 
 To deploy to your K8s cluster on your chosen hosting solution, follow these steps:
 
-- Add your chosen values into `input-values.yaml`
-- Run `npm run gen-hcce && kubectl apply -f hcce.yaml`
+- In `input-values.yaml` edit `HUB_DOMAIN`, `ADM_EMAIL`, `SMTP_SERVER`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` and optionally `SKETCHFAB_API_KEY` with the values for your site.
+- Run `npm run gen-hcce && npm run apply` to generate your configuration in `hcce.yaml` and apply it to your K8s cluster. From the output read your load balancer's external IP address.
 - Expose the services
-
-  - Run `kubectl -n <hcce_namespace> get svc lb` to find your load balancer's external ip
-  - On your DNS service, create four A-records to route your domains to the external ip of your K8s cluster
+  - On your DNS service, create four A-records to route your domains to the external IP address of your load balancer
     - <root_domain>
     - assets.<root_domain>
     - stream.<root_domain>
@@ -61,7 +59,7 @@ To deploy to your K8s cluster on your chosen hosting solution, follow these step
   - Option #2: use Hubs' certbotbot
     - run `npm run gen-ssl` to get an SSL certificate provisioned for your domains
       - If it fails with an error like `namespaces "hcce" not found`, it's probably because the namespace hasn't finished generating from your initial application of the hcce.yaml file, so try running it again in a few seconds.
-    - Search for and comment out the `--default-ssl-certificate` line in `hcce.yaml` and then reapply `hcce.yaml` to kubernetes
+    - Search for and comment out the `--default-ssl-certificate` line in `hcce.yaml` and then reapply `hcce.yaml` to kubernetes using `npm run apply`
 
 
 ## Managing Kubernetes
@@ -114,6 +112,24 @@ Kubernetes clusters can also be managed via GUI programs.  Here are some possibi
 - [Headlamp](https://headlamp.dev/)
 - [JET Pilot](https://www.jet-pilot.app/)
 
+
+## Operations
+
+If you need to edit `hcce.yaml` directly, for example
+1. To have your cluster pull a fresh image whenever you deploy, change `imagePullPolicy` to `Always` for that image.
+2. To work around certain SSL issues, comment out the line `- --default-ssl-certificate=hcce/cert-hcce`
+
+After saving `hcce.yaml`, run
+
+`npm run apply`
+
+then
+
+`kubectl get pods -n hcce`
+
+If you just need to get the external IP address of your load balancer, run
+
+`npm run get-ip`
 
 ## Guides from the Hubs Team and Community
 
