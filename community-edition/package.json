@@ -6,6 +6,7 @@
     "start": "npm run gen-hcce && kubectl apply -f hcce.yaml && echo \"\nNow follow steps in readme.md starting with 'kubectl -n <hcce_namespace> get svc lb'\"",
     "gen-hcce": "node generate_script/index.js",
     "apply": "kubectl apply -f hcce.yaml",
+    "get-ip": "node get_ip/index.js",
     "gen-ssl": "node ssl_script/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
