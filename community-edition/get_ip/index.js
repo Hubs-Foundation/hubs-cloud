@@ -9,5 +9,5 @@ exec(cmdline, (error, stdout, stderr) => {
     return;
   }
   const output = JSON.parse(stdout);
-  console.log(output.status.loadBalancer.ingress[0].ip);
+  console.log("load balancer external IP address:", output.status.loadBalancer.ingress[0].ip);
 });
