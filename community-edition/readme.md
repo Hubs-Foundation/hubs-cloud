@@ -61,20 +61,31 @@ To deploy to your K8s cluster on your chosen hosting solution, follow these step
   - Option #2: use Hubs' certbotbot
     - run `npm run gen-ssl` to get an SSL certificate provisioned for your domains
       - If it fails with an error like `namespaces "hcce" not found`, it's probably because the namespace hasn't finished generating from your initial application of the hcce.yaml file, so try running it again in a few seconds.
+    - Search for and comment out the `--default-ssl-certificate` line in `hcce.yaml` and then reapply `hcce.yaml` to kubernetes
 
 ## Guides from the Hubs Team and Community
 
-### 1. Deploying A "Hello-World" Instance Using Managed Kubernetes on GCP with AWS' DNS & SMTP
+### 1. Beginner's Guide to CE
+
+The [Beginner's Guide to CE](https://docs.google.com/document/d/1BXSxTNFLjx8dtz26_OAFJParGdz8qTE2XvVAxwoJwrQ/edit?usp=sharing) takes you through the process of setting up Hubs, and all of it's required services, using the current Node.js version of Community Edition.  It is targeted at beginners, people without any programming experience, and the Windows operating system, but it should be useful to experienced developers, and those on other operating systems as well.  It uses DigitalOcean (for a kubernetes cluster), Porkbun (for the domain), and Scaleway (for the transactional email/smtp) as the additional services required by Hubs.
+
+### 2. Deploying A "Hello-World" Instance Using Managed Kubernetes on GCP with AWS' DNS & SMTP
+
+> [!IMPORTANT]
+> This guide is based on the bash version of Community Edition, to follow along you will need to use the bash scripts from https://github.com/Hubs-Foundation/hubs-cloud/tree/bash-version
 
 [The Hubs Team's case study](https://hubs.mozilla.com/labs/community-edition-case-study-quick-start-on-gcp-w-aws-services/) outlines the process of deploying your first, experimental instance on GCP's GKS. This tutorial walks you through the process of setting up DNS on AWS Route 53 and SMTP on AWS SES, deploying and trouble-shooting your instance on GCP, and configuring custom code & server settings.\
 [Companion Video](https://youtu.be/8XNEWmf9tk4)
 
-### 2. Community Edition Tips and Tricks by [@kfarr](https://github.com/kfarr)
+### 3. Community Edition Tips and Tricks by [@kfarr](https://github.com/kfarr)
+
+> [!IMPORTANT]
+> This guide is based on the bash version of Community Edition, to follow along you will need to use the bash scripts from https://github.com/Hubs-Foundation/hubs-cloud/tree/bash-version
 
 [Documentation Awardee Kieran Farr's guide](https://hubs.mozilla.com/labs/tips-and-tricks-for-deploying-hubs-community-edition-to-google-cloud-platform/) shares the helpful tips and tricks he learned while following the Hubs Team's case study on GCP. This is an excellent repository of helpful commands and debugging techniques for new Kubernetes users.
 [Companion Video](https://youtu.be/w4NlAhKaBrg)
 
-### 3. Community Edition Helm Chart by [@Doginal](https://github.com/Doginal)
+### 4. Community Edition Helm Chart by [@Doginal](https://github.com/Doginal)
 
 Documentation Awardee Alex Griggs maintains [an open-source Helm Chart for HCCE](https://github.com/hubs-community/mozilla-hubs-ce-chart). Helm is an abstraction above Kubernetes that improves maintainability, scalability, and ease-of-use of applications using K8s. Alex has also released three tutorials showing how to use his Helm chart to create production-ready CE deployments, including for large scale events:
 
@@ -85,14 +96,20 @@ Documentation Awardee Alex Griggs maintains [an open-source Helm Chart for HCCE]
 [AWS Companion Video](https://youtu.be/0VtKQYXTrn4)\
 GCP Companion Video (Coming Soon!)
 
-### 4. Azure Hubs Community Edition Installation by [@TophoStan](https://github.com/TophoStan)
+### 5. Azure Hubs Community Edition Installation by [@TophoStan](https://github.com/TophoStan)
+
+> [!IMPORTANT]
+> This guide is based on the bash version of Community Edition, to follow along you will need to use the bash scripts from https://github.com/Hubs-Foundation/hubs-cloud/tree/bash-version
 
 Documentation Awardee Stan Tophoven has published steps for uploading a Community Edition instance to Microsoft Azure's managed Kubernetes Platform.
 
 1. [Installing Community Edition on Microsoft Azure AKS](https://hubs.mozilla.com/labs/installing-mozilla-hubs-community-edition-on-your-own-microsoft-azure-kubernetes-service/)
 2. [Stan Tophoven's Guide to Deploying Community Edition on Azure AKS](https://www.youtube.com/watch?v=j8dQEEEX4OA)
 
-### 5. Community Edition Setup on OVH by [@utopiah](https://fabien.benetou.fr/Tools/HubsSelfHosting)
+### 6. Community Edition Setup on OVH by [@utopiah](https://fabien.benetou.fr/Tools/HubsSelfHosting)
+
+> [!IMPORTANT]
+> This guide is based on the bash version of Community Edition, to follow along you will need to use the bash scripts from https://github.com/Hubs-Foundation/hubs-cloud/tree/bash-version
 
 Documentation Awardee Fabien Benetou has produced a guide for hosting Community Edition on OVH, including some excellent information on setup time, cost considerations, custom client deployment, and how Hubs can live on beyond Mozilla! Fabien has also produced long form and short form tutorial videos, including one in French.
 
@@ -102,15 +119,21 @@ Documentation Awardee Fabien Benetou has produced a guide for hosting Community 
 4. [Short Form Tutorial in English](https://video.benetou.fr/w/1vJC37pEhkEqJv6wU1h1c8)
 5. [Custom Client Deployment](https://video.benetou.fr/w/qUkZiRTXGnu2xXXudJyPxM)
 
-### 6. Azure Hubs Community Edition Installation by [@vvdt](https://github.com/vvdt)
+### 7. Azure Hubs Community Edition Installation by [@vvdt](https://github.com/vvdt)
+
+> [!IMPORTANT]
+> This guide is based on the bash version of Community Edition, to follow along you will need to use the bash scripts from https://github.com/Hubs-Foundation/hubs-cloud/tree/bash-version
 
 Community Mamber Vincent van den Tol has released [instructions for installing Community Edition on Microsoft Azure](https://github.com/imedu-vr/hubs-docs/blob/main/azure_hubs_ce_installation.md), including persistent volumes, custom client deployment, and many helpful tips and tricks.
 
-### 7. Import Assets from Hubs Cloud to CE by [chris-metabi](https://github.com/chris-metabi)
+### 8. Import Assets from Hubs Cloud to CE by [chris-metabi](https://github.com/chris-metabi)
 
 Chris from MeTabi [has created a guide](https://github.com/hubs-community/import_assets) for copying data from an existing Hubs Cloud instance and porting it to a Community Edition instance.
 
-### 8. A "Hello-World" Instance With VM On GCP
+### 9. A "Hello-World" Instance With VM On GCP
+
+> [!IMPORTANT]
+> This guide is based on the bash version of Community Edition, to follow along you will need to use the bash scripts from https://github.com/Hubs-Foundation/hubs-cloud/tree/bash-version
 
 ##### Step 1: Make a kubernetes environment
 
@@ -172,7 +195,7 @@ gcloud container clusters get-credentials --region us-central1-a hcce-gke-1
 - Expose IP to DNS
 - Configure firewall
 
-### 9. A "potentially-somewhat-production-ready" instance on AWS
+### 10. A "potentially-somewhat-production-ready" instance on AWS
 
 - Coming soon!
 
