@@ -60,6 +60,7 @@ To deploy to your K8s cluster on your chosen hosting solution, follow these step
     - package the certs into kubernetes secrets named `cert-<domain>` under the deploy namespace
   - Option #2: use Hubs' certbotbot
     - run `npm run gen-ssl` to get an SSL certificate provisioned for your domains
+      - If it fails with an error like `namespaces "hcce" not found`, it's probably because the namespace hasn't finished generating from your initial application of the hcce.yaml file, so try running it again in a few seconds.
 
 ## Guides from the Hubs Team and Community
 
