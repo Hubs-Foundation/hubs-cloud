@@ -44,12 +44,10 @@ Before applying the configuration file to your Kubernetes cluster, you will need
 
 To deploy to your K8s cluster on your chosen hosting solution, follow these steps:
 
-- Add your chosen values into `input-values.yaml`
-- Run `npm run gen-hcce && kubectl apply -f hcce.yaml`
+- In `input-values.yaml` edit `HUB_DOMAIN`, `ADM_EMAIL`, `SMTP_SERVER`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` and optionally `SKETCHFAB_API_KEY` with the values for your site.
+- Run `npm run gen-hcce && npm run apply` to generate your configuration in `hcce.yaml` and apply it to your K8s cluster. From the output read your load balancer's external IP address.
 - Expose the services
-
-  - Run `kubectl -n <hcce_namespace> get svc lb` to find your load balancer's external ip
-  - On your DNS service, create four A-records to route your domains to the external ip of your K8s cluster
+  - On your DNS service, create four A-records to route your domains to the external IP address of your load balancer
     - <root_domain>
     - assets.<root_domain>
     - stream.<root_domain>
@@ -60,6 +58,18 @@ To deploy to your K8s cluster on your chosen hosting solution, follow these step
     - package the certs into kubernetes secrets named `cert-<domain>` under the deploy namespace
   - Option #2: use Hubs' certbotbot
     - run `npm run gen-ssl` to get an SSL certificate provisioned for your domains
+
+## Operations
+
+If you need to edit `hcce.yaml` directly (for example, to comment out the line 
+`- --default-ssl-certificate=hcce/cert-hcce`),
+after saving `hcce.yaml`, run
+
+`npm run apply`
+
+If you just need to get the external IP address of your load balancer, run
+
+`npm run get-ip`
 
 ## Guides from the Hubs Team and Community
 
