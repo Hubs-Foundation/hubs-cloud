@@ -61,9 +61,11 @@ To deploy to your K8s cluster on your chosen hosting solution, follow these step
 
 ## Operations
 
-If you need to edit `hcce.yaml` directly (for example, to comment out the line 
-`- --default-ssl-certificate=hcce/cert-hcce`),
-after saving `hcce.yaml`, run
+If you need to edit `hcce.yaml` directly, for example
+1. To have your cluster pull a fresh image whenever you deploy, change `imagePullPolicy` to `Always` for that image.
+2. To work around certain SSL issues, comment out the line `- --default-ssl-certificate=hcce/cert-hcce`
+
+After saving `hcce.yaml`, run
 
 `npm run apply`
 
