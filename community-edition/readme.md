@@ -63,6 +63,56 @@ To deploy to your K8s cluster on your chosen hosting solution, follow these step
       - If it fails with an error like `namespaces "hcce" not found`, it's probably because the namespace hasn't finished generating from your initial application of the hcce.yaml file, so try running it again in a few seconds.
     - Search for and comment out the `--default-ssl-certificate` line in `hcce.yaml` and then reapply `hcce.yaml` to kubernetes
 
+
+## Managing Kubernetes
+
+While working with Community Edition and kubernetes you will likely need to perform debugging and maintenance on your cluster, we have found these commands useful to this process.
+
+
+### Info Commands
+- `kubectl config current-context` - Displays the current context.
+- `kubectl get ingress -n hcce` - Shows information about which of your pods are connected to the internet and how.
+- `kubectl get secrets -n hcce` - Used to get information on your SSL certificates.
+- `kubectl get deployment -n hcce` - Used to list the services of your kubernetes deployment and their status.
+- `kubectl describe deployment <servicename> -n hcce` - Used to get information on a service in your deployment.
+- `kubectl get pods -n hcce` - Used to list your pods and their status.
+- `kubectl describe pod <podname> -n hcce` - Used to get information about a pod.  This includes which containers it has.
+- `kubectl logs <podname> -n hcce` - Used to get the logs from a pod.
+- `kubectl logs <podname> <containername> -n hcce` - Used to get the logs from a container within the pod.
+- `kubectl top pods -n hcce` - Used to get information on the CPU, Memory, etc. of all your pods.
+                               This may require additional configuration on your kubernetes provider to be used.
+- `kubectl top pod <podname> -n hcce` - Used to get information on the CPU, Memory, etc. of a specific pod.
+                                        This may require additional configuration on your kubernetes provider to be used.
+- `kubectl get svc lb -n hcce` - Used to get info on your load balancer, IP addresses, ports, etc..
+- `kubectl get pv -n hcce` - Used to list your persistent volumes.
+- `kubectl describe pv <pv-name> -n hcce` - Used to get info on a persistent volume.
+- `kubectl get pvc -n hcce` - Used to list your persistent volume claims.
+- `kubectl describe pvc <pvc-name> -n hcce` - Used to get info on a persistent volume claim.
+
+### Action Commands
+- `kubectl apply -f hcce.yaml` - Used to apply your hcce.yaml config file to your kubernetes cluster.  This will update/create deployments and pods.
+- `kubectl rollout restart deployment -n hcce` - Used to gracefully restart your deployment.
+- `kubectl delete deployment --all -n hcce` - Used to delete all the services in your deployment.
+- `kubectl delete pods --all -n hcce` - Used to delete all of your pods.
+- `kubectl set image deployment/<servicename> <containername>=<dockerimage> -n hcce` - Used to set a docker image to one of your pods.  You will need to restart the deployment or delete the pod afterwards.
+  - Example: `kubectl set image deployment/hubs hubs=hubsfoundation/hubs:stable-latest -n hcce`
+- `kubectl scale deployments --all --replicas=0 -n hcce` - Used to scale down your kubernetes cluster, i.e. turn it off.
+- `kubectl scale deployments --all --replicas=1 -n hcce` - Used to scale up your kubernetes cluster, i.e. turn it on.
+> [!NOTE]
+> Turning your kubernetes cluster off and on again can sometimes fix things when they're acting weird, e.g. if Spoke is displaying failed to fetch errors when uploading files.
+
+
+### Graphical Clients
+
+Kubernetes clusters can also be managed via GUI programs.  Here are some possibilities:
+
+- [Podman Desktop](https://podman-desktop.io/) - Versions 1.8+.  Recent versions of Podman Desktop have both docker and kubernetes support.
+- [Seabird](https://getseabird.github.io/)
+- [K9s](https://k9scli.io/) - Terminal UI.
+- [Headlamp](https://headlamp.dev/)
+- [JET Pilot](https://www.jet-pilot.app/)
+
+
 ## Guides from the Hubs Team and Community
 
 ### 1. Beginner's Guide to CE
