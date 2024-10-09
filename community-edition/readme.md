@@ -93,7 +93,9 @@ While working with Community Edition and kubernetes you will likely need to perf
 - `kubectl apply -f hcce.yaml` - Used to apply your hcce.yaml config file to your kubernetes cluster.  This will update/create deployments and pods.
 - `kubectl rollout restart deployment -n hcce` - Used to gracefully restart your deployment.
 - `kubectl delete deployment --all -n hcce` - Used to delete all the services in your deployment.
+- `kubectl delete deployment/<servicename> -n hcce` - Used to delete a specific service in your deployment.
 - `kubectl delete pods --all -n hcce` - Used to delete all of your pods.
+- `kubectl delete pod <podname> -n hcce` Used to delete a specific pod.
 - `kubectl set image deployment/<servicename> <containername>=<dockerimage> -n hcce` - Used to set a docker image to one of your pods.  You will need to restart the deployment or delete the pod afterwards.
   - Example: `kubectl set image deployment/hubs hubs=hubsfoundation/hubs:stable-latest -n hcce`
 - `kubectl scale deployments --all --replicas=0 -n hcce` - Used to scale down your kubernetes cluster, i.e. turn it off.
