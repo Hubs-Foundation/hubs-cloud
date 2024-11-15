@@ -19,20 +19,27 @@ stringData:
   HUB_DOMAIN: "$HUB_DOMAIN"
   DB_USER: "$DB_USER"
   DB_PASS: "$DB_PASS"
-  DB_NAME: "$DB_NAME"
   DB_HOST: "$DB_HOST"
+  DB_PORT: "$DB_PORT"
+  DB_NAME: "$DB_NAME"
+  DB_SSL: "$DB_SSL"
+  PGRST_DB_URI: "$PGRST_DB_URI"
+  PSQL:         "$PSQL"
   DB_HOST_T: "$DB_HOST_T"
+  DB_PORT_T: "$DB_PORT_T"
+  DB_NAME_T: "$DB_NAME_T"
+  BACKEND_DB_HOST: "$BACKEND_DB_HOST"
+  BACKEND_DB_PORT: "$BACKEND_DB_PORT"
+  BACKEND_DB_SSLMODE: "$BACKEND_DB_SSLMODE"
   SMTP_SERVER: "$SMTP_SERVER"
   SMTP_PORT: "$SMTP_PORT"
   SMTP_USER: "$SMTP_USER"
   SMTP_PASS: "$SMTP_PASS"
   ADM_EMAIL: "$ADM_EMAIL"
-  PGRST_DB_URI: "$PGRST_DB_URI"
   GUARDIAN_KEY: "$GUARDIAN_KEY"
   PHX_KEY: "$PHX_KEY"
   SKETCHFAB_API_KEY: "$SKETCHFAB_API_KEY"
   TENOR_API_KEY: "$TENOR_API_KEY"
-  PSQL: "$PSQL"
   PERMS_KEY: '$PERMS_KEY'
   PGRST_JWT_SECRET: '$PGRST_JWT_SECRET'
 ---
@@ -251,11 +258,12 @@ data:
     [ret."Elixir.Ret.Repo"]
     username = "<DB_USER>"
     password = "<DB_PASS>"
-    database = "<DB_NAME>"
+    database = "<DB_NAME_T>"
     hostname = "<DB_HOST_T>"
     template = "template0"
     pool_size = 10
-    port = 5432
+    port = <DB_PORT_T>
+    ssl = <DB_SSL>
 
     [ret."Elixir.Ret.SessionLockRepo"]
     username = "<DB_USER>"
@@ -263,15 +271,16 @@ data:
     database = "<DB_NAME>"
     hostname = "<DB_HOST>"
     template = "template0"
-
-    port = 5432
+    port = <DB_PORT>
+    ssl = <DB_SSL>
 
     [ret."Elixir.Ret.Locking".session_lock_db]
     username = "<DB_USER>"
     password = "<DB_PASS>"
     database = "<DB_NAME>"
     hostname = "<DB_HOST>"
-    port = 5432
+    port = <DB_PORT>
+    ssl = <DB_SSL>
 
     [ret."Elixir.Ret.Habitat"]
     ip = "127.0.0.1"
@@ -481,21 +490,41 @@ spec:
             secretKeyRef:
               name: configs
               key: DB_PASS
-        - name: turkeyCfg_DB_NAME
-          valueFrom:
-            secretKeyRef:
-              name: configs
-              key: DB_NAME
         - name: turkeyCfg_DB_HOST
           valueFrom:
             secretKeyRef:
               name: configs
               key: DB_HOST
+        - name: turkeyCfg_DB_PORT
+          valueFrom:
+            secretKeyRef:
+              name: configs
+              key: DB_PORT
+        - name: turkeyCfg_DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: configs
+              key: DB_NAME
+        - name: turkeyCfg_DB_SSL
+          valueFrom:
+            secretKeyRef:
+              name: configs
+              key: DB_SSL
         - name: turkeyCfg_DB_HOST_T
           valueFrom:
             secretKeyRef:
               name: configs
               key: DB_HOST_T
+        - name: turkeyCfg_DB_PORT_T
+          valueFrom:
+            secretKeyRef:
+              name: configs
+              key: DB_PORT_T
+        - name: turkeyCfg_DB_NAME_T
+          valueFrom:
+            secretKeyRef:
+              name: configs
+              key: DB_NAME_T
         - name: turkeyCfg_GUARDIAN_KEY
           valueFrom:
             secretKeyRef:
@@ -585,7 +614,10 @@ spec:
         - name: PGRST_DB_SCHEMA
           value: ret0_admin
         - name: PGRST_DB_ANON_ROLE
-          value: postgres
+          valueFrom:
+            secretKeyRef:
+              name: configs
+              key: DB_USER
         - name: PGRST_DB_URI
           valueFrom:
             secretKeyRef:
@@ -713,7 +745,20 @@ spec:
               name: configs
               key: DB_PASS
         - name: DB_HOST
-          value: pgsql
+          valueFrom:
+            secretKeyRef:
+              name: configs
+              key: BACKEND_DB_HOST
+        - name: DB_PORT
+          valueFrom:
+            secretKeyRef:
+              name: configs
+              key: BACKEND_DB_PORT
+        - name: SERVER_TLS_SSLMODE
+          valueFrom:
+            secretKeyRef:
+              name: configs
+              key: BACKEND_DB_SSLMODE
 ---
 apiVersion: v1
 kind: Service
@@ -762,7 +807,20 @@ spec:
               name: configs
               key: DB_PASS
         - name: DB_HOST
-          value: pgsql
+          valueFrom:
+            secretKeyRef:
+              name: configs
+              key: BACKEND_DB_HOST
+        - name: DB_PORT
+          valueFrom:
+            secretKeyRef:
+              name: configs
+              key: BACKEND_DB_PORT
+        - name: SERVER_TLS_SSLMODE
+          valueFrom:
+            secretKeyRef:
+              name: configs
+              key: BACKEND_DB_SSLMODE
         - name: POOL_MODE
           value: transaction
 ---
@@ -1057,14 +1115,6 @@ spec:
     targetPort: 5000
   selector:
     app: photomnemonic
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: configs
-  namespace: $Namespace
-stringData:
-  PSQL: $PSQL
 ---
 ########################################################################
 ######################   dialog   ######################################
