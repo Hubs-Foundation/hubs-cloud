@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "echo \"Use gen-hcce for generating your kubernetes config file and gen-ssl for adding ssl certificates\" && exit 1",
+    "start": "echo \"Follow the steps in readme.md\nUse gen-hcce for generating your kubernetes config file, apply to apply it, and gen-ssl for adding ssl certificates\" && exit 1",
     "gen-hcce": "node generate_script/index.js",
+    "apply": "node apply/index.js && node get_ip/index.js",
+    "get-ip": "node get_ip/index.js",
     "gen-ssl": "node ssl_script/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
