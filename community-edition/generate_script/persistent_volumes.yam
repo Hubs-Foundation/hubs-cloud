@@ -1,45 +1,6 @@
 ######################################################################################
 ################################# persistent volume ##################################
 ######################################################################################
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: pgsql-pv
-  labels:
-    type: local
-spec:
-  storageClassName: manual
-  capacity:
-    storage:  $PERSISTENT_VOLUME_SIZE
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  claimRef:
-    name: pgsql-pvc
-    namespace: $Namespace
-  hostPath:
-    path: "/mnt/pgsql_data"
-    type: DirectoryOrCreate
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: ret-pv
-  labels:
-    type: local
-spec:
-  storageClassName: manual
-  capacity:
-    storage:  $PERSISTENT_VOLUME_SIZE
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  claimRef:
-    name: ret-pvc
-    namespace: $Namespace
-  hostPath:
-    path: "/mnt/ret_storage_data"
-    type: DirectoryOrCreate
 ---
 ######################################################################################
 ############################## persistent volume claim ###############################
@@ -50,9 +11,8 @@ metadata:
   name: pgsql-pvc
   namespace: $Namespace
 spec:
-  storageClassName: manual
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteOncePod
   resources:
     requests:
       storage: $PERSISTENT_VOLUME_SIZE
@@ -63,7 +23,6 @@ metadata:
   name: ret-pvc
   namespace: $Namespace
 spec:
-  storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
