@@ -15,11 +15,7 @@ function checkDeployments() {
   const output = JSON.parse(stdout);
   notReady.length = 0;
   for (const deployment of output.items) {
-    if (
-      deployment.status.readyReplicas < deployment.status.replicas ||
-      deployment.status.updatedReplicas < deployment.status.replicas ||
-      deployment.status.availableReplicas < deployment.status.replicas
-    ) {
+    if ((deployment.status.readyReplicas ?? 0) < deployment.status.replicas) {
       notReady.push(deployment.metadata.name);
     }
   }
