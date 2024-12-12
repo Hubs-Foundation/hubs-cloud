@@ -338,7 +338,7 @@ data:
 
     [ret."Elixir.RetWeb.Plugs.AddCSP"]
     child_src = ""
-    connect_src = "wss://*.stream.<DOMAIN>:4443 demo.hubsfoundation.org *.demo.hubsfoundation.org"
+    connect_src = "demo.hubsfoundation.org *.demo.hubsfoundation.org"
     font_src = ""
     form_action = ""
     frame_src = ""
