@@ -336,6 +336,9 @@ data:
     [ret."Elixir.Ret.Support"]
     slack_webhook_url = "<SLACK_WEBHOOK>"
 
+    # The values in the following section are added to the Content Security Policy.
+    # This is used to allow connections to external URLs.
+    # Adding URLs that are local to your cluster is unnecessary.
     [ret."Elixir.RetWeb.Plugs.AddCSP"]
     child_src = ""
     connect_src = "demo.hubsfoundation.org *.demo.hubsfoundation.org"
