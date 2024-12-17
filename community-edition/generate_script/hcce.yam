@@ -670,7 +670,7 @@ spec:
                   key: DB_NAME
           volumeMounts:
             - name: postgresql-data
-              mountPath: /var/lib/postgresql/data
+              mountPath: /var/lib/postgresql
       volumes:
         - name: postgresql-data
           hostPath:
@@ -1057,14 +1057,6 @@ spec:
     targetPort: 5000
   selector:
     app: photomnemonic
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: configs
-  namespace: $Namespace
-stringData:
-  PSQL: $PSQL
 ---
 ########################################################################
 ######################   dialog   ######################################
