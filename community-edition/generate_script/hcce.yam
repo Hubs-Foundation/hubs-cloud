@@ -336,15 +336,18 @@ data:
     [ret."Elixir.Ret.Support"]
     slack_webhook_url = "<SLACK_WEBHOOK>"
 
+    # The values in the following section are added to the Content Security Policy.
+    # This is used to allow connections to external URLs.
+    # Adding URLs that are local to your cluster is unnecessary.
     [ret."Elixir.RetWeb.Plugs.AddCSP"]
     child_src = ""
-    connect_src = "wss://*.stream.<DOMAIN>:4443"
+    connect_src = "demo.hubsfoundation.org *.demo.hubsfoundation.org"
     font_src = ""
     form_action = ""
     frame_src = ""
-    img_src = "nearspark.reticulum.io"
+    img_src = "demo.hubsfoundation.org *.demo.hubsfoundation.org"
     manifest_src = ""
-    media_src = ""
+    media_src = "demo.hubsfoundation.org *.demo.hubsfoundation.org"
     script_src = ""
     style_src = ""
     worker_src = ""
@@ -815,7 +818,7 @@ spec:
         - name: turkeyCfg_base_assets_path
           value: https://assets.$HUB_DOMAIN/hubs/
         - name: turkeyCfg_non_cors_proxy_domains
-          value: "$HUB_DOMAIN,assets.$HUB_DOMAIN"
+          value: "$HUB_DOMAIN,assets.$HUB_DOMAIN,demo.hubsfoundation.org,*.demo.hubsfoundation.org"
         - name: turkeyCfg_reticulum_server
           value: $HUB_DOMAIN
         - name: turkeyCfg_cors_proxy_server
@@ -885,7 +888,7 @@ spec:
         - name: turkeyCfg_base_assets_path
           value: https://assets.$HUB_DOMAIN/spoke/
         - name: turkeyCfg_non_cors_proxy_domains
-          value: "$HUB_DOMAIN,assets.$HUB_DOMAIN"
+          value: "$HUB_DOMAIN,assets.$HUB_DOMAIN,demo.hubsfoundation.org,*.demo.hubsfoundation.org"
         - name: turkeyCfg_reticulum_server
           value: $HUB_DOMAIN
         - name: turkeyCfg_cors_proxy_server
