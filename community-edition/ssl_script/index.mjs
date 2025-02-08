@@ -1,5 +1,6 @@
-const execSync = require('child_process').execSync;
-const utils = require("../utils");
+import { execSync } from "child_process"
+import utils from "../utils.js";
+import meow from 'meow';
 
 
 function generate_ssl(config, template, url) {
@@ -49,10 +50,25 @@ function generate_ssl(config, template, url) {
   }
 }
 
+const cli = meow(`
+gen-ssl — generate TLS (SSL) certificates to support HTTPS
+Usage:
+
+    npm run gen-ssl
+    npm run gen-ssl input-values.yaml
+`,
+  {
+    importMeta: import.meta,
+    flags: {},
+    allowUnknownFlags: false,
+  }
+);
+
+
 function main() {
   try {
     console.log("starting script");
-    const config = utils.readConfig();
+    const config = utils.readConfig(cli);
     const template = utils.readTemplate("ssl_script", "cbb.yam");
     const rootHubDomain = config.HUB_DOMAIN;
     generate_ssl(config, template, rootHubDomain);

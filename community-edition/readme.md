@@ -127,7 +127,7 @@ then
 
 `kubectl get pods -n hcce`
 
-If you just need to get the external IP address of your load balancer, run
+If you need to get the external IP address of your load balancer, run
 
 `npm run get-ip`
 

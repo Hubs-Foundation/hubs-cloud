@@ -1,9 +1,9 @@
-const crypto = require("crypto");
-const forge = require("node-forge");
-const path = require("path");
-const YAML = require("yaml");
-const pemJwk = require("pem-jwk");
-const utils = require("../utils");
+import crypto from "crypto";
+import forge from "node-forge";
+import YAML from "yaml";
+import pemJwk from "pem-jwk";
+import utils from "../utils.js";
+import meow from "meow";
 
 // Generate a private key and public key
 function generateKeys() {
@@ -162,10 +162,33 @@ function handleImageOverrides(processedConfig, replacedContent) {
   return `${yamlDocuments.map(doc => YAML.stringify(doc, {"lineWidth": 0, "directives": false})).join('---\n')}`;
 }
 
+const cli = meow(`
+gen-hcce — generates a Kubernetes template file for Hubs
+Usage:
+    npm run gen-hcce
+    npm run gen-hcce input-values.yaml
+    npm run gen-hcce -- -o template.yaml
+    npm run gen-hcce -- input-values.yaml -o template.yaml
+
+Options
+    --output, -o  write the template to this file
+`,
+{
+  importMeta: import.meta,
+  flags: {
+    output: {
+	  type: 'string',
+	  default: 'hcce.yaml',
+	  shortFlag: 'o'
+    },
+  },
+  allowUnknownFlags: false,
+});
+
 // Main function to handle the script
 function main() {
   try {
-    const config = utils.readConfig();
+    const config = utils.readConfig(cli);
     const processedConfig = YAML.parse(
       utils.replacePlaceholders(YAML.stringify(config), config),
       {"schema": "yaml-1.1"} // required to load yes/no as boolean values
@@ -180,7 +203,7 @@ function main() {
     processedConfig.initCert = Buffer.from(pemCert).toString('base64').replace(/\n/g, "");
     processedConfig.initKey = Buffer.from(pemPrivateKey).toString('base64').replace(/\n/g, "");
 
-    // generate the hcce.yaml file
+    // generate the template file
     const template = utils.readTemplate("/generate_script", "hcce.yam");
     var replacedContent = utils.replacePlaceholders(template, processedConfig);
 
@@ -190,7 +213,7 @@ function main() {
 
     replacedContent = handleImageOverrides(processedConfig, replacedContent)
 
-    utils.writeOutputFile(replacedContent, "", "hcce.yaml");
+    utils.writeOutputFile(replacedContent, "", cli.flags.output);
 
   } catch (error) {
     console.error("Error in main function:", error);
