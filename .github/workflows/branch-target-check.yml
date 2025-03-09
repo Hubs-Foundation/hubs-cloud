@@ -1,0 +1,16 @@
+# Referenced from: https://stackoverflow.com/a/75414339
+
+name: branch-target-check
+
+on:
+  pull_request:
+
+jobs:
+  check_branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check merge is allowed
+        if: github.base_ref == 'master' && github.head_ref != 'development'
+        run: |
+          echo "ERROR: You can only merge to the master branch from the development branch."
+          exit 1
