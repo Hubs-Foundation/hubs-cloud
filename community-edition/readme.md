@@ -1,6 +1,6 @@
 ![Hubs Cloud Community Edition](https://uploads-prod.reticulum.io/files/05884d13-e5e8-4f64-9aca-792aae6d7734.png)
 
-# Hubs Cloud Community Edition
+# Hubs Cloud Community EditionSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 
 Community Edition is a free tool designed to help developers deploy the full Hubs stack on cloud computing software of their choosing. Community Edition simplifies and automates most of the complex deployment process using [Kubernetes](https://kubernetes.io/), a containerized software orchestration system.
 
