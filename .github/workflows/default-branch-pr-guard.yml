@@ -1,0 +1,26 @@
+# References:
+# https://stackoverflow.com/a/75414339
+# https://stackoverflow.com/a/70776678
+
+name: default-branch-pr-guard
+
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+      - unlocked
+      - enqueued
+      - ready_for_review
+
+jobs:
+  default-branch-pr-guard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prevent unsanctioned pull requests to the default branch
+        if: github.base_ref == github.event.repository.default_branch && (github.head_ref != 'development' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name)
+        run: |
+          echo "ERROR: You are only allowed to merge to the '${{ github.event.repository.default_branch }}' branch from this repository's 'development' branch.  base_ref: ${{ github.base_ref }}; head_ref: ${{ github.head_ref }}; base_repo: ${{ github.event.pull_request.base.repo.full_name }}; head_repo: ${{ github.event.pull_request.head.repo.full_name }}; "
+          exit 1
