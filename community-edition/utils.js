@@ -4,9 +4,11 @@ const YAML = require("yaml");
 
 module.exports = {
   // Function to read and parse YAML config file
-  readConfig: function readConfig() {
+  readConfig: function readConfig(cli) {
     try {
-      const configPath = path.join(process.cwd(), "input-values.yaml");
+      const inputPath = cli?.input?.[0] || "input-values.yaml";
+      console.log(`reading input from ${inputPath}`);
+      const configPath = path.join(process.cwd(), inputPath);
       const fileContents = fs.readFileSync(configPath, "utf8");
       return YAML.parse(fileContents);
     } catch (error) {
@@ -44,5 +46,5 @@ module.exports = {
     return template.replace(/\$(\w+)/g, (match, p1) => {
       return config[p1] !== undefined ? config[p1] : match;
     });
-  }
-}
+  },
+};
