@@ -40,32 +40,3 @@ spec:
   hostPath:
     path: "/mnt/ret_storage_data"
     type: DirectoryOrCreate
----
-######################################################################################
-############################## persistent volume claim ###############################
-######################################################################################
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: pgsql-pvc
-  namespace: $Namespace
-spec:
-  storageClassName: manual
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: $PERSISTENT_VOLUME_SIZE
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: ret-pvc
-  namespace: $Namespace
-spec:
-  storageClassName: manual
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: $PERSISTENT_VOLUME_SIZE

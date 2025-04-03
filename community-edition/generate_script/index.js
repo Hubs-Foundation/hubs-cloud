@@ -62,12 +62,33 @@ function convertPemToJwk(publicKey) {
 
 function generatePersistentVolumes(processedConfig, replacedContent) {
   const yamlDocuments = YAML.parseAllDocuments(replacedContent);
-  const persistent_volumes_template = utils.readTemplate("/generate_script", "persistent_volumes.yam");
-  const replacedPersistentVolumesContent = utils.replacePlaceholders(persistent_volumes_template, processedConfig);
+  let outputIdx = 2;
+  processedConfig.PERSISTENT_VOLUME_STORAGE_CLASS ||= 'manual';
 
-  // Add in the persistent volume configs to the hcce.yaml file
-  YAML.parseAllDocuments(replacedPersistentVolumesContent).forEach((doc, index) => {
-    yamlDocuments.splice(2 + index, 0, doc);
+  if ('manual' === processedConfig.PERSISTENT_VOLUME_STORAGE_CLASS) {
+    // Add in the persistent volume configs to the hcce.yaml file
+    const persistent_volumes_template = utils.readTemplate("/generate_script", "persistent_volumes.yam");
+    const replacedPersistentVolumesContent = utils.replacePlaceholders(persistent_volumes_template, processedConfig);
+    YAML.parseAllDocuments(replacedPersistentVolumesContent).forEach(doc => {
+      yamlDocuments.splice(outputIdx++, 0, doc);
+    });
+  }
+
+  const persistent_volume_claims_template = utils.readTemplate("/generate_script", "persistent_volume_claims.yam");
+  const replacedPersistentVolumeClaimsContent = utils.replacePlaceholders(persistent_volume_claims_template, processedConfig);
+
+  // Adds in the persistent volume claims to the hcce.yaml file
+  YAML.parseAllDocuments(replacedPersistentVolumeClaimsContent).forEach(doc => {
+    if ('default' !== processedConfig.PERSISTENT_VOLUME_STORAGE_CLASS) {
+      doc = doc.toJS();
+      doc.spec.storageClassName = processedConfig.PERSISTENT_VOLUME_STORAGE_CLASS;
+      if ('manual' === processedConfig.PERSISTENT_VOLUME_STORAGE_CLASS) {
+        // ReadWriteOncePod is only supported for CSI volumes
+        doc.spec.accessModes = ["ReadWriteOnce"];
+      }
+      doc = new YAML.Document(doc);
+    }
+    yamlDocuments.splice(outputIdx++, 0, doc);
   });
 
   // update the volume specifications for pgsql and reticulum to point to the persistent volumes

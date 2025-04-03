@@ -1,0 +1,26 @@
+######################################################################################
+############################## persistent volume claims ###############################
+######################################################################################
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pgsql-pvc
+  namespace: $Namespace
+spec:
+  accessModes:
+    - ReadWriteOncePod
+  resources:
+    requests:
+      storage: $PERSISTENT_VOLUME_SIZE
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ret-pvc
+  namespace: $Namespace
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: $PERSISTENT_VOLUME_SIZE

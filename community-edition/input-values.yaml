@@ -20,6 +20,7 @@ PHX_KEY: "changeMe"
 SKETCHFAB_API_KEY: "?"
 TENOR_API_KEY: "?"
 GENERATE_PERSISTENT_VOLUMES: "Yes"
+PERSISTENT_VOLUME_STORAGE_CLASS: "default"   # or 'manual' for a single-node test installations
 PERSISTENT_VOLUME_SIZE: "10Gi"
 OVERRIDE_RETICULUM_IMAGE: "hubsfoundation/reticulum:$Container_Tag"
 OVERRIDE_POSTGREST_IMAGE: "No"
