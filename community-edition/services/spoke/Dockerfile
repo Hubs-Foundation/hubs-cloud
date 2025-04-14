@@ -3,6 +3,10 @@
 # the result container should serve reticulum as "spoke_page_origin" on (path) "/spoke/pages"
 ###
 from node:16.13 as builder
+run apt update && apt install -y chromium
+env PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+env PUPPETEER_EXECUTABLE_PATH /usr/bin/chromium
+
 run mkdir /spoke && cd /spoke
 copy package.json ./
 copy yarn.lock ./
