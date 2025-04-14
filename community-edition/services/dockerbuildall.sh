@@ -2,14 +2,19 @@
 
 set -e
 
-docker_username=""
+docker_username="${DOCKER_HUB_USERNAME:-hubsfoundation}"
+tagPrefix="${DOCKER_HUB_PREFIX:-dynamicdevices}"
+platforms="${DOCKER_BUILD_PLATFORMS:-linux/amd64}"
 
 ########################
-tagPrefix=""
 if ! [ -z $docker_username ]; then
     echo "docker login [$docker_username]"
     docker login --username $docker_username
-    tagPrefix=$docker_username/
+    if [ -z $tagPrefix ]; then
+      tagPrefix=$docker_username/
+    else
+      tagPrefix=${tagPrefix}/
+    fi
 fi
 
 images=""
@@ -23,7 +28,7 @@ for dir in */ ; do
 
         echo $pad; echo "### $msg ###"; echo $pad
 
-        docker build -t "$tag_name" -f ./$dir/Dockerfile ./$dir
+        docker build -t "$tag_name" -f ./$dir/Dockerfile ./$dir --platform ${platforms}
         if ! [ -z $tagPrefix ]; then
             docker push $tag_name
         fi
