@@ -3,7 +3,7 @@
 set -e
 
 docker_username="${DOCKER_HUB_USERNAME:-hubsfoundation}"
-tagPrefix="${DOCKER_HUB_PREFIX:-dynamicdevices}"
+tagPrefix="${DOCKER_HUB_PREFIX:-hubsfoundation}"
 platforms="${DOCKER_BUILD_PLATFORMS:-linux/amd64}"
 
 ########################
@@ -27,13 +27,9 @@ for dir in */ ; do
         pad=$(printf '#%.0s' $(seq 1 $((msg_len + 8))))
 
         echo $pad; echo "### $msg ###"; echo $pad
-
-        docker build -t "$tag_name" -f ./$dir/Dockerfile ./$dir --platform ${platforms}
-        if ! [ -z $tagPrefix ]; then
-            docker push $tag_name
-        fi
+        docker buildx build --tag "$tag_name" -f ./$dir/Dockerfile --platform ${platforms} --push ./$dir
         images=$images'\n'$tag_name
     fi
 done
 
-printf done:$images
+printf done:$images'\n'
