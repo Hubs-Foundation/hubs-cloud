@@ -9,7 +9,7 @@ copy package.json .
 copy package-lock.json .
 run npm ci
 copy . .
-from node:lts-slim
+from node:18-slim
 workdir /app
 copy --from=build /app /app
 # run apt-get update > /dev/null && apt-get install -y jq curl dnsutils netcat > /dev/null
