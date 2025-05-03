@@ -32,7 +32,11 @@ for dir in */ ; do
         pad=$(printf '#%.0s' $(seq 1 $((msg_len + 8))))
 
         echo $pad; echo "### $msg ###"; echo $pad
-        docker buildx build --tag "$tag_name" -f ./$dir/Dockerfile --platform ${platforms} --push ./$dir
+        if [ "$dir" == "spoke" ]; then
+          docker buildx build --tag "$tag_name" -f ./$dir/RetPageOriginDockerfile --platform ${platforms} --push ./$dir
+        else
+          docker buildx build --tag "$tag_name" -f ./$dir/Dockerfile --platform ${platforms} --push ./$dir
+        fi
         images=$images'\n'$tag_name
     fi
 done
