@@ -12,6 +12,7 @@ echo "internalIp: $internalIp"
 export externalIp="$(curl https://ipinfo.io/ip)" 
 echo "externalIp: $externalIp" 
 echo "realm=$REALM" > /etc/turnserver.conf 
+echo "server-name=$HUB_DOMAIN" > /etc/turnserver.conf
 echo "no-udp=true" >> /etc/turnserver.conf 
 echo "no-tcp=true" >> /etc/turnserver.conf 
 echo "no-dtls=false" >> /etc/turnserver.conf 
