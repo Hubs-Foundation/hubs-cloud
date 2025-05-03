@@ -3,13 +3,18 @@
 set -e
 
 docker_username="${DOCKER_HUB_USERNAME:-hubsfoundation}"
+docker_passwrod="${DOCKER_HUB_PASSWORD"
 tagPrefix="${DOCKER_HUB_PREFIX:-hubsfoundation}"
 platforms="${DOCKER_BUILD_PLATFORMS:-linux/amd64}"
 
 ########################
 if ! [ -z $docker_username ]; then
     echo "docker login [$docker_username]"
-    docker login --username $docker_username
+    if ! [ -z $docker_username ]; then
+      docker login --username $docker_username --password $docker_password
+    else
+      docker login --username $docker_username
+    fi
     if [ -z $tagPrefix ]; then
       tagPrefix=$docker_username/
     else
@@ -27,7 +32,13 @@ for dir in */ ; do
         pad=$(printf '#%.0s' $(seq 1 $((msg_len + 8))))
 
         echo $pad; echo "### $msg ###"; echo $pad
-        docker buildx build --tag "$tag_name" -f ./$dir/Dockerfile --platform ${platforms} --push ./$dir
+        if [ "$dir" == "coturn" ]; then
+          docker buildx build --tag "$tag_name" -f ./$dir/Dockerfile --platform ${platforms} --push ./$dir
+        elif [ "$dir" == "coturn" ]; then
+          docker buildx build --tag "$tag_name" -f ./$dir/Dockerfile --platform ${platforms} --push ./$dir
+        else
+          docker buildx build --tag "$tag_name" -f ./$dir/Dockerfile --platform ${platforms} --push ./$dir
+        fi
         images=$images'\n'$tag_name
     fi
 done
