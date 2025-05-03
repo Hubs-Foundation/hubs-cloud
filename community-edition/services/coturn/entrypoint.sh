@@ -31,4 +31,5 @@ echo "relay-ip=$internalIp" >> /etc/turnserver.conf
 echo "external-ip=$externalIp" >> /etc/turnserver.conf 
 cat /etc/turnserver.conf 
 echo "####################################################" 
+#turnserver --log-file=stdout --lt-cred-mech  --psql-userdb=$PSQL
 turnserver --log-file=stdout --psql-userdb=$PSQL
