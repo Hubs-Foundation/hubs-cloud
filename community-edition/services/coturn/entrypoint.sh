@@ -24,11 +24,11 @@ echo "max-port=51609" >> /etc/turnserver.conf
 echo "tls-listening-port=5349" >> /etc/turnserver.conf 
 echo "###psql-schema=coturn" >> /etc/turnserver.conf 
 #echo "use-auth-secret=true" >> /etc/turnserver.conf 
-echo "cert=/certs/cert.pem" >> /etc/turnserver.conf 
-echo "pkey=/certs/key.pem" >> /etc/turnserver.conf 
+echo "cert=/certs/tls.crt" >> /etc/turnserver.conf 
+echo "pkey=/certs/tls.key" >> /etc/turnserver.conf 
 echo "listening-ip=$internalIp" >> /etc/turnserver.conf 
 echo "relay-ip=$internalIp" >> /etc/turnserver.conf 
 echo "external-ip=$externalIp" >> /etc/turnserver.conf 
 cat /etc/turnserver.conf 
 echo "####################################################" 
-turnserver --log-file=stdout --psql-userdb=$PSQL --prometheus -v
+turnserver --log-file=stdout --psql-userdb=$PSQL

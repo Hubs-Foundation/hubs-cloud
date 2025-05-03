@@ -1164,6 +1164,14 @@ spec:
             secretKeyRef:
               name: configs
               key: PSQL
+        volumeMounts:
+        - name: certs
+          mountPath: /certs/
+          readOnly: true
+      volumes:
+      - name: certs
+        secret:
+          secretName: cert-$HUB_DOMAIN
 ---
 apiVersion: v1
 kind: Service
