@@ -1159,6 +1159,8 @@ spec:
         env:
         - name: REALM
           value: turkey
+        - name: HUB_DOMAIN
+          value: $HUB_DOMAIN
         - name: PSQL
           valueFrom:
             secretKeyRef:
