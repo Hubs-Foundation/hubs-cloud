@@ -1,6 +1,6 @@
 [submodule "community-edition/services/dialog"]
 	path = community-edition/services/dialog
-	url = https://github.com/hubs-foundation/dialog
+	url = https://github.com/dynamicdevices/dialog
 [submodule "community-edition/services/nearspark"]
 	path = community-edition/services/nearspark
 	url = https://github.com/hubs-foundation/nearspark
@@ -9,13 +9,10 @@
 	url = https://github.com/dynamicdevices/photomnemonic
 [submodule "community-edition/services/hubs"]
 	path = community-edition/services/hubs
-	url = https://github.com/DynamicDevices/hubs.git
+	url = https://github.com/dynamicdevices/hubs.git
 [submodule "community-edition/services/spoke"]
 	path = community-edition/services/spoke
-	url = https://github.com/Hubs-Foundation/Spoke.git
-[submodule "community-edition/services/--force"]
-	path = community-edition/services/--force
-	url = https://github.com/hubs-foundation/dialog
+	url = https://github.com/dynamicdevices/Spoke.git
 [submodule "community-edition/services/speelycaptor"]
 	path = community-edition/services/speelycaptor
 	url = https://github.com/hubs-foundation/speelycaptor
