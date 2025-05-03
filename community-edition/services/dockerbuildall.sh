@@ -3,7 +3,7 @@
 set -e
 
 docker_username="${DOCKER_HUB_USERNAME:-hubsfoundation}"
-docker_passwrod="${DOCKER_HUB_PASSWORD"
+docker_password="${DOCKER_HUB_PASSWORD}"
 tagPrefix="${DOCKER_HUB_PREFIX:-hubsfoundation}"
 platforms="${DOCKER_BUILD_PLATFORMS:-linux/amd64}"
 
@@ -32,13 +32,7 @@ for dir in */ ; do
         pad=$(printf '#%.0s' $(seq 1 $((msg_len + 8))))
 
         echo $pad; echo "### $msg ###"; echo $pad
-        if [ "$dir" == "coturn" ]; then
-          docker buildx build --tag "$tag_name" -f ./$dir/Dockerfile --platform ${platforms} --push ./$dir
-        elif [ "$dir" == "coturn" ]; then
-          docker buildx build --tag "$tag_name" -f ./$dir/Dockerfile --platform ${platforms} --push ./$dir
-        else
-          docker buildx build --tag "$tag_name" -f ./$dir/Dockerfile --platform ${platforms} --push ./$dir
-        fi
+        docker buildx build --tag "$tag_name" -f ./$dir/Dockerfile --platform ${platforms} --push ./$dir
         images=$images'\n'$tag_name
     fi
 done
