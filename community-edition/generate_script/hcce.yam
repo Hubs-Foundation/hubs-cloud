@@ -1173,7 +1173,7 @@ spec:
       volumes:
       - name: certs
         secret:
-          secretName: cert-$HUB_DOMAIN
+          secretName: cert-stream.$HUB_DOMAIN
 ---
 apiVersion: v1
 kind: Service
