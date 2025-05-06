@@ -35,6 +35,8 @@ for dir in */ ; do
         echo $pad; echo "### $msg ###"; echo $pad
         if [ "$dir" == "spoke" ]; then
           docker buildx build --tag "$tag_name" -f ./$dir/RetPageOriginDockerfile --platform ${platforms} --push ./$dir
+        elif [ "$dir" == "hubs" ]; then
+          docker buildx build --tag "$tag_name" -f ./$dir/RetPageOriginDockerfile --platform ${platforms} --push ./$dir
         else
           docker buildx build --tag "$tag_name" -f ./$dir/Dockerfile --platform ${platforms} --push ./$dir
         fi
