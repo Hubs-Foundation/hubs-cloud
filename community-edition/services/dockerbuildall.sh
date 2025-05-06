@@ -6,6 +6,7 @@ docker_username="${DOCKER_HUB_USERNAME:-hubsfoundation}"
 docker_password="${DOCKER_HUB_PASSWORD}"
 tagPrefix="${DOCKER_HUB_PREFIX:-hubsfoundation}"
 platforms="${DOCKER_BUILD_PLATFORMS:-linux/amd64}"
+tag="${DOCKER_HUB_TAG:-latest}"
 
 ########################
 if ! [ -z $docker_username ]; then
@@ -26,7 +27,7 @@ images=""
 for dir in */ ; do
     if [ -d "$dir" ]; then
         dir="${dir%/}"
-        tag_name=$tagPrefix"${dir,,}"
+        tag_name=$tagPrefix"${dir,,}:${tag}"
         msg="Building Docker image (-t $tag_name) for $dir"
         msg_len=${#msg}
         pad=$(printf '#%.0s' $(seq 1 $((msg_len + 8))))
