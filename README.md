@@ -8,7 +8,7 @@ The intent is that this repository, and associated repositories, are temporary f
 
 It is understood that these changes could potentially break a lot of behaviours so we're very much looking for people who are interested in testing this out on Raspperry Pis, arm64, and amd64 platform architectures.
 
-# Oustanding Issues
+# Outstanding Issues
 
 - We've had to disable WebRTC authentication in `coturn` and need to understand why inter-pod database lookups aren't working
 - The HTTP LetsEncrypt `certbotbot` process isn't always reliable
@@ -22,7 +22,7 @@ We're testing on a Raspberry Pi 5 with 8GB of RAM but this *should* work on a 4G
 
 Go through a standard imaging procedure such as using `rpi-imager` [link here](https://www.raspberrypi.com/software) to install a standard **64-bit** Raspberry Pi desktop [image](https://www.raspberrypi.com/software/raspberry-pi-desktop) 
 
-TIP: You can use `rpi-imager` to edit the image settings before writing to the Pi and you might want to put in a default WiFi SSID and password so you can easily connect, and also consider adding a public key for security if you are comfortable with these things. I am going to use the following settings and you may need to pay attention to the user you install as and the hostname in the documentation below
+**TIP:** You can use `rpi-imager` to edit the image settings before writing to the Pi and you might want to put in a default WiFi SSID and password so you can easily connect, and also consider adding a public key for security if you are comfortable with these things. I am going to use the following settings and you may need to pay attention to the user you install as and the hostname in the documentation below
 
 | Setting | Value |
 | ------- | ----- |
@@ -33,7 +33,7 @@ TIP: You can use `rpi-imager` to edit the image settings before writing to the P
 
 Boot the Raspberry Pi and then login as the `hubs` user
 
-TIP: If you're using the board without a display and keyboard you'll be logging in with the SSH protocol. You'll ethernet connect to your local network with a wired ethernet connection or you may have chosen to set WiFi credentials in the step above. To determine the IP address of the board you can ping the host name in this case `hubs-pi.local`. We use Linux here but I think if memory serves this is `hubs-pi.localdomain` on Windows computers.
+**TIP:** If you're using the board without a display and keyboard you'll be logging in with the SSH protocol. You'll ethernet connect to your local network with a wired ethernet connection or you may have chosen to set WiFi credentials in the step above. To determine the IP address of the board you can ping the host name in this case `hubs-pi.local`. We use Linux here but I think if memory serves this is `hubs-pi.localdomain` on Windows computers.
 
 ```
 $ ping hubs-pi.local
@@ -41,7 +41,7 @@ PING hubs-pi.local (192.168.0.174) 56(84) bytes of data.
 ```
 Then use SSH or [Putty](https://www.putty.org/) to connect to this hostname or IP address and login
 
-## Option 1: Auaomated Installation
+## Option 1: Automated Installation
 
 Helper script **TBD**
 
@@ -179,7 +179,7 @@ Next install `minikube` `kubectl` support with
 minikube kubectl -- get po -A
 ```
 
-We will be using the `kubectl` command extensively to interact with our new kubernetes cluster. The instructions linked to above talk about adding an `alias` to the shell but this doesn't work well with the Hubs scripts. Instead we will use a trick I learnt from (BusyBoxy)[https://busybox.net/] and symlink to the main `minikube` binary as follows
+We will be using the `kubectl` command extensively to interact with our new kubernetes cluster. The instructions linked to above talk about adding an `alias` to the shell but this doesn't work well with the Hubs scripts. Instead we will use a trick I learnt from [BusyBox](https://busybox.net/) and symlink to the main `minikube` binary as follows
 
 ```
 sudo ln -s /usr/local/bin/minikube /usr/local/bin/kubectl
@@ -193,17 +193,17 @@ kubectl get pods
 
 The Kubernetes container orchestration engine is now installed !!!
 
-### Copy the Hubs Cloud repository for Hubs Community Edition (CE) and install depdencies
+### Copy the Hubs Cloud repository for Hubs Community Edition (CE) and install dependencies
 
 It's probably best to `git checkout` whatever the latest release is from the repository or you could try out the `master` branch if you are feeling brave
 
-At the time of writing (04/05/25) release `v0.0.1` commit hash is #b65b3dff (long form: #b65b3dff668039762d5f112b32cc3f2851794e31)
+At the time of writing (04/05/25) release `v0.0.2` commit hash is #2e93d04d (long form: #2e93d04dbabca6cf5d5b6fa9273cfa6c22c63c19)
 
 ```
 cd ~
 git clone git clone https://github.com/DynamicDevices/hubs-cloud.git
 cd hubs-cloud
-git checkout b65b3dff
+git checkout 2e93d04d
 ```
 To install needed `nodejs` dependencies use
 
@@ -215,7 +215,7 @@ npm ci
 
 We'll be mostly working in the `~/hubs-cloud/community-edition` so unless otherwise stated you can assume at the moment you're working  here.
 
-Now you need to edit `input.yaml` to set your own needed values. This file is used to generate an `hcce.yaml` file which is what drives the `kubernetes` orchestration
+Now you need to edit `input-values.yaml` to set your own needed values. This file is used to generate an `hcce.yaml` file which is what drives the `kubernetes` orchestration
 
 There are various resources around but I will try to go through what needs to be changed from my perspective. Comments are inlined in the example file shown here.
 
@@ -248,7 +248,7 @@ SKETCHFAB_API_KEY: "?"
 TENOR_API_KEY: "?"
 GENERATE_PERSISTENT_VOLUMES: "Yes"
 PERSISTENT_VOLUME_SIZE: "10Gi"
-# **CHANGE THESE** TO OVERRIDE *ALL* THESE CONATINERS AT THIS TIME TO USE THE DYNAMIC DEVICES IMAGES AS THESE SUPPORT ARM64 AND UPSTREAM DOES NOT AT THIS TIME
+# **CHANGE THESE** TO OVERRIDE *ALL* THESE CONTAINERS AT THIS TIME TO USE THE DYNAMIC DEVICES IMAGES AS THESE SUPPORT ARM64 AND UPSTREAM DOES NOT AT THIS TIME
 OVERRIDE_RETICULUM_IMAGE: "dynamicdevices/reticulum:latest"
 OVERRIDE_POSTGREST_IMAGE: "dynamicdevices/postgrest:latest"
 OVERRIDE_POSTGRES_IMAGE: "dynamicdevices/postgres:latest"
@@ -262,7 +262,7 @@ OVERRIDE_COTURN_IMAGE: "dynamicdevices/coturn:latest"
 OVERRIDE_HAPROXY_IMAGE: "dynamicdevices/haproxy:latest"
 ```
 
-TIPS: Note above that the admin email is **exactly** what it says on the tin and you will need to log in with this email address initially to be able to administer your Hubs installation
+**TIP:** Note above that the admin email is **exactly** what it says on the tin and you will need to log in with this email address initially to be able to administer your Hubs installation
 
 Now you can create the `hcce.yaml` file from this `input-values.yaml` file with
 
@@ -270,11 +270,11 @@ Now you can create the `hcce.yaml` file from this `input-values.yaml` file with
 npm run gen-hcce
 ```
 
-TIP: You can edit the `hcce.yaml` file directlly and then redeploy your `kubernetes cluster` so you can view the preceding step as just making your life a little easier. Remember that any changes to `hcce.yaml` will be lost when you run `npm run gen-hcce` again.
+**TIP:** You can edit the `hcce.yaml` file directlly and then redeploy your `kubernetes cluster` so you can view the preceding step as just making your life a little easier. Remember that any changes to `hcce.yaml` will be lost when you run `npm run gen-hcce` again.
 
 #### Additional step when using Gmail for SMTP email
 
-I use GMail with app tokens and the default setup does not work for me. I found this was because a Hubs mmailer component seems to be trying to use TLS not SSL to talk to Google and for some reason that doesn't work. If you run into problem with email then I suggest you edit the `hcce.yaml` as follows
+I use GMail with app tokens and the default setup does not work for me. I found this was because a Hubs mmailer component seems to be trying to use TLS not SSL to talk to Google and for some reason that doesn't work. If you run into problems with email then I suggest you edit the `hcce.yaml` as follows to add the `tls` and `ssl` keys
 
 ```
     [ret."Elixir.Ret.Mailer"]
@@ -288,7 +288,7 @@ I use GMail with app tokens and the default setup does not work for me. I found 
 
 **TBD**: Add in some notes on how we can view the logs in Reticulum which will show any errors, e.g. with passwords, when Hubs tries to send out email validation links
 
-TIP: It is possible and documented elsewhere how to view logs to get the validation code to avoid having to have emailing working but I haven't had much luck with that, it makes it hard to impossible for others to join you in your Hub rooms, so I am not spending time documenting this process here.
+**TIP:** It is possible and documented elsewhere how to view logs to get the validation code to avoid having to have emailing working but I haven't had much luck with that, it makes it hard to impossible for others to join you in your Hub rooms, so I am not spending time documenting this process here.
 
 ### Deploy Hubs with Kubernetes
 
@@ -363,7 +363,7 @@ waiting on coturn, dialog, haproxy, hubs, nearspark, pgbouncer, pgbouncer-t, pgs
 
 **TIP**: As each of these kubernetes pods starts up, the list will get smaller. It can also get *longer* if those pods are failing to start and restarting for some reason. You can CTRL-C out of the script at this point if you wish. It won't stop the pods starting up and instead you can run some `kubectl` commands to try to work out what's failing.
 
-If all goes well you should end up waiting only on `coturn` as we need to follow another step to generate the webserver TLS certificates to enble this pod to work **TBD** I should really fix this.
+If all goes well you should end up waiting only on `coturn` as we need to follow another step to generate the webserver TLS certificates to enble this pod to work (**TBD** I should really fix this so it starts without the cert present.)
 
 ```
 waiting on coturn
@@ -477,7 +477,7 @@ Group=hubs
 WantedBy=multi-user.target
 ```
 
-**TIP** As before you are going to potentially need to change the `User` and `Group` to your user. Also **CRITICALLY IMPORTANT** you need to change the `--bind-address` to the public ethernet/WiFi interface on your board. This is almost certainly the IP address you get when you ping `hubs-pi.local`. (I am making a set of assumptions here, that you are running on a local network and will be port forwarding to the board from your router. You may alternatively have the board on a public internet facing IP address in which case you will use that IP address. Things get a bit more complicate if you are routing through subnets or VPNs in something like AWS but ask me if you run into trouble here).
+**TIP** As before you are going to potentially need to change the `User` and `Group` to your user. Also **CRITICALLY IMPORTANT** you need to change the `--bind-address` to the public ethernet/WiFi interface on your board. This is almost certainly the IP address you get when you ping `hubs-pi.local`. (I am making a set of assumptions here, that you are running on a local network and will be port forwarding to the board from your router. You may alternatively have the board on a public internet facing IP address in which case you will use that IP address. Things get a bit more complicated if you are routing through subnets or VPNs in something like AWS but ask me if you run into trouble here).
 
 Next, the `minikube-tunnel` service needs to be able to elevate its permissions to perform it's job. I am not sure of the most secure way to do this to be honest but the approach I have taken is to allow the service user to access the needed binaries without a password but no others.
 
@@ -537,11 +537,11 @@ In brief
 
 - your best option is to put your box on a public internet IP address with no access to anything else such as your internet intranet
 - alternatively if you know your network infrastructure you could setup a virtual private network segment
-- what many users will end up doing is to port forward the TCP and UDP ports Hubs CE needs via your router onto the IP address of the box in your home network. I reitarate **THIS PUTS YOUR COMPUTER SYSTEMS AT RISK AND YOU TAKE THIS STEP ENTIRELY AT YOUR OWN RISK**. You should find the docuementation on how to configure port forwarding at your internet provider's website. If you don't at least have an idea what this term means **PLEASE** don't do it.
+- what many home users will end up doing is to port forward the TCP and UDP ports Hubs CE needs via your router onto the IP address of the box in your home network. I reitarate **THIS PUTS YOUR COMPUTER SYSTEMS AT RISK AND YOU TAKE THIS STEP ENTIRELY AT YOUR OWN RISK**. You should find the documentation on how to configure port forwarding at your internet provider's website. If you don't at least have an idea what this term means **PLEASE** don't do it.
 
 The port forwarding and firewalling setup that I use with Hubs looks like this (this is a dump from the `ufw` firewall I am using on a development box)
 
-**NOTE** I suspect that we don't need all these ports but this is what I am using at present and it works for me [TBD: Correct to limit to needed ports]
+**NOTE** I suspect that we don't need all these ports but this is what I am using at present and it works for me [**TBD:** Correct to limit to needed ports]
 
 | To                        |  Action  |     From |
 | --                        |  ------  |     ---- |
@@ -593,7 +593,7 @@ The standard http-based process you go through to generate your certificates is
 - It then asks the Letsencrypt systems to connect to the server running at the domain you are asking to be validated and it requests a value - a `secret`
 - This value is provided by your webserver or certbot (as setup by certbot) and thus Letsencrypt knows you control the server at the domain it is validating and it issues the certificate
 
-  There is an altnernative DNS based option which doesn't require use of or connection to your own webservers. In this case
+  There is an alternative DNS based option which doesn't require use of or connection to your own webservers. In this case
 
   - Your domain name provider almost certainly provides an API to programmatically modify your domain so you obtain an API token to access this
   - You use a certbot plugin that knows how to talk to your domain name provider API
@@ -603,7 +603,7 @@ The standard http-based process you go through to generate your certificates is
  
 **Key differences** here are that the http method is more automated whereas the DNS method is provider specific and requires you to setup API tokens. **However** with the DNS method you can request **wildcard** certificates which means you can use a single certificate for all your subdomains, which can be easier to configure.
 
-Hubs uses the http mechanism, whereas I have a little script I wrote which talks to my Cloudflare provider to issue wildcard certificates
+Hubs uses the http mechanism, whereas I have a little [script](https://github.com/DynamicDevices/hubs-cloud/blob/master/community-edition/make-certs.sh) I wrote which talks to my Cloudflare provider to issue wildcard certificates
 
 #### The standard (http) process
 
@@ -612,6 +612,7 @@ You can use some Hubs CE automation to generate the certificates. This uses the 
 If you are running your system on your home network then you will want to:
 
 a) obtain the public IP address for your home network e.g. using https://myip.dk
+
 b) port forward the needed ports mentioned above to the IP address of your Raspberry Pi on your home network, found with either `ifconfig` or `ip a`. It will likely be of the form `192.168.x.x. You may also want to change your router configuration, if possible, to ensure that the IP address it automatically assigns to your Hubs Pi doesn't change in future or you will have to change your internal port forwarding setup when it does change.
 
 | Domain | Example |
@@ -704,7 +705,7 @@ tls.crt:  3627 bytes
 tls.key:  1704 bytes
 ```
 
-TIP: Sometimes this doesn't completely work and you need to re-run the command. The most common problem is that for some reason letsencrypt is not able to connect to the webserver running on your system to retrieve its secret. If you are getting lots of dots something in the container is going wrong and you need to view the logs with
+**TIP:** Sometimes this doesn't completely work and you need to re-run the command. The most common problem is that for some reason letsencrypt is not able to connect to the webserver running on your system to retrieve its secret. If you are getting lots of dots something in the container is going wrong and you need to view the logs with
 
 ```
 kubectl -n hcce logs certbotbot-http -f
@@ -774,7 +775,7 @@ Then you can redeploy as above with
 npm run apply
 ```
 
-If you do this at any point after setting up your Hubs unit you should be safe in that it shouldn't delete any of your stored data (but don't take my word for that if things go wrong¬)
+If you do this at any point after setting up your Hubs unit you should be safe in that it shouldn't delete any of your stored data (but don't take my word for that if things go wrong)
 
 **TIP**: If things go really seriously wrong you might want to completely uninstall `minikube` which **WILL** lose any stored data from your Hubs server. If we're just in setup mode we don't care so much about that.
 
