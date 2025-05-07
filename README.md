@@ -197,13 +197,13 @@ The Kubernetes container orchestration engine is now installed !!!
 
 It's probably best to `git checkout` whatever the latest release is from the repository or you could try out the `master` branch if you are feeling brave
 
-At the time of writing (04/05/25) release `v0.0.2` commit hash is #2e93d04d (long form: #2e93d04dbabca6cf5d5b6fa9273cfa6c22c63c19)
+At the time of writing (04/05/25) release `v0.0.2` commit hash is #953b85f7 (long form: #953b85f7cf2f67b7e2fb65d14d26ffbe942fbe5d)
 
 ```
 cd ~
 git clone git clone https://github.com/DynamicDevices/hubs-cloud.git
 cd hubs-cloud
-git checkout 2e93d04d
+git checkout 953b85f7
 ```
 To install needed `nodejs` dependencies use
 
