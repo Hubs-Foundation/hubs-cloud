@@ -7,6 +7,7 @@ docker_password="${DOCKER_HUB_PASSWORD}"
 tagPrefix="${DOCKER_HUB_PREFIX:-hubsfoundation}"
 platforms="${DOCKER_BUILD_PLATFORMS:-linux/amd64}"
 tag="${DOCKER_HUB_TAG:-latest}"
+containers="${DOCKER_CONTAINERS:=certbotbot coturn dialog haproxy hubs nearspark pgbouncer photomnemonic postgres postgrest reticulum speelycaptor spoke}"
 
 ########################
 if ! [ -z $docker_username ]; then
@@ -24,7 +25,7 @@ if ! [ -z $docker_username ]; then
 fi
 
 images=""
-for dir in */ ; do
+for dir in $containers ; do
     if [ -d "$dir" ]; then
         dir="${dir%/}"
         tag_name=$tagPrefix"${dir,,}:${tag}"
