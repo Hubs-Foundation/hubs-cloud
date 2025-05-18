@@ -11,7 +11,7 @@ defmodule RetWeb.Plugs.RateLimit do
       throttle(
         conn.remote_ip,
         period: 1000,
-        limit: 1,
+        limit: 10,
         storage: {PlugAttack.Storage.Ets, RetWeb.RateLimit.Storage}
       )
     end
