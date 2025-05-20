@@ -18,4 +18,4 @@
 	url = https://github.com/hubs-foundation/speelycaptor
 [submodule "community-edition/services/reticulum"]
 	path = community-edition/services/reticulum
-	url = https://github.com/Hubs-Foundation/reticulum.git
+	url = https://github.com/dynamicdevices/reticulum.git
