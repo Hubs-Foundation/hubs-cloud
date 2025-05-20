@@ -38,6 +38,8 @@ for dir in $containers ; do
           docker buildx build --tag "$tag_name" -f ./$dir/RetPageOriginDockerfile --platform ${platforms} --push ./$dir
         elif [ "$dir" == "hubs" ]; then
           docker buildx build --tag "$tag_name" -f ./$dir/RetPageOriginDockerfile --platform ${platforms} --push ./$dir
+        elif [ "$dir" == "reticulum" ]; then
+          docker buildx build --tag "$tag_name" -f ./$dir/TurkeyDockerfile --platform ${platforms} --push ./$dir
         else
           docker buildx build --tag "$tag_name" -f ./$dir/Dockerfile --platform ${platforms} --push ./$dir
         fi
