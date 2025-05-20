@@ -16,3 +16,6 @@
 [submodule "community-edition/services/speelycaptor"]
 	path = community-edition/services/speelycaptor
 	url = https://github.com/hubs-foundation/speelycaptor
+[submodule "community-edition/services/reticulum"]
+	path = community-edition/services/reticulum
+	url = https://github.com/Hubs-Foundation/reticulum.git
