@@ -9,7 +9,7 @@
 	url = https://github.com/dynamicdevices/photomnemonic
 [submodule "community-edition/services/hubs"]
 	path = community-edition/services/hubs
-	url = https://github.com/dynamicdevices/hubs.git
+	url = https://github.com/hubs-foundation/hubs.git
 [submodule "community-edition/services/spoke"]
 	path = community-edition/services/spoke
 	url = https://github.com/dynamicdevices/Spoke.git
