@@ -131,6 +131,12 @@ If you just need to get the external IP address of your load balancer, run
 
 `npm run get-ip`
 
+### Backing up and restoring your instance
+
+Use `npm run backup` to backup your instance.  The backup will be timestamped and placed in a `data_backups` folder.
+
+Use `npm run restore-backup data_backup_1234567890123` to restore a backup to your instance.  If you don't specify a backup, and just use `npm run restore-backup`, it will default to the latest backup.
+
 ## Guides from the Hubs Team and Community
 
 ### 1. Beginner's Guide to CE
