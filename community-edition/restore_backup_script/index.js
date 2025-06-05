@@ -1,0 +1,56 @@
+const execSync = require('child_process').execSync;
+const fs = require("fs");
+const path = require("path");
+const YAML = require("yaml");
+const utils = require("../utils");
+
+// get command line arguments
+const args = process.argv.slice(2);
+
+// read config
+const config = utils.readConfig();
+const processedConfig = YAML.parse(
+  utils.replacePlaceholders(YAML.stringify(config), config),
+  {"schema": "yaml-1.1"} // required to load yes/no as boolean values
+);
+
+// get backup paths
+const rootDataBackupPath = path.join(process.cwd(), "data_backups");
+const backup_name = args[0] ? args[0] :
+  fs.readdirSync(rootDataBackupPath)
+  .filter(name => name.includes("data_backup"))
+  .sort().at(-1);
+const dataBackupPath = path.join(rootDataBackupPath, backup_name);
+const reticulumStoragePath = path.join(dataBackupPath, "reticulum_storage_data");
+const reticulumStorageRelativePath = path.relative(process.cwd(), reticulumStoragePath);
+const pgDumpSQLPath = path.join(dataBackupPath, "pg_dump.sql");
+if (!fs.existsSync(dataBackupPath)) {
+    console.error("the specified backup doesn't exist");
+    process.exit(1);
+  }
+
+// get pod names
+let reticulumPodName = execSync(`kubectl get pods -l=app=reticulum -n ${processedConfig.Namespace} --output jsonpath='{.items[0].metadata.name}'`);
+let pgsqlPodName = execSync(`kubectl get pods -l=app=pgsql -n ${processedConfig.Namespace} --output jsonpath='{.items[0].metadata.name}'`);
+// strip out the single quotes that Windows adds in
+reticulumPodName = reticulumPodName.toString().replaceAll("'", "");
+pgsqlPodName = pgsqlPodName.toString().replaceAll("'", "");
+
+// upload reticulum storage
+// note: relative paths must be used for kubectl cp on windows due to this bug: https://github.com/kubernetes/kubernetes/issues/101985
+let fs_object_names = fs.readdirSync(reticulumStoragePath);
+fs_object_names.forEach(fs_object_name => {
+  execSync(`kubectl cp --retries=-1 ${path.join(reticulumStorageRelativePath, fs_object_name)} ${reticulumPodName}:/storage -n ${processedConfig.Namespace}`);
+});
+
+// upload and apply the dump of the pgsql database
+// note: relative paths must be used for kubectl cp on windows due to this bug: https://github.com/kubernetes/kubernetes/issues/101985
+execSync(`kubectl cp --retries=-1 ${path.relative(process.cwd(), pgDumpSQLPath)} ${pgsqlPodName}:/root/pg_dump.sql -n ${processedConfig.Namespace}`);
+execSync(`kubectl exec ${pgsqlPodName} -n ${processedConfig.Namespace} -- /bin/psql ${processedConfig.PGRST_DB_URI} -f /root/pg_dump.sql`);
+execSync(`kubectl exec ${pgsqlPodName} -n ${processedConfig.Namespace} -- /bin/rm /root/pg_dump.sql`);
+
+
+// restart the Hubs instance so it doesn't error out when visited
+execSync(`kubectl delete deployment --all -n ${processedConfig.Namespace}`);
+execSync(`kubectl delete pods --all -n ${processedConfig.Namespace}`);
+execSync(`kubectl apply -f hcce.yaml`);
