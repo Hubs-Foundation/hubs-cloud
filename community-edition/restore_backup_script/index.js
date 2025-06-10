@@ -14,6 +14,27 @@ const processedConfig = YAML.parse(
   {"schema": "yaml-1.1"} // required to load yes/no as boolean values
 );
 
+// apply maintenance mode
+const maintenanceModeHcceFileName = "maintenance-mode-hcce.yaml"
+const hcce = utils.readTemplate("", "hcce.yaml");
+const hcceYamlDocuments = YAML.parseAllDocuments(hcce);
+hcceYamlDocuments.forEach((doc, index) => {
+  const jsDoc = doc.toJS();
+  if (jsDoc.kind === "Ingress") {
+    if (!jsDoc.metadata.annotations) {
+      jsDoc.metadata["annotations"] = {};
+    }
+    jsDoc.metadata.annotations["haproxy.org/request-redirect"] = `hubs-maintenance-mode.${processedConfig.HUB_DOMAIN}`
+    hcceYamlDocuments[index] = new YAML.Document(jsDoc);
+  }
+});
+const maintenanceModeHcce = `${hcceYamlDocuments.map(doc => YAML.stringify(doc, {"lineWidth": 0, "directives": false})).join('---\n')}`
+utils.writeOutputFile(maintenanceModeHcce, "", maintenanceModeHcceFileName);
+
+execSync(`kubectl delete deployment --all -n ${processedConfig.Namespace}`);
+execSync(`kubectl delete pods --all -n ${processedConfig.Namespace}`);
+execSync(`kubectl apply -f ${maintenanceModeHcceFileName}`);
+
 // get backup paths
 const rootDataBackupPath = path.join(process.cwd(), "data_backups");
 const backup_name = args[0] ? args[0] :
@@ -50,7 +71,8 @@ execSync(`kubectl exec ${pgsqlPodName} -n ${processedConfig.Namespace} -- /bin/p
 execSync(`kubectl exec ${pgsqlPodName} -n ${processedConfig.Namespace} -- /bin/rm /root/pg_dump.sql`);
 
 
-// restart the Hubs instance so it doesn't error out when visited
+// restart the Hubs instance so it doesn't error out when visited and maintenance mode is no longer applied
+fs.rmSync(path.join(process.cwd(), maintenanceModeHcceFileName));
 execSync(`kubectl delete deployment --all -n ${processedConfig.Namespace}`);
 execSync(`kubectl delete pods --all -n ${processedConfig.Namespace}`);
 execSync(`kubectl apply -f hcce.yaml`);
