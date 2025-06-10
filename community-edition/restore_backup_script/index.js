@@ -2,7 +2,7 @@ const execSync = require('child_process').execSync;
 const fs = require("fs");
 const path = require("path");
 const YAML = require("yaml");
-const utils = require("../utils");
+const utils = require("../utils.js");
 
 // get command line arguments
 const args = process.argv.slice(2);
@@ -85,7 +85,7 @@ console.log("");
 let fs_object_names = fs.readdirSync(reticulumStoragePath);
 fs_object_names.forEach(fs_object_name => {
   console.log(`restoring Reticulum '${fs_object_name}' folder`);
-  execSync(`kubectl cp --retries=-1 ${path.join(reticulumStorageRelativePath, fs_object_name)} ${reticulumPodName}:/storage -n ${processedConfig.Namespace}`);
+  execSync(`kubectl cp --retries=-1 ${path.join(reticulumStorageRelativePath, fs_object_name)} ${reticulumPodName}:/storage -c reticulum -n ${processedConfig.Namespace}`);
 });
 
 // upload and apply the dump of the pgsql database
