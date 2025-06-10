@@ -8,6 +8,8 @@
     "apply": "node apply/index.js && node get_ip/index.js",
     "get-ip": "node get_ip/index.js",
     "gen-ssl": "node ssl_script/index.js",
+    "backup": "node backup_script/index.js",
+    "restore-backup": "node restore_backup_script/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
