@@ -31,9 +31,29 @@ hcceYamlDocuments.forEach((doc, index) => {
 const maintenanceModeHcce = `${hcceYamlDocuments.map(doc => YAML.stringify(doc, {"lineWidth": 0, "directives": false})).join('---\n')}`
 utils.writeOutputFile(maintenanceModeHcce, "", maintenanceModeHcceFileName);
 
-execSync(`kubectl delete deployment --all -n ${processedConfig.Namespace}`);
-execSync(`kubectl delete pods --all -n ${processedConfig.Namespace}`);
-execSync(`kubectl apply -f ${maintenanceModeHcceFileName}`);
+console.log("applying maintenance mode");
+console.log("");
+execSync(`kubectl delete deployment --all -n ${processedConfig.Namespace}`, {stdio: 'inherit'});
+execSync(`kubectl delete pods --all -n ${processedConfig.Namespace}`, {stdio: 'inherit'});
+execSync(`kubectl apply -f ${maintenanceModeHcceFileName}`, {stdio: 'inherit'});
+let pendingDeploymentNames = []
+while (true) {
+  let deployments = JSON.parse(execSync(`kubectl get deployment -n ${config.Namespace} -o json`)).items;
+  let pendingDeployments = deployments.filter(deployment => (deployment.status.readyReplicas ?? 0) < deployment.status.replicas);
+
+  if (pendingDeployments.length) {
+    currentPendingDeploymentNames = pendingDeployments.map(deployment => deployment.metadata.name)
+    if (currentPendingDeploymentNames.toString() !== pendingDeploymentNames.toString()) {
+      console.log(`waiting on ${currentPendingDeploymentNames.join(", ")}`);
+      pendingDeploymentNames = currentPendingDeploymentNames;
+    }
+    // Wait for 1 second
+    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 1000);
+  } else {
+    console.log("maintenance mode applied")
+    break;
+  }
+}
 
 // get backup paths
 const rootDataBackupPath = path.join(process.cwd(), "data_backups");
@@ -57,15 +77,20 @@ let pgsqlPodName = execSync(`kubectl get pods -l=app=pgsql -n ${processedConfig.
 reticulumPodName = reticulumPodName.toString().replaceAll("'", "");
 pgsqlPodName = pgsqlPodName.toString().replaceAll("'", "");
 
+console.log("");
+console.log("restoring backup");
+console.log("");
 // upload reticulum storage
 // note: relative paths must be used for kubectl cp on windows due to this bug: https://github.com/kubernetes/kubernetes/issues/101985
 let fs_object_names = fs.readdirSync(reticulumStoragePath);
 fs_object_names.forEach(fs_object_name => {
+  console.log(`restoring Reticulum '${fs_object_name}' folder`);
   execSync(`kubectl cp --retries=-1 ${path.join(reticulumStorageRelativePath, fs_object_name)} ${reticulumPodName}:/storage -n ${processedConfig.Namespace}`);
 });
 
 // upload and apply the dump of the pgsql database
 // note: relative paths must be used for kubectl cp on windows due to this bug: https://github.com/kubernetes/kubernetes/issues/101985
+console.log("restoring database");
 execSync(`kubectl cp --retries=-1 ${path.relative(process.cwd(), pgDumpSQLPath)} ${pgsqlPodName}:/root/pg_dump.sql -n ${processedConfig.Namespace}`);
 execSync(`kubectl exec ${pgsqlPodName} -n ${processedConfig.Namespace} -- /bin/psql ${processedConfig.PGRST_DB_URI} -f /root/pg_dump.sql`);
 execSync(`kubectl exec ${pgsqlPodName} -n ${processedConfig.Namespace} -- /bin/rm /root/pg_dump.sql`);
@@ -73,6 +98,8 @@ execSync(`kubectl exec ${pgsqlPodName} -n ${processedConfig.Namespace} -- /bin/r
 
 // restart the Hubs instance so it doesn't error out when visited and maintenance mode is no longer applied
 fs.rmSync(path.join(process.cwd(), maintenanceModeHcceFileName));
-execSync(`kubectl delete deployment --all -n ${processedConfig.Namespace}`);
-execSync(`kubectl delete pods --all -n ${processedConfig.Namespace}`);
-execSync(`kubectl apply -f hcce.yaml`);
+console.log("");
+console.log("restarting instance");
+execSync(`kubectl delete deployment --all -n ${processedConfig.Namespace}`, {stdio: 'inherit'});
+execSync(`kubectl delete pods --all -n ${processedConfig.Namespace}`, {stdio: 'inherit'});
+execSync(`npm run apply`, {stdio: 'inherit'});
