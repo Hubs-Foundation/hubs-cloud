@@ -12,7 +12,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MPL-2.0",
   "description": "",
   "dependencies": {
     "inquirer": "^10.0.1",
