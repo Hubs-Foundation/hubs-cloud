@@ -13,10 +13,13 @@ if (output.items.length === 0) {
   process.exit(1);
 }
 for (const item of output.items) {
-  const ipAddr = item.status.loadBalancer?.ingress?.[0]?.ip;
-  if (ipAddr) {
-    console.log("load balancer external IP address:", ipAddr);
+  const name = item.metadata.name;
+  const namespace = item.metadata.namespace;
+  const status = item.status;
+  const addr = status?.loadBalancer?.ingress?.[0]?.ip || status?.loadBalancer?.ingress?.[0]?.hostname;
+  if (addr) {
+    console.log(`load balancer “${name}” in namespace “${namespace}” external address: ${addr}`);
   } else {
-    console.log("load balancer not running yet:", output.status.loadBalancer);
+    console.log(`load balancer “${name}” in namespace “${namespace}” not running yet:`, status);
   }
 }
