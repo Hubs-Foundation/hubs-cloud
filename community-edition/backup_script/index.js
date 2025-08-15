@@ -19,7 +19,7 @@ const pgDumpSQLPath = path.join(dataBackupPath, "pg_dump.sql");
 
 // get pod names
 let reticulumPodName = execSync(`kubectl get pods -l=app=reticulum -n ${processedConfig.Namespace} --output jsonpath='{.items[0].metadata.name}'`);
-let pgsqlPodName = execSync(`kubectl get pods -l=app=pgsql -n ${processedConfig.Namespace} --output jsonpath='{.items[0].metadata.name}'`);
+let pgsqlPodName = execSync(`kubectl get pods -l=app=pgsql -n ${processedConfig.Namespace} --output jsonpath='{.items[*].metadata.name}'`);
 // strip out the single quotes that Windows adds in
 reticulumPodName = reticulumPodName.toString().replaceAll("'", "");
 pgsqlPodName = pgsqlPodName.toString().replaceAll("'", "");
@@ -32,10 +32,19 @@ if (!fs.existsSync(rootDataBackupPath)) {
 
 // download reticulum storage
 // note: relative paths must be used for kubectl cp on windows due to this bug: https://github.com/kubernetes/kubernetes/issues/101985
-execSync(`kubectl cp --retries=-1 ${reticulumPodName}:/storage ${path.relative(process.cwd(), reticulumStoragePath)} -n ${processedConfig.Namespace}`);
+const reticulumOutputPath = path.relative(process.cwd(), reticulumStoragePath);
+console.log(`copying reticulum files to ${reticulumOutputPath}`);
+execSync(`kubectl cp --retries=-1 ${reticulumPodName}:/storage ${reticulumOutputPath} -n ${processedConfig.Namespace}`);
 
-// create and download dump of pgsql database
-// note: relative paths must be used for kubectl cp on windows due to this bug: https://github.com/kubernetes/kubernetes/issues/101985
-execSync(`kubectl exec ${pgsqlPodName} -n ${processedConfig.Namespace} -- /bin/pg_dump -c ${processedConfig.PGRST_DB_URI} -f /root/pg_dump.sql`);
-execSync(`kubectl cp --retries=-1 ${pgsqlPodName}:/root/pg_dump.sql ${path.relative(process.cwd(), pgDumpSQLPath)} -n ${processedConfig.Namespace}`);
-execSync(`kubectl exec ${pgsqlPodName} -n ${processedConfig.Namespace} -- /bin/rm /root/pg_dump.sql`);
+if (pgsqlPodName) {
+  // create and download dump of pgsql database
+  // note: relative paths must be used for kubectl cp on windows due to this bug: https://github.com/kubernetes/kubernetes/issues/101985
+  console.log(`dumping pgsql`);
+  execSync(`kubectl exec ${pgsqlPodName} -n ${processedConfig.Namespace} -- /bin/pg_dump -c ${processedConfig.PGRST_DB_URI} -f /root/pg_dump.sql`);
+  const pgsqlOutputPath = path.relative(process.cwd(), pgDumpSQLPath);
+  console.log(`copying dump to ${pgsqlOutputPath}`);
+  execSync(`kubectl cp --retries=-1 ${pgsqlPodName}:/root/pg_dump.sql ${pgsqlOutputPath} -n ${processedConfig.Namespace}`);
+  execSync(`kubectl exec ${pgsqlPodName} -n ${processedConfig.Namespace} -- /bin/rm /root/pg_dump.sql`);
+} else {
+  console.warn('not backing up pgsql; pod not found');
+}
