@@ -1159,11 +1159,21 @@ spec:
         env:
         - name: REALM
           value: turkey
+        - name: HUB_DOMAIN
+          value: $HUB_DOMAIN
         - name: PSQL
           valueFrom:
             secretKeyRef:
               name: configs
               key: PSQL
+        volumeMounts:
+        - name: certs
+          mountPath: /certs/
+          readOnly: true
+      volumes:
+      - name: certs
+        secret:
+          secretName: cert-stream.$HUB_DOMAIN
 ---
 apiVersion: v1
 kind: Service
