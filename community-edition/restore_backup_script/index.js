@@ -106,6 +106,9 @@
   }
   remove_os_helper_files_recursive(reticulumStoragePath);
 
+  // remove the reticulum pod's storage on the kubernetes cluster
+  execSync(`kubectl exec ${reticulumPodName} -c reticulum -n ${processedConfig.Namespace} -- /usr/bin/find /storage -mindepth 1 -delete`);
+
   // upload reticulum storage
   // note: relative paths must be used for kubectl cp on windows due to this bug: https://github.com/kubernetes/kubernetes/issues/101985
   let fs_object_names = fs.readdirSync(reticulumStoragePath);
