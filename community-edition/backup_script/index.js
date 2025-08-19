@@ -34,7 +34,7 @@ if (!fs.existsSync(rootDataBackupPath)) {
 // note: relative paths must be used for kubectl cp on windows due to this bug: https://github.com/kubernetes/kubernetes/issues/101985
 const reticulumOutputPath = path.relative(process.cwd(), reticulumStoragePath);
 console.log(`copying reticulum files to ${reticulumOutputPath}`);
-execSync(`kubectl cp --retries=-1 ${reticulumPodName}:/storage ${reticulumOutputPath} -n ${processedConfig.Namespace}`);
+execSync(`kubectl cp --retries=-1 ${reticulumPodName}:/storage ${reticulumOutputPath} -n ${processedConfig.Namespace}`, { env: { ...process.env, KUBECTL_REMOTE_COMMAND_WEBSOCKETS: false } });
 
 if (pgsqlPodName) {
   // create and download dump of pgsql database
@@ -43,7 +43,7 @@ if (pgsqlPodName) {
   execSync(`kubectl exec ${pgsqlPodName} -n ${processedConfig.Namespace} -- /bin/pg_dump -c ${processedConfig.PGRST_DB_URI} -f /root/pg_dump.sql`);
   const pgsqlOutputPath = path.relative(process.cwd(), pgDumpSQLPath);
   console.log(`copying dump to ${pgsqlOutputPath}`);
-  execSync(`kubectl cp --retries=-1 ${pgsqlPodName}:/root/pg_dump.sql ${pgsqlOutputPath} -n ${processedConfig.Namespace}`);
+  execSync(`kubectl cp --retries=-1 ${pgsqlPodName}:/root/pg_dump.sql ${pgsqlOutputPath} -n ${processedConfig.Namespace}`, { env: { ...process.env, KUBECTL_REMOTE_COMMAND_WEBSOCKETS: false } });
   execSync(`kubectl exec ${pgsqlPodName} -n ${processedConfig.Namespace} -- /bin/rm /root/pg_dump.sql`);
 } else {
   console.warn('not backing up pgsql; pod not found');
