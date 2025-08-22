@@ -45,11 +45,11 @@ metadata:
   name: ret
   namespace: $Namespace
   annotations:
-    kubernetes.io/ingress.class: haproxy
     haproxy.org/response-set-header: |
       access-control-allow-origin "https://$HUB_DOMAIN"
     haproxy.org/path-rewrite: /api-internal(.*) /_drop_
 spec:
+  ingressClassName: haproxy
   tls:
   - hosts:
       - $HUB_DOMAIN
@@ -143,10 +143,10 @@ metadata:
   name: dialog
   namespace: $Namespace
   annotations:
-    kubernetes.io/ingress.class: haproxy
     haproxy.org/server-ssl: "true"
     haproxy.org/load-balance: "url_param roomId"
 spec:
+  ingressClassName: haproxy
   tls:
   - hosts:
       - stream.$HUB_DOMAIN
@@ -169,9 +169,9 @@ metadata:
   name: nearspark
   namespace: $Namespace
   annotations:
-    kubernetes.io/ingress.class: haproxy
     haproxy.org/path-rewrite: /nearspark/(.*) /\1
 spec:
+  ingressClassName: haproxy
   tls:
   - hosts:
       - cors.$HUB_DOMAIN
@@ -1249,7 +1249,6 @@ spec:
         - --https-bind-port=4443
         - --http-bind-port=8080
         - --configmap-tcp-services=$Namespace/haproxy-tcp-config
-        - --ingress.class=haproxy
         - --log=warning #error warning info debug trace
         - --default-ssl-certificate=$Namespace/cert-hcce
         securityContext:
@@ -1275,6 +1274,13 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
+---
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: haproxy
+spec:
+  controller: haproxy.org/ingress-controller
 ---
 apiVersion: v1
 kind: Service
