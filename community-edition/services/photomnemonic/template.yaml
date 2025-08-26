@@ -29,6 +29,19 @@ Resources:
       MemorySize: 3000
       Role:
         Ref: PhotomnemonicRoleArn
+      DeadLetterQueue:
+        Type: SQS
+        TargetArn: !GetAtt DeadLetterQueue.Arn
+      ReservedConcurrentExecutions: 100
+      VpcConfig:
+        SecurityGroupIds:
+          - sg-xxx
+        SubnetIds:
+          - subnet-xxx
+  DeadLetterQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      KmsMasterKeyId: alias/aws/sqs
 
 Outputs:
   PhotomnemonicScreenshotFunctionArn:
