@@ -671,9 +671,11 @@ spec:
                 secretKeyRef:
                   name: configs
                   key: DB_NAME
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
           volumeMounts:
             - name: postgresql-data
-              mountPath: /var/lib/postgresql
+              mountPath: /var/lib/postgresql/data
       volumes:
         - name: postgresql-data
           hostPath:
