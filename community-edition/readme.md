@@ -146,7 +146,7 @@ If you run an external database instead of the `pgsql` pod, the scripts will onl
 
 ### 1. Beginner's Guide to CE
 
-The [Beginner's Guide to CE](https://docs.google.com/document/d/1BXSxTNFLjx8dtz26_OAFJParGdz8qTE2XvVAxwoJwrQ/edit?usp=sharing) takes you through the process of setting up Hubs, and all of it's required services, using the current Node.js version of Community Edition.  It is targeted at beginners, people without any programming experience, and the Windows operating system, but it should be useful to experienced developers, and those on other operating systems as well.  It uses DigitalOcean (for a kubernetes cluster), Porkbun (for the domain), and Scaleway (for the transactional email/smtp) as the additional services required by Hubs.
+The [Beginner's Guide to CE](https://docs.hubsfoundation.org/beginners-guide-to-CE.html) takes you through the process of setting up Hubs, and all of it's required services, using the current Node.js version of Community Edition.  It is targeted at beginners, people without any programming experience, and the Windows operating system, but it should be useful to experienced developers, and those on other operating systems as well.  It uses DigitalOcean (for a kubernetes cluster), Porkbun (for the domain), and Scaleway (for the transactional email/smtp) as the additional services required by Hubs.
 
 ### 2. Deploying A "Hello-World" Instance Using Managed Kubernetes on GCP with AWS' DNS & SMTP
 
