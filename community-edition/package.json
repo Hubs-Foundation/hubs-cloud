@@ -1,6 +1,6 @@
 {
   "name": "script",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "index.js",
   "scripts": {
     "start": "echo \"Follow the steps in readme.md\nUse gen-hcce for generating your kubernetes config file, apply to apply it, and gen-ssl for adding ssl certificates\" && exit 1",
