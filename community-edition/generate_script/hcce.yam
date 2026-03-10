@@ -328,10 +328,12 @@ data:
     from = "noreply@<HUB_DOMAIN>"
 
     [ret."Elixir.Ret.Mailer"]
-    server = "<SMTP_SERVER>"
+    relay = "<SMTP_SERVER>"
     port = "<SMTP_PORT>"
     username = "<SMTP_USER>"
     password = "<SMTP_PASS>"
+
+    server = "<SMTP_SERVER>" # deprecated - kept for old Reticulum/Bamboo compatibility.
 
     [ret."Elixir.Ret.Support"]
     slack_webhook_url = "<SLACK_WEBHOOK>"
