@@ -48,9 +48,8 @@ kind: Ingress
 metadata:
   name: certbotbot-http
   namespace: ${NAMESPACE}
-  annotations:
-    kubernetes.io/ingress.class: haproxy
 spec:
+  ingressClassName: haproxy
   rules:
   - host: ${DOMAIN}
     http:
@@ -60,14 +59,14 @@ spec:
         backend:
           service:
             name: certbotbot-http
-            port: 
+            port:
               number: 80
 EOF
 )
   echo "${CERTBOTING}"|kubectl apply -f -
 
   echo "start nginx and wait $INGRESS_WAIT sec for ingress to pick up the pod" && nginx && sleep $INGRESS_WAIT
-  
+
   echo "requesting cert"
   retries=10
   while (( retries > 0 )) && ! certbot certonly --non-interactive --agree-tos --register-unsafely-without-email --preferred-challenges http --nginx -d $DOMAIN
@@ -131,7 +130,7 @@ echo "CP_TO_NS=$CP_TO_NS"
 echo "LETSENCRYPT_ACCOUNT=$LETSENCRYPT_ACCOUNT"
 if [ -z $INGRESS_WAIT ]; then INGRESS_WAIT="30"; fi
 
-if ! [ -z $LETSENCRYPT_ACCOUNT ]; then 
+if ! [ -z $LETSENCRYPT_ACCOUNT ]; then
   acctDir="/etc/letsencrypt/accounts/acme-v02.api.letsencrypt.org/directory/"
   mkdir -p $acctDir
   echo $LETSENCRYPT_ACCOUNT | base64 -d > acct.tar.gz && tar -xf acct.tar.gz -C $acctDir
@@ -160,7 +159,7 @@ for ns in ${CP_TO_NS//,/ }; do save_cert $CERT_NAME $ns; done
 
 # if [ "$NAMESPACE" == "ingress" ]; then kubectl -n $NAMESPACE rollout restart deployment haproxy; fi
 
-if [ -z $LETSENCRYPT_ACCOUNT ]; then 
+if [ -z $LETSENCRYPT_ACCOUNT ]; then
   cd /etc/letsencrypt/accounts/acme*/directory/ && tar -czvf acct.tar.gz .
   acct=$(cat acct.tar.gz|base64)
   echo "reporting new letsencrypt account to orch: $acct"
