@@ -303,4 +303,9 @@ gcloud container clusters get-credentials --region us-central1-a hcce-gke-1
     - Use spot instances for nodes to save money.
     - Develop and integrate automated testing scripts into the ops pipeline
   - Configure devops for deploying custom versions of Spoke, Hubs, and Reticulum
-```
+
+
+## Building from Source
+
+The source code is being restructured to eliminate the forks of other repositories in the commpunity-edition/services directory.
+Not all of the images can be built from source at this time.
