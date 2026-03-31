@@ -40,13 +40,13 @@ When running [`render_hcce.sh`](../render_hcce.sh), you can specify your registr
 - [Hubs](https://github.com/mozilla/hubs)
 - [Spoke](https://github.com/mozilla/Spoke)
 - [Reticulum](https://github.com/mozilla/reticulum)
-- [Dialog](https://github.com/mozilla/dialog)
+- [Dialog](https://github.com/Hubs-Foundation/dialog)
 
 **Mozilla-Forked Codebases**
 
-- [Nearspark](https://github.com/MozillaReality/nearspark)
+- [Nearspark](https://github.com/Hubs-Foundation/nearspark)
 - [Speelycaptor](https://github.com/mozilla/speelycaptor)
-- [Photomnemonic](https://github.com/MozillaReality/photomnemonic)
+- [Photomnemonic](https://github.com/Hubs-Foundation/photomnemonic)
 
 **Other Codebases**
 
