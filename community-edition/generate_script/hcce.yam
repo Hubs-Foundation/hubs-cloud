@@ -1093,18 +1093,36 @@ spec:
     spec:
       hostNetwork: true
       containers:
-      - name: dialog
-        image: $Container_Dockerhub_Username/dialog:$Container_Tag
-        imagePullPolicy: Always
-        ports:
-        - hostPort: 4443
-          containerPort: 4443
-        env:
-        - name: perms_key
-          valueFrom:
-            secretKeyRef:
-              name: configs
-              key: PERMS_KEY
+        - name: dialog
+          image: $Container_Dockerhub_Username/dialog:$Container_Tag
+          imagePullPolicy: Always
+          ports:
+          - hostPort: 4443
+            containerPort: 4443
+          env:
+          - name: perms_key
+            valueFrom:
+              secretKeyRef:
+                name: configs
+                key: PERMS_KEY
+            readinessProbe:
+              httpGet:
+                path: https://localhost/health
+                port: 4443
+                scheme: HTTPS
+              initialDelaySeconds: 10
+              periodSeconds: 5
+              timeoutSeconds: 3
+              failureThreshold: 6
+            livenessProbe:
+              httpGet:
+                path: https://localhost/health
+                port: 4443
+                scheme: HTTPS
+              initialDelaySeconds: 30
+              periodSeconds: 10
+              timeoutSeconds: 3
+              failureThreshold: 3
 ---
 apiVersion: v1
 kind: Service
