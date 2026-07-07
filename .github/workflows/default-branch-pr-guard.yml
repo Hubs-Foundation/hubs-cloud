@@ -15,6 +15,8 @@ on:
       - enqueued
       - ready_for_review
 
+permissions: {}
+
 jobs:
   default-branch-pr-guard:
     runs-on: ubuntu-latest
@@ -22,5 +24,9 @@ jobs:
       - name: Prevent unsanctioned pull requests to the default branch
         if: github.base_ref == github.event.repository.default_branch && (github.head_ref != 'development' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name)
         run: |
-          echo "ERROR: You are only allowed to merge to the '${{ github.event.repository.default_branch }}' branch from this repository's 'development' branch.  base_ref: ${{ github.base_ref }}; head_ref: ${{ github.head_ref }}; base_repo: ${{ github.event.pull_request.base.repo.full_name }}; head_repo: ${{ github.event.pull_request.head.repo.full_name }}; "
+          echo "ERROR: You are only allowed to merge to the '${GITHUB_EVENT_REPOSITORY_DEFAULT_BRANCH}' branch from this repository's 'development' branch.  base_ref: ${GITHUB_BASE_REF}; head_ref: ${GITHUB_HEAD_REF}; base_repo: ${GITHUB_EVENT_PULL_REQUEST_BASE_REPO_FULL_NAME}; head_repo: ${GITHUB_EVENT_PULL_REQUEST_HEAD_REPO_FULL_NAME}; "
           exit 1
+        env:
+          GITHUB_EVENT_REPOSITORY_DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          GITHUB_EVENT_PULL_REQUEST_BASE_REPO_FULL_NAME: ${{ github.event.pull_request.base.repo.full_name }}
+          GITHUB_EVENT_PULL_REQUEST_HEAD_REPO_FULL_NAME: ${{ github.event.pull_request.head.repo.full_name }}
