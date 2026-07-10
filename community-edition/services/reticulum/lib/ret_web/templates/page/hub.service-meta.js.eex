@@ -1,1 +1,0 @@
-appFullName = "<%= @translations["app-full-name"] || @translations["app-name"] %>";

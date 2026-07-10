@@ -15,7 +15,8 @@ Instead of using a git submodule, we have opted to centralize all codebases in `
 
 **Option B: Build and Deploy All Services In-Bulk**
 
-1. Populate `docker_username` in `dockerbuildall.sh`
+1. Populate `docker_username` in `dockerbuildall.sh` OR set environment variable `DOCKER_HUB_USERNAME` to override the default.
+2. Populate `tagPrefix` in `dockerbuildall.sh` OR set environment variable `DOCKER_HUB_PREFIX` to override the default.
 2. Run `bash dockerbuildall.sh` and enter your docker registry password when prompted.
 
 **Option C: Build and Deploy Services Individually**
@@ -26,8 +27,10 @@ Instead of using a git submodule, we have opted to centralize all codebases in `
 
 ### Troubleshooting
 
-- The `dockerbuildall.sh` was tested using bash4. There is a known issue with line 19 when using bash3. To fix, replace line 19 with `tag_name="${tagPrefix}$(echo "$dir" | tr '[:upper:]' '[:lower:]')"`
-- For non-amd64 environments, you should add `--platform=linux/amd64` to `dockerbuildall.sh` line 26 to specify amd64.
+- The `dockerbuildall.sh` was tested using bash4. There is a known issue with line 19 when using bash3. To fix, replace line 24 with `tag_name="${tagPrefix}$(echo "$dir" | tr '[:upper:]' '[:lower:]')"`
+- For to build on non-amd64 host environments, you should set environment variable `DOCKER_BUILD_PLAFORMS=linux/amd64` to specify amd64.
+- To build for arm64 environments on amd64 hosts you should set environment variable `DOCKER_BUILD_PLATFORMS=linux/arm64` to specify arm64.
+- For multi-arch builds set environment variable `DOCKER_BUILD_PLATFORMS=linux/arm64,linux/amd64` to build both architectures.
 
 ### Use Services In Community Edition
 
