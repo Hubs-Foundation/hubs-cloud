@@ -303,4 +303,34 @@ gcloud container clusters get-credentials --region us-central1-a hcce-gke-1
     - Use spot instances for nodes to save money.
     - Develop and integrate automated testing scripts into the ops pipeline
   - Configure devops for deploying custom versions of Spoke, Hubs, and Reticulum
+
+### Multi-node cluster networking and SSL validation
+
+In a multi-node Kubernetes cluster, the HAProxy ingress controller and the temporary `certbotbot-http` pod may be scheduled on different worker nodes. The Certbot HTTP-01 challenge is served by the `certbotbot-http` pod on TCP port 80.
+
+Ensure that the cluster network and worker-node firewall or security group rules allow cross-node traffic on TCP port 80. If this traffic is blocked, HAProxy may be unable to reach the Certbot pod, causing the ACME challenge endpoint to return `503 Service Unavailable` and SSL certificate validation to fail.
+
+For AWS EKS clusters using the Amazon VPC CNI, review the worker-node security group and, when required, add an inbound rule with the following configuration:
+
+* Type: Custom TCP
+* Port: `80`
+* Source: The worker-node security group itself
+
+Using the worker-node security group as the source allows port 80 between cluster worker nodes without exposing the port directly to the public internet. Manage this rule through the infrastructure-as-code configuration used to create the cluster rather than adding it manually for each deployment.
+
+To test connectivity from HAProxy to the Certbot pod while certificate validation is running:
+
+```shell
+CERTBOT_IP=$(kubectl get pod certbotbot-http \
+  --namespace <namespace> \
+  --output jsonpath='{.status.podIP}')
+
+kubectl exec \
+  --namespace <namespace> \
+  deployment/haproxy \
+  -- curl -sv --connect-timeout 5 \
+  "http://${CERTBOT_IP}/.well-known/acme-challenge/test"
 ```
+
+
+An HTTP 404 Not Found response from nginx is expected for the test path and confirms that HAProxy can reach the Certbot pod. A connection timeout may indicate that cross-node communication on TCP port 80 is blocked.
