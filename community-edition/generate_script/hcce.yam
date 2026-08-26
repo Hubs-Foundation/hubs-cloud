@@ -1248,6 +1248,11 @@ spec:
         - --ingress.class=haproxy
         - --log=warning #error warning info debug trace
         - --default-ssl-certificate=$Namespace/cert-hcce
+        resources:
+            requests:
+              memory: "1Mi"
+            limits:
+              memory: "1Ti"
         securityContext:
           runAsUser:  1000
           runAsGroup: 1000
