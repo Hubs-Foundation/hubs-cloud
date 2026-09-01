@@ -56,6 +56,7 @@ function main() {
     const template = utils.readTemplate("ssl_script", "cbb.yam");
     const rootHubDomain = config.HUB_DOMAIN;
     generate_ssl(config, template, rootHubDomain);
+    generate_ssl(config, template, `www.${rootHubDomain}`);
     generate_ssl(config, template, `assets.${rootHubDomain}`);
     generate_ssl(config, template, `stream.${rootHubDomain}`);
     generate_ssl(config, template, `cors.${rootHubDomain}`);
