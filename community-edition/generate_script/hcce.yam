@@ -447,7 +447,7 @@ spec:
         image: $Container_Dockerhub_Username/reticulum:$Container_Tag
         ports:
         - containerPort: 9100
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         env:
         - name: POD_IP
           valueFrom:
@@ -561,6 +561,8 @@ spec:
           value: "http://speelycaptor:5000"
         - name: turkeyCfg_STORAGE_QUOTA_GB
           value: "1000"
+        - name: ERL_MAX_PORTS
+          value: "1024"
         livenessProbe:
           httpGet:
             path: /health
@@ -815,7 +817,7 @@ spec:
       containers:
       - name: hubs
         image: $Container_Dockerhub_Username/hubs:$Container_Tag
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         env:
         - name: turkeyCfg_thumbnail_server
           value: 'cors.$HUB_DOMAIN/nearspark'
@@ -885,7 +887,7 @@ spec:
       containers:
       - name: spoke
         image: $Container_Dockerhub_Username/spoke:$Container_Tag
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         env:
         - name: turkeyCfg_thumbnail_server
           value: 'cors.$HUB_DOMAIN/nearspark'
@@ -957,7 +959,7 @@ spec:
         image: $Container_Dockerhub_Username/nearspark:$Container_Tag
         ports:
         - containerPort: 5000
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service
@@ -1050,7 +1052,7 @@ spec:
       containers:
       - name: photomnemonic
         image: $Container_Dockerhub_Username/photomnemonic:$Container_Tag
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service
@@ -1240,6 +1242,8 @@ spec:
       containers:
       - name: haproxy
         image: $Container_Dockerhub_Username/haproxy:$Container_Tag
+        command: ["sh", "-c", 'ulimit -n 524288 && /start.sh "$@"', "--"]
+
         args:
         - --configmap=$Namespace/haproxy-config
         - --https-bind-port=4443
@@ -1381,3 +1385,36 @@ subjects:
 - kind: ServiceAccount
   name: haproxy-sa
   namespace: $Namespace
+
+---
+  ##############################################################################################
+  ############################################ www-redirect #######################################
+  ##############################################################################################
+
+  apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    name: www-redirect
+    namespace: $Namespace
+    annotations:
+      kubernetes.io/ingress.class: haproxy
+      haproxy.org/config-snippet: |
+        http-request redirect prefix location https://$HUB_DOMAIN/ code 301
+  spec:
+    tls:
+      - hosts:
+          - www.$HUB_DOMAIN
+        secretName: cert-www.$HUB_DOMAIN
+    rules:
+      - host: www.$HUB_DOMAIN
+        http:
+          paths:
+            - path: /
+              pathType: Prefix
+              backend:
+                service:
+                  # backend won't be used because of redirect annotation,
+                  # but ingress requires one.
+                  name: ret
+                  port:
+                    number: 4001
