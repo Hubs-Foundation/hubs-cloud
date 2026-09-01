@@ -10,7 +10,9 @@
     "gen-ssl": "node ssl_script/index.js",
     "backup": "node backup_script/index.js",
     "restore-backup": "node restore_backup_script/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "check-ssl": "node ssl_script/check-cert.js",
+    "regen-ssl": "node ssl_script/regen-ssl.js"
   },
   "keywords": [],
   "author": "",
