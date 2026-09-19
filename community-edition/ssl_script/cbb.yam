@@ -36,7 +36,7 @@ spec:
   serviceAccountName: cbb-sa
   containers:
   - name: myapp
-    image: mozillareality/certbotbot_http:dev-47
+    image: dynamicdevices/certbotbot:latest
     env:
     - name: "DOMAIN"
       value: "$HUB_DOMAIN"
