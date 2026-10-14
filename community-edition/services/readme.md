@@ -45,7 +45,7 @@ When running [`render_hcce.sh`](../render_hcce.sh), you can specify your registr
 **Mozilla-Forked Codebases**
 
 - [Nearspark](https://github.com/Hubs-Foundation/nearspark)
-- [Speelycaptor](https://github.com/mozilla/speelycaptor)
+- [Speelycaptor](https://github.com/Hubs-Foundation/speelycaptor)
 - [Photomnemonic](https://github.com/Hubs-Foundation/photomnemonic)
 
 **Other Codebases**
